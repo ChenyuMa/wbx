@@ -1,0 +1,36 @@
+<!--pages/mine/subsidy/subsidy.wxml-->
+<view class='subsidy-pages' style='height:{{windowHeight}}px;'>
+  <!--规格  -->
+  <view class='rule' bindtap='click_rule'>
+    <text>活动规则</text>
+  </view>
+  <!--红包墙内容  -->
+  <view class='subsidy-record'>
+    <view class='record-titel'>
+      <text>中奖纪录</text>
+    </view>
+    <scroll-view style='height:550rpx;' scroll-y='true'>
+      <block wx:for='{{list}}' wx:key='index'>
+        <view class='record-content'>
+          <view wx:if='{{item.can_use == 0}}'>
+            <text>下单获得奖励红包（待确认）</text>
+            <text>￥{{item.money/100.00}}</text>
+          </view>
+
+          <view wx:else>
+            <text wx:if='{{item.is_use == 0}}'>下单获得奖励红包（未使用）</text>
+            <text wx:else>下单获得奖励红包（已使用）</text>
+            <text>￥{{item.money/100.00}}</text>
+          </view>
+        </view>
+
+      </block>
+    </scroll-view>
+  </view>
+  <!--活动规则  -->
+  <view class='is-rule' wx:if='{{is_rule}}' bindtap='click_rule'>
+    <view>
+      <text>{{rule}}</text>
+    </view>
+  </view>
+</view>

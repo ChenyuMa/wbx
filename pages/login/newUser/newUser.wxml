@@ -1,0 +1,60 @@
+<!--pages/mine/login/newUser/newUser.wxml-->
+<view class='newUserStyle' style='height:{{newUserHeight}}px;'>
+  <!--线  -->
+  <view class='newUser_lineStyle'></view>
+  <!--输入框  -->
+  <view class='newUser_InputListStyle'>
+    <!--手机  -->
+    <view class='newUser_inputPhoneStyle'>
+      <text >手机号</text>
+      <view >
+      <input bindinput='phoneInput' bindfocus='phoneFocus' bindblur='phoneBlur' type='number' value='{{phoneTxt}}' placeholder='请输入手机号'></input>
+      </view>
+      <image src='{{imgUrls+"clear.png"}}' style='display:{{isPhoneImg}}' bindtap='clearPhone'></image>
+    </view>
+    <!--验证码  -->
+    <view class='newUser_inputCodeStyle'>
+      <text class=''>验证码</text>
+      <view>
+      <input bindinput='codeInput' bindfocus='codeFocus' bindblur='codeBlur' type='number' value='{{codeTxt}}' placeholder='请输入验证码'></input>
+      <image class='phone_imgStyle' src='{{imgUrls+"clear.png"}}' style='display:{{isCodeImg}}' bindtap='clearCode'></image>
+      </view>
+      <button class='{{is_show?"show":"hide"}} ' bindtap='getCode' >获取验证码</button>
+      <button class='{{is_show?"hide":"show"}}' >重新发送{{last_time}}秒</button>
+    </view>
+    <!--密码  -->
+    <view class='newUser_inputPasswrodStyle'>
+      <text>输入密码</text>
+      <view>
+      <input bindinput='pass1Input' bindfocus='pass1Focus' bindblur='pass1Blur' type='' value='{{pass1Txt}}' placeholder='请输入6-20位密码' password='true'></input>
+      </view>
+      <image class='phone_imgStyle' src='{{imgUrls+"clear.png"}}' style='display:{{isPass1Img}}' bindtap='clearPass1'></image>
+    </view>
+    <!--密码2  -->
+    <view class='newUser_inputPasswrodStyle'>
+      <text>确认密码</text>
+      <view>
+      <input bindinput='pass2Input' bindfocus='pass2Focus' bindblur='pass2Blur' type='' value='{{pass2Txt}}' placeholder='请确认密码' password='true'></input>
+      </view>
+      <image class='phone_imgStyle' src='{{imgUrls+"clear.png"}}' style='display:{{isPass2Img}}' bindtap='clearPass2'></image>
+    </view>
+  </view>
+  <!--下部分  -->
+  <view class='newUser_bottomStyle'>
+    <!--协议  -->
+    <view class='newUser_protocolStyle'>
+      <image class='newUser_protocolImgStyle' src='{{imgUrls+"login_choose_sel@2x.png"}}'></image>
+      <view class='newUser_protocoViewlStyle'>
+        <text >我已阅读本协议，并同意</text>
+        <text class='newUser_protocolTextStyle'>《微百姓用户注册协议》</text>
+      </view>
+    </view>
+    <!--按钮  -->
+    <button class='newUser_submitBtnStyle' bindtap='userRegistration'>提交并注册</button>
+  </view>
+  <!-- 自定义弹窗 -->
+  <view class="showModule" wx:if="{{isShow}}">
+    <!-- 这部分内容可以灵活修改，例如改成一个模态框 -->
+    <view class="text ">{{text}}</view>
+  </view>
+</view>

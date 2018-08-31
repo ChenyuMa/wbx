@@ -1,0 +1,394 @@
+/* pages/shopCart/shopCart.wxss */
+
+/* 弹性行 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 弹性列 */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/*文本超出省略号  */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shopCart-page{
+  width: 100%;
+  background: whitesmoke; 
+  position: relative;
+}
+
+/***************************购物车内容  */
+.shopCart-content{
+  width: 100%;
+  height: 93%;
+}
+.shopCart-contents{
+  width: 100%;
+  height: 85%;
+}
+.shopCart-editor{
+  width: 100%;
+  height: 7%;
+  /* margin-bottom: 3%; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: white;
+}
+.shopCart-editor text{
+  font-size: 30rpx;
+  margin-right: 20rpx;
+  color: red;
+}
+
+/*购物车详情  */
+.shopCart-details{
+  width: 100%;
+  /* background: red; */
+  margin-bottom: 20rpx;
+}
+
+/*详情内容左边  */
+/* .shopCart-details-left{
+  width: 10%;
+  height: 100%;
+  background: white;
+} */
+
+/*详情内容右边  */
+/* .shopCart-details-right{
+  width: 90%;
+  height: 100%;
+} */
+
+/*详情标题 */
+.details-title{
+  width: 100%;
+  height: 80rpx;
+  background: white;
+
+}
+/*勾选框  */
+.check-view{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.check-view image{
+  width: 40rpx;
+  height: 40rpx;
+}
+/*标题  */
+.title-view{
+  height: 100%;
+  width: 85%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title-view image{
+  width: 50rpx;
+  height: 50rpx;
+  background: gold;
+  border-radius: 50rpx;
+}
+.title{
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  font-weight: bold;
+  margin-right: 10rpx;
+}
+.title-view text:last-child{
+  color: gray;
+}
+
+/*详情商品  */
+.details-goods{
+  width: 100%;
+
+}
+.details-view{
+  width: 100%;
+  height: 150rpx;
+   background: white; 
+   border-bottom: 1rpx whitesmoke solid;
+}
+.details-check{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.details-check image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.details-right{
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: whitesmoke; */
+  /* border: 1rpx solid gainsboro; */
+}
+/*商品图片  */
+.right-img{
+  width: 18%;
+  height: 70%;
+  /* background-color: wheat; */
+}
+.right-img image{
+  width: 100%;
+  height: 100%;
+}
+.right-info{
+  width: 73%;
+  margin-left: 2%;
+  height: 100%;
+  justify-content: space-around;
+}
+.info-name{
+  font-weight: bold; 
+  font-size: 25rpx;
+}
+.right-info text:nth-child(2){
+  font-size: 25rpx;
+  color: gray;
+}
+
+/*价格  */
+.info-price{
+  width: 100%;
+  height: 35%;
+  display: flex;
+  justify-content: space-between;
+}
+.price{
+  font-size: 30rpx;
+  color: #0AC1AF;
+}
+
+/*商品数量  */
+.goods-num{
+  width: 180rpx;
+  height: 100%;
+  /* border: 1rpx solid gray; */
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goods-num text:nth-child(1){
+  width: 50rpx;
+  height: 50rpx;
+  /* background: #0AC1AF; */
+  /* border-right: solid 1rpx gray;  */
+  border: 1rpx solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  font-size: 25rpx;
+  border-radius: 100%;
+}
+.goods-num text:nth-child(2){
+  font-size: 30rpx;
+  color: black;
+}
+.goods-num text:nth-child(3){
+  width: 50rpx;
+  height: 50rpx;
+  /* border-left: solid 1rpx gray; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0AC1AF;
+  color: white;
+  font-size: 25rpx;
+  border-radius: 100%;
+}
+/*分割  */
+.details-line{
+  width: 100%;
+  height: 15rpx;
+  background: white;
+}
+/*订单运费  */
+.details-freight{
+  width: 100%;
+  height: 45rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  font-size: 25rpx;
+}
+.details-freight text:first-child{
+  margin-left: 15%;
+}
+.details-freight text:last-child{
+  margin-left: 15%;
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+
+/*满减优惠  */
+.details-fullReduction{
+  width: 100%;
+  height: 45rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  font-size: 25rpx;
+}
+.details-fullReduction text:first-child{
+  margin-left: 15%;
+  height: 30rpx;
+}
+.details-fullReduction text:last-child{
+  font-size: 30rpx;
+  margin-right: 20rpx;
+}
+/*价格结算  */
+.details-settlement{
+  width: 100%;
+  height: 80rpx;
+  border-top: 1rpx solid gainsboro;
+  background: white;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25rpx;
+}
+.details-settlement text:first-child{
+  margin-left: 15%;
+  font-size: 25rpx;
+}
+.settlement{
+  width: 60%;
+  margin-right: 20rpx;
+  height: 100%;
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+}
+.settlement text:first-child{
+  color: red;
+  margin-right: 10rpx;
+}
+.settlement text:last-child{
+  width: 130rpx;
+  height: 75%;
+  color: white;
+  font-size: 30rpx;
+  background: #0AC1AF;
+  border-radius: 5rpx;
+  text-align: center;
+  line-height: 56rpx;
+}
+/*************************删除  */
+.shopCart-delete{
+  width: 100%;
+  height: 8%;
+  background: #0AC1AF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+}
+.shopCart-delete text{
+  color: white;
+  font-size: 30rpx;
+}
+/*************微信登录  */
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}

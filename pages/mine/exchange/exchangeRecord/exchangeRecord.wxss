@@ -1,0 +1,52 @@
+/* pages/mine/exchange/exchangeRecord/exchangeRecord.wxss */
+/*  */
+.exchangeRecord-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+.record{
+  width: 100%;
+  height: 120rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rpx;
+}
+/*  */
+.record-left{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.record-left image{
+  width: 100rpx;
+  height: 100rpx;
+}
+/*  */
+.record-content{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 30rpx;
+}
+.record-content text:first-child{
+
+}
+.record-content text:last-child{
+  color: #06C1AE;
+}
+/*  */
+.record-right{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.record-right text{
+  font-size: 50rpx;
+}

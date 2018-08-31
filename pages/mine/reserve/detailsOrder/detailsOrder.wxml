@@ -1,0 +1,93 @@
+<!--pages/mine/reserve/detailsOrder/detailsOrder.wxml-->
+<view class='detailsOrder-pages' style='height:{{windowHeight}}px;'>
+  <!--订单头部  -->
+  <view class='details-top'>
+    <image src='{{detailsList.photo}}'></image>
+    <text>{{detailsList.shop_name}}</text>
+  </view>
+
+  <!--订单信息  -->
+  <view class='details-content'>
+    <scroll-view scroll-y='{{true}}' style='height:100%;'>
+      <!--用户  -->
+      <view class='content-info'>
+        <!--姓名  -->
+        <view class='info-name'>
+          <text>姓名：</text>
+          <text>{{detailsList.name}}</text>
+        </view>
+        <!--电话  -->
+        <view class='info-name'>
+          <text>电话：</text>
+          <text>{{detailsList.mobile}}</text>
+        </view>
+        <!--时间  -->
+        <view class='info-name'>
+          <text>用餐时间：</text>
+          <text>{{detailsList.reserve_time}}</text>
+        </view>
+        <!--人数  -->
+        <view class='info-name'>
+          <text>用餐人数：</text>
+          <text>{{detailsList.number}} 人</text>
+        </view>
+        <!--定金  -->
+        <view class='info-name'>
+          <text>定金：</text>
+          <text>{{detailsList.subscribe_money/100.00}} 元</text>
+        </view>
+      </view>
+      <!--单号/备注  -->
+      <view class='content-num'>
+        <!-- 单号 -->
+        <view class='info-name'>
+          <text>订单号：</text>
+          <text>{{detailsList.order_id}}</text>
+        </view>
+        <!--备注  -->
+        <view class='info-note'>
+          <text>备注：</text>
+          <text>{{detailsList.note}}</text>
+        </view>
+      </view>
+      <!--预定菜品  -->
+      <view class='content-dishes'>
+        <block wx:for='{{detailsList.order_goods}}' wx:key='index'>
+          <view class='dishes'>
+            <!--菜品图片  -->
+            <image src='{{item.photo}}'></image>
+            <!--菜品内容  -->
+            <view class='dishes-content'>
+              <!--名称/价格  -->
+              <view class='dishes-name'>
+                <text>{{item.intro}} ({{item.attr_name?item.attr_name:item.title}})</text>
+                <text>￥{{item.price/100.00}}</text>
+              </view>
+              <text>*{{item.num}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      <!--满减/优惠  -->
+      <view class='content-activity'>
+        <!--满减  -->
+        <view class='info-name'>
+          <text>满减：</text>
+          <text wx:if='{{detailsList.full_money_reduce}}'>-¥ {{detailsList.full_money_reduce/100.00}}</text>
+          <text>-¥ 0</text>
+        </view>
+        <!--优惠卷  -->
+        <view class='info-name'>
+          <text>优惠卷：</text>
+          <text wx:if='{{detailsList.coupon_money}}'>-¥ {{detailsList.coupon_money/100.00}}</text>
+          <text>-¥ 0</text>
+        </view>
+        <!--联系商家  -->
+        <view class='info-total'>
+          <text data-tel='{{detailsList.tel}}' bindtap='callShop'>联系商家</text>
+          <text>合计：￥{{detailsList.subscribe_money/100.00}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+/* pages/mine/invitation/openShop/openShop.wxss */
+.openShop{
+  width: 100%;
+  
+}

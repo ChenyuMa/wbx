@@ -1,0 +1,96 @@
+/* pages/mine/micron/recharge/recharge.wxss */
+.rechargePages{
+  width: 100%;
+  background: whitesmoke;
+}
+/***********************支付方式  */
+.payWay{
+  width: 100%;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+}
+/*微信支付图标  */
+.payWay-icon{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.payWay-icon text{
+  font-size: 50rpx;
+  color: #1D9C73;
+}
+/* 微信支付内容 */
+.payWay-content{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.payWay-content text{
+  font-size: 30rpx;
+}
+
+/************************充值金额  */
+.rechargeMoney{
+  width: 100%;
+  height: 250rpx;
+  background: white;
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rechargeMoney-content{
+  width: 90%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+/*  */
+.rechargeMoney-content-title{
+  font-size: 25rpx;
+  width: 100%;
+  height: 25%;
+}
+/*  */
+.rechargeMoney-content-money{
+  width: 100%;
+  height: 50%;
+  font-size: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rechargeMoney-content-money input{
+  height: 100%;
+}
+/*  */
+.rechargeMoney-content-foot{
+  font-size: 25rpx;
+  width: 100%;
+  height: 25%;
+}
+/***********************确认充值  */
+.confirmMoney{
+  width: 100%;
+  height: 100rpx;
+  margin-top:60rpx;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.confirmMoney text{
+  width: 90%;
+  height: 70rpx;
+  background: #06C1AE;
+  text-align: center;
+  color: white;
+  border-radius: 5rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+}

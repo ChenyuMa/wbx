@@ -1,0 +1,31 @@
+/* pages/mine/address/address.wxss */
+
+.mineAddress {
+  width: 100%;
+}
+
+.address {
+  width: 100%;
+  background-color: whitesmoke;
+   display: flex;
+   justify-content: center; 
+}
+
+/*添加地址  */
+
+.addressAdd {
+  width: 150rpx;
+  height:150rpx;
+  font-size: 25rpx;
+  line-height: 150rpx;
+  background: #06c1ae;
+  color: white;
+  border-radius: 100%;
+  margin-top: 300rpx;
+}
+
+.addressAdd text {
+  line-height: 100rpx;
+  margin-left: 20rpx;
+}
+

@@ -1,0 +1,160 @@
+/* pages/home/shopDetails/sweepPages/orderPages/orderPages.wxss */
+/*  */
+.orderPages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*提示  */
+.prompt{
+  width: 100%;
+  height: 5%;
+  font-size: 30rpx;
+  background: #F9E8D0;
+  display: flex;
+  align-items: center;
+}
+.prompt text{
+  margin-left: 5%;
+}
+
+/*订单头部  */
+.orderSeat{
+  width: 100%;
+  height: 13%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50rpx;
+  margin-bottom: 1rpx;
+}
+.orderSeat text:last-child{
+  color: #06C1AE;
+}
+
+/* 订单基本信息  */
+.orderInfo{
+  width: 100%;
+  height: 12%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 2.9%;
+}
+.orderTitle{
+  margin-left: 5%;
+  color: gray;
+}
+.info{
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 35rpx;
+}
+/*点单人数  */
+.infoNum text:nth-child(2){
+  color: #06C1AE;
+}
+
+/*下单时间  */
+.orderTime text:last-child{
+  color: #06C1AE;
+}
+
+/*数量  */
+.orderNum text:nth-child(2){
+  color: #06C1AE;
+}
+
+/*订单详情  */
+.orderDetails{
+  width: 100%;
+  height: 58%;
+}
+
+.details{
+  width: 100%;
+  height: 150rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rpx;
+}
+
+.detailsPhoto{
+  width: 100rpx;
+  height: 100rpx;
+  background: cadetblue;
+  margin-left: 5%;
+  border-radius: 10rpx;
+}
+
+.detailsPhoto image{
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.detailsName{
+  margin-left: 2%;
+  font-size: 35rpx;
+  width: 75%;
+}
+.nameTop{
+  display: flex;
+  justify-content: space-between;
+} 
+.nameTop text:nth-child(2){
+  color: gray;
+}
+
+.nameTop text:nth-child(3){
+  color: gray;
+}
+
+.nameTop text:nth-child(4){
+  color: gray;
+}
+
+.nameDown {
+  color: gray;
+}
+
+.nameDown text:nth-child(2){
+  color: #EFA544;
+}
+
+/*加菜买单  */
+.addFoodPay{
+  height: 10%;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* position: fixed;
+  bottom: 0; */
+}
+.addFoodPay text:first-child{
+  background: #06c1ae;
+  color: white;
+  width: 250rpx;
+  height: 60rpx;
+  text-align: center;
+  font-size: 40rpx;
+  border-radius: 40rpx;
+}
+.addFoodPay text:last-child{
+  background: #EE9E2C;
+  color: white;
+  width: 250rpx;
+  height: 60rpx;
+  text-align: center;
+  font-size: 40rpx;
+  border-radius: 40rpx;
+}
+

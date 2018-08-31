@@ -1,0 +1,38 @@
+<!--pages/home/region/region.wxml-->
+<view class='region' style='height:{{windowHeight}}px;'>
+  <!--头部栏  -->
+  <view class='regionTop'>
+    <!--搜索框  -->
+    <view class='searchView'>
+      <image src='{{imgUrls+"b_search@2x.png"}}' class='searchImg'></image>
+      <input type='text' placeholder='请输入城市名称' class='searchInput' bindinput='inputChange' value='{{inputValue}}'></input>
+      <image src='{{imgUrls+"ZFPlayer_close.png"}}' class='searchClearImg' wx:if='{{isClearImg}}' bindtap='searchClear'></image>
+    </view>
+    <!--当前城市  -->
+    <view class='currentCity' bindtap='localizeCity'>
+      <text class='currentCityInfo'>当前城市：{{cicurrentCityty}}</text>
+    </view>
+  </view>
+  <!--城市列表  -->
+  <view class='citySelect' wx:if='{{searchCity == ""}}'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+      <view wx:for='{{firstLetter}}' wx:key='index' class='firstLetter' wx:for-item="letter">
+        <view class='letter'>{{letter}}</view>
+        <block wx:for='{{citysList}}' wx:key='index'>
+          <view class='cityNameStyle' wx:if='{{item.first_letter == letter}}' bindtap='selectCity' data-city='{{item.name}}' data-cityID='{{item.city_id}}'>
+            <text class='cityName'>{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <!--搜索城市  -->
+  <view class='citySelect' wx:else>
+    <text class='letter'>{{searchCity.first_letter}}</text>
+    <block wx:for='{{searchCity}}' wx:key='index'>
+      <view class='searchCityName' bindtap='selectCity' data-city='{{item.name}}' data-cityID='{{item.city_id}}'>
+        <text class='cityName'>{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<!--pages/mine/micron/micron.wxml-->
+<view class='micron-pages' style='height:{{windowHeight}}px;'>
+  <!--账户余额  -->
+  <view class='micron flex-column'>
+    <view class='flex-row'>
+      <text>{{micron}}</text>
+      <text>元</text>
+    </view>
+    <text>账户余额</text>
+  </view>
+
+  <!--明细  -->
+  <view class='detail flex-row' bindtap='detail'>
+    <view bindtap='detail'>
+      <image src='{{imgUrls}}{{detailImg}}'></image>
+      <text>明细</text>
+    </view>
+    <text class='fa fa-angle-right'></text>
+  </view>
+
+  <!--充值  -->
+  <view class='recharge flex-row' bindtap='recharge'>
+    <view >
+      <image src='{{imgUrls}}{{rechargeImg}}'></image>
+      <text>充值</text>
+    </view>
+    <text class='fa fa-angle-right'></text>
+  </view>
+  
+  <!--代金券  -->
+  <view class='vouchers flex-row' bindtap='vouchers'>
+    <view >
+      <image src='{{imgUrls}}{{vouchersImg}}'></image>
+      <text>代金券</text>
+    </view>
+    <text class='fa fa-angle-right'></text>
+  </view>
+</view>

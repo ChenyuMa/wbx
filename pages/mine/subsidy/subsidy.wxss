@@ -1,0 +1,107 @@
+/* pages/mine/subsidy/subsidy.wxss */
+
+.subsidy-pages {
+  width: 100%;
+  background: whitesmoke;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/wall@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/*规则  */
+
+.rule {
+  position: absolute;
+  width: 120rpx;
+  height: 50rpx;
+  background: rgba(0, 0, 0, 0.5);
+  right: 0;
+  top: 200rpx;
+  font-size: 25rpx;
+  color: white;
+  text-align: center;
+  line-height: 50rpx;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+}
+
+/*中奖纪录  */
+
+.subsidy-record {
+  width: 600rpx;
+  height: 600rpx;
+  /* background: cadetblue; */
+  position: absolute;
+  bottom: 100rpx;
+  left: 75rpx;
+}
+
+.record-titel {
+  font-size: 35rpx;
+  display: flex;
+  justify-content: center;
+  margin-top: 30rpx;
+  height: 50rpx;
+  /* align-items: center; */
+}
+
+.record-titel text {
+  color: #a14a2a;
+}
+
+/*红包内容  */
+
+.record-content {
+  width: 100%;
+  font-size: 30rpx;
+  overflow: hidden;
+}
+
+.record-content view {
+  border-bottom: 1rpx #a14a2a dashed;
+  padding: 10rpx 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.record-content view text:first-child {
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #a14a2a;
+}
+
+.record-content view text:last-child {
+  width: 20%;
+  color: red;
+}
+
+/*规则显示  */
+
+.is-rule {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.is-rule view {
+  width: 700rpx;
+  height: 650rpx;
+  position: absolute;
+  left: 25rpx;
+  top: 200rpx;
+  background-size: 100% 100%;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/rule@2x.png');
+}
+
+.is-rule view text {
+  font-size: 23rpx;
+  position: absolute;
+  top: 145rpx;
+  left: 45rpx;
+  color: white;
+}

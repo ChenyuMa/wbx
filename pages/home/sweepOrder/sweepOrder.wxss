@@ -1,0 +1,90 @@
+/* pages/home/sweepOrder/sweepOrder.wxss */
+/**
+  扫码点餐界面
+*/
+.sweepOrder-pages{
+  width: 100%;
+  /* background: whitesmoke; */
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/sweepbgd@2x.png');
+  background-size: 100% 100%;
+}
+/*  */
+.sweep-titel{
+  text-align: center;
+  height: 150rpx;
+  line-height: 150rpx;
+  font-size: 40rpx;
+  color: #06C1AE;
+}
+.titel-img{
+  width: 35rpx;
+  height: 35rpx;
+}
+/*点餐人数  */
+.sweep-num{
+  width: 90%;
+  height: 400rpx;
+  margin-left: 5%;
+}
+/*点餐一排  */
+.first-row{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: gray;
+}
+.first-row text{
+  border: 1rpx solid gray;
+  width: 120rpx;
+  height: 50rpx;
+  border-radius: 30rpx;
+  text-align: center;
+}
+.select-text{
+  background: #06C1AE;
+  color: white;
+}
+
+/*就餐方式  */
+.sweep-repast{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #06C1AE;
+}
+.sweep-repast image{
+  width: 35rpx;
+  height: 35rpx;
+}
+/*就餐选择  */
+.repast-select{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  color: gray;
+}
+.repast-select text{
+  border: 1rpx solid gray;
+  width: 120rpx;
+  height: 50rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  margin: 0 20rpx;
+}
+/*确定  */
+.confirm{
+  width: 90%;
+  /* height: 60rpx; */
+  margin-left: 5%;
+}
+.confirm button{
+  border-radius: 50rpx;
+  background: #06C1AE;
+  color: white;
+  height: 80rpx;
+  line-height: 80rpx;
+}

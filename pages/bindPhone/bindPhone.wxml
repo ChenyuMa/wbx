@@ -1,0 +1,34 @@
+<!--pages/bindPhone/bindPhone.wxml-->
+<view class='bindPhone-pages' style='height:{{windowHeight}}px;'>
+  <view class='top-img'>
+    <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/bindPhoneIcon@2x.png'></image>
+  </view>
+  <!--  -->
+  <view class='bind-phone'>
+    <!--  -->
+    <!-- <view class='bind-title'>绑定手机</view>  -->
+    <!-- 手机 -->
+    <view class='phone'>
+      <text style='font-size:30rpx;margin-left:30rpx;'>手机号：</text>
+      <input type='number' value='{{phoneTxt}}' bindinput='phone_change' placeholder='请输入手机'></input>
+      <view bindtap='getCode' class='{{is_show?"codeStyle":"codeStyles"}}'>获取验证码</view>
+    </view>
+    <!--验证码  -->
+    <view class='verification'>
+      <text style='font-size:30rpx;margin-left:30rpx;'>验证码：</text>
+      <input type='number' value='{{verificationTxt}}' bindinput='verification_change' placeholder='请输入验证码'></input>
+      <view style='margin-right:20rpx;'>{{last_time}}秒</view> 
+    </view>
+    <!--登录密码  -->
+    <!-- <view class='password'>
+      <text style='font-size:30rpx;margin-left:30rpx;'>密码：</text>
+      <input type='password' value='{{passwordTxt}}' bindinput='password_change' placeholder='设置登录密码'></input>
+    </view> -->
+    <!--确认登录  -->
+    <view class='confirm' bindtap='bind_phone'>
+      <!-- <text bindtap='cancel'>取消</text>
+      <text></text> -->
+      <text >绑定手机</text>
+    </view>
+  </view>
+</view>

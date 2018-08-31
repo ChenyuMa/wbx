@@ -1,0 +1,33 @@
+<!--pages/mine/smartPay/smartPay.wxml-->
+<view class='smartPay-pages' style='height:{{windowHeight}}px;'>
+  <scroll-view scroll-y='{{true}}' style='height:100%;'>
+    <block wx:for='{{smartPayList}}' wx:key='index'>
+      <view class='smart-content'>
+        <!--  -->
+        <view class='content-title'>
+          <text class='fa fa-file-text-o'> 订单：{{item.order_id}}</text>
+        </view>
+        <!--  -->
+        <view class='content-info'>
+          <!--  -->
+          <view>
+            <text>店铺名称：{{item.shop_name}}</text>
+          </view>
+          <!--  -->
+          <view>
+            <text>支付方式：{{item.pay_type}}</text>
+          </view>
+          <!--  -->
+          <view>
+            <text>支付时间：{{item.create_time}}</text>
+          </view>
+        </view>
+        <!--  -->
+        <view class='content-price'>
+          <text>支付金额：￥</text>
+          <text>{{item.money/100}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>

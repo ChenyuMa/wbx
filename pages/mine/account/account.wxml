@@ -1,0 +1,75 @@
+<!--pages/mine/account/account.wxml-->
+<view class='accountStyle' style='height:{{windowHeight}}px;'>
+
+  <!--上传头像  -->
+  <view class='userIcon' bindtap='camera'>
+    <image src='{{imgUrls+"person_header@2x.png"}}' style='height:40rpx;'></image>
+    <text>用户头像</text>
+    <image class='userImg' src='{{user_list.face}}'></image>
+    <image src='{{imgUrls+"more@2x.png"}}'></image>  
+  </view>
+
+  <!--用户昵称  -->
+  <view class='userName userView userFlex' bindtap='userName'>
+    <image src='{{imgUrls+"person_name@2x.png"}}' class='userImg1'></image>
+    <text class='userTxt'>用户昵称</text>
+    <image class='userImg2' src='{{imgUrls+"more@2x.png"}}'></image>
+  </view>
+
+  <!--收货地址  -->
+  <view class='userAddres userView userFlex' bindtap='goodsAddress'>
+    <image src='{{imgUrls+"order_address@2x.png"}}' class='userImg1' style='width:30rpx;margin-left:45rpx;'></image>
+    <text class='userTxt' style='margin-left: 28rpx;'>收货地址</text>
+    <image class='userImg2' src='{{imgUrls+"more@2x.png"}}' style='margin-left: 366rpx;'></image>
+  </view>
+
+  <!--余额充值  -->
+  <view class='userAddres userView userFlex' bindtap='recharge'>
+    <image src='{{imgUrls+"person_pay_psd@2x.png"}}' class='userImg1'></image>
+    <text class='userTxt' style='margin-left: 19rpx;'>微米充值</text>
+    <image class='userImg2' src='{{imgUrls+"more@2x.png"}}' style='margin-left: 366rpx;'></image>
+  </view>
+
+  <!--余额明细  -->
+   <view class='userName userView userFlex' bindtap='micronDetail'>
+    <image src='{{imgUrls+"person_diary@2x.png"}}' class='userImg1'></image>
+    <text class='userTxt' style='margin-left: 19rpx;'>微米明细</text>
+    <image class='userImg2' src='{{imgUrls+"more@2x.png"}}' style='margin-left: 366rpx;'></image>
+  </view> 
+
+  <!--重置支付密码  -->
+  <view class='userAddres userView userFlex' bindtap='setBalance'>
+    <image src='{{imgUrls+"person_pay_repsd@2x.png"}}' class='userImg1' ></image>
+    <text class='userTxt' style='margin-left: 19rpx;'>重置支付密码</text>
+    <image class='userImg2' src='{{imgUrls+"more@2x.png"}}' style='margin-left: 366rpx;'></image>
+  </view>
+
+  <!--上传头像选择  -->
+  <view class='upIcon' style='display:{{isUpIcon?"block":"none"}}'>
+    <!--选择空白区  -->
+    <view class='topIcon' bindtap='cancelUpIcon'></view>
+    <!--选择区域  -->
+    <view class='downIcon'>
+      <view class='downIcon-Top'>
+        <text bindtap='camera'>相机</text>
+        <text bindtap='photo'>相册</text>
+      </view>
+      <view class='downIcon-bottom' bindtap='cancelUpIcon'>
+        <text>取消</text>
+      </view>
+    </view>
+  </view>
+
+  <!--修改昵称  -->
+  <view class='upIcon' style='display:{{isSetName?"block":"none"}}'>
+    <view class='name'>
+      <text class='nameTitle'>当前昵称：{{user_list.nickname}}</text>
+      <input placeholder='请输入新的昵称' type='text' bindinput='inputName'></input>
+      <view class='btn'>
+        <text bindtap='userName'>取消</text>
+        <text>|</text>
+        <text bindtap='saveName'>保存</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,77 @@
+<!--pages/found/found.wxml-->
+<view class='found-pages' style='height:{{windowHeight}}px;'>
+  <scroll-view scroll-y='{{scrollY}}' style='height:100%;'>
+    <!--头部  -->
+    <view class='found-top flex-column'>
+    </view>
+    
+    <!-- 商家发布 -->
+    <view class='merchants' wx:for='{{merchants_list}}' wx:key='index'>
+      <!-- 头部 -->
+      <view class='merchants-top' wx:if='{{merchants_list.length != 0}}'>
+        <view class='top-icon'>
+          <image src='{{item.photo}}'></image>
+        </view>
+        <view class='top-shopName'>
+          <text>{{item.shop_name}}</text>
+          <text>{{item.create_time}}</text>
+        </view>
+
+        <view class='top-shopBut'>
+          <text bindtap='clickJumpShop' data-item='{{item}}'>进店逛逛</text>
+          <text wx:if='{{item.is_favorites == 0}}' bindtap='clickFocus' data-item='{{item}}'>关注店铺</text>
+          <text wx:else>已关注</text>
+        </view>
+      </view>
+
+      <!--店铺公告  -->
+      <view class='merchants-notice' wx:if='{{merchants_list.length != 0}}'>
+        <text>{{item.text}}</text>
+      </view>
+
+      <!--店铺图片  -->
+      <view class='merchants-img' wx:if='{{merchants_list.length != 0}}'>
+        <block wx:for='{{item.photos}}' wx:for-item='items' wx:key='indexs'>
+          <image src='{{items}}{{"?imageView2/1/w/100/h/100"}}' bindtap='previewImage' data-src='{{item.photos}}' id='{{items}}'></image>
+        </block>
+      </view>
+
+      <!--店铺地址  -->
+      <view class='merchants-marker' wx:if='{{merchants_list.length != 0}}'>
+        <view class='marker-adr'>
+          <text class='fa fa-map-marker'></text>
+          <text>{{item.addr}}</text>
+          <!-- <text>{{item.distance}}km</text> -->
+        </view>
+         <view class='marker-share'>
+          <!-- <text class='fa fa-share-square-o'></text>
+          <text>分享</text> -->
+          <text>{{item.distance}}km</text> 
+        </view> 
+      </view>
+
+    </view>
+  </scroll-view>
+</view>
+<!--授权登录  -->
+<view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>

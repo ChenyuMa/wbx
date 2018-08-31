@@ -1,0 +1,54 @@
+<!--pages/home/shopDetails/confirmOrder/confirmOrder.wxml-->
+<view class='confirmOrder' style='height:{{windowHeight}}px;'>
+  <!--订单详情  -->
+  <view class='orderDetails'>
+    <scroll-view scroll-y='true' style="height:100%">
+      <!--订单头部  -->
+      <view class='orderTop'>
+        <text>订单来自：</text>
+        <text>{{shopName}}</text>
+        <text wx:if='{{casing_price == "NaN" || casing_price == "undefined"}}'>(配送费:{{logistics/100.00}}元 | 包装费:0元)</text>
+        <text wx:else>(配送费:{{logistics/100.00}}元 | 包装费:{{casing_price/100.00}}元)</text>
+      </view>
+      <!--订单内容  -->
+      <view class='orderContent'>
+        <!--内容  -->
+        <view class='content' wx:for='{{shopCart}}' wx:key='index'>
+          <view class='contentImg'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+          </view>
+          <view class='contentDetails'>
+            <text wx:if='{{gradeid != 15}}'>{{item.title}}</text>
+            <text wx:else>{{item.product_name}}</text>
+            <view class='orderNum'>
+              <view class='orderNumLeft'>
+                <image src='{{storeReduceImg}}' catchtap='subtractionGoods' wx:if='{{gradeid==15}}' data-id='{{item}}' data-index='{{index}}' data-cartID='{{item.cart_id}}' data-is_attr='{{item.is_attr}}'></image>
+                <image src='{{storeReduceImg}}' catchtap='subtractionGoods' wx:else data-id='{{item}}' data-index='{{index}}' data-cartID='{{item.cart_id}}' data-is_attr='{{item.is_attr}}'></image>
+
+                <text wx:if='{{item.buy_num}}'>{{item.buy_num}}</text>
+                <text wx:if='{{item.num}}'>{{item.num}}</text>
+
+                <image src='{{storeAddImg}}' catchtap='addGoods' wx:if='{{gradeid==15}}' data-id='{{item}}' data-index='{{index}}' data-cartID='{{item.cart_id}}' data-is_attr='{{item.is_attr}}'></image>
+                <image src='{{storeAddImg}}' catchtap='addGoods' wx:else data-id='{{item}}' data-index='{{index}}' data-cartID='{{item.cart_id}}' data-is_attr='{{item.is_attr}}'></image>
+              </view>
+              <text>单价:￥{{item.price/100.00}}</text>
+            </view>
+          </view>
+          
+        </view>
+        <!--合计  -->
+        <view class='total'>合计：￥{{shopCartPrice/100.00}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--确认下单  -->
+  <view class='confirmClearing'>
+    <view class='confirmClearing_left'>
+      <image src='{{shopCartImg}}'></image>
+      <text>￥{{shopCartPrice/100.00}}</text>
+    </view>
+    <view class='confirmClearing_right' bindtap='confirmClearing'>
+      <text>确认结算</text>
+    </view>
+  </view>
+</view>

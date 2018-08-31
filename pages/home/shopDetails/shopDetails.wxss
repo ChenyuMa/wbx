@@ -1,0 +1,1705 @@
+/* pages/home/shopDetails/shopDetails.wxss */
+
+/* 弹性行 */
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 弹性列 */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/*文本超出省略号  */
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/********************************************************页面  */
+
+.shopDetails-pages {
+  width: 100%;
+  background: whitesmoke;
+}
+
+.shopDetails {
+  width: 100%;
+  /* height: 1206rpx; */
+  background: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 商家信息 */
+
+.storeInfo {
+  width: 100%;
+  height: 15%;
+  /* background: #06c1ae; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* background: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/timg.png'); */
+  /* position: fixed; */
+  /* top: 0; */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+}
+.backgroundImg{
+  width: 100%;
+  height: 100%;
+  filter:blur(5px);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.storeInfo-left{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.storeInfo-left image{
+  width: 150rpx;
+  height: 150rpx;
+  background: gray;
+  position: absolute;
+  left: 50%;
+  margin-left: -75rpx;
+  bottom: -15rpx;
+  z-index: 20;
+  border-radius: 10rpx;
+}
+/*店铺头部右边  */
+.storeInfo-right{
+  width: 75%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  right: 0;
+  bottom: 10rpx;
+  z-index: 10;
+}
+.storeInfo-right-content{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.coupons{
+  width: 100%;
+  height: 7%;
+  background: white;
+  white-space: nowrap;
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+}
+.coupons-content{
+  width: 120rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/coupon@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat; 
+  display: inline-block;
+  font-size:25rpx;
+  color:#FD9F99;
+  /* align-items: center; */
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.coupons-contents{
+  width: 120rpx;
+  height: 40rpx;
+  background: gainsboro;
+  margin-left: 20rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/gray_coupon@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat; 
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  line-height: 40rpx;
+  text-align: center;
+  font-size:25rpx;
+  color:gray;
+}
+
+/*智能付款  */
+.smartPays {
+  width: 20%;
+  height: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.smartPays image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+/*导航  */
+.shopNav{
+  width: 100%;
+  height: 5%;
+  background: white; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.shopNav-view{
+  width: 33.3%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.shopNav-view-titel{
+  background: white; 
+}
+.shopNav-view-bottom{
+  height: 5rpx;
+  width: 60rpx;
+  margin-top: 10rpx;
+}
+
+
+/******************************搜索  */
+
+.searchView {
+  width: 100%;
+  height: 8%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: fixed; */
+  top: 20%;
+}
+
+.search {
+  background: whitesmoke;
+  width: 90%;
+  height: 65%;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.search image:first-child {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+
+.search input {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  color: gray;
+  width: 90%;
+  height: 100%;
+}
+
+.search image:last-child {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+/*滚动条隐藏  */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/*商品展示  */
+
+.displayGoods {
+  width: 100%;
+  height: 64.8%;
+  display: flex;
+  flex-direction: row;
+  /* position: fixed; */
+  /* bottom: 10%; */
+}
+
+/*商品分类左边  */
+
+.displayGoodsLeft {
+  width: 25%;
+  height: 100%;
+  background: whitesmoke;
+}
+
+.displayGoodsLeft view {
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 25rpx;
+  overflow: hidden;
+}
+.allgoods{
+  border-bottom: 1rpx solid ghostwhite;
+}
+.promotion{
+  border-bottom: 1rpx solid ghostwhite;
+  position: relative;
+}
+
+.promotion image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
+.seckill{
+  border-bottom: 1rpx solid ghostwhite;
+}
+
+.seckill image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
+/*左侧分类选中  */
+
+.on {
+  background: white;
+
+}
+
+.type {
+  position: relative;
+  border-bottom: 1rpx solid ghostwhite;
+}
+
+.type-num {
+  background: red;
+  font-size: 20rpx;
+  color: white;
+  position: absolute;
+  top: 10rpx;
+  right: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30rpx;
+}
+
+/*商品分类右边  */
+
+.displayGoodsRight {
+  width: 75%;
+  height: 100%;
+  background: white;
+}
+
+/*优惠卷  */
+
+.coupon {
+  width: 100%;
+  height: 30%;
+  background: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+/*标题  */
+
+.couponsTitle {
+  font-size: 25rpx;
+  color: gray;
+  align-self: flex-start;
+  margin-left: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+/*优惠卷图片  */
+
+.coupon image {
+  width: 90%;
+  height: 60%;
+}
+
+/*优惠卷数量  */
+
+.couponNum {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin-top: 3%;
+  left: 25%;
+}
+
+/*无优惠卷  */
+
+.noCounpon {
+  display: none;
+}
+
+.couponNum text:first-child {
+  color: red;
+  font-size: 55rpx;
+  text-align: center;
+}
+
+.couponNum text:last-child {
+  font-size: 25rpx;
+  color: gray;
+  text-align: center;
+}
+
+/*标题  */
+
+.title {
+  width: 100%;
+  height: 50rpx;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+  line-height: 50rpx;
+  color: gray;
+}
+
+/*商品样式  */
+
+.goodsStyle {
+  width: 100%;
+  height: 250rpx;
+  background: white;
+  border-bottom: 1rpx solid gainsboro;
+  display: flex;
+  align-items: center;
+}
+
+/*商品样式左侧  */
+
+.leftIcon {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.leftIcon .icon {
+  width: 70%;
+  height: 60%;
+  border-radius: 10rpx;
+}
+
+.promotionIcon{
+  width: 100%;
+  height: 30rpx;
+  position: absolute;
+  top: 50rpx;
+  left: 35rpx;
+  display: flex;
+  flex-direction: row;
+}
+.promotionIcons{
+  width: 100%;
+  height: 50rpx;
+  position: absolute;
+  top: 0;
+}
+
+.isPromotion {
+  width: 55rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+.isPromotions{
+  width: 60rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  
+}
+
+/*商品样式右侧  */
+
+.rightDetails {
+  width: 60%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/*商品样式名称  */
+
+.goodsName {
+  width: 90%;
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*商品月售  */
+
+.goodsSell {
+  font-size: 25rpx;
+  color: gray;
+}
+
+/*vip  */
+
+.vip {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  /* margin-top: 10rpx; */
+
+}
+
+.vips {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 50rpx;
+  align-items: center;
+}
+
+.vips image {
+  width: 100rpx;
+  height: 35rpx;
+}
+
+.vip image {
+  width: 70rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+
+.vips text {
+  font-size: 40rpx;
+  margin-left: 20rpx;
+  color: black;
+}
+
+.vip text {
+  font-size: 30rpx;
+  color: black;
+  /* font-weight: bold; */
+}
+
+/*购买个数价格  */
+
+.goodsNum {
+  width: 100%;
+  display: flex;
+  font-size: 30rpx;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.goodsNum text:first-child {
+  color: #1ab5a4;
+  font-size: 30rpx;
+  width: 30%;
+  
+}
+
+.shopNum {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+.shopNum image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.shopNum text {
+}
+
+/*订单确认  */
+
+.confirmOrder {
+  width: 90%;
+  height: 9%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  position: fixed;
+  bottom: 10rpx;
+  margin-left: 5%;
+  background-color:#44403F;
+  border-radius: 80rpx;
+}
+
+/*购物车详情  */
+
+.shoppingDetails {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+/*购物车图片  */
+
+.shopCart {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.shopCartLogo {
+  width: 120rpx;
+  height: 120rpx;
+  /* margin-left: 30rpx; */
+  /* margin-bottom: 10rpx; */
+}
+
+/*价格  */
+
+.price {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center; 
+}
+
+.price text:first-child {
+  color: #CECBCC;
+  font-size: 25rpx;
+}
+
+.prices{
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+
+.prices text:first-child {
+  color: white;
+  font-size: 35rpx;
+  align-self: flex-start;
+  font-weight: bold;
+}
+
+.prices text:last-child {
+  font-size: 25rpx;
+  color: white;
+  align-self: flex-start;
+}
+
+/*确认下单  */
+
+.noPlaceOrder {
+  width: 30%;
+  height: 100%;
+  background:#06c1ae;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.placeOrder {
+  width: 30%;
+  height: 100%;
+  background: #10bfaf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/*购物车红标  */
+
+.shopCartNum {
+  width: 40rpx;
+  height: 40rpx;
+  background: red;
+  font-size: 30rpx;
+  /* text-align: center; */
+  border-radius: 30rpx;
+  color: white;
+  position: absolute;
+  text-align: center;
+  line-height: 40rpx;
+  top: 0rpx;
+  left: 100rpx;
+}
+
+/*弹窗显示  */
+
+.couponShow {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 30;
+  top: 0;
+  left: 0;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.couponShows {
+  width: 90%;
+  height: 70%;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/couponsBGM@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.couponShows-content {
+  width: 90%;
+  height: 60%;
+  margin-top: 300rpx;
+}
+
+.couponShowImg {
+  width: 80%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.couponShowImg image {
+  margin-top: 10rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.redRnvelope {
+  width: 90%;
+  height: 80%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+/*优惠卷样式  */
+
+.couponList {
+  width: 80%;
+  height: 45%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 10%;
+  margin-top: 55%;
+}
+
+.couponStyle {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10rpx;
+}
+
+.couponIcon {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+/*优惠卷价格  */
+
+.couponPrice {
+  position: relative;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  z-index: 1;
+}
+
+/*优惠卷满减和时间  */
+
+.couponTitle {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.couponTitle text:last-child {
+  width: 100%;
+  font-size: 20rpx;
+  color: gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*领取优惠卷  */
+
+.pickUp {
+  width: 20%;
+  height: 100%;
+  z-index: 1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pickUp button {
+  width: 70%;
+  height: 25%;
+  font-size: 28rpx;
+  background: red;
+  padding: 5rpx 10rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/*购物车显示  */
+
+.shopCartShow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.cartShowTop {
+  width: 100%;
+  top: 0;
+  background: red;
+}
+
+.cartShowBottom {
+  width: 86%;
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 21%;
+}
+
+/*购物车头部  */
+
+.topTitel {
+  width: 100%;
+  height: 80rpx;
+  background: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.cartShowBottom-content {
+  width: 100%;
+  height: 90%;
+  background: gold;
+}
+
+.topLeft {
+  font-size: 30rpx;
+  color: black;
+  margin-left: 30rpx;
+}
+
+.topRight {
+  margin-right: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.topRight image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.topRight text {
+  font-size: 22rpx;
+  color: gray;
+}
+
+/*购物车内容  */
+
+.cartList {
+  width: 100%;
+  height: 130rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid whitesmoke;
+}
+
+/*  */
+
+.listIcon {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listIcon image {
+  width: 70%;
+  height: 80%;
+  border-radius: 5rpx;
+}
+
+/*  */
+
+.listDetails {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.detailsTop {
+  font-size: 30rpx;
+  margin-left: 25rpx;
+}
+
+.detailsBottom {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.detailsBottom_left {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shopCartSubtraction {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.detailsBottom_num {
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.shopCartAdd {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.detailsBottom_price {
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+
+.detailsBottom_deleting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailsBottom_deleting image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*商品详情弹窗  */
+
+.goodsDetails {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.detailsView {
+  width: 70%;
+  height: 60%;
+  background: ghostwhite;
+  border-radius: 10rpx;
+}
+
+/*详情图片  */
+
+.detailsIcon {
+  width: 100%;
+  height: 70%;
+}
+
+.detailsIcon image {
+  width: 100%;
+  height: 100%; 
+  border-radius: 10rpx;
+}
+
+/*商品名称  */
+
+.detailsName {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.detailsPrice {
+  color: red;
+  margin-left: 20rpx;
+}
+
+.line {
+  width: 100%;
+  border-top: 1rpx solid gainsboro;
+  margin: 20rpx 0 10rpx 0;
+}
+
+/*商品信息  */
+
+.detailsInfor {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.detailsInfor :first-child {
+  font-size: 20rpx;
+  color: gray;
+}
+
+.goodsInfoTxt {
+  font-size: 25rpx;
+  width: 95%;
+  margin-top: 10rpx;
+  overflow: hidden;
+}
+
+.goodsDetailsClose {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 30rpx;
+}
+
+/************************商家信息  */
+
+.shop-info {
+  width: 100%;
+  height: 80%;
+  position: fixed;
+  top: 20%;
+  bottom: 0;
+  z-index: 20;
+  align-items: center;
+  background: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/timg.jpg');
+}
+
+/*商家信息  */
+
+.shop-video {
+  width: 90%;
+  height: 35%;
+  background: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.video {
+  width: 600rpx;
+  height: 260rpx;
+}
+
+/*信息详情  */
+
+.info-details {
+  width: 90%;
+  height: 46%;
+  margin-top: 10rpx;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 30rpx;
+}
+
+.info-details text {
+  margin-left: 40rpx;
+}
+
+/*商家资质  */
+
+.shop-aptitude {
+  padding: 10rpx 0 10rpx 40rpx;
+  border-top: solid gainsboro 1rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-aptitude-show {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-aptitude-show image:first-child {
+  width: 90%;
+  height: 400rpx;
+  margin-bottom: 10rpx;
+}
+
+.shop-aptitude-show image:last-child {
+  width: 90%;
+  height: 400rpx;
+  margin-bottom: 10rpx;
+}
+
+.shop-aptitude-show text {
+  font-size: 50rpx;
+  color: white;
+}
+
+/*商家二维码  */
+
+.shop-qrcode {
+  padding: 10rpx 0 10rpx 40rpx;
+  border-top: solid gainsboro 1rpx;
+  z-index: 20;
+}
+
+/*商家显示二维码  */
+
+.shop-qrcode-show {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-qrcode-show image {
+  margin-top: 400rpx;
+  width: 400rpx;
+  height: 400rpx;
+}
+
+/*长按显示保存图片  */
+
+.save-picture {
+  background: whitesmoke;
+  margin-top: 20rpx;
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+/*点击继续购物  */
+
+.click-shop {
+  width: 100%;
+  height: 8%;
+  background: gainsboro;
+  font-size: 30rpx;
+  text-align: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+}
+
+/********************************商品多规格  */
+
+.goods-attr {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.attr {
+  width: 80%;
+  height: 50%;
+  background: whitesmoke;
+  /* margin-left: 7.5%; */
+  /* margin-top: 35%; */
+  border-radius: 10rpx;
+}
+
+/*头部  */
+
+.attr-top {
+  width: 100%;
+  height: 15%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.attr-top text:first-child {
+  font-size: 30rpx;
+}
+
+.attr-top text:last-child {
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+  font-size: 40rpx;
+  color: #10bfaf;
+}
+
+/*规格  */
+
+.attr-select {
+  width: 100%;
+  height: 70%;
+}
+
+.attr-select text {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.attr-select-details {
+  /* display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: rebeccapurple; */
+  margin-top: 10rpx;
+}
+
+.select_goods_attrs {
+  border: gray solid 1rpx;
+  padding: 3rpx 10rpx;
+  border-radius: 30rpx;
+  /* margin-top: 20rpx; */
+  /* width: 50%; */
+  text-align: center;
+}
+
+.select_goods_attr {
+  /* margin-top: 20rpx; */
+  background: #10bfaf;
+  border-radius: 20rpx;
+  padding: 3rpx 10rpx;
+  color: white;
+  border: solid #10bfaf 1rpx;
+  text-align: center;
+}
+
+.select_attr_seckill {
+  color: red;
+}
+/*多规格价格  */
+
+.attr-price {
+  width: 100%;
+  height: 15%;
+  background: whitesmoke;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attr-price-select {
+  color: gray;
+  margin-left: 20rpx;
+}
+.attr-price-member{
+  color: red;
+}
+
+/*商品添加  */
+
+.goods-attr-add {
+  width: 30%;
+  height: 100%;
+  align-items: center;
+  margin-right: 20rpx;
+  justify-content: space-between;
+}
+
+.goods-attr-add image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/******************************订桌  */
+
+.setTable {
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+  right: 0;
+  top: 25%;
+}
+
+.setTable image {
+  width: 100%;
+  height: 100%;
+}
+
+/*智能付款  */
+
+.smartPay {
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: -100rpx;   
+}
+
+.smartPay image {
+  width: 100%;
+  height: 100%;
+}
+
+/*扫码点餐右侧  */
+
+.goodsStyles {
+  width: 94%;
+  height: 400rpx;
+  margin-left: 3%;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/frame@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/*右侧商品标题  */
+
+.goodsTitle {
+  width: 80%;
+  margin: 3% 0 0 10%;
+}
+
+.goodsTitle text {
+}
+
+/*商品图片  */
+
+.goodsPhoto {
+  width: 80%;
+  height: 60%;
+  margin: 2% 0 2% 10%;
+  position: relative;
+}
+
+/*价格数量  */
+
+.goodsPriceNum {
+  width: 80%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.goodsPrice {
+  width: 50%;
+  color: gray;
+}
+
+.goodsNums {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.goodsNums text:nth-child(1) {
+  color: #06c1ae;
+  font-size: 50rpx;
+}
+
+.goodsNums text:nth-child(2) {
+  color: gray;
+}
+
+.goodsNums text:nth-child(3) {
+  color: #06c1ae;
+  font-size: 50rpx;
+}
+
+/* 店铺评论 */
+.shop-discuss{
+  width: 100%;
+  height: 75%;
+  background: white;
+  position: absolute;
+  bottom: 0;
+}
+.discuss{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border: 1rpx solid whitesmoke;
+}
+.discuss-img{
+  width: 20%;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.discuss-img image{
+  width: 100rpx;
+  height: 100rpx;
+  background: gray;
+  border-radius: 50rpx;
+}
+.discuss-content{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+
+/* 消息 */
+.messaes{
+  width: 60rpx;
+  height: 60rpx;
+  position: absolute;
+  right: 30rpx;
+  top: -40rpx;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60rpx;
+  background: white;
+  border: 1rpx solid whitesmoke;
+}
+.messaes image{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50rpx;
+}
+
+/* VIP规格 */
+.vip-rules{
+  font-size: 25rpx;
+  color: white;
+}
+
+/* 优惠活动 */
+.favourable{
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+.favourable-content{
+  width: 100%;
+  height: 50%;
+  background: white;
+  align-self: flex-end;
+}
+.content-titel{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.content-titel text:first-child{
+  margin:0 auto;
+}
+.content-titel image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 40rpx;
+}
+.content-info{
+  font-size: 30rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.info-left{
+  background: red;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+  margin-left: 20rpx;
+  color: white;
+  
+}
+
+/* 优惠券新样式 */
+.downCoupons {
+  width: 100%;
+  height: 50%;
+  background: #f5f5f5;
+  align-self: flex-end;
+}
+.downCoupons-titel {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.couponsClose {
+  color: gray;
+  position: absolute;
+  right: 10px;
+}
+.downCoupons-titels {
+  height: 10%;
+  display: flex;
+  align-items: center;
+}
+.coupons-img {
+  margin: 0 auto;
+  margin-bottom: 50rpx;
+  width: 600rpx;
+  height: 200rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/cover@2x.png');
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.img-price {
+  width: 22%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.img-price text:nth-child(1) {
+  color: white;
+}
+
+.img-price text:nth-child(2) {
+  color: white;
+  font-size: 60rpx;
+}
+.img-fullCoupons {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.img-fullCoupons text:nth-child(1) {
+  font-size: 35rpx;
+  margin-left: 3%;
+  position: absolute;
+  top: 35%;
+  color: #1fbdb1;
+}
+
+.img-fullCoupons text:nth-child(2) {
+  font-size: 20rpx;
+  position: absolute;
+  top: 65%;
+  color: white;
+}
+.img-to {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.to {
+  width: 110rpx;
+  height: 50rpx;
+  background: #1fbdb1;
+  text-align: center;
+  color: white;
+  font-size: 35rpx;
+  line-height: 50rpx;
+  border-radius: 25rpx;
+  position: absolute;
+  padding: 0 10rpx;
+  left: 12%;
+}
+
+.tos {
+  background: gray;
+}
+/*************微信登录  */
+
+.wx-longin {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-content {
+  width: 600rpx;
+  height: 500rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.longin-title {
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #f4f4f5;
+  color: #464646;
+}
+
+.longin-icon {
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #f4f4f5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+
+.longin-icon image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+
+.title1 {
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+
+.line {
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #f4f4f5;
+}
+
+.titel2 {
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+
+.btn1 {
+  width: 50%;
+  border-right: 1rpx solid #f4f4f5;
+}
+
+.btn2 {
+  width: 50%;
+  border-left: 1rpx solid #f4f4f5;
+  color: #0bb20c;
+}
+
+.btn button {
+  background: white;
+}
+
+button::after {
+  border: none;
+}

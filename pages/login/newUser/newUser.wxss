@@ -1,0 +1,232 @@
+/* pages/mine/login/newUser/newUser.wxss */
+/*注册界面样式  */
+.newUserStyle{
+  width: 100%;
+  background-color: whitesmoke;
+}
+.newUser_lineStyle{
+  width: 100%;
+  height: 3%;
+  background-color: gainsboro;
+}
+/*输入框样式  */
+.newUser_InputListStyle{
+  width: 100%;
+  height: 30%;
+  /* background-color: red; */
+}
+/*手机号  */
+.newUser_inputPhoneStyle{
+  width: 100%;
+  height: 25%;
+  /* background-color: cadetblue; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid gainsboro;
+  
+}
+.newUser_inputPhoneStyle text{
+  width: 22%;
+  height: 50rpx;
+  margin-left: 20rpx; 
+  line-height: 50rpx;
+    /* background-color: rebeccapurple;   */
+}
+.newUser_inputPhoneStyle view{
+  width: 65%;
+  /* margin: 0 20rpx; */
+  /* background-color: red;  */
+}
+.newUser_inputPhoneStyle image{
+  width: 5%;
+  height: 40rpx;
+  margin-left: 20rpx; 
+   /* background-color: honeydew;  */
+}
+
+/*验证码  */
+.newUser_inputCodeStyle{
+  width: 100%;
+  height: 25%;
+  /* background-color: chocolate; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid gainsboro;
+}
+.newUser_inputCodeStyle text{
+  width: 22%;
+  height: 50rpx;
+  line-height: 50rpx;
+   margin-left: 20rpx;
+   /* background-color: red; */
+}
+.newUser_inputCodeStyle view{
+  display: flex;
+  flex-direction: row;
+   align-items: center; 
+  width: 40%;
+  /* background-color: rebeccapurple; */
+   /* margin-left: 20rpx;  */
+}
+.newUser_inputCodeStyle view image{
+  width: 17%;
+  height: 40rpx;
+   margin-left: 20rpx; 
+}
+/* 发送验证码按钮隐藏，并展示倒数60s提示 */
+.hide{
+ display: none;
+  width: 32%;
+  font-size: 26rpx;
+  background-color: #06c1ae;
+  color: white;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 5rpx;
+  margin: 0 20rpx;
+}
+.show{
+ display: block;
+  width: 32%;
+  font-size: 26rpx;
+  background-color: #06c1ae;
+  color: white;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 5rpx;
+  margin: 0 20rpx;
+}
+/*密码1  */
+.newUser_inputPasswrodStyle{
+  width: 100%;
+  height: 25%;
+  /* background-color: coral; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid gainsboro;
+}
+.newUser_inputPasswrodStyle text{
+  width: 22%;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-left: 20rpx;
+  /* background-color: rebeccapurple; */
+}
+.newUser_inputPasswrodStyle view{
+  width: 65%;
+  /* margin: 0 20rpx; */
+   /* background-color: red;  */
+}
+.newUser_inputPasswrodStyle image{
+  width: 5%;
+  height: 40rpx;
+  margin: 0 20rpx;
+}
+/*确认密码  */
+.newUser_inputPasswroid2Style{
+  width: 100%;
+  height: 25%;
+  /* background-color: cornflowerblue; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 32rpx;
+  border-bottom: 1rpx solid gainsboro;
+}
+.newUser_inputPasswroid2Style text{
+  width: 22%;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-left: 20rpx;
+  /* background-color: rebeccapurple; */
+}
+.newUser_inputPasswroid2Style view{
+  width: 65%;
+  /* margin: 0 20rpx; */
+  /* background-color: red; */
+}
+.newUser_inputPasswroid2Style image{
+  width: 5%;
+  height: 40rpx;
+  margin: 0 20rpx;
+}
+/*下半部分  */
+.newUser_bottomStyle{
+  width: 100%;
+  height: 67%;
+  /* background-color: red; */
+}
+/*协议样式  */
+.newUser_protocolStyle{
+  width: 100%;
+  height: 15%;
+  font-size: 28rpx;
+  /* background-color: cadetblue; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: grey;
+}
+/*勾选图片样式  */
+.newUser_protocolImgStyle{
+  width: 38rpx;
+  height: 38rpx;
+  margin: 0 20rpx;
+}
+/*协议字体样式  */
+.newUser_protocolTextStyle{
+  color: #06c1ae;
+}
+.newUser_submitBtnStyle{
+  width: 700rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 35rpx;
+  color: white;
+  background-color: #06c1ae;
+}
+/*弹窗  */
+.showModule {
+ /* 用样式控制隐藏 visibility: hidden;*//* flex 布局 */
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ /* 生成绝对定位的元素，相对于浏览器窗口进行定位 */
+ position: fixed;
+ /* 如果 height,width 不变的情况下，left,top 不用修改 */
+ left: 35%;
+ top: 40%;
+ height: 200rpx;
+ width: 400rpx;
+ /* 不透明 */
+ opacity: 0.99;
+ background-color: #7b7b7b;
+ /* 圆角 */
+ border-radius: 30rpx;
+}
+ 
+.showModule .text {
+ /* flex 布局 */
+ display: flex;
+ /* 字体加粗 */
+ font-weight: bold;
+ color: white;
+ font-size: 13pt;
+ font-family: "微软雅黑";
+ /* Helvetica,
+   Arial,
+   Hiragino Sans GB,
+   Source Han Sans CN,
+   PingFang SC,
+   Roboto,
+   微软雅黑,
+   Heiti SC,
+   Microsoft Yahei,
+   sans-serif; */
+}

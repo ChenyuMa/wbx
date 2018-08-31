@@ -1,0 +1,5 @@
+<!--pages/mine/invitation/openShop/openShop.wxml-->
+<view style='height:{{windowHeight}}px;' class='openShop'>
+  <web-view src='{{url}}{{userid}}'>
+  </web-view>
+</view>

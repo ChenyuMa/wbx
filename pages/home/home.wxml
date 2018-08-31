@@ -1,0 +1,325 @@
+<!--pages/home/home.wxml-->
+<view class='homePage' style='height:{{windowHeight}}px;'>
+  <!-- <scroll-view scroll-y="{{scrollY}}" style='height:100%;' bindscrolltolower='scroll_to_lower' bindscrolltoupper='scroll_to_upper'> -->
+  <!--触底  -->
+  <view class='footprint' wx:if='{{isFootprint}}'>
+    <scroll-view style='height:100%;width:100%;white-space:nowrap;' scroll-x='true'>
+      <view class='footprint-content' wx:for='{{footprintList}}' wx:key='index'>
+        <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}' bindtouchstart='touchStart' bindtouchend='touchEnd' catchtap='longTap' data-item='{{item}}' class='footprintIcon'></image>
+        <text style=' width: 80rpx;font-size: 20rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.shop_name}}</text>
+        <!-- <text class='fa fa-window-minimize' style='position:absolute;right:-10rpx;top:-10rpx;font-size:40rpx;color:gray;' wx:if='{{clearFootprint}}' catchtap='clearFootprint' data-shopid='{{item.shop_id}}'></text> -->
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/closeFavourable.png' class='footprintClose' wx:if='{{clearFootprint}}' catchtap='clearFootprint' data-shopid='{{item.shop_id}}'></image>
+      </view>
+    </scroll-view>
+  </view>
+  <!--头部  -->
+  <view class='head'>
+    <!--头部地址  -->
+    <view class='head-top'>
+      <!--地址  -->
+      <view class='top-location' bindtap='location'>
+        <!--定位图标  -->
+        <text class='top-location-markerImg fa fa-map-marker'></text>
+        <!--定位地址  -->
+        <text class='top-location-addTxt text-ellipsis'>{{locate_address}}</text>
+        <!--定位下拉  -->
+        <text class='fa fa-caret-down top-location-caretDownImg'></text>
+      </view>
+
+      <!--扫码信息  -->
+      <view class='top-sweep-message'>
+        <!--扫码点餐  -->
+        <view class='top-sweep' bindtap='sweepClick'>
+          <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/semenu@2x.png?imageView2/1/w/100/h/100' wx:if='{{isFirstShow}}' class='sweepPrompt'></image>
+          <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/sweep@2x.png?imageView2/1/w/100/h/100' class='sweepIcon'></image>
+        </view>
+
+        <!--消息中心  -->
+        <view class='home-message' bindtap='clickeMessage'>
+          <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/home_message.png'></image>
+          <!-- <text wx:if='{{homeMessageNum != 0}}'>{{homeMessageNum}}</text> -->
+        </view>
+
+      </view>
+
+    </view>
+
+    <!--头部搜索  -->
+    <view class='head-search' bindtap='searchClick'>
+      <text class='fa fa-search top-search-img'></text>
+      <text class='top-search-img'>输入商家、商品名称</text>
+    </view>
+
+    <!--头部图标  -->
+    <view class='head-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/head_icon1@2x.png?imageView2/1/w/100/h/100'></image>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/head_icon2@2x.png?imageView2/1/w/100/h/100'></image>
+    </view>
+
+    <!--头部底边  -->
+    <view class='head-bottom'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/head_bottom.png?imageView2/1/w/100/h/100'></image>
+    </view>
+  </view>
+
+  <!--导航栏  -->
+  <view class='nav flex-row'>
+    <block wx:for='{{navList}}' wx:key='index'>
+      <view class='nav-view flex-column' bindtap='clickNav' data-index='{{index}}'>
+        <image src='{{imgUrl}}{{item.icon}}' class='nav-view-icon'></image>
+        <text class='nav-view-tetx'>{{item.txt}}</text>
+      </view>
+    </block>
+  </view>
+
+  <!--附近好菜  -->
+  <view class='near-vegetables'>
+    <!--附近好菜标题  -->
+    <view class='near-img-title' wx:if='{{home_shop_list.length!=0}}'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/home_nearShop@2x.png'></image>
+    </view>
+
+    <!--商铺列表  -->
+    <view class='shops-list'>
+      <!--超出配送范围图标  -->
+      <block wx:for='{{home_shop_list}}' wx:key='index' wx:if='{{item.is_open == 1}}'>
+        <!-- <view class='beyond' wx:if='{{item.is_exceed}}'><image src='{{imgUrl}}{{"range@2x.png"}}' ></image></view>  -->
+        <!--店铺样式  -->
+        <view class='shops-details flex-row' id='{{item.shop_id}}' data-grade_id='{{item.grade_id}}' bindtap='shopsJump'>
+          <!--商铺图片  -->
+          <view class='shops-details-photo'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            <!--开店状态  -->
+            <!-- <image src='{{imgUrl}}{{"business@2x.png"}}'></image> -->
+          </view>
+          <!--商铺内容  -->
+          <view class='shops-details-content'>
+            <!--店铺名称  -->
+            <view class='shops-name text-ellipsis'>
+              <text>{{item.shop_name}}</text>
+            </view>
+            <!--店铺星级 距离  -->
+            <view class='shops-score-distance flex-row'>
+              <!--店铺星级  -->
+              <view class='shops-score'>
+                <!--实心星  -->
+                <block wx:for='{{item.score}}' wx:key='index'>
+                  <text class='fa fa-star'></text>
+                </block>
+                <!--空心星  -->
+                <block wx:for='{{5-item.score}}' wx:key='index'>
+                  <text class='fa fa-star-o'></text>
+                </block>
+              </view>
+              <!--店铺距离  -->
+              <view class='shops-distance'>
+                <text class='text-ellipsis' style='border: 1rpx solid #02c3ad;color: #02c3ad;'>{{item.d}}</text>
+                <text wx:if='{{item.is_renzheng == 1}}' style='background: red;color: white;'>已认证</text>
+                <text wx:if="{{item.grade_id == 15}}" style='color: white;background: #02c3ad;'>菜市场</text>
+                <text wx:if="{{item.grade_id == 19}}" style='color: white;background: #02c3ad;'>实体店</text>
+                <text wx:if="{{item.grade_id == 20}}" style='color: white;background: #02c3ad;'>美食街</text>
+              </view>
+            </view>
+            <!--起送 销量  -->
+            <view class='saendPrice-sales flex-row'>
+              <!--起送  -->
+              <view class='seandPrice'>
+                <text wx:if='{{item.grade_id == 15}}'>起送：￥{{item.ele_since_money/100.00}}</text>
+                <text wx:else>起送：￥{{item.since_money/100.00}}</text>
+              </view>
+              <!--分割线 -->
+              <text class='seandPrice-line'>|</text>
+              <!--销量  -->
+              <view class='sales'>
+                <text>销量：{{item.sold_num}}</text>
+              </view>
+              <!--店铺状态  -->
+              <view class='shopType'>
+                <text class='new-shop' wx:if='{{item.shop_status == 3}}'>新店开业</text>
+                <text class='waiting-shop' wx:if='{{item.shop_status == 2}}'>筹备开业</text>
+                <text class='shop-open' wx:if='{{item.shop_status == 1}}'>营业中</text>
+                <text class='shop-rest' wx:if='{{item.shop_status == 0}}'>休息中</text>
+              </view>
+            </view>
+            <!--地址  -->
+            <view class='shops-address'>
+              <text>地址：{{item.addr}}</text>
+            </view>
+            <!--优惠卷  -->
+            <view class='shops-coupons' wx:if='{{item.coupon.length != 0}}'>
+              <text>领劵</text>
+              <text>满 {{item.coupon[0].condition_money/100.00}} 减 {{item.coupon[0].money/100.00}}</text>
+            </view>
+            <!--满减  -->
+            <view class='shops-subtraction' wx:if='{{item.full_money_reduce.length != 0}}'>
+              <text>满减</text>
+              <text>满 {{item.full_money_reduce[0].full_money/100.00}} 减 {{item.full_money_reduce[0].reduce_money/100.00}}</text>
+            </view>
+
+            <!--配送范围  -->
+            <view class='distribution'>
+              <text>配送范围：{{item.peisong_fanwei}}</text>
+            </view>
+
+            <!-- 促销商品 -->
+            <view class='shops-promotions' wx:if='{{item.goods}}'>
+              <scroll-view scroll-x="{{scrollX}}" style='white-space: nowrap;'>
+                <block wx:for='{{item.goods}}' wx:key='indexs' wx:for-item="items">
+                  <view class='promotions-goods flex-column'>
+                    <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                    <text wx:if='{{item.grade_id == 15}}' class='text-ellipsis'>{{items.product_name}}</text>
+                    <text wx:else class='text-ellipsis'>{{items.title}}</text>
+                    <text class='text-ellipsis'>￥{{items.sales_promotion_price/100.00}}</text>
+                  </view>
+                </block>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class='shops-list' wx:if='{{beyond_list.length>0}}'>
+      <view class='beyond'>
+        <image src='{{imgUrl}}{{"range@2x.png"}}'></image>
+      </view>
+      <!--超出配送范围图标  -->
+      <block wx:for='{{beyond_list}}' wx:key='index' wx:if='{{item.is_open == 1}}'>
+        <!--店铺样式  -->
+        <view class='shops-details flex-row' id='{{item.shop_id}}' data-grade_id='{{item.grade_id}}' bindtap='shopsJump'>
+          <!--商铺图片  -->
+          <view class='shops-details-photo'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            <!--开店状态  -->
+            <!-- <image src='{{imgUrl}}{{"business@2x.png"}}'></image> -->
+          </view>
+          <!--商铺内容  -->
+          <view class='shops-details-content'>
+            <!--店铺名称  -->
+            <view class='shops-name text-ellipsis'>
+              <text>{{item.shop_name}}</text>
+            </view>
+            <!--店铺星级 距离  -->
+            <view class='shops-score-distance flex-row'>
+              <!--店铺星级  -->
+              <view class='shops-score'>
+                <!--实心星  -->
+                <block wx:for='{{item.score}}' wx:key='index'>
+                  <text class='fa fa-star'></text>
+                </block>
+                <!--空心星  -->
+                <block wx:for='{{5-item.score}}' wx:key='index'>
+                  <text class='fa fa-star-o'></text>
+                </block>
+              </view>
+              <!--店铺距离  -->
+              <view class='shops-distance'>
+                <text class='text-ellipsis' style='border: 1rpx solid #02c3ad;color: #02c3ad;'>{{item.d}}</text>
+                <text wx:if='{{item.is_renzheng == 1}}' style='background: red;color: white;'>已认证</text>
+                <text wx:if="{{item.grade_id == 15}}" style='color: white;background: #02c3ad;'>菜市场</text>
+                <text wx:if="{{item.grade_id == 19}}" style='color: white;background: #02c3ad;'>实体店</text>
+                <text wx:if="{{item.grade_id == 20}}" style='color: white;background: #02c3ad;'>美食街</text>
+              </view>
+            </view>
+            <!--起送 销量  -->
+            <view class='saendPrice-sales flex-row'>
+              <!--起送  -->
+              <view class='seandPrice'>
+                <text wx:if='{{item.grade_id == 15}}'>起送：￥{{item.ele_since_money/100.00}}</text>
+                <text wx:else>起送：￥{{item.since_money/100.00}}</text>
+              </view>
+              <!--分割线 -->
+              <text class='seandPrice-line'>|</text>
+              <!--销量  -->
+              <view class='sales'>
+                <text>销量：{{item.sold_num}}</text>
+              </view>
+              <!--店铺状态  -->
+              <view class='shopType'>
+                <text class='new-shop' wx:if='{{item.shop_status == 3}}'>新店开业</text>
+                <text class='waiting-shop' wx:if='{{item.shop_status == 2}}'>筹备开业</text>
+                <text class='shop-open' wx:if='{{item.shop_status == 1}}'>营业中</text>
+                <text class='shop-rest' wx:if='{{item.shop_status == 0}}'>休息中</text>
+              </view>
+            </view>
+            <!--地址  -->
+            <view class='shops-address'>
+              <text>地址：{{item.addr}}</text>
+            </view>
+            <!--优惠卷  -->
+            <view class='shops-coupons' wx:if='{{item.coupon.length != 0}}'>
+              <text>领劵</text>
+              <text>满 {{item.coupon[0].condition_money/100.00}} 减 {{item.coupon[0].money/100.00}}</text>
+            </view>
+            <!--满减  -->
+            <view class='shops-subtraction' wx:if='{{item.full_money_reduce.length != 0}}'>
+              <text>满减</text>
+              <text>满 {{item.full_money_reduce[0].full_money/100.00}} 减 {{item.full_money_reduce[0].reduce_money/100.00}}</text>
+            </view>
+
+            <!--配送范围  -->
+            <view class='distribution'>
+              <text>配送范围：{{item.peisong_fanwei}}</text>
+            </view>
+
+            <!-- 促销商品 -->
+            <view class='shops-promotions' wx:if='{{item.goods}}'>
+              <scroll-view scroll-x="{{scrollX}}" style='white-space: nowrap;'>
+                <block wx:for='{{item.goods}}' wx:key='indexs' wx:for-item="items">
+                  <view class='promotions-goods flex-column'>
+                    <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                    <text wx:if='{{item.grade_id == 15}}' class='text-ellipsis'>{{items.product_name}}</text>
+                    <text wx:else class='text-ellipsis'>{{items.title}}</text>
+                    <text class='text-ellipsis'>￥{{items.sales_promotion_price/100.00}}</text>
+                  </view>
+                </block>
+              </scroll-view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+  <!--触底  -->
+  <view class='to-bottom'>
+    <view class='to-bottom-loading' wx:if='{{is_bottom}}'>
+      <text class='fa fa-spinner fa-pulse'> </text>
+      <text> 努力加载...</text>
+    </view>
+    <view class='to-bottom-over' wx:if='{{is_bottom_over}}'>
+      <text>数据加载完了！</text>
+    </view>
+  </view>
+
+  <view class='load' wx:if='{{!load}}'>
+    <view class='loadIcon'>
+      <image src='../../images/diliveryman@2x.png' style="height:100rpx;width:100rpx" animation="{{animationData}}"></image>
+    </view>
+  </view>
+
+  <!-- </scroll-view> -->
+</view>
+<!--授权登录  -->
+<!-- <view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view> -->

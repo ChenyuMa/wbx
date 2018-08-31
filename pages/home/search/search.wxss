@@ -1,0 +1,298 @@
+/* pages/home/search/search.wxss */
+
+.searchStyle {
+  width: 100%;
+  background: whitesmoke;
+}
+
+/*头部  */
+
+.top {
+  width: 100%;
+  height: 8%;
+  background: #06c1ae;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/*头部搜索  */
+
+.top_searchView {
+  width: 80%;
+  height: 70%;
+  background: white;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.click_type {
+  width: 200rpx;
+  height: 200rpx;
+  position: absolute;
+  top: 80rpx;
+  left: 50rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 10;
+  border-radius: 10rpx;
+}
+
+.click_type view:first-child {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1rpx solid gray;
+}
+
+.click_type view:first-child image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.click_type view:last-child {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.click_type view:last-child image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/*头部搜索左边  */
+
+.searchView_leftView {
+  height: 100%;
+  margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.searchView_leftView text {
+  font-size: 30rpx;
+}
+
+.searchView_leftView image {
+  width: 13rpx;
+  height: 13rpx;
+  margin-left: 10rpx;
+}
+
+/*头部搜索框  */
+
+.searchView_inputView {
+  display: flex;
+  align-items: center;
+  width: 72%;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.searchView_inputView input {
+  font-size: 30rpx;
+  width: 100%;
+  height: 100%;
+}
+
+/*头部搜索清空  */
+
+.searchView_clearView {
+  display: flex;
+  align-items: center;
+}
+
+.searchView_clearView image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/*头部取消  */
+
+.top_cancleView {
+  font-size: 30rpx;
+  color: white;
+}
+
+/*底部收拾区  */
+
+.searchContent {
+  width: 100%;
+  height: 92%;
+}
+
+/*店铺样式  */
+
+/*商家样式  */
+
+.store_eachStyle {
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.store_eachLeftStyle {
+  width: 25%;
+  height: 100%;
+  /* background-color: gainsboro; */
+}
+
+.store_eachImgStyle {
+  width: 130rpx;
+  height: 110rpx;
+  border-radius: 10rpx;
+  margin: 20rpx 0 0 30rpx;
+  /* align-self:; */
+}
+
+.store_eachRightStyle {
+  width: 75%;
+  height: 100%;
+  /* background-color: gold; */
+}
+
+.eachRight_textStyle {
+  /* margin-left: 20rpx; *//* background-color: cadetblue; */
+  font-size: 30rpx;
+}
+
+.eachRight_starsVicinityStyle {
+  widows: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; *//* background-color: rebeccapurple;    */
+}
+
+.eachRight_starsImgStyle {
+  width:165rpx;
+  height:60rpx;
+}
+
+.eachRight_distanceStyle {
+  width: 70%;
+  height: 100%;
+  font-size: 25rpx;
+  border-radius: 5rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  /* background-color: red;  */
+}
+
+.eachRight_distanceTextStyle {
+  /* width: 25%; */
+  border: 1rpx solid #06c1ae; 
+  /* padding: 0 5rpx; */
+  border-radius: 5rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #06c1ae;
+}
+
+.eachRight_distanceTypeStyle {
+  background-color: #06c1ae;
+  color: white;
+  padding: 0 10rpx;
+  margin-left: 10rpx;
+  text-align: center;
+  border-radius: 5rpx;
+}
+.eachRight_distanceTypeStyle text{
+}
+
+
+/*起送价格  */
+
+.store_eachPriceStyle {
+  width: 100%;
+  font-size: 30rpx;
+  height: 10%;
+  position: relative;
+  /* background-color: rebeccapurple; */
+}
+.shopType{
+  top: 0;
+  position: absolute;
+  right: 6rpx;
+}
+
+.shopType text{
+  border-radius: 5rpx;
+  padding: 3rpx 5rpx;
+  font-size: 20rpx;
+}
+
+.new-shop{
+  border: 1rpx solid red;
+  color: red;
+}
+.waiting-shop{
+  border: 1rpx solid #F39800;
+  color: #F39800;
+}
+.shop-open{
+  border: 1rpx solid #15C5B3;
+  color: #15C5B3;
+}
+.shop-rest{
+  border: 1rpx solid gray;
+  color: gray;
+}
+
+
+/*  */
+
+.eachRight_distanceRealStyle {
+  border-radius: 5rpx;
+  text-align: center;
+  margin-left: 10rpx;
+  color: white;
+  background: red; 
+  
+}
+.eachRight_distanceRealStyle text{
+}
+
+/*地址样式  */
+
+.store_eachAddrStyle {
+  width: 90%;
+  height: 15%;
+  /* background-color: red; */
+  font-size: 30rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*配送范围  */
+
+.store_eachDeliveryStyle {
+  width: 90%;
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,533 @@
+/* pages/mine/mine.wxss */
+
+/* 弹性行 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 弹性列 */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/*文本超出省略号  */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 我的页面 */
+.minePage{
+  width: 100%;
+  background: whitesmoke;
+}
+/*头部  */
+.mine-top{
+  width: 100%;
+  height: 25%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/********************************************************头部用户  */
+.top-user{
+  width: 65%;
+  height: 45%;
+  margin-left: 100rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.king{
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  top: -14%;
+  left: -7%;
+}
+.user-icon{
+  width: 120rpx;
+  height:120rpx;
+   border-radius: 100%; 
+  border: white solid 4rpx;
+}
+.user-icon image{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.user-info{
+  width: 55%;
+  height: 70%;
+  margin-left: 20rpx;
+  font-size: 25rpx;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.user-info text:first-child{
+  width: 100%;
+  color: white;
+}
+.user-info text:last-child{
+  font-size: 20rpx;
+  background: red;
+  padding: 2rpx 5rpx;
+  color: white;
+  border-radius: 7rpx;
+  text-align: center;
+}
+
+/*签到  */
+.signIn{
+
+}
+.signIn image{
+  width: 180rpx;
+  height: 52rpx;
+}
+
+/****************************************************************用户微米 */
+.user-wm{
+  width: 100%;
+  height: 10%;
+  background: white;
+}
+.wm{
+  width: 34%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+.wm text:first-child{
+  color: #4FC6B3;
+}
+.wm text:last-child{
+  font-size: 25rpx;
+}
+.jf{
+  width: 32%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+.jf text:first-child{
+  color: red;
+}
+.jf text:last-child{
+  font-size: 25rpx;
+}
+.dyj{
+  width: 34%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+.dyj text:first-child{
+  color: #FFA200;
+}
+.dyj text:last-child{
+  font-size: 25rpx;
+}
+
+/********************************订单  */
+.mine-order{
+  width: 100%;
+  height: 15%;
+  background: white;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.order{
+  width: 100%;
+  height: 70%;
+}
+/*待付款  */
+.dfk{
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  font-size: 25rpx;
+}
+.dfk image{
+  width: 60rpx;
+  height: 50rpx;
+}
+.order-num{
+  width: 30rpx;
+  height: 25rpx;
+  line-height: 25rpx;
+  font-size: 20rpx;
+  position: absolute;
+  top: -10rpx;
+  right: 30rpx;
+  background: red;
+  border-radius: 100%;
+  color: white;
+  text-align: center;
+}
+
+/*待发货  */
+.dfh{
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  font-size: 25rpx;
+}
+.dfh image{
+  width: 60rpx;
+  height: 50rpx;
+}
+
+/*待收货  */
+.dsh{
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  font-size: 25rpx;
+}
+.dsh image{
+  width: 60rpx;
+  height: 50rpx;
+}
+
+/*待退款  */
+.dtk{
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  font-size: 25rpx;
+}
+.dtk image{
+  width: 60rpx;
+  height: 50rpx;
+}
+
+/*我的订单  */
+.my-order{
+  width: 20%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  font-size: 25rpx;
+}
+.my-order image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/******************************我的收藏  */
+.mine-collection{
+  width: 100%;
+  height: 15%;
+  background: white;
+  margin-top: 2rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.collection{
+  width: 25%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25rpx;
+}
+.collection image{
+  width: 55rpx;
+  height: 55rpx;
+}
+/* .collection button{
+  width: 60rpx;
+  height: 50rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/invitation@2x.png');
+  background-size: 100% 100%;
+  border: none;
+}
+button::after {
+  border: none;
+} */
+/*****************************我的预定  */
+.mine-reservation{
+  width: 100%;
+  height: 15%;
+  background: white;
+  margin-top: 2rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*用户退出  */
+.mine-exit{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 25rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.exit{
+  width: 85%;
+  height: 80rpx;
+  background: #4FC6B3;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.exit text{
+  font-size: 30rpx;
+  color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 80rpx;
+}
+/*用户授权信息  */
+.isInfo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.isInfo-toast{
+  width: 80%;
+  height: 350rpx;
+  background: white;
+}
+.toast-title{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  background: #06C1AE;
+  color: white;
+}
+.isInfo-toast view:nth-child(2){
+  width: 100%;
+  height: 150rpx;
+  text-align: center;
+  line-height: 150rpx;
+}
+.isInfo-toast view:nth-child(3){
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+}
+.isInfo-toast view:nth-child(3) button{
+  width: 40%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+}
+.isInfo-toast view:nth-child(3) button:last-child{
+  color: #06C1AE;
+}
+/*************微信登录  */
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}
+/* 绑定手机 */
+.bindPhone{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bind{
+  width: 85%;
+  height: 45%;
+  background:whitesmoke;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bind-title{
+  text-align: center;
+  height: 80rpx;
+  line-height: 100rpx;
+}
+.phone{
+  width: 90%;
+  height: 25%;
+  border-bottom: 1rpx solid #06C1AE;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.phone image{
+  width: 30rpx;
+  height:45rpx;
+  margin-bottom: 10rpx;
+}
+.phone input{
+  width: 60%;
+  height: 45rpx;
+  /* margin-bottom: 10rpx; */
+  margin-left: 10rpx;
+  line-height: 45rpx;
+}
+.phone text{
+  font-size: 25rpx;
+  margin-left: 20rpx;
+  height: 45rpx;
+  margin-bottom: 10rpx;
+  background: #06C1AE;
+  padding: 5rpx 10rpx;
+  line-height: 45rpx;
+  color: white;
+  border-radius: 20rpx;
+}
+.code{
+  width: 90%;
+  height: 25%;
+  border-bottom: 1rpx solid #06C1AE;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.code image{
+  width: 35rpx;
+  height:45rpx;
+  margin-bottom: 10rpx;
+}
+.code input{
+  width: 60%;
+  height: 45rpx;
+  margin-left: 10rpx;
+  /* margin-bottom: 10rpx; */
+}
+.code text{
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+}
+.btns{
+  width: 90%;
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.btns text:nth-child(1){
+  border: 1rpx solid gray;
+  font-size: 30rpx;
+  border-radius: 30rpx;
+  width: 200rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+.btns text:nth-child(2){
+  font-size: 30rpx;
+  border-radius: 30rpx;
+  width: 200rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  background: #06C1AE;
+  color: white;
+  border: 1rpx solid #06C1AE;
+}

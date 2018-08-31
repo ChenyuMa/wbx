@@ -1,0 +1,142 @@
+<!--pages/shopCart/shopCart.wxml-->
+<view class='shopCart-page' style='height:{{windowHeight}}px;'>
+
+  <!--编辑  -->
+  <view class='shopCart-editor'>
+    <text bindtap='editor_goods' wx:if='{{is_editor}}'>完成</text>
+    <text bindtap='editor_goods' wx:else>编辑商品</text>
+  </view>
+
+  <!--购物车内容  -->
+  <view class='{{is_editor?"shopCart-contents":"shopCart-content"}}'>
+    <scroll-view scroll-y='{{scrollY}}' style='height:100%;'>
+      <!--购买详情  -->
+      <block wx:for='{{shopCart_list}}' wx:key='index'>
+        <view class='shopCart-details'>
+          <!--详情标题  -->
+          <view class='details-title flex-row'>
+            <!--勾选  -->
+            <view class='check-view' catchtap='checkAll' data-index='{{index}}' data-selectedAll='{{item.selected_all}}' data-shopID='{{item.shop_id}}'>
+              <image src='{{imgUrls}}{{checkImg}}' wx:if='{{item.selected_all == 0}}'></image>
+              <image src='{{imgUrls}}{{is_checkImg}}' wx:else></image>
+            </view>
+
+            <!--店铺名称  -->
+            <view class='title-view flex-row' catchtap='clickShopCart' data-item='{{item}}'>
+              <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+              <text class='title'>{{item.shop_name}}</text>
+              <text class='fa fa-angle-right'></text>
+            </view>
+          </view>
+
+          <!--详情内容  -->
+          <block wx:for='{{item.goods_cart}}' wx:for-item='items' wx:key='index'>
+            <view class='details-goods'>
+              <view class='details-view flex-row'>
+                <!--商品单选  -->
+                <view class='details-check' bindtap='checkChange' data-value='{{items.cart_id}}' data-index='{{index}}'>
+                  <image src='{{imgUrls}}{{checkImg}}' wx:if='{{items.selected == 0}}'></image>
+                  <image src='{{imgUrls}}{{is_checkImg}}' wx:else></image>
+                </view>
+
+                <!--商品信息  -->
+                <view class='details-right flex-row'>
+                  <!--商品图片  -->
+                  <view class='right-img'>
+                    <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                  </view>
+
+                  <!--商品详情  -->
+                  <view class='right-info flex-column'>
+
+                    <!--商品名  -->
+                    <text class='info-name'>{{items.title}} {{items.attr_name}}</text>
+
+                    <!--规格  -->
+                    <text wx:if='{{items.attr_name.lenght == 0}}'>规格:{{items.attr_name}}</text>
+
+                    <!--价格  -->
+                    <view class='info-price flex-row'>
+                      <!--价格  -->
+                      <text class='price'>￥{{items.price/100.00}}</text>
+
+                      <!--加减  -->
+                      <view class='goods-num'>
+                        <text class='fa fa-minus' bindtap='subtractGoods' data-indexs='{{index}}' data-cartID='{{items.cart_id}}'></text>
+                        <text>{{items.num}}</text>
+                        <text class='fa fa-plus' bindtap='addGoods' data-indexs='{{index}}' data-cartID='{{items.cart_id}}'></text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class='details-line'></view>
+            </view>
+          </block>
+
+          <!--订单运费  -->
+          <view class='details-freight'>
+            <text>运费</text>
+            <text>￥{{item.logistics/100.00}}</text>
+          </view>
+
+          <!--订单满减  -->
+          <view class='details-fullReduction'>
+            <text>满减优惠</text>
+            <text>-￥{{item.full_reduce/100.00}}</text>
+          </view>
+
+          <!--优惠券  -->
+          <view class='details-fullReduction'>
+            <text>优惠劵</text>
+            <text>-￥{{item.coupon_money/100.00}}</text>
+          </view>
+
+          <!--价格结算  -->
+          <view class='details-settlement flex-row'>
+
+            <text>已优惠{{item.coupon_money/100.00}}元</text>
+
+            <view class='settlement' >
+
+              <text>￥{{item.all_money/100.00}}</text>
+
+              <text bindtap='settlement' data-shopID='{{item.shop_id}}' data-shopName='{{item.shop_name}}' data-gradeID='{{item.grade_id}}' data-indexs='{{index}}' data-goodscart='{{item.goods_cart}}' data-num='{{item.goods_cart[index].num}}' data-price='{{item.all_money}}' data-logistics='{{item.logistics}}'>去结算</text>
+            </view>
+          </view>
+
+        </view>
+
+      </block>
+
+    </scroll-view>
+  </view>
+
+  <!--购物车删除  -->
+  <view class='shopCart-delete' wx:if='{{is_editor}}' bindtap='delete_shopCart'>
+    <text>删除</text>
+  </view>
+
+</view>
+<!--授权登录  -->
+<view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>

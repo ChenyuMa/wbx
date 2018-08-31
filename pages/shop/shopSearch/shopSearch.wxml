@@ -1,0 +1,83 @@
+<!--pages/shop/shopSearch/shopSearch.wxml-->
+<view class='shopSearch-page' style='height:{{windowHeight}}px;'>
+
+  <!--头部  -->
+  <view class='topView'>
+    <view class='topView-left'>
+      <view class='searchType' bindtap='selectSearch'>
+        <text>商品</text>
+        <!-- <image src='{{imgUrls+"search_triangle@2x.png"}}' class='searchImg'></image> -->
+      </view>
+      <view class='inputView'><input type='text' value='{{inputTxt}}' bindinput='inputChange'></input></view>
+      <image src='{{imgUrls+"ZFPlayer_close.png"}}' class='cleanImg' bindtap='inputClear' style='display:{{isCleanImg?"block":"none"}}'></image>
+    </view>
+    <view class='topView-right' bindtap='cancelSearch'><text>取消</text></view>
+  </view>
+
+  <!--搜索类型选择  -->
+  <!-- <view class='clickType' style='display:{{isClickType}}'>
+    <view class='typeView' data-id='1' bindtap='clickType' data-Txt='商品'>
+      <image src='{{imgUrls+"search_s_goods@2x.png"}}' class='typeImg'></image>
+      <text class='typeTxt'>商品</text>
+    </view>
+    <view class='typeLine' ></view>
+    <view class='typeView' bindtap='clickType' data-id='2' data-Txt='店铺'>
+      <image src='{{imgUrls+"search_s_store@2x.png"}}' class='typeImg'></image>
+      <text class='typeTxt'>店铺</text>
+    </view>
+  </view> -->
+  <!--显示内容  -->
+  <view class='shopList'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+    
+      <!--店铺列表  -->
+      <view class='ele-content'>
+        <view class='ele-list' wx:for='{{shopList}}' wx:key='index' data-id='{{item.shop_id}}' bindtap='shopOnClick' data-gradeID='{{item.grade_id}}' wx:if='{{item.grade_id == 15}}'>
+          <view class='item-img'>
+            <image src='{{item.photo}}'></image>
+          </view>
+          <view class='item-content'>
+            <text class='shop-name'>{{item.shop_name}}</text>
+            <view class='shopgrade-list'>
+              <view class='shop-grade'>
+                <text class='fa fa-star'></text>
+                <text class='fa fa-star'></text>
+                <text class='fa fa-star'></text>
+                <text class='fa fa-star'></text>
+                <text class='fa fa-star'></text>
+              </view>
+              <view class='shop-audit'>
+                <text class='shop-distance'>{{item.d}}</text>
+                <text class='shop-attestation' style='display:{{item.is_renzheng == 0?"none":"block"}}'>已认证</text>
+                <text class='shop-entity'>实体店</text>
+              </view>
+            </view>
+            <view class='shop-send'>
+              <text>起送：￥{{item.since_money == null?0:item.since_money/100.00}}</text>
+              <text>月销量：{{item.sold_num}}</text>
+            </view>
+            <view class='shop-address'>
+              <text>地址：{{item.addr}}</text>
+            </view>
+            <view class='shop-area'>
+              <text class='area-tip'>配送范围：{{item.peisong_fanwei}}</text>
+            </view>
+            <!--------活动（领券，满减）----------------------------->
+            <!-- <view class='shop-activity'>
+              <view class='shop-coupon' style='display:{{item.coupon.length==0?"none":"block"}}'>
+                <text>领券</text>
+                <text>{{item.coupon}}</text>
+              </view>
+              <view class='shop-reduce' style='display:{{item.full_money_reduce.length==0?"none":"block"}}'>
+                <text>满减</text>
+                <text>{{item.full_money_reduce[0].full_money/100.00}}减{{item.full_money_reduce[0].reduce_money/100.00}}元</text>
+              </view>
+            </view> -->
+          </view>
+        </view>
+      </view>
+      
+    </scroll-view>
+  </view>
+
+</view>

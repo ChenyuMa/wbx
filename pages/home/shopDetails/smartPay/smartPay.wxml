@@ -1,0 +1,69 @@
+<!--pages/home/shopDetails/smartPay/smartPay.wxml-->
+<view class='smartPay-pages' style='height:{{windowHeight}}px;'>
+  <!--  -->
+  <view class='smartPay-title'>
+    <text>请与商家确认金额后付款</text>
+  </view>
+  <!--  -->
+  <view class='money'>
+    <text>付款金额：</text>
+    <input placeholder='请询问商家后输入' value='{{money}}' bindinput='inputMoney' type='digit'></input>
+  </view>
+  <!--支付方式  -->
+  <view class='orderPay'>
+    <view class='orderPayTop'>
+      <text>选择支付方式</text>
+    </view>
+    <!-- <view class='balance' bindtap="radioBalance" data-value='money'>
+      <view class='balanceImg'>
+        <image src='{{imgUrls+"order_pay@2x.png"}}'></image>
+      </view>
+      <view class='balanceInfo'>
+        <text>余额支付</text>
+        <text>余额支付是最方便快捷的</text>
+      </view>
+      <view class='balanceSlect'>
+        <radio-group>
+          <radio checked='{{isBalance}}'></radio>
+        </radio-group>
+      </view>
+    </view> -->
+    <view class='weChat' bindtap="radioWeChat" data-value='weixinapp'>
+      <view class='balanceImg'>
+        <image src='{{imgUrls+"order_wechat@2x.png"}}'></image>
+      </view>
+      <view class='balanceInfo'>
+        <text>微信APP支付</text>
+        <text>微信官方支付,安全,方便,快捷!</text>
+      </view>
+      <view class='balanceSlect'>
+        <radio-group>
+          <radio checked='{{isWeChat}}'></radio>
+        </radio-group>
+      </view>
+    </view>
+
+  </view>
+
+  <!--确认结算  -->
+  <view class='orderClearing'>
+    <view class='clearingRight' bindtap='confirmPay'>
+      <text>确认支付</text>
+    </view>
+  </view>
+
+  <!--支付密码  -->
+  <view class='remarkToast' wx:if='{{isPayCode}}'>
+    <view class='toastInfo'>
+      <view class='toastTitle'>支付密码</view>
+      <view class='toastInput'>
+        <input placeholder='请输入支付密码' value='{{inputCode}}' bindinput='inputCodeBlur' password='true' type='number'></input>
+      </view>
+      <view class='toastBtn'>
+        <text bindtap='cancelPay'>取消</text>
+        <view class='listLine'></view>
+        <text bindtap='determinePay' data-code='{{inputCode}}'>确定</text>
+      </view>
+    </view>
+  </view>
+</view>

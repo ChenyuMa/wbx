@@ -1,0 +1,121 @@
+<!--pages/mine/shopOrder/orderDetails/orderDetails.wxml-->
+<view class='orderDetails'>
+  <text class='detailsState' wx:if='{{detailsList.data.data.status == 0}}'>待付款</text>
+  <text class='detailsState' wx:if='{{detailsList.data.data.status == 1}}'>待发货</text>
+  <text class='detailsState' wx:if='{{detailsList.data.data.status == 2}}'>待收货</text>
+  <text class='detailsState' wx:if='{{detailsList.data.data.status == 3}}'>待退款</text>
+  <text class='detailsState' wx:if='{{detailsList.data.data.status == 8}}'>已完成</text>
+
+  <!--头部  -->
+  <view class='detailsHead'>
+    <!--头部背景图标  -->
+    <view class='headTop'>
+      <image src='{{imgUrls+"management_ba@2x.png"}}'></image>
+    </view>
+    <!--头部用户内容  -->
+    <view class='headTxt'>
+      <view class='headUser'>
+        <text>{{detailsList.data.data.address.xm}}</text>
+        <text>{{detailsList.data.data.address.tel}}</text>
+        <text wx:if='{{detailsList.data.data.address.default == 1}}'>默认</text>
+      </view>
+      <view class='headAddress'>
+        <image src=''></image>
+        <text>{{detailsList.data.data.address.area_str}}{{detailsList.data.data.address.info}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--内容  -->
+  <view class='detailsContent'>
+    <view class='orderContent' wx:for='{{detailsList.data.data.goods}}' wx:key='index'>
+      <view class='contentStyle'>
+        <view class='contentIcon'>
+          <image src='{{item.photo}}'></image>
+        </view>
+        <view class='contentDetails'>
+          <view class='setailsStore'>
+            <text>【{{item.shop_name}}】</text>
+            <text>{{item.product_name}}</text>
+          </view>
+          <view class='setailsPrice'>
+            <text>￥{{item.price*0.01}}</text>
+            <text>x{{item.num}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--商品总额  -->
+  <view class='goodsTotal'>
+    <view>
+      <text>商品总额：</text>
+      <text>￥{{detailsList.data.data.total_price/100.00}}</text>
+    </view>
+    <view>
+      <text>运费：</text>
+      <text>+￥{{detailsList.data.data.express_price/100.00}}</text>
+    </view>
+    <view>
+      <text>优惠卷：</text>
+      <text>-￥{{detailsList.data.data.coupon_money/100.00}}</text>
+    </view>
+    <view>
+      <text>满减：</text>
+      <text>-￥{{detailsList.data.data.full_money_reduce/100.00}}</text>
+    </view>
+  </view>
+
+  <!--留言  -->
+  <view class='remark'>
+    <view>
+      <text>留言/备注：</text>
+    </view>
+    <view>
+      <text>{{detailsList.data.data.message}}</text>
+    </view>
+    <view>
+      <text>配送方式：</text>
+      <text wx:if='{{detailsList.data.data.is_fengniao ==1}}'>蜂鸟配送</text>
+      <text wx:else>商家配送</text>
+    </view>
+  </view>
+
+  <!--订单编号  -->
+  <view class='orderNum'>
+    <text>订单编号：{{detailsList.data.data.order_id}}</text>
+    <text>下单时间：{{createTime}}</text>
+  </view>
+
+  <!--商家电话  -->
+  <view class='businessPhone'>
+    <view>
+      <text>商家电话：{{detailsList.data.data.tel}}</text>
+      <text>如对此订单有疑问请联系商家！</text>
+    </view>
+    <view bindtap='callPhone'>
+      <image src='{{imgUrls+"home_busine_phone@2x.png"}}'></image>
+    </view>
+  </view>
+
+  <!--尾部  -->
+  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 0}}'>
+    <button bindtap='cancelOrder'>取消订单</button>
+    <button>去付款</button>
+  </view>
+  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 1}}'>
+    <button bindtap='refunds'>申请退款</button>
+  </view>
+  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 2}}'>
+    <button bindtap='confirmGoods'>确定收货</button>
+  </view>
+  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 3}}'>
+    <button bindtap='cancelRefunds'>取消退款</button>
+  </view>
+  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 4}}'>
+    <button bindtap='afterSale'>申请售后</button>
+    <button bindtap='deletingOrder'>删除订单</button>
+    <button bindtap='appraise'>去评价</button>
+  </view>
+</view>

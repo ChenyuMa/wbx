@@ -1,0 +1,6 @@
+/* pages/mine/exchange/exchangeRecord/recordDetails/recordDetails.wxss */
+/*  */
+.recordDetails-pages{
+  width: 100%;
+  background: whitesmoke;
+}

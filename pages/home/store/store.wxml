@@ -1,0 +1,263 @@
+<!--pages/Store/Store.wxml-->
+<view class='footprint' wx:if='{{isFootprint}}'>
+  <scroll-view style='height:100%;width:100%;white-space:nowrap;' scroll-x='true' >
+    <view class='footprint-content' wx:for='{{footprintList}}' wx:key='index' >
+      <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}' bindtouchstart='touchStart' bindtouchend='touchEnd' catchtap='longTap' data-item='{{item}}'></image>
+      <text style=' width: 80rpx;font-size: 20rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.shop_name}}</text>
+      <text class='fa fa-close' style='position:absolute;right:-10rpx;top:-10rpx;font-size:40rpx;color:gray;' wx:if='{{clearFootprint}}' catchtap='clearFootprint' data-shopid='{{item.shop_id}}'></text>
+    </view>
+  </scroll-view>
+</view>
+<view style='height:{{windowHeight}}px;position: relative;'>
+  <!-- <scroll-view style='height:100%;' scroll-y='{{true}}'> -->
+  <view class="box" style="background-image:url('{{imgUrls}}/line@2x.png');background-size:cover">
+    <view class='footprint-hint' wx:if='{{!isFootprint}}'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/footprint_hint.png'></image>
+    </view>
+  </view>
+  <view class="white-box">
+    <view class="header-pic">
+      <image class="touxiang" src="{{gradeid == 15?shopDetailList.shop_detail.photo:shopDetailList.detail.photo}}{{'?imageView2/1/w/100/h/100'}}"></image>
+      <view class='collect' bindtap='clickFocus'>
+        <image class="shoucang" src="{{imgUrls}}/collect.png" wx:if='{{isFocuss}}'></image>
+        <image class="shoucang" src="{{imgUrls}}/noncollect.png" wx:else></image>
+        <view class='focus'>
+          <text>关注</text>
+        </view>
+      </view>
+    </view>
+    <!--  -->
+    <view class='store-title'>
+      <view class='store-name'>{{gradeid == 15?shopDetailList.shop_detail.shop_name:shopDetailList.detail.shop_name}}</view>
+      <view class='month-sales '>
+        <view class='shopInfo-star'>
+          <text wx:for='{{5}}' wx:key='index' class='fa fa-star'></text>
+        </view>
+        <view class='monthslales'>销量</view>
+        <view class='monthslales'>{{gradeid == 15?shopDetailList.shop_detail.sold_num:shopDetailList.detail.sold_num}}</view>
+      </view>
+      <view class='business-time textcenter'>营业时间：{{gradeid == 15?shopDetailList.shop_detail.business_time:shopDetailList.detail.business_time}}</view>
+    </view>
+
+    <view class="into-shop textcenter" bindtap='clickIntoShop'>进店逛逛</view>
+    <view class="announcement textcenter">公告：{{gradeid == 15?shopDetailList.shop_detail.notice:shopDetailList.detail.notice}}</view>
+    <view class="dian"></view>
+
+    <view id='box' class="food-order" wx:if='{{gradeid == 20}}'>
+      <view class='soli textcenter' bindtap='clickOnline'>
+        <image class="tuijian juzhong" src="{{imgUrls}}/order.png"></image>
+        <view class='food-model'>在线点餐</view>
+      </view>
+
+      <view class='soli textcenter' bindtap='clickOrdering' wx:if='{{gradeid == 20}}'>
+        <image class="tuijian" src="{{imgUrls}}/reach.png"></image>
+        <view class='food-model'>到店点餐</view>
+      </view>
+      <view class='soli textcenter' bindtap='clickBooking' wx:if='{{gradeid == 20}}'>
+        <image class="tuijian" src="{{imgUrls}}/reserve1.png"></image>
+        <view class='food-model'>远程预定</view>
+      </view>
+    </view>
+
+    <view id='box' class="food-order">
+      <view class='soli textcenter' bindtap='clickRecommend'>
+        <button class='tuijians textcenter' hover-class="none" open-type="share" bindtap='clickRecommend'></button>
+        <view class='food-model'>推荐好友</view>
+      </view>
+
+      <view class='soli textcenter' bindtap='clickCoupons'>
+        <image class="tuijian" src="{{imgUrls}}/coupon.png"></image>
+        <view class='food-model'>领优惠券</view>
+      </view>
+
+      <!--弹窗优惠券  -->
+      <view class='coupons' wx:if='{{isCoupons}}'>
+        <view class='topCoupons' bindtap='clickCoupons'></view>
+        <view class='downCoupons'>
+          <view class='downCoupons-titel'>
+            <text>店铺优惠券</text>
+            <text class='fa fa-close couponsClose' bindtap='clickCoupons'></text>
+          </view>
+          <view class='downCoupons-titels'>
+            <text style='font-size:25rpx;margin:20rpx;'>可领优惠卷</text>
+          </view>
+          <scroll-view style='height:80%;' scroll-y='{{true}}'>
+            <view class='coupons-img' wx:for='{{shopDetailList.coupon.list}}' wx:key='index'>
+              <view class='img-price'>
+                <text>￥</text>
+                <text>{{item.money/100.00}}</text>
+              </view>
+              <view class='img-fullCoupons'>
+                <text>满￥{{item.condition_money/100.00}}使用</text>
+                <text>限本店使用,{{item.end_time}}到期</text>
+              </view>
+              <view class='img-to'>
+                <text class='to' wx:if='{{item.is_receive == 0}}' bindtap='clickReceive' data-coupon_id='{{item.coupon_id}}'>领取</text>
+                <text class='to tos' wx:else>已领取</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <view class='soli textcenter' bindtap='clickPersonal'>
+        <image class="tuijian" src="{{imgUrls}}/grem.png"></image>
+        <view class='food-model'>个人中心</view>
+      </view>
+    </view>
+    <view class="dian"></view>
+
+    <!-- 店铺信息 -->
+    <view class='environment-pic' wx:if='{{gradeid == 15?shopDetailList.shop_detail.photos.length:shopDetailList.detail.photos.length}}'>店铺环境图</view>
+    <view id='box1'>
+      <image class='tuijian2' src="{{item}}{{'?imageView2/1/w/100/h/100'}}" wx:for='{{gradeid == 15?shopDetailList.shop_detail.photos:shopDetailList.detail.photos}}' wx:key='index' style='width: 30%;margin-left:2%;margin-top:10rpx;' data-src='{{gradeid == 15?shopDetailList.shop_detail.photos:shopDetailList.detail.photos}}'
+        bindtap='previewImage'></image>
+    </view>
+    <view class='moreandmore textcenter' bindtap='clickShopInfo'>
+      <text>更多店铺信息</text>
+      <text class='fa fa-angle-double-down' wx:if='{{isCheck}}'></text>
+      <text class='fa fa-angle-double-up' wx:else></text>
+    </view>
+    <view class='store-all-title' wx:if='{{!isCheck}}'>
+      <view class='store-video-name'>店铺视频</view>
+      <view class='store-video' wx:if='{{shopDetailList.shop_detail.video||shopDetailList.detail.video}}'>
+        <video src='{{gradeid == 15?shopDetailList.shop_detail.video:shopDetailList.detail.video}}'></video>
+      </view>
+      <view class='store-info'>
+        <view>商家信息</view>
+        <view>商品数量：{{shopDetailList.goods.length}}件</view>
+        <!-- <view>月销单量：{{gradeid == 15?shopDetailList.shop_detail.month_num:shopDetailList.detail.month_num}}单</view> -->
+        <view>浏览次数：{{gradeid == 15?shopDetailList.shop_detail.view_num:shopDetailList.detail.view_num}}人</view>
+        <view>营业时间：{{gradeid == 15?shopDetailList.shop_detail.business_time:shopDetailList.detail.business_time}}</view>
+        <view>门店地址：{{gradeid == 15?shopDetailList.shop_detail.addr:shopDetailList.detail.addr}}</view>
+        <!-- <view class='floatleft'>门店电话:</view> -->
+        <!-- <view bindtap='callPhone' data-phone='{{gradeid == 15?shopDetailList.shop_detail.tel:shopDetailList.detail.tel}}'>联系商家</view> -->
+      </view>
+      <view class='dian'></view>
+      <view class='store-evaluation'>店铺评价</view>
+      <view id="box">
+        <view class=' evaluation textcenter'>
+          <view>{{gradeid == 15?shopDetailList.shop_detail.score:shopDetailList.detail.score}}</view>
+          <view>综合评分</view>
+        </view>
+        <view class='evaluation textcenter'>
+          <view>{{evaluationList.length}}</view>
+          <view>评论条数</view>
+        </view>
+      </view>
+      <view class='dian'></view>
+      <view class='comments' wx:if='{{!isComments}}'>
+        <view wx:if='{{evaluationList.length > 0}}'>
+          <image class='admin-pic floatleft' src="{{evaluationList[0].face}}{{'?imageView2/1/w/100/h/100'}}"></image>
+          <view class='admin-name'>{{evaluationList[0].nickname==''?'匿名用户':evaluationList[0].nickname}}</view>
+          <view class='admin-comments'>{{evaluationList[0].message==''?'未评价':evaluationList[0].message}}</view>
+        </view>
+        <view class='starView' wx:if='{{evaluationList.length > 0}}'>
+          <view class='stars' style='margin-left:110rpx;'>
+            <text wx:for='{{evaluationList[0].grade}}' wx:key='index' class='fa fa-star shopInfo-star'></text>
+          </view>
+          <view class='floatright' style='font-size:28rpx;'>{{evaluationList[0].create_time}}</view>
+        </view>
+      </view>
+
+      <!--点击查看商家评论  -->
+      <view class='comments' wx:for='{{evaluationList}}' wx:key='index' wx:if='{{isComments}}'>
+        <view wx:if='{{evaluationList.length > 0}}'>
+          <image class='admin-pic floatleft' src="{{item.face}}{{'?imageView2/1/w/100/h/100'}}"></image>
+          <view class='admin-name'>{{item.nickname==''?'匿名用户':item.nickname}}</view>
+          <view class='admin-comments'>{{item.message==''?'未评价':item.message}}</view>
+        </view>
+        <view class='starView' wx:if='{{evaluationList.length > 0}}'>
+          <view class='stars' style='margin-left:110rpx;'>
+            <text wx:for='{{item.grade}}' wx:key='index' class='fa fa-star shopInfo-star'></text>
+          </view>
+          <view class='floatright' style='font-size:28rpx;'>{{item.create_time}}</view>
+        </view>
+      </view>
+
+      <view class='See-all-comments' bindtap='clickComments'>查看用户的全部评论></view>
+
+    </view>
+    <!--店铺发现  -->
+    <view class='store-video-name'>店铺发现</view>
+    <view wx:if='{{!isFound}}'>
+      <view class='comments' wx:if='{{shopFoundList.length > 0}}'>
+        <image class='admin-pic floatleft' src="{{shopFoundList[0].photo}}{{'?imageView2/1/w/100/h/100'}}"></image>
+        <view class='see-store-name'>{{shopFoundList[0].shop_name}}</view>
+        <view class='see-store-date'>{{shopFoundList[0].create_time}}</view>
+        <view class='describe'>{{shopFoundList[0].text}}</view>
+        <view class='shop_photos'>
+          <image class='store-pic' wx:for='{{shopFoundList[0].photos}}' wx:key='index' src="{{item}}{{'?imageView2/1/w/100/h/100'}}" data-src='{{shopFoundList[0].photos}}' bindtap='previewImage' id='{{item}}'></image>
+        </view>
+      </view>
+      <view class='addr-cont' wx:if='{{shopFoundList.length > 0}}'>
+        <text class='fa fa-map-marker'></text>
+        <view class='floatleft addr'>{{shopFoundList[0].addr}}</view>
+        <view class='floatleft km'>{{shopFoundList[0].distance}}m</view>
+      </view>
+    </view>
+
+    <view wx:for='{{shopFoundList}}' wx:key='index' wx:if='{{isFound}}'>
+      <!-- <view class='store-video-name'>店铺发现</view> -->
+      <view class='comments' wx:if='{{shopFoundList.length > 0}}'>
+        <image class='admin-pic floatleft' src="{{item.photo}}"></image>
+        <view class='see-store-name'>{{item.shop_name}}</view>
+        <view class='see-store-date'>{{item.create_time}}</view>
+        <view class='describe'>{{item.text}}</view>
+        <view class='shop_photos'>
+          <block wx:for='{{item.photos}}' wx:for-item='items' wx:key='indexs'>
+            <image class='store-pic' src="{{items}}{{'?imageView2/1/w/100/h/100'}}" data-src='{{item.photos}}' bindtap='previewImage' id='{{items}}'></image>
+          </block>
+        </view>
+      </view>
+      <view class='addr-cont' wx:if='{{shopFoundList.length > 0}}'>
+        <text class='fa fa-map-marker'></text>
+        <view class='floatleft addr'>{{item.addr}}</view>
+        <view class='floatleft km'>{{item.distance}}m</view>
+      </view>
+    </view>
+
+    <view class='See-all-comments' bindtap='clickShopFound'>查看全部店铺发现></view>
+
+
+  </view>
+  <!-- </scroll-view> -->
+  <!--红包界面  -->
+  <view class='envelope' wx:if='{{isEnvelope}}'>
+    <view class='envelope-show'>
+      <!-- <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/envelope@2x.png'></image> -->
+      <view class='envelope-price' style='position:absolute;bottom:34%;left:30%;'>
+        <text wx:if='{{!isFocus}}'>￥???</text>
+        <text wx:else>￥{{envelopeNum}}</text>
+      </view>
+      <view class='envelope-btn' bindtap='clickEnvelope' style='position:absolute;bottom:12%;left:23%;'>
+        <text>关注店铺抢红包</text>
+      </view>
+    </view>
+    <view class='envelope-close'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/Shut@2x.png' bindtap='clickenvelopeClose'></image>
+    </view>
+  </view>
+</view>
+<!--授权登录  -->
+<view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>

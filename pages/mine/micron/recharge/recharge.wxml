@@ -1,0 +1,34 @@
+<!--pages/mine/micron/recharge/recharge.wxml-->
+<view class='rechargePages' style='height:{{windowHeight}}px;'>
+  <!--支付方式  -->
+  <view class='payWay'>
+    <!--支付图标  -->
+    <view class='payWay-icon'>
+      <text class='fa fa-weixin'></text>
+    </view>
+    <!--支付内容  -->
+    <view class='payWay-content'>
+      <text>微信</text>
+      <text>推荐已安装微信客户端的用户使用</text>
+    </view>
+  </view>
+  <!--充值金额  -->
+  <view class='rechargeMoney'>
+    <!--  -->
+    <view class='rechargeMoney-content'>
+      <!-- 标题 -->
+      <text class='rechargeMoney-content-title'>充值微米</text>
+
+      <!-- 充值金额 -->
+      <view class='rechargeMoney-content-money'>￥<input value='{{inputTxt}}' type='digit' bindinput='rechargeMoney'></input></view>
+
+      <!-- 充值底部 -->
+      <text class='rechargeMoney-content-foot'>可用微米{{micron}}元</text>
+    </view>
+  </view>
+
+  <!--确认充值  -->
+  <view class='confirmMoney'>
+    <text bindtap='confirmMoney'>确认充值</text>
+  </view>
+</view>

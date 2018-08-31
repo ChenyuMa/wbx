@@ -1,0 +1,5 @@
+/* pages/mine/invitation/invitation.wxss */
+.invitation{
+  width: 100%;
+  background: whitesmoke;
+}

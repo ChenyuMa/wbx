@@ -1,0 +1,37 @@
+<!--pages/mine/helpCenter/helpCenter.wxml-->
+<view class='helpCenter-pages' style='height:{{windowHeight}}px;'>
+  <!--头部导航  -->
+  <view class='helpCenter-nav'>
+    <!--我想买菜  -->
+    <view class='vegetables' bindtap='clickVegetables'>
+      <image src='{{imgUrls}}service_buy@2x.png'></image>
+      <text>我想买菜</text>
+    </view>
+    <!--人工客服  -->
+    <view class='service' bindtap='clickArtificial'>
+      <image src='{{imgUrls}}service_customer@2x.png'></image>
+      <text>人工服务</text>
+    </view>  
+    
+    <!--常见问题  -->
+    <view class='problem' bindtap='clickProblem'>
+      <image src='{{imgUrls}}service_question@2x.png'></image>
+      <text>常见问题</text>
+    </view>
+  </view>
+
+  <!--聊天界面  -->
+  <!-- <view class='chat'>
+     <scroll-view scroll-y='{{true}}' style='height:100%;'>
+      <view class='common-problem'>
+        <view class='common-titel'><text>常见问题</text></view>
+      </view>
+    </scroll-view> 
+  </view> -->
+
+  <!-- 消息发送 -->
+  <!-- <view class='message'>
+  
+  </view>  -->
+
+</view>

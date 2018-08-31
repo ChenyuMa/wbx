@@ -1,0 +1,272 @@
+/* pages/mine/shopOrder/orderDetails/orderDetails.wxss */
+
+.orderDetails {
+  width: 100%;
+  background: ghostwhite;
+}
+
+/*头部  */
+
+.detailsHead {
+  width: 100%;
+  height: 300rpx;
+}
+
+.headTop {
+  width: 100%;
+  height: 50%;
+}
+
+.headTop image {
+  width: 100%;
+  height: 100%;
+}
+
+.detailsState {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  line-height: 150rpx;
+  text-align: center;
+  color: white;
+  font-size: 35rpx;
+}
+
+/*头部信息  */
+
+.headTxt {
+  width: 100%;
+  height: 50%;
+  background-color: white;
+}
+
+.headUser {
+  width: 100%;
+  height: 60%;
+  font-size: 35rpx;
+  line-height: 90rpx;
+}
+
+.headUser text:nth-child(1) {
+  margin-left: 80rpx;
+}
+
+.headUser text:nth-child(2) {
+  margin-left: 50rpx;
+}
+
+.headUser text:nth-child(3) {
+  margin-left: 30rpx;
+  padding: 0 10rpx;
+  font-size: 25rpx;
+  border: solid 1rpx #06c1ae;
+  color: #06c1ae;
+  border-radius: 5rpx;
+}
+
+/*用户地址  */
+
+.headAddress {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.headAddress image {
+  margin-left: 80rpx;
+  width: 4%;
+  height: 80%;
+}
+
+.headAddress text {
+  margin-left: 20rpx;
+  font-size: 25rpx;
+  width: 75%;
+  height: 100%;
+  line-height: 50rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+/*订单内容  */
+
+.detailsContent {
+  margin-top: 20rpx;
+  width: 100%;
+  background: white;
+}
+
+.orderContent {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.contentStyle {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.contentIcon {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentIcon image {
+  width: 70%;
+  height: 70%;
+}
+
+.contentDetails {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.setailsStore {
+  width: 100%;
+  font-size: 30rpx;
+}
+
+.setailsPrice {
+  font-size: 26rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.setailsPrice text:last-child {
+  margin-right: 40rpx;
+}
+
+.goodsTotal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  background: white;
+  padding: 20rpx 0;
+  margin-top: 20rpx;
+}
+
+.goodsTotal view {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx 10rpx;
+}
+
+.goodsTotal text:last-child {
+  color: #ff004f;
+}
+
+/*留言备注  */
+
+.remark {
+  width: 100%;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  background: white;
+  padding: 20rpx 0;
+}
+
+.remark view {
+  margin-left: 30rpx;
+}
+
+.remark view:nth-child(2) {
+  width: 90%;
+  word-break: break-all;
+}
+
+/*订单编号  */
+
+.orderNum {
+  margin-top: 20rpx;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+}
+
+.orderNum text {
+  margin-left: 30rpx;
+}
+
+/*商家电话  */
+
+.businessPhone {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 0;
+  background: white;
+}
+
+.businessPhone view {
+  margin-left: 30rpx;
+}
+
+.businessPhone view:first-child {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.businessPhone view:first-child text:last-child {
+  color: #06c1ae;
+  font-size: 25rpx;
+}
+
+.businessPhone view:last-child {
+  width: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.businessPhone view:last-child image {
+  width: 60%;
+  height: 60%;
+}
+
+/*取消订单  */
+
+.detailsFoot {
+  width: 100%;
+  margin-top: 20rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 20rpx 0;
+}
+
+.detailsFoot button {
+  width: 25%;
+  margin: 0 30rpx 0 0;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.detailsFoot button:last-child {
+  background: #06c1ae;
+  color: white;
+}

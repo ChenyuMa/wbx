@@ -1,0 +1,61 @@
+<!--pages/mine/collection/collection.wxml-->
+<view class='collection-pages' style='height:{{windowHeight}}px;'>
+  <!--收藏选择  -->
+  <view class='collection-select'>
+    <view class='select-type {{selectType == 1?"click-type":""}}' bindtap='clickType' id='1'>商品收藏</view>
+    <view class='select-type {{selectType == 2?"click-type":""}}' bindtap='clickType' id='2'>店铺关注</view>
+  </view>
+  <!--收藏商品  -->
+  <view class='collection-content' wx:if='{{selectType == 1}}'>
+    <scroll-view scroll-y='{{true}}' style='height:100%;'>
+      <block wx:for='{{goodsCollectionList}}' wx:key='index'>
+        <!--收藏的商品  -->
+        <view class='goods-collection'>
+          <!--商品图片  -->
+          <view class='goods-img'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+          </view>
+          <!--商品内容  -->
+          <view class='goods-content'>
+            <!-- 商品名称 -->
+            <view class='goods-name'>
+              <text>{{item.title}}</text>
+              <text>{{item.price}}</text>
+            </view>
+            <!--删除收藏  -->
+            <view class='delete-collection'>
+              <text bindtap='deleteCollection' data-id='{{item.favorites_id}}'>删除收藏</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <!--店铺关注  -->
+  <view class='collection-content' wx:if='{{selectType == 2}}'>
+    <scroll-view scroll-y='{{true}}' style='height:100%;'>
+      <block wx:for='{{shopFocusList}}' wx:key='index'>
+        <!--收藏的商品  -->
+        <view class='goods-collection'>
+          <!--商品图片  -->
+          <view class='goods-img'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+          </view>
+          <!--商品内容  -->
+          <view class='goods-content'>
+            <!-- 商品名称 -->
+            <view class='shop-name'>
+              <text>{{item.shop_name}}</text>
+              <text class='text-ellipsis'>配送范围：{{item.peisong_fanwei}}</text>
+            </view>
+            <!--进入店铺  -->
+            <view class='enter-shop'>
+              <text bindtap='enterStore' data-id='{{item.shop_id}}' data-gradeid='{{item.grade_id}}'>进入店铺</text>
+              <text bindtap='cancelFocus' data-id='{{item.shop_id}}'>取消关注</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

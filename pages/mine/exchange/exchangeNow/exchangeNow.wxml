@@ -1,0 +1,46 @@
+<!--pages/mine/exchange/exchangeNow/exchangeNow.wxml-->
+<view class='exchangeNow-pages' style='height:{{windowHeight}}px;'>
+  <!--  -->
+  <view class='address' bindtap='selectAddr'>
+    <!--  -->
+    <view class='address-left'>
+      <!--  -->
+      <view class='left-name'>
+        <text>{{address.xm}}</text>
+        <text>{{address.tel}}</text>
+      </view>
+      <!--  -->
+      <view class='left-add'>
+        <text>{{address.area_str}}{{address.info}}</text>
+      </view>
+    </view>
+    <!--  -->
+    <view class='address-right'>
+      <image src='{{imgUrls}}more@2x.png'></image>
+    </view>
+  </view>
+
+  <!--  -->
+  <view class='goods'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+      <view class='goods-details' wx:for='{{goodsList}}' wx:key='index'>
+        <!--  -->
+        <view class='details-img'>
+          <image src='{{item.face_pic}}'></image>
+        </view>
+        <!--  -->
+        <view class='details-cotent'>
+          <text>{{item.title}}</text>
+          <text>数量：{{num}}</text>
+          <text>{{item.integral}}积分</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!--  -->
+  <view class='confirm'>
+    <text style='margin-right:20rpx;'>所需积分：{{allIntegral}}</text>
+    <text bindtap='confirmExchange' data-goods_id='{{goodsList.goods_id}}'>确认兑换</text>
+  </view>
+</view>

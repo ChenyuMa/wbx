@@ -1,0 +1,461 @@
+/* pages/found/found.wxss */
+/* 弹性行 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 弹性列 */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/*文本超出省略号  */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/***************************页面数据  */
+.found-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+
+/*******************************头部  */
+.found-top{
+  width: 100%;
+  height: 30%;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/background_img.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.top-titel{
+  width: 350rpx;
+  height: 80rpx;
+}
+.top-titel image{
+  width: 100%;
+  height: 100%;
+}
+.top-nav{
+  width: 500rpx;
+  height: 100rpx;
+  bottom: 0;
+}
+.top-nav image{
+  width: 100%;
+  height: 100%;
+}
+/***********************************附近美食  */
+.near-food{
+  width: 100%;
+  height: 50%;
+  /* background: red; */
+  align-items: center;
+}
+.food-title{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.food-title image{
+  width: 50%;
+  height: 60%;
+}
+/*附近美食展示  */
+.near-food-content{
+  width: 95%;
+  height: 75%;
+  background: white; 
+}
+/*美食展示  */
+.food-content{
+  width: 100%;
+  height: 80%;
+  /* background: cadetblue; */
+}
+.cotent{
+  width: 250rpx;
+  height: 100%;
+  background: white;
+  display: inline-flex;
+}
+.cotent-photo{
+  width: 100%;
+  height: 65%;
+  justify-content: center;
+  align-items: center;
+}
+/*图片  */
+.photo{
+  width: 99%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.photo image{
+  width: 70%;
+  height: 80%;
+}
+/*图片线  */
+.photo-line{
+  width: 1%;
+  background: gainsboro;
+  height: 40%;
+}
+/*内容名称  */
+.cotent-info{
+  width: 100%;
+  height: 35%;
+}
+/*名称  */
+.info-name{
+  width: 100%;
+  white-space:normal;
+  word-wrap: break-word; 
+  font-size: 30rpx;
+  text-align: center;
+  color: grey;
+}
+
+/*价格  */
+.info-price{
+  text-align: center;
+  font-size: 25rpx;
+  color: gold;
+}
+
+/*美食更多  */
+.food-more{
+  width: 100%;
+  height: 15%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25rpx;
+  color: gray;
+}
+/***************************************美味佳肴  */
+.delicious-food{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delicious-food-content{
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  background: white;
+}
+.delicious-food-title{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delicious-food-title image{
+  width: 50%;
+  height: 60%;
+}
+.content-left{
+  width: 45%;
+  height: 80%;
+}
+.content-left image{
+  width: 100%;
+  height: 100%;
+}
+.content-right{
+  width: 55%;
+  height: 80%;
+}
+.content-right view:nth-child(1){
+  width: 100%;
+  font-size: 30rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.content-right view:nth-child(2){
+  width: 100%;
+  height: 85%;
+  font-size: 25rpx;
+  color: gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.right-bottom{
+  font-size:20rpx;
+  color: black;
+}
+.bottom-left{
+  width: 100%;
+}
+.right-bottom .bottom-left .left{
+  font-size: 20rpx;
+}
+.right-bottom .bottom-left .right{
+  font-size: 20rpx;
+}
+.bottom-right{
+  width: 100%;
+}
+
+
+/**************************************商家发布  */
+.merchants{
+  width: 95%;
+  /* height: 550rpx; */
+  background: white;
+  margin-left: 2.5%;
+  margin-bottom: 10rpx;
+  margin-top: 20rpx;
+}
+
+/*头部  */
+.merchants-top{
+  width: 100%;
+  height: 100rpx;
+  /* background: cadetblue; */
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.top-icon{
+  width: 12.5%;
+  height: 100rpx;
+   /* background: chocolate;  */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center; 
+  margin-left: 2.5%;
+}
+.top-icon image{
+  width: 80rpx;
+  height: 80rpx;
+   /* background: cornflowerblue;  */
+  border-radius: 50%;
+}
+
+.top-shopName{
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top-shopName text:first-child{
+  font-size: 30rpx;
+}
+
+.top-shopName text:last-child{
+  font-size: 25rpx;
+  color: gray;
+}
+
+
+.top-shopBut{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  height: 100rpx;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.top-shopBut text:first-child{
+  font-size: 25rpx;
+  color: white;
+  background: #3FBDAB;   
+  padding: 10rpx 15rpx;
+  border-radius: 5rpx;
+}
+
+.top-shopBut text:last-child{
+  font-size: 25rpx;
+  color: #3FBDAB;
+  border: 1rpx solid #3FBDAB;
+  padding: 10rpx 15rpx;
+  border-radius: 5rpx;
+}
+
+/*头部距离  */
+.top-distance{
+  width: 100%;
+  font-size: 30rpx;
+  
+}
+.top-distance text{
+  font-size: 30rpx;
+  color: gray;
+}
+
+
+/*店铺公告  */
+.merchants-notice{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.merchants-notice text{
+  margin-left: 2.5%;
+}
+
+
+/*店铺图片  */
+.merchants-img{
+  width: 95%;
+  margin-left: 2.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.merchants-img image{
+  width: 200rpx;
+  height: 200rpx;
+  /* background: cadetblue; */
+  margin: 5rpx 10rpx ;
+}
+
+
+/*店铺标记  */
+.merchants-marker{
+  width: 95%;
+  height: 50rpx;
+  margin-left: 2.5%;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.marker-adr{
+  width: 80%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+.marker-adr text:nth-child(1){
+  color: gray;
+}
+
+.marker-adr text:nth-child(2){
+  color: gray;
+  margin-left: 10rpx;
+}
+
+.marker-adr text:nth-child(3){
+  margin-left: 10rpx;
+  color: #3FBDAB;
+}
+
+.marker-share{
+  width: 20%;
+  color: #3FBDAB;
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
+.marker-share text:last-child{
+  margin-left: 10rpx;
+}
+
+/*************微信登录  */
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}
+

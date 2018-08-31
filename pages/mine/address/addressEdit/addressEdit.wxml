@@ -1,0 +1,95 @@
+<!--pages/mine/address/addressEdit/addressEdit.wxml-->
+
+<view class='addressAdd' style='height:{{windowHeight}}px;'>
+  <view class='line'></view>
+  <!--用户信息  -->
+  <view class='userInfo'>
+    <!--用户姓名  -->
+    <view class='userName'>
+      <view>
+        <text>收货人</text>
+      </view>
+      <view>
+        <input type='text' placeholder='{{nameValue}}' value='{{nameValue}}' bindinput='nameBlur'></input>
+      </view>
+    </view>
+    <!--用户电话  -->
+    <view class='userPhone'>
+      <view>
+        <text>联系电话：</text>
+      </view>
+      <view>
+        <input type='number' placeholder='{{phoneValue}}' bindinput='phoneBlur' value='{{phoneValue}}'></input>
+      </view>
+    </view>
+    <!--所在地址  -->
+    <view class='userAddress' bindtap='isAddressFocus'>
+      <view>
+        <text>所在地址：</text>
+      </view>
+      <view style='display: flex;justify-content: space-between;'>
+        <!-- <input type='text' placeholder='请选择地址' bindfocus='isAddressFocus' value='{{addrressValue}}'></input> -->
+        <!-- <text>{{addrressValue}}</text> -->
+        <text style='font-size:30rpx;'> {{addrressValue}}</text>
+      </view>
+    </view>
+    <!--详细地址  -->
+    <view class='detailAddress'>
+      <view>
+        <text>详细地址：</text>
+      </view>
+      <view>
+        <input type='text' placeholder='{{detailValue}}' bindinput='detailBlur' value='{{detailValue}}'></input>
+      </view>
+    </view>
+    <!--默认地址  -->
+    <view class='acquiescence'>
+      <view>
+        <text>设置为默认地址</text>
+      </view>
+      <view>
+        <switch bindchange='isElect'></switch>
+      </view>
+    </view>
+
+    <!--设置为常用地址  -->
+    <view class='oftenAddress'>
+      <view>
+        <text>设置为常用地址：</text>
+      </view>
+      <view class='often-list'>
+        <text bindtap='clickOften' data-item='家' style='border:{{tag=="家"?"2rpx solid #06c1ae":""}}'>家</text>
+        <text bindtap='clickOften' data-item='公司' style='border:{{tag=="公司"?"2rpx solid #06c1ae":""}}'>公司</text>
+        <text bindtap='clickOften' data-item='学校' style='border:{{tag=="学校"?"2rpx solid #06c1ae":""}}'>学校</text>
+      </view>
+    </view>
+
+  </view>
+
+  <!--保存  -->
+  <view class='preservation'>
+    <button bindtap='saveAgain' >保存</button>
+  </view>
+  <!--弹出  -->
+  <view class='eject' style='display:{{show}}'>
+    <!--确定取消  -->
+    <view class='select'>
+      <text bindtap='cancel'>取消</text>
+      <text bindtap='determine'>确定</text>
+    </view>
+    <!--城市选择  -->
+    <view class='city'>
+      <picker-view indicator-style="height: 40px;" class='selector' value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view wx:for="{{provinceName}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{cityName}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{districtName}}" wx:key='index' style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

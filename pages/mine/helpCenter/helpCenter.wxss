@@ -1,0 +1,120 @@
+/* pages/mine/helpCenter/helpCenter.wxss */
+/*智能客服页面  */
+.helpCenter-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*头部导航  */
+.helpCenter-nav{
+  width: 100%;
+  height: 20%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+/*买菜  */
+.vegetables{
+  width: 25%;
+  height: 70%;
+  /* background: cadetblue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.vegetables image{
+  width: 120rpx;
+  height: 110rpx;
+  /* background: rebeccapurple; */
+}
+.vegetables text{
+  font-size: 25rpx;
+}
+
+/*客服  */
+.service{
+  width: 25%;
+  height: 70%;
+  /* background: cadetblue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.service image{
+  width: 120rpx;
+  height: 110rpx;
+}
+.service text{
+  font-size: 25rpx;
+}
+/*问题  */
+.problem{
+  width: 25%;
+  height: 70%;
+  /* background: cadetblue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.problem image{
+  width: 120rpx;
+  height: 110rpx;
+}
+.problem text{
+  font-size: 25rpx;
+}
+/************************************聊天界面  */
+.chat{
+  width: 100%;
+  height: 80%;
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+}
+/*常见问题提示  */
+.common-problem{
+  width: 90%;
+  /* height: 50%; */
+  /* background: red; */
+  margin-top: 30rpx;
+}
+
+/*问题标题  */
+.common-titel{
+  text-align: center;
+  font-size: 30rpx;
+  color: white;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #06C1AE;
+}
+.commonView{
+  width: 100%;
+  height: 60rpx;
+  background: white;
+  border-bottom: 1rpx solid gainsboro;
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+.commonView text{
+  margin-left: 20rpx;
+}
+/************************************消息发送  */
+.message{
+  width: 100%;
+  height: 10%;
+  background: cadetblue;
+}
+
+/**********************************拨打客服电话  */
+.callPhone{
+  width: 100%;
+  height: 30%;
+  background: white;
+  margin-top: 10rpx;
+}

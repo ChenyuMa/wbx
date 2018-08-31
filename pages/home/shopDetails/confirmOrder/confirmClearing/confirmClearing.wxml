@@ -1,0 +1,160 @@
+<!--pages/home/shopDetails/confirmOrder/confirmClearing/confirmClearing.wxml-->
+<view class='clearing' style='height:{{windowHeight}}px;'>
+  <!--支付信息  -->
+  <view class='clearingInfo'>
+    <scroll-view style='height:100%;' scroll-y='{{true}}'>
+      <!--用户地址  -->
+      <view class='userAddress' bindtap='address_select' wx:if='{{isTakeNumber!=1}}'>
+        <view class='addressLeft'>
+          <view class='addressLeft_top'>
+            <text>{{orderList.address.xm}}</text>
+            <text>{{orderList.address.tel}}</text>
+            <text>默认</text>
+          </view>
+          <view class='addressLeft_bottom'>
+            <view>
+              <image src='{{imgUrls+"order_address@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            </view>
+            <text>{{orderList.address.area_str}}{{orderList.address.info}}</text>
+          </view>
+        </view>
+        <view class='addressRigth'>
+          <image src='{{imgUrls+"more@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+      </view>
+      <!--商品  -->
+      <view class='orderPhoto'>
+        <view class='orderPhotoLeft'>
+          <scroll-view scroll-x='true' class='scroll'>
+            <view class='photo' wx:for='{{orderList.order_goods}}' wx:key='index'>
+              <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            </view>
+          </scroll-view>
+        </view>
+        <view class='orderPhotoRigth'>
+        </view>
+      </view>
+      <!--商品价格  -->
+      <view class='orderPrice'>
+        <view class='orderPriceTop'>
+          <text>商品总额：</text>
+          <text>￥{{orderList.order.total_price/100.00}}</text>
+        </view>
+        <view class='orderPriceBottom'>
+          <text>运费：</text>
+          <text wx:if='{{gradeid != 15}}'>￥{{orderList.order.express_price/100.00}}</text>
+          <text wx:else>￥{{orderList.order.logistics/100.00}}</text>
+        </view>
+        <view class='orderPriceBottom' wx:if='{{gradeid == 20}}'>
+          <text>包装费：</text>
+          <text wx:if='{{gradeid != 15}}'>￥{{orderList.order.casing_price/100.00}}</text>
+          <text wx:else>￥0</text>
+        </view>
+      </view>
+      <!--优惠卷  -->
+      <view class='orderCoupon' wx:if='{{orderList.order.coupon_money != 0}}'>
+        <text>已使用:{{orderList.order.coupon_money?orderList.order.coupon_money/100.00:0}}</text>
+      </view>
+      <!--满减  -->
+      <view class='orderSubtraction' wx:if='{{orderList.order.full_money_reduce != 0}}'>
+        <text>满减:{{orderList.order.full_money_reduce/100.00}}</text>
+        <!-- <text wx:else>满0.00减0.00</text> -->
+      </view>
+      <view class='orderCoupon' wx:if='{{orderList.order.user_subsidy_money != 0}}'>
+        <text>奖励金:{{orderList.order.user_subsidy_money/100.00}}</text>
+      </view>
+      <view class='orderCoupon' style='display: flex; justify-content: space-between;'>
+        <text style='margin-left:30rpx;color:black;'>红包:</text>
+        <text style='margin-right:30rpx; color:red;'>￥{{orderList.order.red_packet_money?orderList.order.red_packet_money/100.00:0}}</text>
+      </view>
+      <!--备注  -->
+      <view class='orderRemark' bindtap='temarkToast'>
+        <view>
+          <text>留言/备注:</text>
+          <text>{{inputTxt}}</text>
+        </view>
+        <image src='{{imgUrls+"more@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+      </view>
+      <!--支付方式  -->
+      <view class='orderPay'>
+        <view class='orderPayTop'>
+          <text>选择支付方式</text>
+        </view>
+        <view class='balance' bindtap="radioBalance" data-value='money'>
+          <view class='balanceImg'>
+            <image src='{{imgUrls+"order_pay@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+          </view>
+          <view class='balanceInfo'>
+            <text>余额支付</text>
+            <text>余额支付是最方便快捷的</text>
+          </view>
+          <view class='balanceSlect'>
+            <radio-group>
+              <radio checked='{{isBalance}}'></radio>
+            </radio-group>
+          </view>
+        </view>
+        <view class='weChat' bindtap="radioWeChat" data-value='weixinapp'>
+          <view class='balanceImg'>
+            <image src='{{imgUrls+"order_wechat@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+          </view>
+          <view class='balanceInfo'>
+            <text>微信APP支付</text>
+            <text>微信官方支付,安全,方便,快捷!</text>
+          </view>
+          <view class='balanceSlect'>
+            <radio-group>
+              <radio checked='{{isWeChat}}'></radio>
+            </radio-group>
+          </view>
+        </view>
+
+      </view>
+    </scroll-view>
+  </view>
+  <!--确认结算  -->
+  <view class='orderClearing'>
+    <view class='clearingLeft'>
+      <text>订单总费用：￥{{orderList.order.need_pay/100.00}}</text>
+    </view>
+    <view class='clearingRight' bindtap='confirmPay'>
+      <text>确认结算</text>
+    </view>
+  </view>
+  <!--支付密码  -->
+  <view class='remarkToasts' wx:if='{{isPayCode}}'>
+    <view class='toastInfos'>
+      <view class='toastTitles'>支付密码</view>
+      <view class='toastInputs'>
+        <input placeholder='请输入支付密码' value='{{inputCode}}' bindinput='inputCodeBlur' password='true' type='number'></input>
+      </view>
+      <view class='toastBtns'>
+        <text bindtap='cancelPay'>取消</text>
+        <view class='listLine'></view>
+        <text bindtap='determinePay' data-code='{{inputCode}}'>确定</text>
+      </view>
+    </view>
+  </view>
+  <!--支付红包  -->
+  <view class='redPacket' wx:if='{{is_redPacket}}' catchtap='click_redPacket'>
+    <view class='redPacket-img'>
+      <view class='redPacket-imgBox' catchtap='click_shadow'>
+        <text>恭喜获得红包：￥{{redPacket_money/100.00}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!--留言弹窗  -->
+<view class='{{isToast?"Leave":"none"}}'>
+  <view class='top'>
+    <view class='top-content'>
+      <view class='content-titel'>给商家留言</view>
+      <view class='info'>
+        <textarea style='width:100%;height:100%;' bindinput='inputBlur'></textarea>
+      </view>
+      <view class='btn1' bindtap='determine'>确认</view>
+    </view>
+  </view>
+  <view class='down' bindtap='cancel'></view>
+</view>

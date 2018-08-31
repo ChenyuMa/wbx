@@ -1,0 +1,66 @@
+<!--pages/mine/sweepOrder/sweepOrder.wxml-->
+<view class='sweepPages' style='height:{{windowHeight}}px;'>
+  <scroll-view scroll-y='true' style='height:100%;' bindscrolltolower='scrolltolower'>
+    <!--订单样式  -->
+    <view class='orderStyle' wx:for='{{sweepOrderList}}' wx:key='index' bindtap='clickDetail' data-orderID='{{item.order_id}}'>
+      <!--头部  -->
+      <view class='orderTitel'>
+        <text>{{isTakeNumber!=1?item.shop_name:item.goods[0].shop_name}}</text>
+        <!-- <text>aaaaaa</text>
+        <text>(aaa)</text> -->
+        <text>{{item.status}}</text>
+      </view>
+      <!-- 内容 -->
+      <view class='orderContent'>
+        <!-- 桌号 -->
+        <view class='seat' wx:if='{{isTakeNumber!=1}}'>
+          <text>桌号：</text>
+          <text>{{item.seat}}</text>
+        </view>
+        <view class='seat' wx:else>
+          <text>取餐码：</text>
+          <text>{{item.order_take_number}}</text>
+        </view>
+
+        <!--时间  -->
+        <view class='time'>
+          <text>{{item.create_time}}</text>
+        </view>
+
+        <!--就餐时间  -->
+        <!-- <view class='dinnerTime'>
+          <text>就餐时间：</text>
+          <text>201724563155</text>
+        </view> -->
+
+        <!--就餐人数  -->
+        <view class='mealsNum' wx:if='{{isTakeNumber!=1}}'>
+          <text>就餐人数：</text>
+          <text>{{item.people_num}}</text>
+        </view>
+
+        <!--商品展示  -->
+        <view class='goodsDisplay'>
+          <scroll-view scroll-x="true" style="white-space:nowrap;">
+            <view class='goods' wx:for='{{item.goods}}' wx:for-item='items' wx:key='indexs'>
+              <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+              <text>￥{{isTakeNumber==1?items.price/100.00:items.price}}</text>
+            </view>
+          </scroll-view>
+        </view>
+
+        <!--加菜支付  -->
+        <view class='addFoodPay'>
+          <view class='addPay' wx:if='{{isTakeNumber!=1}}'>
+            <text catchtap='clickAddFood' data-item='{{item}}' wx:if='{{item.status != "已付款"}}'>加菜</text>
+            <text wx:if='{{item.status != "已付款"}}' catchtap='clickPay' data-item='{{item}}'>去支付</text>
+          </view>
+          <view class='addPay' wx:if='{{isTakeNumber==1}}'>
+            <text wx:if='{{item.status ==0 }}' catchtap='clickPay' data-item='{{item}}'>去支付</text>
+          </view>
+          <text style='align-self: flex-end;'>合计费用：￥{{isTakeNumber==1?item.total_price/100.00:item.need_price}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

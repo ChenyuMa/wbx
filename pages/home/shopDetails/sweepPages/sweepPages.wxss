@@ -1,0 +1,189 @@
+/* pages/home/shopDetails/sweepPages/sweepPages.wxss */
+
+/*页面  */
+
+.sweepPages {
+  width: 100%;
+  background: whitesmoke;
+}
+
+/*头部  */
+
+.sweepOrderTop {
+  width: 100%;
+  height: 30%;
+  background: white;
+  margin-bottom: 2.9%;
+}
+
+/*桌号  */
+
+.seatFood {
+  height: 50%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.seat {
+
+}
+
+.seat text:first-child {
+  font-size: 50rpx;
+}
+
+.seat text:last-child {
+  font-size: 50rpx;
+  color: #06c1ae;
+}
+
+/*菜数  */
+
+.foodNum {
+  font-size: 30rpx;
+  color: gray;
+}
+
+/*用餐人数  */
+
+.mealsNum {
+  margin-left: 5%;
+}
+
+.mealsNum text:nth-child(2) {
+  color: #06c1ae;
+}
+
+/*备注  */
+
+.noto {
+  margin-left: 5%;
+  height: 35%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+.noto textarea {
+  width: 80%;
+  height: 100%;
+}
+
+.noto text {
+  background: white;
+  width: 100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  color: #06c1ae;
+  border: 1rpx solid #06c1ae;
+}
+
+/*菜单  */
+
+.menu {
+  width: 100%;
+  height: 58%;
+}
+
+/*菜品  */
+
+.dishes {
+  width: 100%;
+  height: 150rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rpx;
+}
+
+.dishesPhoto {
+  width: 100rpx;
+  height: 100rpx;
+  background: cadetblue;
+  margin-left: 5%;
+  border-radius: 10rpx;
+}
+
+.dishesPhoto image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.dishesName {
+  margin-left: 2%;
+  font-size: 35rpx;
+  width: 400rpx;
+}
+
+.nameTop text:last-child {
+  color: gray;
+  margin-left: 10rpx;
+}
+
+.nameDown {
+  color: gray;
+}
+
+.nameDown text:nth-child(2){
+  color: #EFA544;
+}
+
+/*单个商品数量  */
+.dishesNum{
+  display: flex;
+  justify-content: space-between;
+  width: 150rpx;
+  height: 100rpx;
+}
+.dishesNum text:nth-child(1){
+  font-size: 50rpx;
+  color: #06c1ae;
+}
+.dishesNum text:nth-child(2){
+  font-size: 40rpx;
+}
+.dishesNum text:nth-child(3){
+  font-size: 50rpx;
+  color: #06c1ae;
+}
+
+/*加菜下单  */
+.addFootOrder{
+  /* position: fixed;
+  bottom: 0;  */
+  height: 10%;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+.addFoot{
+  background: #06c1ae;
+  color: white;
+  width: 250rpx;
+  height: 60rpx;
+  text-align: center;
+  font-size: 40rpx;
+  border-radius: 40rpx;
+}
+.order{
+  background: #EE9E2C;
+  color: white;
+  width: 250rpx;
+  height: 60rpx;
+  text-align: center;
+  font-size: 40rpx;
+  border-radius: 40rpx;
+}
+
+

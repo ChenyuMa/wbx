@@ -1,0 +1,146 @@
+/* pages/mine/collection/collection.wxss */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*******************************************************收藏页面  */
+.collection-pages{
+  width: 100%;
+  background: whitesmoke; 
+}
+/********************************************************收藏选择  */
+.collection-select{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.collection-select view:first-child{
+  border-top-left-radius: 15rpx;
+  border-bottom-left-radius: 15rpx;
+}
+.collection-select view:last-child{
+  border-top-right-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+}
+/*选择类型  */
+.select-type{
+  width: 25%;
+  height: 50rpx;
+  text-align: center;
+  background: white;
+  color: gray;
+  line-height: 50rpx;
+  font-size: 30rpx;
+}
+/*点击的类型  */
+.click-type{
+  background: #09C1AE;
+  color: white;
+}
+/**************************************************商品内容  */
+.collection-content{
+  width: 100%;
+  height: 90%;
+}
+/*收藏的商品  */
+.goods-collection{
+  width: 100%;
+  height: 250rpx;
+  display: flex;
+  flex-direction: row;  
+  background: white;
+  margin-bottom: 10rpx;
+}
+/*商品图片  */
+.goods-img{
+  width: 35%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods-img image{
+  width: 200rpx;
+  height: 180rpx;
+}
+/*商品内容  */
+.goods-content{
+  width: 65%;
+  height: 100%;
+}
+/*商品名称  */
+.goods-name{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+}
+.goods-name text:first-child{
+  font-size: 35rpx;
+  margin-top: 30rpx;
+}
+.goods-name text:last-child{
+  font-size: 30rpx;
+  color: red;
+  margin-top: 10rpx;
+}
+/*店铺名称  */
+.shop-name{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.shop-name text:first-child{
+  font-size: 35rpx;
+  margin-top: 30rpx;
+}
+.shop-name text:last-child{
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  color: gray;
+}
+/*删除收藏  */
+.delete-collection{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.delete-collection text{
+  font-size: 30rpx;
+  border: 1rpx solid gray;
+  padding: 0 10rpx;
+  border-radius: 10rpx;  
+  margin-right: 40rpx;
+  color: gray;
+}
+/*进入店铺  */
+.enter-shop{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.enter-shop text:first-child{
+  background: #09C1AE;
+  font-size: 25rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+  color: white;
+}
+.enter-shop text:last-child{
+  font-size: 25rpx;
+  color: gray;
+  border: 1rpx solid gray;
+  padding: 5rpx 15rpx;
+  margin: 0 20rpx;
+  border-radius: 10rpx;
+}

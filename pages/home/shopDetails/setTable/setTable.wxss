@@ -1,0 +1,293 @@
+/* pages/home/shopDetails/setTable/setTable.wxss */
+/*订桌页面  */
+.setTable-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*  */
+.setTable-top{
+  width: 100%;
+  height: 20%;
+  background: #06C1AE;
+}
+/*预定  */
+.setTable-content{
+  width: 90%;
+  height: 90%;
+  background: white;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+}
+/*预定头部  */
+.content-top{
+  width: 100%;
+  height: 6%;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content-top text:first-child{
+  margin-left: 30rpx;
+}
+.content-top text:last-child{
+  margin-right: 30rpx;
+}
+/*选择时间  */
+.selectDate{
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+.data{
+    margin-left: 50rpx; 
+  background: whitesmoke;
+  font-size: 25rpx;
+  border-radius: 20rpx;
+  width: 450rpx;
+  padding-left: 20rpx; 
+  height: 50rpx;
+  line-height: 50rpx;
+  color: gray;  
+}
+.selectDate image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+.picker{
+
+}
+/*时间  */
+.content-time{
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+.content-time image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+
+/*联系方式  */
+.contact-title{
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+.contact-title text{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+/*姓名  */
+.content-name{
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+.content-name image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+.content-name input{
+  margin-left: 50rpx;
+  background: whitesmoke;
+  font-size: 25rpx;
+  border-radius: 20rpx;
+  width: 450rpx;
+  padding-left: 20rpx;
+}
+/*电话  */
+.content-phone{
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+.content-phone image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+}
+.content-phone input{
+  margin-left: 50rpx;
+  background: whitesmoke;
+  font-size: 25rpx;
+  border-radius: 20rpx;
+  width: 450rpx;
+  padding-left: 20rpx;
+}
+/*用餐人数  */
+.number-title{
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+.number-title text{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.content-number{
+  width: 200rpx;
+  background: whitesmoke;
+  margin-left: 30rpx;
+  border-radius: 20rpx;
+  font-size: 25rpx;
+  padding-left: 20rpx;
+}
+/*留言备注  */
+.content-note{
+  margin-top: 30rpx;
+}
+.content-note text{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.content-note textarea{
+  width: 600rpx;
+  height: 250rpx;
+  background: whitesmoke;
+  margin-left: 30rpx;
+  font-size: 25rpx;
+  padding-left: 20rpx;
+}
+/*确认订单  */
+.confirmOrder{
+  width: 100%;
+  height: 70rpx;
+  position: absolute;
+  bottom: 0;
+  background: #06C1AE;
+  text-align: center;
+}
+.confirmOrder text{
+  font-size: 30rpx;
+  line-height: 70rpx;
+  color: white;
+}
+/*选菜方式  */
+.selectType{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+.typeTop{
+  width: 100%;
+  height: 60%;
+}
+.typeBottom{
+  width: 90%;
+  height: 40%;
+  background: white;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.typeBottom image{
+  width: 100%;
+  height: 60%;
+}
+.bottomSelect{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bottomSelect text{
+  width: 250rpx;
+  height: 80rpx;
+  text-align: center; 
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid black;
+}
+/*************微信登录  */
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}

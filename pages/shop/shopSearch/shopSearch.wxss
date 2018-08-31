@@ -1,0 +1,266 @@
+/* pages/shop/shopSearch/shopSearch.wxss */
+
+.shopSearch-page {
+  width: 100%;
+  background: whitesmoke;
+}
+
+/*头部  */
+.topView{
+  width: 100%;
+  height: 8%;
+  background: #06C1AE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+/*头部左边  */
+.topView-left{
+  width: 70%;
+  height: 60%;
+  background: white;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.searchType{
+  display: flex;
+  flex-direction: row;
+  font-size: 25rpx;
+  margin-left: 20rpx;
+  align-items: center;
+  width: 15%;
+}
+.searchType text{
+  width: 100%;
+  font-size: 25rpx;
+}
+.searchImg{
+  width: 20rpx;
+  height: 15rpx;
+  margin-left: 5rpx;
+}
+.inputView{
+  width: 75%;
+  height: 100%;
+  margin: 10rpx;
+  font-size: 30rpx;
+}
+.cleanImg{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+/*头部右边  */
+.topView-right{
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: white;
+}
+/*点击选择搜索内容  */
+.clickType{
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 200rpx;
+  left: 80rpx;
+  top: 80rpx;
+  border-radius: 10rpx;
+  color: white;
+  justify-content: space-around;
+  z-index: 1;
+}
+.typeView{
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  margin: 10rpx 0;
+}
+.typeImg{
+  width: 35rpx;
+  height: 35rpx;
+  margin-left: 30rpx;
+}
+.typeTxt{
+  margin-left: 10rpx;
+}
+.typeLine{
+  width: 100%;
+  border-bottom: 1rpx solid black;
+}
+/*店铺显示  */
+.shopList{
+  width: 100%;
+}
+.ele-content{
+  background: white;
+}
+.ele-list {
+  padding: 15rpx;
+  border-bottom: 1rpx solid #e3e3e3;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  align-content: center;
+}
+.item-img {
+  width: 120rpx;
+  height: 120rpx;
+}
+.item-img image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+.item-content {
+  margin-left: 15rpx;
+}
+.shopgrade-list {
+  width: 580rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 5rpx;
+}
+.shop-name {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: bold;
+  padding-bottom: 5rpx;
+  margin-top: -5rpx;
+}
+.shop-grade text {
+  color: #ffd161;
+}
+.shop-audit{
+  display: flex;
+  flex-direction: row;
+}
+.shop-audit text {
+  font-size: 25rpx;
+  margin-left: 5rpx;
+  border-radius: 8rpx;
+}
+
+.shop-distance {
+  border: 1rpx solid #06c1ae;
+  padding: 5rpx;
+  color: #06c1ae;
+}
+
+.shop-attestation {
+  padding: 5rpx;
+  color: #fff;
+  background-color: #f15353;
+}
+.shop-entity {
+  padding: 5rpx;
+  color: #fff;
+  background-color: #06c1ae;
+}
+
+.shop-send {
+  font-size: 25rpx;
+  color: #747474;
+  padding-bottom: 5rpx;
+}
+
+.shop-send text:first-of-type {
+  border-right: 1rpx solid #747474;
+  padding-right: 10rpx;
+}
+
+.shop-send text:nth-child(2) {
+  padding-left: 10rpx;
+}
+
+.shop-address {
+  padding-bottom: 5rpx;
+}
+
+.shop-address text {
+  width: 580rpx;
+  font-size: 25rpx;
+  color: #747474;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.shop-area {
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx dashed #e3e3e3;
+}
+.shop-area .area-tip {
+  font-size: 25rpx;
+  color: #06c1ae;
+}
+
+.area-list {
+  font-size: 25rpx;
+  margin-left: 10rpx;
+  color: #06c1ae;
+}
+
+.shop-activity {
+  padding-top: 5rpx;
+}
+
+.shop-coupon {
+  padding-bottom: 10rpx;
+}
+
+.shop-coupon text:first-of-type {
+  font-size: 28rpx;
+  padding: 5rpx 10rpx;
+  background-color: #06c1ae;
+  color: #fff;
+  border-radius: 10rpx;
+}
+
+.shop-coupon text:nth-of-type(2), .shop-reduce text:nth-of-type(2) {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 10rpx;
+}
+
+.shop-reduce text:first-of-type {
+  font-size: 28rpx;
+  padding: 5rpx 10rpx;
+  background-color: #ea4a28;
+  color: #fff;
+  border-radius: 10rpx;
+}
+.section {
+  padding-top: 10rpx;
+}
+
+.scroll-item {
+  display: inline-block;
+  margin-left: 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.scroll-item image {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-item text {
+  display: block;
+  text-align: center;
+  font-size: 25rpx;
+  color: #747474;
+}

@@ -1,0 +1,725 @@
+/* pages/Store/Store.wxss */
+
+.textcenter {
+  text-align: center;
+}
+
+.box {
+  width: 100%;
+  z-index: -1;
+  position: fixed;
+  height: 364rpx;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+.footprint-hint image{
+  width: 100rpx;
+  height: 50rpx;
+}
+.header-pic {
+  width: 100%;
+  height: 131rpx;
+}
+
+.white-box {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 200rpx;
+  border-radius: 20rpx;
+  box-shadow: 1rpx 5rpx 10rpx #666;
+  margin-bottom: 70rpx;
+}
+
+.touxiang {
+  width: 150rpx;
+  height: 150rpx;
+  display: block;
+  position: absolute;
+  box-shadow: 1rpx 1rpx 10rpx #666;
+  margin-top: -49rpx;
+  margin: -49rpx 35%;
+  border-radius: 10rpx;
+}
+
+.collect {
+  border-radius: 60%;
+  position: relative;
+  float: right; 
+  box-shadow: 0rpx 0rpx 5rpx #666;
+  margin-top: -30rpx;
+  margin-right: 52rpx;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 10rpx;
+  background-color: white;
+}
+.collect image{
+
+}
+.focus{
+  width: 100rpx;
+}
+
+.focus text{
+  margin-left: -2rpx;
+  font-size: 25rpx;
+  float: left;
+}
+
+.shoucang {
+  width: 40rpx;
+  height: 38rpx;
+  vertical-align: text-top;
+  margin-top: 4rpx;
+}
+
+.store-title {
+  clear: both;
+}
+
+.store-name {
+  text-align: center;
+  font-size: 31rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.star {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 3rpx;
+}
+
+.business-time {
+  font-size: 28rpx;
+  margin-bottom: 40rpx;
+}
+
+.month-sales {
+  font-size: 27rpx;
+  margin-bottom: 8rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.shopInfo-star {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: gold;
+}
+
+.star {
+  padding: 0 5rpx;
+}
+
+.padd {
+  padding-left: 171rpx;
+}
+
+.monthslales {
+  display: inline-block;
+  margin-left: 12rpx;
+}
+
+.into-shop {
+  background: linear-gradient(#22cec2, #1ba59b);
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 90px;
+  color: white;
+  font-size: 30rpx;
+  padding: 15rpx;
+  margin-bottom: 40rpx;
+}
+
+.announcement {
+  /* text-align:center; */
+  font-size: 26rpx;
+  margin-bottom: 38rpx;
+}
+
+.tuijian {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.tuijians {
+  width: 100rpx;
+  height: 100rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/recommend1.png');
+  background-size: 100% 100%;
+  border: none;
+}
+
+button::after {
+  border: none;
+}
+
+.floatleft {
+  float: left;
+}
+
+.floatright {
+  float: right;
+}
+
+/* .func-model{
+  width: 32%;
+  background: #555;
+  text-align: center;
+} */
+
+.juzhong {
+  margin: 0 auto;
+}
+
+#box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  /* margin-bottom:39rpx;  */
+}
+
+.soli {
+  /* text-align: center;  */
+}
+
+.coupons {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+}
+
+.topCoupons {
+  width: 100%;
+  height: 50%;
+}
+
+.downCoupons {
+  width: 100%;
+  height: 50%;
+  background: #f5f5f5;
+}
+
+.downCoupons-titel {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.couponsClose {
+  color: gray;
+  position: absolute;
+  right: 10px;
+}
+
+.downCoupons-titels {
+  height: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.coupons-img {
+  margin: 0 auto;
+  margin-bottom: 50rpx;
+  width: 600rpx;
+  height: 200rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/cover@2x.png');
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.img-price {
+  width: 22%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.img-price text:nth-child(1) {
+  color: white;
+}
+
+.img-price text:nth-child(2) {
+  color: white;
+  font-size: 60rpx;
+}
+
+.img-fullCoupons {
+  width: 45%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.img-fullCoupons text:nth-child(1) {
+  font-size: 35rpx;
+  margin-left: 3%;
+  position: absolute;
+  top: 35%;
+  color: #1fbdb1;
+}
+
+.img-fullCoupons text:nth-child(2) {
+  font-size: 20rpx;
+  position: absolute;
+  top: 65%;
+  color: white;
+}
+
+.img-to {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.to {
+  width: 110rpx;
+  height: 50rpx;
+  background: #1fbdb1;
+  text-align: center;
+  color: white;
+  font-size: 35rpx;
+  line-height: 50rpx;
+  border-radius: 25rpx;
+  position: absolute;
+  padding: 0 10rpx;
+  left: 12%;
+}
+
+.tos {
+  background: gray;
+}
+
+.food-model {
+  font-size: 30rpx;
+  color: rgba(84, 84, 84, 1);
+  line-height: 30rpx;
+}
+
+.dian {
+  height: 1rpx;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1rpx dotted #d0cfcf;
+}
+
+#box1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 50rpx;
+  flex-wrap: wrap;
+}
+
+.food-order {
+  padding: 22rpx 0;
+}
+
+.tuijian2 {
+  width: 33%;
+  height: 196rpx;
+  background: #1db1a5;
+}
+
+.drop-down {
+  width: 24rpx;
+  height: 21rpx;
+}
+
+.moreandmore {
+  /* text-align: center; */
+  font-size: 32rpx;
+  color: rgba(87, 87, 87, 1);
+  margin-top: 20rpx;
+}
+
+.environment-pic {
+  margin-left: 30rpx;
+  font-size: 35rpx;
+  color: rgba(70, 70, 70, 1);
+  font-weight: bold;
+  line-height: 89rpx;
+}
+
+.store-video-name {
+  color: #333;
+  line-height: 74rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-left: 31rpx;
+}
+
+.store-video {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.store-video video {
+  width: 91%;
+}
+
+.store-info {
+  width: 91%;
+  margin: 0 auto;
+  margin-bottom: 40rpx;
+}
+
+.store-info view {
+  font-size: 32rpx;
+  color: rgba(87, 87, 87, 1);
+  margin-bottom: 16rpx;
+}
+
+.store-info view:nth-child(8) {
+  text-decoration: underline;
+}
+
+.store-info view:nth-child(1) {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-top: 19rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+.store-evaluation {
+  text-align: center;
+  line-height: 110rpx;
+  font-weight: bold;
+  font-size: 35rpx;
+}
+
+.evaluation {
+  width: 50%;
+  margin-bottom: 39rpx;
+  /* text-align: center;  */
+}
+
+.evaluation:nth-child(1) {
+  border-right: 1rpx #d4d4d4 solid;
+  color: rgba(51, 51, 51, 1);
+}
+
+.evaluation view:nth-child(1) {
+  font-size: 49rpx;
+}
+
+.evaluation view:nth-child(2) {
+  font-size: 30rpx;
+}
+
+.admin-pic {
+  width: 99rpx;
+  height: 99rpx;
+  border-radius: 60%;
+  border: 1rpx solid gray; 
+  margin-right: 24rpx;
+}
+
+.See-all-comments {
+  clear: both;
+  text-align: center;
+  line-height: 79rpx;
+  font-size: 30rpx;
+}
+
+.comments {
+  /* width:80%; */
+  width: 91%;
+  margin: 0 auto;
+  margin-top: 25rpx;
+}
+
+.admin-name {
+  margin-bottom: 18rpx;
+  font-size: 32rpx;
+}
+
+.admin-comments {
+  font-size: 29rpx;
+  margin-bottom: 18rpx;
+}
+
+.date-star {
+  margin-left: 121rpx;
+}
+
+.date-star :nth-child(2) {
+  font-size: 28rpx;
+}
+
+.starView {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+}
+
+.addr-pic {
+  width: 27rpx;
+  height: 32rpx;
+  margin-top: 27rpx;
+  margin-right: 15rpx;
+  margin-left: 28rpx;
+}
+
+.addr {
+  font-size: 25rpx;
+  margin-right: 12rpx;
+  color: #b4b4b4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.km {
+  color: #1db1a5;
+  font-size: 13px;
+}
+
+.describe {
+  clear: both;
+  padding: 27rpx 0;
+  font-size: 32rpx;
+}
+
+.shop_photos {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.store-pic {
+  width: 32.5%;
+  border: 1rpx solid white;
+  height: 212rpx;
+  background: #fee;
+  margin-bottom: -8rpx;
+}
+
+.addr-cont {
+  line-height: 88rpx;
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.addr-cont text:nth-child(1) {
+  color: gray;
+  margin-left: 40rpx;
+  margin-right: 12rpx;
+}
+
+.see-store-name {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.see-store-date {
+  font-size: 24rpx;
+  padding-top: 10rpx;
+}
+
+.store-all-title {
+  /* display: none; */
+}
+
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}
+/**********************************红包  */
+.envelope{
+  width: 100%;
+  height: 100%;
+  position: fixed; 
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.envelope-show{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position:relative;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/envelope@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.envelope-show image{
+  width: 100%;
+  height: 90%;
+}
+.envelope-price{
+  width: 300rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute; */
+}
+.envelope-price text{
+  font-size: 40rpx;
+  color: red;
+  font-weight: bold;
+}
+.envelope-btn{
+  background:gold;
+  width: 400rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute; */
+}
+.envelope-btn text{
+  color: red;
+  font-size: 35rpx;
+}
+
+.envelope-close{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+.envelope-close image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+/* 足迹 */
+.footprint{
+  width: 100%;
+  height: 150rpx;
+  background: white;
+  z-index: 100;
+}
+.footprint-content{
+  width: 100rpx;
+  height: 100rpx;
+  /* display: inline-block; */
+  display: -webkit-inline-flex;
+  margin-left: 20rpx;
+  margin-top: 25rpx;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.footprint-content image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 80rpx;
+}
+/* .footprint-content text{
+  width: 80rpx;
+  font-size: 20rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+} */

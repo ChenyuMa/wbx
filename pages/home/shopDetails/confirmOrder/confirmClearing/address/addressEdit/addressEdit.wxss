@@ -1,0 +1,209 @@
+/* pages/home/shopDetails/confirmOrder/confirmClearing/address/addressEdit/addressEdit.wxss */
+.addressAdd {
+  width: 100%;
+  background: gainsboro;
+}
+
+.line {
+  width: 100%;
+  height: 20rpx;
+  background-color: gainsboro;
+}
+
+.userInfo {
+  width: 100%;
+  height: 48%;
+  background-color: white;
+}
+
+/*用户电话  */
+
+.userName {
+  width: 100%;
+  height: 16%;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  flex-direction: row;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.userName view:first-child {
+  width: 16%;
+  margin-left: 5%;
+}
+
+.userName view:last-child {
+  width: 75%;
+}
+
+/*用户手机  */
+
+.userPhone {
+  width: 100%;
+  height: 16%;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  align-items: center;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.userPhone view:first-child {
+  margin-left: 5%;
+  width: 20%;
+}
+
+.userPhone view:last-child {
+  width: 71%;
+}
+
+/*所在地址  */
+
+.userAddress {
+  width: 100%;
+  height: 16%;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.userAddress view:first-child {
+  margin-left: 5%;
+  width: 20%;
+}
+
+.userAddress view:last-child {
+  width: 71%;
+  color: gray;
+}
+
+/*详细地址  */
+
+.detailAddress {
+  width: 100%;
+  height: 16%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.detailAddress view:first-child {
+  margin-left: 5%;
+  width: 20%;
+}
+
+.detailAddress view:last-child {
+  width: 71%;
+}
+
+/*默认地址  */
+
+.acquiescence {
+  width: 100%;
+  height: 16%;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+.acquiescence view:first-child {
+  margin-left: 5%;
+}
+
+.acquiescence view:last-child {
+  margin-right: 5%;
+}
+
+/* 设置为常用地址 */
+.oftenAddress {
+  width: 100%;
+  height: 16%;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.oftenAddress view:first-child {
+  margin-left: 5%;
+}
+
+.oftenAddress .often-list{
+    display: flex;
+    margin-right: 5%;
+}
+.oftenAddress .often-list text{
+    display: inline-block;
+    padding: 5rpx 20rpx;
+    margin-left: 10rpx;
+    border: 2rpx solid gainsboro;
+    border-radius: 10rpx;
+}
+
+
+
+
+
+/*保存  */
+
+.preservation {
+  margin-top: 40rpx;
+  width: 100%;
+  height: 10%;
+}
+
+.preservation button {
+  width: 90%;
+  height: 80%;
+  background: #06c1ae;
+  color: white;
+}
+
+/*弹出  */
+
+.eject {
+  width: 100%;
+  height: 40%;
+  background: red;
+}
+
+.select {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  background: whitesmoke;
+}
+
+.select text:first-child {
+  margin-left: 50rpx;
+}
+
+.select text:last-child {
+  margin-right: 50rpx;
+  color: #06c1ae;
+}
+
+/*城市  */
+
+.city {
+  width: 100%;
+  height: 95%;
+  background: gainsboro;
+}
+
+/*选择器  */
+
+.selector {
+  width: 100%;
+  height: 100%;
+}

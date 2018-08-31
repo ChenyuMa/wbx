@@ -1,0 +1,75 @@
+<!--pages/home/location/location.wxml-->
+<view class='locationPage' style='height:{{windowHeight}}px;'>
+  <!--头部  -->
+  <view class='top_search_view'>
+    <!--搜索框  -->
+    <view class='top_search flex-row'>
+      <!--搜索定位  -->
+      <view class='search_location flex-row' bindtap='select_city'>
+        <text class='text-ellipsis'>{{cityName}}</text>
+        <text class='fa fa-sort-down'></text>
+      </view>
+
+      <!--搜索  -->
+      <view class='search'>
+        <input placeholder='请输入收货地址' type='text' value='{{inputTxt}}' bindinput='input_change' bindfocus='inputFocus'></input>
+      </view>
+
+      <!--清空  -->
+      <view class='search-clear' wx:if='{{inputTxt != ""}}' bindtap='search_clear'>
+        <text class='fa fa-times-circle'></text>
+      </view>
+    </view>
+  </view>
+
+  <!--定位内容  -->
+  <view class='location-content'>
+    <scroll-view scroll-y='{{scrollY}}' style='height:100%;'>
+      <!--点击定位当前地址  -->
+      <view class='current-address' bindtap='current_address'>
+        <text class='fa fa-crosshairs'></text>
+        <text>点击定位当前位置</text>
+      </view>
+
+
+      <!--附近地址  -->
+      <view class='near-address'>
+        <text class='fa fa-map-marker'></text>
+        <text>附近地址</text>
+      </view>
+
+      <!--附近地址列表  -->
+      <view class='near-address-list text-ellipsis'>
+        <!-- <view bindtap='click_search_address' data-city_name='{{cityName}}' data-locate='{{location_address_list}}'>
+          <text>{{location_address_list.regeocodeData}}</text>
+        </view> -->
+        <block wx:for='{{near_location_list}}' wx:key='index'>
+          <view bindtap='click_search_address' data-city_name='{{cityName}}' data-locate='{{item}}'>
+            <text>{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!--搜索收货地址  -->
+  <view class='{{inputTxt == ""?"search-address":"search-addr"}}' wx:if='{{is_search_address}}' bindtap='click_blank'>
+    <scroll-view scroll-y='{{scrollY}}' style='height:100%;'>
+      <view class='margin-top'></view>
+
+      <!--收搜内容  -->
+      <block wx:for='{{search_add_list}}' wx:key='index'>
+        <view class='search-address-content flex-column' catchtap='click_search_address' data-locate='{{item}}' wx:if='{{item.name!="atm"}}'>
+          <view class='address-content-top'>
+            <text>{{item.name}}</text>
+          </view>
+          <view class='address-content-bottom text-ellipsis'>
+            <text>{{item.address}}</text>
+          </view>
+        </view>
+      </block>
+
+    </scroll-view>
+  </view>
+
+</view>

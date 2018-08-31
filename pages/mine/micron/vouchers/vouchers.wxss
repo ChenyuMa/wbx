@@ -1,0 +1,53 @@
+/* pages/mine/micron/vouchers/vouchers.wxss */
+/*代金券  */
+.vouchers-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*  */
+.vouchers-content{
+  width: 100%;
+  height: 300rpx;
+  margin-top: 30rpx;
+  background: white;
+}
+/*  */
+.content-title{
+  height: 70rpx;
+}
+.content-title{
+  font-size: 30rpx;
+  line-height: 70rpx;
+  margin-left: 30rpx;
+}
+/*  */
+.content-camilo{
+  height: 160rpx;
+}
+.content-camilo input{
+  margin-left: 30rpx;
+  height: 160rpx;
+  font-size: 70rpx;
+  line-height: 160rpx;
+}
+/*  */
+.content-balance{
+  height: 70rpx;
+}
+.content-balance text{
+  color: gray;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  margin-left: 30rpx;
+}
+/*确认  */
+.content-confirm{
+  width: 90%;
+  height: 80rpx;
+  background: #06C1AE;
+  margin: 50rpx auto;
+  line-height: 80rpx;
+  color: white;
+  text-align: center;
+  font-size: 30rpx;
+}

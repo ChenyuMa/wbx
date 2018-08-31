@@ -1,0 +1,105 @@
+/* pages/mine/reserve/reserve.wxss */
+/*预定界面  */
+.reserve-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*头部导航栏  */
+.swiper-tab{
+  width: 100%;
+  height: 7%;
+  display: flex;
+  flex-direction: row;
+  /* border-bottom: 1rpx solid #777; */
+  line-height: 80rpx;
+  background: white;
+}
+.tab-item{
+  width: 33.3%;
+  font-size: 30rpx;
+  text-align: center;
+  color: gray;
+}
+.on{
+  color: #06C1AE;  
+  border-bottom: 5rpx solid #06C1AE;  
+}
+/*显示页面  */
+.swiper{
+  width: 100%;
+  height: 93%;
+}
+/*******************待付款  */
+.obligation{
+  width: 100%;
+  height: 100%;
+}
+/*待付款样式  */
+.shop{
+  width: 100%;
+  margin-top: 20rpx;
+  height: 400rpx;
+   background: white; 
+}
+/*标题  */
+.shop-titel{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.shop-titel text{
+  font-size: 30rpx;
+  color: gray;
+}
+.shop-titel text:first-child{
+  margin-left: 30rpx;
+}
+.shop-titel text:last-child{
+  margin-right: 30rpx;
+  color: #06C1AE;
+}
+/*店铺内容  */
+.shop-content{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.shop-content text{
+  margin-left: 30rpx;
+  font-size: 25rpx;
+  color: gray;  
+}
+/*店铺底部  */
+.shop-bottom{
+  width: 100%;
+  height: 20%;
+  border-top: 1rpx solid whitesmoke;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.shop-bottom text{
+  margin-right: 30rpx;
+  border: 1rpx solid gray;
+  width: 130rpx;
+  height: 45rpx;
+  text-align: center;
+  line-height: 45rpx;
+  font-size: 25rpx;
+  border-radius: 10rpx;
+  color: gray;
+}
+.shop-bottom text:nth-child(2){
+  color: #06C1AE;
+  border: 1rpx solid #06C1AE;
+}
+.shop-bottom text:nth-child(3){
+  background: #06C1AE;
+  color: white;
+  border: 1rpx solid #06C1AE;
+}

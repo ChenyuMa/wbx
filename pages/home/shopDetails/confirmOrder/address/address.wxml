@@ -1,0 +1,7 @@
+<!--pages/mine/address/address.wxml-->
+<view class='address' style='height:{{windowHeight}}px'>
+  <view class='addressAdd' bindtap='addressAdd'>
+    <text>+添加地址</text>
+  </view>
+</view>
+

@@ -1,0 +1,14 @@
+<!--pages/mine/micronDetail/micronDetail.wxml-->
+<view class='micronDetail-pages' style='height:{{windowHeight}}px;'>
+  <scroll-view scroll-y='{{true}}' style='height:100%;' bindscrolltolower='tolower'>
+    <!--明细  -->
+     <block wx:for='{{detailList}}' wx:key='index'> 
+      <view class='detail'>
+        <!--  -->
+        <view class='up'><text>微米：￥{{item.money/100.00}}</text><text>{{item.create_time}}</text></view>
+        <!--  -->
+        <view class='bottom'><text>{{item.intro}}</text></view>
+      </view>
+     </block> 
+  </scroll-view>
+</view>

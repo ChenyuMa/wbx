@@ -1,0 +1,82 @@
+<!--pages/home/search/search.wxml-->
+<view class='searchStyle' style='height:{{windowHeight}}px;'>
+  <view class='top'>
+    <view class='top_searchView'>
+      <view class='searchView_leftView' bindtap='click_type'>
+        <text>{{search_tpye}}</text>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/search_triangle@2x.png?imageView2/1/w/100/h/100'></image>
+      </view>
+      <view class='searchView_inputView'>
+        <input type='text' placeholder='搜索关键字' value='{{inputTxt}}' bindinput='inputChange'></input>
+      </view>
+      <view class='searchView_clearView' wx:if='{{inputTxt}}' bindtap='clearInputTxt'>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/ZFPlayer_close.png?imageView2/1/w/100/h/100'></image>
+      </view>
+    </view>
+    <view class='click_type' wx:if='{{click_type}}'>
+      <view id='1'  data-name='商品' catchtap='set_type'>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/search_goodsIcon.png'></image>
+        <text>商品</text>
+      </view>
+      <view id='2' data-name='商城' catchtap='set_type'>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/seach_shopIcon.png'></image>
+        <text>商城</text>
+      </view>
+    </view>
+
+  </view>
+  <!--搜索内容  -->
+  <view class='searchContent'>
+    <scroll-view style='height:100%;' scroll-y='ture'>
+      <block wx:for='{{searchList}}' wx:key='index'>
+        <view class='store_eachStyle' id='{{item.shop_id}}' bindtap='shopDetails' data-gradeid='{{item.grade_id}}'>
+          <view class='store_eachLeftStyle'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}' class='store_eachImgStyle'></image>
+          </view>
+          <view class='store_eachRightStyle'>
+            <text class='eachRight_textStyle'>{{item.shop_name}}</text>
+            <!--评价和距离  -->
+            <view class='eachRight_starsVicinityStyle'>
+              <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/ui_starbar.png?imageView2/1/w/100/h/100' class='eachRight_starsImgStyle'></image>
+              <view class='eachRight_distanceStyle'>
+                <view class='eachRight_distanceTextStyle'>
+                  <text>{{item.d}}</text>
+                </view>
+                <!--认证  -->
+                <view class='eachRight_distanceRealStyle'>
+                  <text wx:if='{{item.is_renzheng == 1}}' style='padding: 0 10rpx;'>已认证</text>
+                  <!-- <text wx:else>未认证</text> -->
+                </view>
+                <!--实体或菜市场  -->
+                <view class='eachRight_distanceTypeStyle'>
+                  <text wx:if='{{item.grade_id == 15}}'>菜市场</text>
+                  <text wx:else>实体店</text>
+                </view>
+              </view>
+            </view>
+            <!--起送价格  -->
+            <view class='store_eachPriceStyle'>
+              <text wx:if='{{ietm.grade_id == 15}}'>起送￥{{item.ele_since_money / 100}}</text>
+              <text wx:else>起送￥{{item.since_money / 100}}</text>
+              <!--店铺状态  -->
+              <view class='shopType'>
+                <text class='new-shop' wx:if='{{item.shop_status == 3}}'>新店开业</text>
+                <text class='waiting-shop' wx:if='{{item.shop_status == 2}}'>筹备开业</text>
+                <text class='shop-open' wx:if='{{item.shop_status == 1}}'>营业中</text>
+                <text class='shop-rest' wx:if='{{item.shop_status == 0}}'>休息中</text>
+              </view>
+            </view>
+            <!--商家地址  -->
+            <view class='store_eachAddrStyle'>
+              <text>地址：{{item.addr}}</text>
+            </view>
+            <!--配送范围  -->
+            <view class='store_eachDeliveryStyle'>
+              <text>配送范围：{{item.peisong_fanwei}}</text>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

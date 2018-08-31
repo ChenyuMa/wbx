@@ -1,0 +1,41 @@
+<!--pages/mine/address/address.wxml-->
+<view class='address' style='height:{{windowHeight}}px'>
+  <view class='addressAdd' bindtap='addressAdd'>
+    <text>+添加收货地址</text>
+  </view>
+  <scroll-view style='heigth:92%' scroll-y='true'>
+    <view class='addressStyle' wx:for='{{addressList}}' wx:key='index' bindchange='addressDefault'>
+      <!--用户信息  -->
+      <view class='userInfo'>
+        <!--用户名称电话  -->
+        <view class='userName'>
+          <text>{{item.xm}}</text>
+          <text>{{item.tel}}</text>
+        </view>
+        <!--用户地址  -->
+        <view class='userAddress'>
+          <view class='often'>{{item.tag}}</view><text>{{item.area_str}}{{item.info}}</text>
+        </view>
+      </view>
+      <view class='line'></view>
+      <!--默认地址  -->
+      <view class='selectAddress'>
+        <view>
+          <radio-group bindchange='addressDefault' id='{{item.id}}'>
+            <radio checked='{{item.default}}'> 默认地址</radio>
+          </radio-group>
+        </view>
+        <view>
+          <view class='edit' catchtap='addressEdit' data-addr='{{item}}'>
+            <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/addrEditor.png'></image>
+            <text>编辑</text>
+          </view>
+          <view class='deleting' bindtap='deleting' id='{{item.id}}'>
+            <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/delete@2x.png'></image>
+            <text>删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

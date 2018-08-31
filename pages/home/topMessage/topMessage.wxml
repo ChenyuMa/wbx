@@ -1,0 +1,16 @@
+<!--pages/home/topMessage/topMessage.wxml-->
+<view wx:for="{{ arr }}" wx:key="time" class="chat_list">
+	<view class="list_left" bindtap="into_chatRoom" data-username="{{ item.yourname }}">
+		<view class="list_pic">
+			<image src="../../images/number.png"></image>
+		</view>
+		<view class="list_text">
+			<text class="list_user">{{item.yourname}}</text>
+			<text class="list_word">{{item.msg.data[0].data}}</text>
+		</view>
+	</view>
+	<view class="list_right">
+		<text bindtap="into_chatRoom" data-username="{{ item.yourname }}">{{item.time}}</text>
+		<text bindtap="del_chat" data-username="{{ item.yourname }}" class="delChat">删除会话</text>
+	</view>
+</view>

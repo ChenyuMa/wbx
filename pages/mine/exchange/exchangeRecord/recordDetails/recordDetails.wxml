@@ -1,0 +1,4 @@
+<!--pages/mine/exchange/exchangeRecord/recordDetails/recordDetails.wxml-->
+<view class='recordDetails-pages' style='height:{{windowHeight}}px;'>
+
+</view>

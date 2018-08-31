@@ -1,0 +1,56 @@
+<!--pages/login/login.wxml-->
+<view class='loginStyle' style='height:{{loginHeight}}px;'>
+  <!--图标  -->
+  <view class='loginTop_logoStyle'>
+    <!-- <image src='{{imgUrls+"login_logo@2x.png"}}' class='loginTop_logoImg1Style'></image>
+      <image src='{{imgUrls+"iocn_logo@2x.png"}}' class='loginTop_logoImg2Style'></image> -->
+    <image src='{{imgUrls+"newLogin_logo@2x.png"}}'></image>
+  </view>
+  <!--用户输入  -->
+  <view class='userInforStyle'>
+    <view class='userStyle'>
+      <!-- <image src='{{imgUrls+"login_user@2x.png"}}' class='user_img1Style'></image>  -->
+      <text style='font-size:30rpx;margin-left:20rpx;'>手机号：</text>
+      <view class='user_inputStyle'>
+        <input type='number' class='user_inputStyle' bindinput='bindInputUser' bindfocus='bindFocusUser' bindblur='bindBlurUser' placeholder="请输入手机号" value="{{inputUserTxt}}"></input>
+        <image src='{{imgUrls+"clear.png"}}' class='user_img2Style' style='display:{{clearUser}};' bindtap='clearUser'></image>
+      </view>
+      <text bindtap='getCode' class='{{is_show?"cldeStyle":"cldeStyles"}}'>获取验证码</text>
+    </view>
+    <view class='passwordStyle'>
+      <!-- <image src='{{imgUrls+"login_psd@2x.png"}}' class='password_img1Style'></image> -->
+      <text style='font-size:30rpx;margin-left:20rpx;'>验证码：</text>
+      <view class='password_inputStyle'>
+        <input type='number' class='password_inputStyle' bindinput='bindInputPassword' bindfocus='bindFocusPassword' bindblur='bindBlurPassword' placeholder="请输入验证码" value="{{inputPasswordTxt}}" ></input>
+        <image src='{{imgUrls+"clear.png"}}' class='password_img2Style' style='display:{{clearPassword}};' bindtap='clearPassword'></image>
+      </view>
+      <view style='border-left:1rpx solid gray;disp:flex;align-items: center;justify-content: center;height:50%;'>
+        <text style='margin-left:50rpx;font-size:30rpx;color:gray;'>{{last_time}}s</text>
+      </view>
+    </view>
+  </view>
+  <view class='login_bottomStyle'>
+    <view class='spacingStyle'></view>
+    <!--登入按钮  -->
+    <button class='login_btnStyle' bindtap='btnLogin'>登录</button>
+    <view class='login_registeredStyle'>
+      <!-- <text class='new_userStyle' bindtap='newUser'>新用户注册</text> -->
+      <!-- <view class='userPass_lineStyle'></view> -->
+      <!-- <text class='password_forgetStyle' bindtap='passwordForget'>忘记密码？</text> -->
+      <!-- <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_check@2x.png'></image> -->
+      <text>温馨提示：未注册微百姓账号的手机号,登录时将自动注册,且代表您已同意</text>
+      <text style='color:#06c1ae;' catchtap='cliceUserTCP'>《用户注册协议》</text>
+    </view>
+  </view>
+
+  <!--微信登录  -->
+  <view class='wx-login'>
+    <text>—— 使用微信快速登录 ——</text>
+    <!-- <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/wxLogo@2x.png' bindtap='clickWxLogin'></image> -->
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="clickWxLogin"></button>
+  </view>
+  <!-- 自定义弹窗 -->
+  <!-- <view class="showModule" wx:if="{{isShow}}">
+    <view class="text">{{text}}</view>
+  </view> -->
+</view>

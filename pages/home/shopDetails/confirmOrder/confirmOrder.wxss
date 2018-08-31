@@ -1,0 +1,186 @@
+/* pages/home/shopDetails/confirmOrder/confirmOrder.wxss */
+
+.confirmOrder {
+  width: 100%;
+  background: whitesmoke;
+}
+
+/*订单详情  */
+
+.orderDetails {
+  width: 100%;
+  height: 90%;
+}
+
+/*订单头部  */
+
+.orderTop {
+  width: 100%;
+  height: 8%;
+  background: white;
+  border-bottom: 1rpx solid gainsboro;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.orderTop text {
+  font-size: 25rpx;
+}
+
+.orderTop text:nth-child(1) {
+  color: gray;
+  margin-left: 20rpx;
+}
+
+.orderTop text:nth-child(2) {
+}
+
+.orderTop text:nth-child(3) {
+  color: #09c1ae;
+}
+
+/*订单内容  */
+
+.orderContent {
+  width: 100%;
+  background: white;
+}
+
+/*内容  */
+
+.content {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid gainsboro;
+}
+
+/*商品图片  */
+
+.contentImg {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentImg image {
+  width: 75%;
+  height: 80%;
+}
+
+/* 商品名称数量 */
+
+.contentDetails {
+  width: 55%;
+  height: 70%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.contentDetails text {
+  font-size: 30rpx;
+}
+
+.orderNum {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.orderNumLeft {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contentDetails image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/*删除当前商品  */
+
+.contentDel {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentDel image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/*线  */
+
+.line {
+  width: 70%;
+  border-bottom: solid gainsboro 1rpx;
+}
+
+/*合计  */
+
+.total {
+  height: 60rpx;
+  color: red;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20rpx;
+  font-size: 25rpx;
+  line-height: 60rpx;
+}
+
+/*确认下单  */
+
+.confirmClearing {
+  width: 100%;
+  height: 10%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+}
+
+.confirmClearing_left {
+  width: 70%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.confirmClearing_left image {
+  position: absolute;
+  margin-left: 25rpx;
+  margin-top: -5rpx;
+  width: 123rpx;
+  height: 110rpx;
+}
+
+.confirmClearing_left text {
+  margin-left: 180rpx;
+  color: red;
+}
+
+.confirmClearing_right {
+  width: 30%;
+  height: 100%;
+  background: #09c1ae;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.confirmClearing_right text {
+  color: white;
+}

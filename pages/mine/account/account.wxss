@@ -1,0 +1,182 @@
+/* pages/mine/account/account.wxss */
+.accountStyle{
+  width: 100%;
+  background: whitesmoke;
+}
+/*上传头像  */
+.userIcon{
+  width: 100%;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userIcon image:nth-child(1){
+  margin-left: 40rpx;
+  width: 40rpx;
+  height: 50rpx;
+}
+.userIcon text{
+  width: 200rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+.userImg{
+  width: 70rpx;
+  height: 70rpx;
+  background: whitesmoke;
+  margin-left: 280rpx;
+  border-radius: 70rpx;
+}
+.userIcon image:last-child{
+  margin-left: 20rpx;
+  width: 25rpx;
+  height: 40rpx;
+}
+/*共有样式  */
+.userView{
+  width: 100%;
+  height: 80rpx;
+  background: white;
+}
+.userFlex{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userImg1{
+  margin-left: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.userTxt{
+  width: 200rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+.userImg2{
+  width: 25rpx;
+  height: 40rpx;
+  margin-left: 368rpx;
+}
+/*用户昵称  */
+.userName{
+  margin-top: 2rpx;
+}
+/*收货地址  */
+.userAddres{
+  margin-top: 20rpx;
+}
+.userAddres image:first-child{
+  width: 40rpx;
+}
+.userAddres text{
+  margin-left: 30rpx;
+}
+/*上传头像选择  */
+.upIcon{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+}
+.topIcon{
+  width: 100%;
+  height: 70%;
+}
+.downIcon{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.downIcon-Top{
+  width: 90%;
+  height: 150rpx;
+  background: white;
+  border-radius: 5rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  margin-top: 50rpx;
+}
+.downIcon-Top text:first-child{
+  width: 100%;
+  height: 50%;
+  line-height: 75rpx;
+  border-radius: 5rpx;  
+  border-bottom: 1rpx solid gainsboro;
+}
+.downIcon-Top text:last-child{
+  width: 100%;
+  height: 50%;
+  line-height: 75rpx;
+  border-radius: 5rpx;  
+}
+.downIcon-bottom{
+  width: 90%;
+  height: 75rpx;
+  background: white;
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+  border-radius: 5rpx;
+  line-height: 75rpx;
+}
+/*修改用户昵称  */
+.setName{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+.name{
+  width: 90%;
+  height: 350rpx;
+  background: white;
+  margin: 200rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nameTitle{
+  color: #06C1AE;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+}
+.name input{
+  border: 1rpx solid whitesmoke;
+  margin-top: 30rpx;
+  width: 80%;
+  height: 80rpx;
+  font-size: 30rpx;
+}
+.btn{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 71rpx;
+  border-top: 1rpx solid whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+}
+.btn text:nth-child(1){
+  color: black;
+  width: 49%;
+  text-align: center;
+}
+.btn text:nth-child(2){
+  color: gray;
+}
+.btn text:nth-child(3){
+  width: 49%;
+  color: #06C1AE;
+  text-align: center;
+}

@@ -1,0 +1,331 @@
+/* pages/mine/exchange/exchange.wxss */
+
+/*************************************************积分兑换界面  */
+
+.exchange-pages {
+  width: 100%;
+  background: whitesmoke;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*************************************************兑换记录  */
+
+.exchange-record {
+  align-self: flex-end;
+  height: 5%;
+}
+
+.exchange-record text {
+  margin: 5rpx 10rpx 0 0;
+  color: brown;
+  font-size: 30rpx;
+}
+
+/***********************************************积分兑换图片  */
+
+.exchange-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  height: 20%;
+}
+
+.exchange-img image {
+  width: 100%;
+  height: 100%;
+}
+
+/*可用积分  */
+
+.exchange-img text {
+  font-size: 30rpx;
+  color: brown;
+}
+
+/*****************************************************掌柜精选  */
+
+.exchange-content {
+  width: 90%;
+  background: white;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 掌柜精选图片 */
+
+.content-img {
+  width: 180rpx;
+  height: 10%;
+}
+
+.content-img image {
+  width: 100%;
+  height: 100%;
+}
+
+/*********************内容商品  */
+
+.content-goods {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+/*商品图片  */
+
+.goods-img {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: whitesmoke; */
+}
+
+.goods-img image {
+  width: 80%;
+  height: 80%;
+}
+
+/*商品名称  */
+
+.goods-name {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.goods-name text:first-child {
+  font-size: 30rpx;
+}
+
+.goods-name text:last-child {
+  font-size: 30rpx;
+  color: gold;
+}
+
+/*立即兑换  */
+
+.exchange-now {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exchange-now text {
+  color: white;
+  background: gold;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  padding: 10rpx;
+}
+
+/**********************头部  */
+
+.exchange-top {
+  width: 100%;
+  height: 35%;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/banner@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.exchangeRecord {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 30rpx;
+  margin: 5rpx 10rpx 0 0;
+  color: white;
+}
+
+.exchange-top view {
+  margin-top: 130rpx;
+}
+
+.exchange-top view text:first-child {
+  color: white;
+}
+
+.exchange-top view text:last-child {
+  color: #fddc01;
+}
+
+/***********************猜你喜欢  */
+
+.like {
+  width: 100%;
+  height: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.like image {
+  width: 200rpx;
+  height: 30rpx;
+}
+
+/******************************商品展示  */
+
+.goodsShop {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.goodsStyle {
+  width: 49.6%;
+  height: 350rpx;
+  background: white;
+  margin-bottom: 5rpx;
+  position: relative;
+}
+
+.goodsTitle {
+  width: 90%;
+  height: 15%;
+  margin-left: 5%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goodsIntegral {
+  width: 100%;
+  height: 15%;
+  margin-left: 5%;
+  font-size: 35rpx;
+}
+
+.goodsIntegral text:first-child {
+  color: #49cbb8;
+}
+
+.goodsIntegral text:last-child {
+  margin-left: 10rpx;
+  color: gray;
+}
+
+/***************************商品图片  */
+
+.goodsPhoto {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+}
+
+.goodsPhoto image {
+  width: 50%;
+  height: 70%;
+}
+
+/*兑换  */
+.exchange{
+  width: 120rpx;
+  height: 40rpx;
+  background: #49cbb8;
+  text-align: center;
+  line-height: 40rpx;
+  position: absolute;
+  font-size: 20rpx;
+  color: white;
+  right: 20rpx;
+  bottom: 20rpx;
+  border-radius: 20rpx;
+}
+/*************微信登录  */
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}

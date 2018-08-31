@@ -1,0 +1,5 @@
+<!--pages/login/userTCP/userTCP.wxml-->
+<view style='height:{{windowHeight}}px;width:100%;'>
+  <web-view src='https://www.wbx365.com/Wbxwaphome/users/fwxy.html'>
+  </web-view>
+</view>

@@ -1,0 +1,72 @@
+<!--pages/home/shopDetails/searchTo/searchTo.wxml-->
+<view class='searchStyle' style='height:{{windowHeight}}px' wx:if='{{gradeid != 15}}'>
+  <!--头部输入框  -->
+  <view class='search'>
+    <view class='searchView'>
+      <image src='{{imgUrls+"b_search@2x.png"}}'></image>
+      <view class='inputView'>
+        <input type='text' value='{{inputTxt}}' bindblur='valueBlur' bindfocus='valueFocus' placeholder='请输入商品名称' bindinput='valueChange'></input>
+      </view>
+      <image src='{{imgUrls+"ZFPlayer_close.png"}}' style='display:{{isCancel}}' bindtap='cancelTxt'></image>
+    </view>
+  </view>
+  <!--商品显示  -->
+  <view class='goodsList'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+      <!--商品样式  -->
+      <view class='goodsDetails' wx:for='{{searchList}}' wx:key='index'>
+        <view class='goodsIcon'>
+          <image class='goodsImg' src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+        <view class='goodsTitle'>
+          <text>{{item.title}}</text>
+          <text class='onSale'>月售：{{item.sold_num}}份</text>
+          <view class='goodsPrice'>
+            <text>￥{{item.price/100.00}}</text>
+            <view class='goodsNum'>
+              <image src='{{imgUrls+"store_reduce@2x.png"}}' class='goodsSubtraction' data-id='{{item.goods_id}}' bindtap='goodsSubtraction'></image>
+              <text>{{item.buy_num}}</text>
+              <image src='{{imgUrls+"store_add@2x.png"}}' class='goodsAdd' data-id='{{item.goods_id}}' bindtap='goodsAdd'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view class='searchStyle' style='height:{{windowHeight}}px'>
+  <!--头部输入框  -->
+  <view class='search'>
+    <view class='searchView'>
+      <image src='{{imgUrls+"b_search@2x.png"}}'></image>
+      <view class='inputView'>
+        <input type='text' value='{{inputTxt}}' bindblur='valueBlur' bindfocus='valueFocus' placeholder='请输入商品名称' bindinput='valueChange'></input>
+      </view>
+      <image src='{{imgUrls+"ZFPlayer_close.png"}}' style='display:{{isCancel}}' bindtap='cancelTxt'></image>
+    </view>
+  </view>
+  <!--商品显示  -->
+  <view class='goodsList'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+      <!--商品样式  -->
+      <view class='goodsDetails' wx:for='{{searchList}}' wx:key='index'>
+        <view class='goodsIcon'>
+          <image class='goodsImg' src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+        <view class='goodsTitle'>
+          <text>{{item.product_name}}</text>
+          <text class='onSale'>月售：{{item.sold_num}}份</text>
+          <view class='goodsPrice'>
+            <text>￥{{item.price/100.00}}</text>
+            <view class='goodsNum'>
+              <image src='{{imgUrls+"store_reduce@2x.png"}}' class='goodsSubtraction' data-id='{{item.product_id}}' bindtap='goodsSubtraction'></image>
+              <text>{{item.buy_num}}</text>
+              <image src='{{imgUrls+"store_add@2x.png"}}' class='goodsAdd' data-id='{{item.product_id}}' bindtap='goodsAdd'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='goodsDetails-null' wx:if='{{is_goodsDetails}}'>没有东西哦！</view>
+    </scroll-view>
+  </view>
+</view>

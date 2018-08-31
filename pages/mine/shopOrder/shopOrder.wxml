@@ -1,0 +1,637 @@
+<!--pages/mine/shopOrder/shopOrder.wxml-->
+<view class="shopOrderStyle" style='height:{{orderHeight}}px;'>
+  <!--订单选择  -->
+  <view class='order-select'>
+    <view class='select flex-row'>
+      <!--买菜  -->
+      <view class='{{order_selected == 1?"selected":"selecteds"}}' bindtap='order_selected' data-select='1'>买菜订单</view>
+      <!--商城  -->
+      <view class='{{order_selected == 2?"selected":"selecteds"}}' bindtap='order_selected' data-select='2'>商城订单</view>
+    </view>
+  </view>
+
+  <!--顶部导航栏-->
+  <view class="swiper-tab">
+    <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">待付款</view>
+    <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待发货</view>
+    <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">待收货</view>
+    <view class="tab-item {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">待退款</view>
+    <view class="tab-item {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">已完成</view>
+  </view>
+
+  <!--买菜订单-->
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" wx:if='{{order_selected == 1}}'>
+    <!--待付款  -->
+    <swiper-item>
+      <!--无订单  -->
+      <view wx:if='{{waitPayList == ""}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitPayList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text wx:if='{{item.is_daofu == 0}}'>待付款</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon' >
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.need_pay/100.00}}</text>
+                <text>(含运费￥{{item.logistics/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='cancelOrder' id='{{item.order_id}}'>取消订单</button>
+                <button bindtap='orderPay' data-orderID='{{item.order_id}}' data-gradeID='{{order_selected == 1?"15":""}}' data-shopCart='{{item.goods}}'>去付款</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view> -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--待发货  -->
+    <swiper-item>
+      <view wx:if='{{waitShippingList == ""}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitShippingList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <image src='{{imgUrls+"order_hummingbird@2x.png"}}' wx:if='{{item.is_fengniao == 1}}'></image>
+                <text wx:if='{{item.is_daofu == 0}}'>待发货</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.need_pay/100.00}}</text>
+                <text>(含运费￥{{item.logistics/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='refunds' id='{{item.order_id}}' wx:if='{{item.is_daofu == 0}}'>申请退款</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view> -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--待收货  -->
+    <swiper-item>
+      <view wx:if='{{waitGoodsList == ""}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitGoodsList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text>待收货</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.need_pay/100.00}}</text>
+                <text>(含运费￥{{item.logistics/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='confirmGoods' id='{{item.order_id}}'>确认收货</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view> -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--待退款  -->
+    <swiper-item>
+      <view wx:if='{{waitRefundsList == ""}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitRefundsList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text>待退款</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.need_pay/100.00}}</text>
+                <text>(含运费￥{{item.logistics/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='cancelRefunds' id='{{item.order_id}}'>取消退款</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view> -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--已完成  -->
+    <swiper-item>
+      <view wx:if='{{completedList == ""}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{completedList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text>已完成</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.need_pay/100.00}}</text>
+                <text>(含运费￥{{item.logistics/100.00}})</text>
+              </view>
+              <view class='completedBtn'>
+                <button bindtap='afterSale' id='{{item.order_id}}'>申请售后</button>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='deletingOrder' id='{{item.order_id}}'>删除订单</button>
+                <button bindtap='appraise' id='{{item.order_id}}'  data-type='{{order_selected}}' wx:if='{{item.status == 8}}'>去评价</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view> -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 商城订单 -->
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange" wx:if='{{order_selected == 2}}'>
+    <!--待付款  -->
+    <swiper-item>
+      <!--无订单  -->
+      <view wx:if='{{isData}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitPayList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text wx:if='{{item.is_daofu == 0}}'>待付款</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.total_price/100.00}}</text>
+                <text>(含运费￥{{item.express_price/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='cancelOrder' id='{{item.order_id}}'>取消订单</button>
+                <button bindtap='orderPay' data-orderID='{{item.order_id}}' data-gradeID='{{order_selected == 1?"15":""}}' data-shopCart='{{item.goods}}'>去付款</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>  
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view>    -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--待发货  -->
+    <swiper-item>
+      <view wx:if='{{isData}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitShippingList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text wx:if='{{item.is_daofu == 0}}'>待发货</text>
+                <text wx:else>待发货（货到付款）</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.total_price/100.00}}</text>
+                <text>(含运费￥{{item.express_price/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='refunds' id='{{item.order_id}}' wx:if='{{item.is_daofu == 0}}'>申请退款</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>  
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view>    -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--待收货  -->
+    <swiper-item>
+      <view wx:if='{{isData}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitGoodsList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text>待收货</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.total_price/100.00}}</text>
+                <text>(含运费￥{{item.express_price/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='confirmGoods' id='{{item.order_id}}'>确认收货</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>  
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view>    -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--待退款  -->
+    <swiper-item>
+      <view wx:if='{{isData}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{waitRefundsList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text>待退款</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{item.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.total_price/100.00}}</text>
+                <text>(含运费￥{{item.express_price/100.00}})</text>
+              </view>
+              <view class='payBtn'>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='cancelRefunds' id='{{item.order_id}}'>取消退款</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>  
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view>    -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+
+    <!--已完成  -->
+    <swiper-item>
+      <view wx:if='{{isData}}' class='noOrder'>
+        <image src='{{imgUrls+"No_orders@2x.png"}}'></image>
+        <text>没有订单耶，快去下单吧！</text>
+      </view>
+      <!--有订单  -->
+      <view style='width:100%; height:100%' wx:else>
+        <scroll-view scroll-y='true' style='height:100%' bindscrolltolower='scrollBotton'>
+          <!--订单样式  -->
+          <view class='orderStyle' wx:for='{{completedList}}' wx:key='index'>
+            <!--订单头部  -->
+            <view class='orderHead'>
+              <view class='orderIcon'>
+                <image src='{{imgUrls+"order_num@2x.png"}}'></image>
+              </view>
+              <view class='orderID'>
+                <text>订单号:{{item.order_id}}</text>
+                <text>已完成</text>
+              </view>
+            </view>
+            <!--订单内容  -->
+            <view class='orderContent' wx:for='{{item.goods}}' wx:for-item='items' wx:key='index'>
+              <view class='contentStyle' bindtap='click_orderDetails' id='{{items.order_id}}'>
+                <view class='contentIcon'>
+                  <image src='{{items.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+                </view>
+                <view class='contentDetails'>
+                  <view class='setailsStore'>
+                    <text>【{{items.shop_name}}】</text>
+                    <text>{{items.product_name}}</text>
+                  </view>
+                  <view class='setailsPrice'>
+                    <text>￥{{items.price/100.00}}</text>
+                    <text>x{{items.num}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <!--订单尾部  -->
+            <view class='orderFoot'>
+              <view class='needPay'>
+                <text>需要付款</text>
+                <text>￥{{item.total_price/100.00}}</text>
+                <text>(含运费￥{{item.express_price/100.00}})</text>
+              </view>
+              <view class='completedBtn'>
+                <button bindtap='afterSale' id='{{item.order_id}}'>申请售后</button>
+                <button bindtap='orderDetails' id='{{item.order_id}}'>订单详情</button>
+                <button bindtap='deletingOrder' id='{{item.order_id}}'>删除订单</button>
+                <button bindtap='appraise' id='{{item.order_id}}'  data-type='{{order_selected}}' wx:if='{{item.status == 8}}'>去评价</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="loading" hidden="{{isBottom}}">正在载入更多...</view>  
+          <view class="loading complete" hidden="{{!isBottom}}">——— 已加载全部 ———</view>    -->
+        </scroll-view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!--申请售后  -->
+  <view class='afterSale' wx:if='{{is_afterSale}}'>
+    <!--申请售后头部  -->
+    <view class='top-afterSale' catchtap='cancel_afterSale'></view>
+    <!--申请售后内容  -->
+    <view class='afterSale-content'>
+      <!--申请售后内容头部  -->
+      <view class='afterSale-content-top'>
+        <text catchtap='cancel_afterSale'>取消</text>
+        <text catchtap='confirm_afterSale'>确定</text>
+      </view>
+      <!-- 选择售后内容 -->
+      <view class='select-afterSale-content'>
+        <picker-view style="width: 100%; height: 100%;" indicator-style="height: 40px;" value="{{value}}" bindchange="afterSale_change">
+          <picker-view-column >
+            <view wx:for='{{afterSale_list}}' wx:key='index' style="line-height: 40px">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+</view>

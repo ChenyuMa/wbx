@@ -1,0 +1,162 @@
+/* pages/login/login.wxss */
+.loginStyle{
+  width: 100%;
+  
+  /* background-color: gainsboro;  */
+}
+/*logo样式  */
+.loginTop_logoStyle{
+  width: 100%;
+  height: 35%;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginTop_logoImg1Style{
+ width: 20%;
+ margin-bottom: 3%;
+ height: 30%;
+}
+.loginTop_logoImg2Style{
+ width: 50%;
+ height: 20%;
+}
+/*用户框样式  */
+.userInforStyle{
+  width: 100%;
+  height: 20%;
+  /* background-color: antiquewhite;  */
+  
+}
+.userStyle{
+  width: 100%;
+  height: 50%;
+   /* background-color: cornsilk;  */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.user_img1Style{
+  width: 60rpx;
+  height: 60rpx;
+  /* background-color: cadetblue; */
+  margin: 20rpx
+}
+.user_inputStyle{
+  /* background-color: rebeccapurple; */
+  width: 80%;
+}
+.user_inputStyle input{
+  width: 100%;
+  margin-right: 20rpx;
+}
+.user_img2Style{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+/*密码框样式  */
+.passwordStyle{
+  width: 100%;
+  height: 50%;
+   /* background-color: cornsilk;  */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.password_img1Style{
+  width: 60rpx;
+  height: 60rpx;
+  /* background-color: cadetblue; */
+  margin: 20rpx
+}
+.password_inputStyle{
+  width: 80%;
+}
+.password_inputStyle input{
+  width: 100%;
+  margin-right: 20rpx;
+}
+.password_img2Style{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+.login_bottomStyle{
+  background-color: whitesmoke;
+  width: 100%;
+  height: 45%;
+  /* padding-top: 60rpx; */
+}
+.spacingStyle{
+  width: 100%;
+  height: 60rpx;
+  background-color: whitesmoke;
+}
+/*登入按钮样式  */
+.login_btnStyle{
+  width: 90%;
+  height: 15%;
+  background-color: #06c1ae;
+  color: white;
+  font-size: 35rpx;
+}
+.login_registeredStyle{
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: grey;
+  font-size: 30rpx;
+}
+.new_userStyle{
+  color: #06c1ae;
+}
+.userPass_lineStyle{
+  height: 35rpx;
+  border-right: 1rpx solid gray;
+  background-color: grey;
+}
+/*弹窗  */
+.showModule {
+ /* 用样式控制隐藏 visibility: hidden;*//* flex 布局 */
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ /* 生成绝对定位的元素，相对于浏览器窗口进行定位 */
+ position: fixed;
+ /* 如果 height,width 不变的情况下，left,top 不用修改 */
+ left: 35%;
+ top: 40%;
+ height: 200rpx;
+ width: 400rpx;
+ /* 不透明 */
+ opacity: 0.99;
+ background-color: #7b7b7b;
+ /* 圆角 */
+ border-radius: 30rpx;
+}
+ 
+.showModule .text {
+ /* flex 布局 */
+ display: flex;
+ /* 字体加粗 */
+ font-weight: bold;
+ color: white;
+ font-size: 13pt;
+ font-family: "微软雅黑";
+ /* Helvetica,
+   Arial,
+   Hiragino Sans GB,
+   Source Han Sans CN,
+   PingFang SC,
+   Roboto,
+   微软雅黑,
+   Heiti SC,
+   Microsoft Yahei,
+   sans-serif; */
+}

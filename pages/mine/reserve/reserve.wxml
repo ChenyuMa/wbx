@@ -1,0 +1,160 @@
+<!--pages/mine/reserve/reserve.wxml-->
+<view class='reserve-pages' style='height:{{windowHeight}}px;'>
+  <!-- 顶部导航栏 -->
+  <view class='swiper-tab'>
+    <view class='tab-item {{currentTab==0 ? "on" : ""}}' data-current='0' bindtap='swichNav'>待付款</view>
+    <view class='tab-item {{currentTab==1 ? "on" : ""}}' data-current='1' bindtap='swichNav'>待接单</view>
+    <view class='tab-item {{currentTab==2 ? "on" : ""}}' data-current='2' bindtap='swichNav'>待用餐</view>
+    <view class='tab-item {{currentTab==3 ? "on" : ""}}' data-current='3' bindtap='swichNav'>待退款</view>
+    <view class='tab-item {{currentTab==4 ? "on" : ""}}' data-current='4' bindtap='swichNav'>已完成</view>
+  </view>
+
+  <!--内容主体-->
+  <swiper class="swiper" current="{{currentTab}}" duration="200" bindchange="swiperChange">
+
+    <!--待付款  -->
+    <swiper-item>
+      <!-- <view style='obligation'> -->
+      <scroll-view scroll-y='{{true}}' style='height:100%;' bindscrolltolower='scrolltolower'>
+        <!--店铺样式  -->
+        <view class='shop' wx:for='{{waitPayList}}' wx:key='index'>
+          <!--标题  -->
+          <view class='shop-titel'>
+            <text class='fa fa-cutlery'> {{item.shop_name}}</text>
+            <text>待用餐</text>
+          </view>
+          <!-- 店铺内容 -->
+          <view class='shop-content'>
+            <text>用户信息：{{item.name}} {{item.mobile}}</text>
+            <text>用餐时间：{{item.reserve_time}}</text>
+            <text>用餐人数：{{item.number}}</text>
+            <text>桌位信息：{{item.table_number}}</text>
+            <text>我的定金：{{item.subscribe_money/100}}</text>
+          </view>
+          <!--店铺底部  -->
+          <view class='shop-bottom'>
+            <text data-id='{{item.reserve_table_id}}' bindtap='deleteOrder'>删除订单</text>
+            <text data-id='{{item.reserve_table_id}}' bindtap='detailsOrder'>订单详情</text>
+            <text data-id='{{item.reserve_table_id}}' bindtap='toPay'>去付款</text>
+          </view>
+        </view>
+      </scroll-view>
+      <!-- </view> -->
+    </swiper-item>
+
+    <!--待接单  -->
+    <swiper-item>
+      <!-- <view style='obligation'> -->
+      <scroll-view scroll-y='{{true}}' style='height:100%;' bindscrolltolower='scrolltolower'>
+        <!--店铺样式  -->
+        <view class='shop' wx:for='{{waitOrderList}}' wx:key='index'>
+          <!--标题  -->
+          <view class='shop-titel'>
+            <text class='fa fa-cutlery'> {{item.shop_name}}</text>
+            <text>待接单</text>
+          </view>
+          <!-- 店铺内容 -->
+          <view class='shop-content'>
+            <text>用户信息：{{item.name}} {{item.mobile}}</text>
+            <text>用餐时间：{{item.reserve_time}}</text>
+            <text>用餐人数：{{item.number}}</text>
+            <text>桌位信息：{{item.table_number}}</text>
+            <text>我的定金：{{item.subscribe_money/100}}</text>
+          </view>
+          <!--店铺底部  -->
+          <view class='shop-bottom'>
+            <text data-id='{{item.reserve_table_id}}' bindtap='cancelOrder'>取消订单</text>
+            <text bindtap='detailsOrder' data-id='{{item.reserve_table_id}}'>订单详情</text>
+            <!-- <text>去付款</text> -->
+          </view>
+        </view>
+      </scroll-view>
+      <!-- </view> -->
+    </swiper-item>
+
+    <!-- 待用餐 -->
+    <swiper-item>
+      <scroll-view scroll-y='{{true}}' style='height:100%;' bindscrolltolower='scrolltolower'>
+        <!--店铺样式  -->
+        <view class='shop' wx:for='{{waitDiningList}}' wx:key='index'>
+          <!--标题  -->
+          <view class='shop-titel'>
+            <text class='fa fa-cutlery'> {{item.shop_name}}</text>
+            <text>待用餐</text>
+          </view>
+          <!-- 店铺内容 -->
+          <view class='shop-content'>
+            <text>用户信息：{{item.name}} {{item.mobile}}</text>
+            <text>用餐时间：{{item.reserve_time}}</text>
+            <text>用餐人数：{{item.number}}</text>
+            <text>桌位信息：{{item.table_number}}</text>
+            <text>我的定金：{{item.subscribe_money/100}}</text>
+          </view>
+          <!--店铺底部  -->
+          <view class='shop-bottom'>
+            <text data-id='{{item.reserve_table_id}}' bindtap='applyRefund'>申请退款</text>
+            <text data-id='{{item.reserve_table_id}}' bindtap='detailsOrder'>订单详情</text>
+            <!-- <text>去付款</text> -->
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 待退款 -->
+    <swiper-item>
+      <scroll-view scroll-y='{{true}}' style='height:100%;' bindscrolltolower='scrolltolower'>
+        <!--店铺样式  -->
+        <view class='shop' wx:for='{{waitDefundList}}' wx:key='index'>
+          <!--标题  -->
+          <view class='shop-titel'>
+            <text class='fa fa-cutlery'> {{item.shop_name}}</text>
+            <text>待退款</text>
+          </view>
+          <!-- 店铺内容 -->
+          <view class='shop-content'>
+            <text>用户信息：{{item.name}} {{item.mobile}}</text>
+            <text>用餐时间：{{item.reserve_time}}</text>
+            <text>用餐人数：{{item.number}}</text>
+            <text>桌位信息：{{item.note}}</text>
+            <text>我的定金：{{item.subscribe_money/100}}</text>
+          </view>
+          <!--店铺底部  -->
+          <view class='shop-bottom'>
+            <text data-id='{{item.reserve_table_id}}' bindtap='cancelRefund'>取消退款</text>
+            <text data-id='{{item.reserve_table_id}}' bindtap='detailsOrder'>订单详情</text>
+            <!-- <text>去付款</text> -->
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 已完成 -->
+    <swiper-item>
+      <scroll-view scroll-y='{{true}}' style='height:100%;' bindscrolltolower='scrolltolower'>
+        <!--店铺样式  -->
+        <view class='shop' wx:for='{{completeList}}' wx:key='index'>
+          <!--标题  -->
+          <view class='shop-titel'>
+            <text class='fa fa-cutlery'> {{item.shop_name}}</text>
+            <text>已完成</text>
+          </view>
+          <!-- 店铺内容 -->
+          <view class='shop-content'>
+            <text>用户信息：{{item.name}} {{item.mobile}}</text>
+            <text>用餐时间：{{item.reserve_time}}</text>
+            <text>用餐人数：{{item.number}}</text>
+            <text>桌位信息：{{item.note}}</text>
+            <text>我的定金：{{item.subscribe_money/100}}</text>
+          </view>
+          <!--店铺底部  -->
+          <view class='shop-bottom'>
+            <!-- <text data-id='{{item.reserve_table_id}}'>取消订单</text> -->
+            <text data-id='{{item.reserve_table_id}}' bindtap='detailsOrder'>订单详情</text>
+            <!-- <text>去付款</text> -->
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+  </swiper>
+</view>

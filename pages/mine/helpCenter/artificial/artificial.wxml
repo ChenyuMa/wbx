@@ -1,0 +1,6 @@
+<!--pages/mine/helpCenter/artificial/artificial.wxml-->
+<view class='artificialPages' style='height:{{windowHeight}}px;'>
+  <web-view src='{{serviceUrl}}'>
+  
+  </web-view>
+</view>

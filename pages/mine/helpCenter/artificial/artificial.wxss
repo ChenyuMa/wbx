@@ -1,0 +1,5 @@
+/* pages/mine/helpCenter/artificial/artificial.wxss */
+.artificialPages{
+  width: 100%;
+  background: whitesmoke;
+}

@@ -1,0 +1,39 @@
+<!--pages/home/sweepOrder/sweepOrder.wxml-->
+<view class='sweepOrder-pages' style='height:{{windowHeight}}px;'>
+  <!-- 标题 -->
+  <view class='sweep-titel'>
+    <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/repast2@2x.png' class='titel-img'></image>
+    <text>就餐人数</text>
+  </view>
+
+  <!-- 人数 -->
+  <view class='sweep-num'>
+    <!--  -->
+    <view class='first-row'>
+      <text wx:for='{{4}}' wx:key='index' bindtap='selectNum' data-num='{{index+1}}' class='{{selectNum == index+1?"select-text":""}}'>{{index+1}}</text>
+    </view>
+    <view class='first-row'>
+      <text wx:for='{{4}}' wx:key='index' bindtap='selectNum' data-num='{{index+5}}' class='{{selectNum == index+5?"select-text":""}}'>{{index+5}}</text>
+    </view>
+    <view class='first-row'>
+      <text wx:for='{{4}}' wx:key='index' bindtap='selectNum' data-num='{{index+9}}' class='{{selectNum == index+9?"select-text":""}}'>{{index+9}}</text>
+    </view>
+    <view class='first-row'>
+      <text wx:for='{{3}}' wx:key='index' bindtap='selectNum' data-num='{{index+13}}' class='{{selectNum == index+13?"select-text":""}}'>{{index+13}}</text>
+      <text bindtap='selectNum' data-num='{{20}}' class='{{selectNum == 20?"select-text":""}}'>更多</text>
+    </view>
+  </view>
+
+  <!--就餐方式  -->
+  <view class='sweep-repast'>
+    <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/repast1@2x.png'></image>
+    <text>就餐方式</text>
+  </view> 
+  <!--就餐选择  -->
+  <view class='repast-select'>
+    <text bindtap='selectRepast' class='{{selectRepast == 0?"select-text":""}}' data-repast='0'>店内</text>
+    <text bindtap='selectRepast' class='{{selectRepast == 1?"select-text":""}}' data-repast='1'>外带</text>
+  </view>
+  <!--确定  -->
+  <view class='confirm'><button bindtap='clickConfirm'>确定</button></view>
+</view>

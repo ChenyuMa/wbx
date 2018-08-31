@@ -1,0 +1,162 @@
+/* pages/bindPhone/bindPhone.wxss */
+.bindPhone-pages{
+  width: 100%;
+  background: whitesmoke;
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+/*  */
+.bind-phone{
+  width: 100%;
+  /* height: 550rpx; */
+  /* background: whitesmoke; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center; 
+}
+.bind-phone input{
+  font-size: 25rpx;
+}
+
+/*头部图片  */
+.top-img{
+  width: 100%;
+  /* background: red; */
+}
+.top-img image{
+  width: 100%;
+  height: 350rpx;
+}
+
+/*绑定手机标题  */
+.bind-title{
+  width: 100%;
+  height: 70rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  color: #09C1AE;
+  
+}
+/* 手机号码 */
+.phone{
+  width: 100%;
+  height: 100rpx;
+  /* border: 1rpx solid gray; */
+  /* border-radius: 10rpx; */
+  background: white;
+  line-height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.phone input{
+  width: 55%;
+  /* margin-left: 10rpx; */
+  height: 100%;
+}
+/* 验证码 */
+.verification{
+  width: 100%;
+  height: 100rpx;
+  /* border: 1rpx solid gray; */
+  margin-top: 10rpx;
+  /* border-radius: 10rpx; */
+  line-height: 100rpx;
+  display: flex;
+  align-items: center;
+  background: white;
+  justify-content: space-between;
+}
+.verification input{
+  width: 55%;
+  margin-left: 10rpx;
+  height: 100%;
+  font-size: 25rpx;
+}
+.verification view{
+  font-size: 25rpx;
+  width: 140rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  color:gray;
+  border-left: 1rpx solid gray;  
+}
+.codeStyle{
+  background: #09C1AE;
+  font-size: 25rpx;
+  width: 140rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  /* position: absolute; */
+  /* right: 0; */
+  color: white;
+  margin-right:20rpx;
+}
+.codeStyles{
+  background: gray;
+  color: black;
+  font-size: 25rpx;
+  width: 140rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  margin-right:20rpx;
+}
+/*密码  */
+.password{
+  width: 100%;
+  height: 100rpx;
+  /* border: 1rpx solid gray; */
+  margin-top: 10rpx;
+  /* border-radius: 10rpx; */
+  line-height: 100rpx;
+  background: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.password input{
+  margin-left: 10rpx;
+  height: 100%;
+  width: 80%;
+  font-size: 25rpx;
+}
+/*确认登录  */
+.confirm{
+  width: 90%;
+  height: 80rpx;
+  /* border-top: 2rpx solid gray; */
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #09C1AE;
+  border-radius: 5rpx;
+}
+.confirm text{
+ line-height: 100rpx;
+ text-align: center;
+ font-size: 35rpx;
+  color: white;
+}
+/* .confirm text:first-child{
+  width: 300rpx;
+  height: 100rpx;
+  color: white;
+}
+.confirm text:nth-child(2){
+  height: 60rpx;
+  margin-top: 20rpx;
+  border-left: 1rpx solid gray;
+}
+.confirm text:last-child{
+  width: 300rpx;
+  height: 100rpx;
+  color: #09C1AE;
+} */

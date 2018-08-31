@@ -1,0 +1,83 @@
+/* pages/mine/setBalanceCode/setBalanceCode.wxss */
+/*  */
+.balanceCode-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*  */
+.newPassWord{
+  width: 100%;
+  height: 100rpx;
+  background: white;
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.newPassWord text{
+  margin: 0 30rpx;
+}
+.newPassWord input{
+  width: 450rpx;
+}
+/*  */
+.confirmPassWord{
+  width: 100%;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.confirmPassWord text{
+  margin: 0 30rpx;
+}
+.confirmPassWord input{
+  width: 450rpx;
+}
+/*  */
+.code{
+  width: 100%;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid whitesmoke;
+}
+.code text:first-child{
+  margin: 0 30rpx;
+}
+.code input{
+  width: 450rpx;
+}
+.code text:last-child{
+  background: #06C1AE;
+  color: white;
+  font-size: 25rpx;
+  padding: 10rpx;
+}
+.none{
+  background: gray;
+  color: white;
+  font-size: 25rpx;
+  padding: 10rpx;
+}
+/*重置  */
+.reset{
+  width: 90%;
+  height: 80rpx;
+  background: #06C1AE;
+  margin: 80rpx auto;
+  text-align: center;
+}
+.reset text{
+  color: white;
+  font-size: 30rpx;
+  line-height: 80rpx;
+}

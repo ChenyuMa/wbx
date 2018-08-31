@@ -1,0 +1,77 @@
+<!--pages/mine/messageCenter/messageCenter.wxml-->
+<view style='height:{{windowHeight}}px;' class='messagePage'>
+  <!--内容显示  -->
+  <view class='content'>
+    <!--消息  -->
+    <view class='message' wx:if='{{!isSelectMessage}}'>
+      <!-- <view class='messageContent'>
+        <view class='icon'>
+          <image src=''></image>
+        </view>
+        <view class='info'>
+          <text></text>
+          <text></text>
+        </view>
+        <view class='time'>
+          <text></text>
+        </view>
+      </view> -->
+    </view>
+
+    <!--通知  -->
+    <view class='message' wx:else>
+      <scroll-view scroll-y='true' style='height:100%;'>
+        <view class='noticeContents' wx:for='{{systemList}}' wx:key='index'>
+          <text style='margin:10rpx auto;font-size:30rpx;background:#BEBEBE;color:white;padding:3rpx 5rpx; height:10%'>{{item[0].day}}</text>
+          <view class='noticeView'>
+            <text style='color: #06C1AE;font-size: 30rpx;  margin-left: 20rpx;  height: 25%;'>{{item[0].title}}</text>
+            <view class='noticeInfo'>
+              <image src='{{item[0].photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+              <view class='infos'>
+                <text style='word-break:normal; font-size: 30rpx;color:black;margin:0;font-weight: bold;'>{{item[0].msg}}</text>
+                <text style='font-size:25rpx;color:gray;'>订单编号：{{item[0].order_id}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+
+    </view>
+  </view>
+  <!--底部tab  -->
+  <view class='downTab'>
+    <view class='tab' bindtap='clickMessage'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/message1@2x.png' wx:if='{{!isSelectMessage}}'></image>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/message2@2x.png' wx:else></image>
+      <text>消息</text>
+    </view>
+    <view class='tab' bindtap='clickNotice'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/notice2@2x.png' wx:if='{{isSelectNotice}}'></image>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/notice1@2x.png' wx:else></image>
+      <text>通知</text>
+    </view>
+  </view>
+</view>
+
+<!--授权登录  -->
+<view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>

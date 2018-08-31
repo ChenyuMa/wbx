@@ -1,0 +1,22 @@
+<!--pages/mine/setBalanceCode/setBalanceCode.wxml-->
+<view class='balanceCode-pages' style='height:{{windowHeight}}px;'>
+  <!--  -->
+  <view class='newPassWord'>
+    <text>支付密码</text>
+    <input placeholder='请输入新的支付密码' type='number' value='{{newCode}}' bindinput='newCode' password='true'></input>
+  </view>
+  <!--  -->
+  <view class='confirmPassWord'>
+    <text>确认密码</text>
+    <input placeholder='请输入支付密码' type='number' value='{{confirmCode}}' bindinput='confirmCode' password='true'></input>
+  </view>
+  <!--  -->
+  <view class='code'>
+    <text>验证码</text>
+    <input placeholder='请输入验证码' type='number' value='{{code}}' bindinput='code'></input>
+    <text bindtap='getCode' wx:if='{{clickGetCode}}'>获取验证码</text>
+    <text wx:else class='none'>倒计时{{clickCode}}秒</text>
+  </view>
+  <!--  -->
+  <view class='reset' bindtap='reset'><text>立即修改</text></view>
+</view>

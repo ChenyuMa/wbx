@@ -1,0 +1,16 @@
+<!--pages/mine/exchange/exchangeRecord/exchangeRecord.wxml-->
+<view class='exchangeRecord-pages' style='height:{{windowHeight}}px;'>
+  <scroll-view scroll-y='{{true}}' style='height:100%;'>
+    <block wx:for='{{recordList}}' wx:key='index'>
+      <!--商品图片  -->
+      <view class='record'>
+        <!--  -->
+        <view class='record-left'><image src='{{item.face_pic}}'></image></view>
+        <!--  -->
+        <view class='record-content'><text>{{item.title}}</text><text>{{item.need_integral}}积分</text></view>
+        <!--  -->
+        <!-- <view class='record-right'><text class='fa fa-angle-right'></text></view> -->
+      </view>
+    </block>
+  </scroll-view>
+</view>

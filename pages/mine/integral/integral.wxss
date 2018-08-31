@@ -1,0 +1,193 @@
+/* pages/mine/integral/integral.wxss */
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+/***********************************************签到页面  */
+.integral-pages{
+  width: 100%;
+  background: whitesmoke; 
+}
+/******************************************头部  */
+.integral-top{
+  width: 100%;
+  height: 30%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+/*头部内容  */
+.integral-content{
+  width: 90%;
+  height: 80%;
+  background: white;
+  align-self: flex-end;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+/*头部内容标题  */
+.integral-content-title{
+  font-size: 30rpx;
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+}
+/*头部内容签到  */
+.integral-content-signIn{
+  margin-top: 50rpx;
+  margin-left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30rpx;
+}
+/*积分  */
+.integral-content-signIn text:first-child{
+  font-size: 60rpx;
+  color: #09C1AE;
+}
+.signIn-text{
+  border: 1rpx solid red;
+  color: red; 
+  height: 80%;
+  padding: 5rpx 15rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+}
+.signIn-texts{
+  border: 1rpx solid gray;
+  color: gray; 
+  height: 80%;
+  padding: 5rpx 15rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+}
+/******************************************************签到获得方式  */
+.integral-get-way{
+  width: 100%;
+  height:30%;
+  background: white;
+}
+/*获得方式标题  */
+.getWay-titel{
+  margin-left: 30rpx;
+  font-weight: bold; 
+  font-size: 40rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+/*签到获得方式内容  */
+.getWay-content{
+  height: 130rpx;
+  margin-left: 30rpx;
+  font-size: 30rpx;
+}
+/*签到获得方式图标  */
+.getWay-content-icon{
+  width: 150rpx;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.getWay-content-icon image{
+  width: 80rpx;
+  height: 80rpx;
+}
+/*签到获得方式明细  */
+.getWay-content-explain{
+  justify-content: space-around;
+}
+.getWay-content-explain text:first-child{
+  font-size: 35rpx;
+}
+.getWay-content-explain text:last-child{
+  color: gray;
+}
+/*积分明细  */
+.getWay-content-detail{
+  width: 90%;
+  height: 80rpx;
+  background: whitesmoke;
+  margin-left: 30rpx;
+  border-radius: 10rpx;
+  margin-top: 10rpx;
+  line-height: 80rpx;
+}
+.getWay-content-detail text{
+  margin-left: 30rpx;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+/****************************************************积分明细  */
+.integral-detail{
+  width: 100%;
+  height: 40%;
+}
+/*明细内容  */
+.detail-content{
+  width: 100%;
+  height: 250rpx;
+  background: white;
+  margin-right: 1rpx;
+}
+.detail-content-left{
+  width: 70%;
+  height: 100%;
+  justify-content: center;
+}
+.detail-content-left text{
+  margin-left: 70rpx;
+}
+.detail-content-left text:first-child{
+  font-size: 35rpx;
+  font-weight: bold;
+}
+.detail-content-left text:last-child{
+  font-size: 30rpx;
+  color: gray;
+  margin-top: 30rpx;
+}
+/*积分分数  */
+.integral-detail-right{
+  width: 30%;
+  display: flex;
+  align-items: center;  
+  justify-content: center;
+}
+.integral-detail-right text{
+  color: #09C1AE;
+  font-size: 40rpx;
+}
+/***************************************************签到弹出层  */
+.signIn-pages{
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.singIn-icon{
+  width: 100%;
+  height: 80%;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/signIn.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.singIn-icon text{
+  font-size: 30rpx;
+  margin-top: 40rpx;
+}
+.singIn-icon text:first-child{
+  color: #09C1AE;
+}

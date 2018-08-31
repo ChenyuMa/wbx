@@ -1,0 +1,60 @@
+<!--pages/home/shopDetails/sweepPages/orderPages/orderPages.wxml-->
+<view class='orderPages' style='height:{{windowHeight}}px;'>
+  <!--提示  -->
+  <view class='prompt'>
+    <text>*账单明细以店内实际出账为准</text>
+  </view>
+
+  <!--订单头部  -->
+  <view class='orderSeat'>
+    <text>桌号：</text>
+    <text>{{orderInfo.seat}}</text>
+  </view>
+
+  <!--订单基本信息  -->
+  <view class='orderInfo'>
+    <!--  -->
+    <view class='orderTitle'><text>基本信息</text></view>
+
+    <!-- 信息 -->
+    <view class='info'>
+      <!--人数  -->
+      <view class='infoNum'><text>人数：</text><text>{{orderInfo.people_num}}</text><text>人</text></view>
+      <!--下单时间  -->
+      <view class='orderTime'><text>下单时间：</text><text>{{orderInfo.create_time}}</text></view>
+      <!--数量  -->
+      <view class='orderNum'><text>数量：</text><text>{{orderInfo.goods.length}}</text><text>份</text></view>
+    </view>
+  </view>
+
+  <!--订单详情  -->
+  <view class='orderDetails'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+      <view class='details' wx:for='{{orderInfo.goods}}' wx:key='index'>
+        <!--图片  -->
+        <view class='detailsPhoto'>
+          <image src='{{item.photo}}'></image>
+        </view>
+        <!--名称  -->
+        <view class='detailsName'>
+          <view class='nameTop'>
+            <text>{{item.title}}</text>
+            <text>x{{item.num}}</text>
+            <text>已下厨</text>
+          </view>
+          <view class='nameDown'>
+            <text>￥</text>
+            <text>{{item.price}}</text>
+            <text>/份</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!--加菜买单  -->
+  <view class='addFoodPay'>
+    <text class='addFoot' bindtap='clickAddFood'>加菜</text>
+    <text class='pay' bindtap='clickPay'>立即买单</text>
+  </view>
+</view>

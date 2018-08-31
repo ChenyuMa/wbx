@@ -1,0 +1,71 @@
+<!--pages/mine/exchange/exchange.wxml-->
+<view class='exchange-pages' style='height:{{windowHeight}}px;'>
+  <scroll-view scroll-y='{{true}}' style='height:100%;'>
+
+    <!--兑换记录  -->
+    <view class='exchangeRecord' bindtap='exchangeRecord'>
+      <text>兑换记录</text>
+    </view>
+
+    <!-- 头部 -->
+    <view class='exchange-top'>
+
+      <!--可用积分  -->
+      <view>
+        <text>可用积分：</text>
+        <text>{{exchangeList.integral}}</text>
+      </view>
+
+    </view>
+
+    <!--猜你喜欢  -->
+    <view class='like'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/bt@2x.png'></image>
+    </view>
+
+    <!--商品展示  -->
+    <view class='goodsShop' >
+      <!--商品样式  -->
+      <view class='goodsStyle' wx:for='{{exchangeList.goods}}' wx:key='index' data-goods_id='{{item.goods_id}}'>
+        <!-- 商品标题 -->
+        <view class='goodsTitle'>
+          <text style='font-size: 25rpx;'>{{item.title}}</text>
+        </view>
+        <!--需要积分  -->
+        <view class='goodsIntegral'>
+          <text style='font-size:25rpx;'>{{item.integral}}</text>
+          <text style='font-size:25rpx;'>积分</text>
+        </view>
+        <!--商品图片  -->
+        <view class='goodsPhoto'>
+          <image src='{{item.face_pic}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+        <!--点击兑换  -->
+        <text catchtap='clickeExchange' class='exchange' data-item='{{item}}'>立即兑换</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!--授权登录  -->
+<view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>

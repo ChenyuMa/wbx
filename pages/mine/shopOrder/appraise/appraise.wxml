@@ -1,0 +1,37 @@
+<!--pages/mine/shopOrder/appraise/appraise.wxml-->
+<view class='appraise-pages' style='height:{{windowHeight}}px;'>
+  <!--评价  -->
+  <view class='score flex-row'>
+    <!--  -->
+    <view>
+      <text>评分：</text>
+    </view>
+    <!--评分点击  -->
+    <view class='appraise-star'>
+      <block wx:for='{{star}}' wx:key='index'>
+        <text class='fa {{select_stat>index?"fa-star":"fa-star-o"}}' bindtap='click_star' data-id='{{index}}'></text>
+      </block>
+    </view>
+  </view>
+  <!-- 评价内容 -->
+  <view class='appraise-content flex-column'>
+    <!-- 评价文本 -->
+    <view class='appraise-Txt'>
+      <textarea placeholder='还记得这家店吗？写点评论记录生活、分享体验' value='{{textArea}}' bindinput='input_appraise'></textarea>
+    </view>
+    <!--上传照片  -->
+    <view class='appraise-photo'> 
+      <!--  -->
+      <view class='photo-title'><text>上传照片</text><text>(最多选中四张照片)</text></view> 
+      <!-- 图片 -->
+        <view class='photo flex-row'> 
+        <view class='photo-icon' bindtap='click_photo'><text class='fa fa-camera'></text></view>
+        <view class='icon' wx:for='{{imgUrls}}' wx:key='index'><image src='{{item}}' data-index='{{index}}' bindtap='preview_img'></image></view>
+      </view> 
+     </view> 
+  </view>
+
+  <!--提交点评  -->
+  <view class='review'><text bindtap='click_review'>提交点评</text></view>
+
+</view>

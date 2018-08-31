@@ -1,0 +1,49 @@
+<!--pages/mine/exchange/exchangeGoods/exchangeGoods.wxml-->
+<view class='exchangeGoods-pages' style='height:{{windowHeight}}px;'>
+  <!--商品  -->
+  <view class='exchange-show'>
+    <scroll-view scroll-y='{{true}}' style='height:100%;'>
+    
+      <!--商品图片  -->
+      <view class='exchange-img'><image src='{{goodsList.face_pic}}'></image></view>
+
+      <!--商品名称  -->
+      <view class='exchange-name'>
+        <text>{{goodsList.title}}</text>
+        <text>{{goodsList.integral}}积分</text>
+      </view>
+
+      <!--兑换数量  -->
+      <view class='exchange-num'>
+        <!--  -->
+        <view><text>兑换数量:</text></view>
+
+        <!--  -->
+        <view>
+          <text class='minus' bindtap='minusNum'>一</text>
+          <text class='num'>{{num}}</text>
+          <text class='add' bindtap='addNum'>十</text>
+        </view>
+      </view>
+
+      <!--商品介绍  -->
+      <view class='introduce'>
+        <!--  -->
+        <view class='introduce-title'><text>商品介绍</text></view>
+
+        <!--  -->
+        <view class='introduce-details'>
+          <text>{{goodsList.details}}</text>
+        </view>
+      </view>
+
+
+    </scroll-view>
+  </view>
+
+  <!--立即兑换  -->
+  <view class='exchanges-now'>
+    <text>合计：{{allIntegral}}</text>
+    <text bindtap='exchangesNow'>立即兑换</text>
+  </view>
+</view>

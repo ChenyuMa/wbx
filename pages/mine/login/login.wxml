@@ -1,0 +1,40 @@
+<!--pages/login/login.wxml-->
+<view class='loginStyle' style='height:{{loginHeight}}px;'>
+    <!--图标  -->
+    <view class='loginTop_logoStyle'>
+      <image src='{{imgUrls+"login_logo@2x.png"}}' class='loginTop_logoImg1Style'></image>
+      <image src='{{imgUrls+"iocn_logo@2x.png"}}' class='loginTop_logoImg2Style'></image>
+    </view>
+    <!--用户输入  -->
+    <view class='userInforStyle'>
+      <view class='userStyle'>
+        <image src='{{imgUrls+"login_user@2x.png"}}' class='user_img1Style'></image>
+        <view class='user_inputStyle'>
+          <input type='number' class='user_inputStyle' bindinput='bindInputUser' bindfocus='bindFocusUser' bindblur='bindBlurUser' placeholder="请输入手机号码" value="{{inputUserTxt}}" ></input >
+        </view>
+        <image src='{{imgUrls+"clear.png"}}' class='user_img2Style' style='display:{{clearUser}};' bindtap='clearUser'></image>
+      </view>
+      <view class='passwordStyle'>
+        <image src='{{imgUrls+"login_psd@2x.png"}}' class='password_img1Style'></image>
+        <view class='password_inputStyle'>
+          <input type='text' class='password_inputStyle' bindinput='bindInputPassword' bindfocus='bindFocusPassword' bindblur='bindBlurPassword' placeholder="请输入密码" value="{{inputPasswordTxt}}" password='true'></input >
+        </view>
+        <image src='{{imgUrls+"clear.png"}}' class='password_img2Style' style='display:{{clearPassword}};' bindtap='clearPassword'></image>
+      </view>
+    </view>
+    <view class='login_bottomStyle'>
+      <view class='spacingStyle'></view>
+      <!--登入按钮  -->
+      <button class='login_btnStyle' bindtap='btnLogin' >登录</button>    
+      <view class='login_registeredStyle'>
+        <text class='new_userStyle' bindtap='newUser'>新用户注册</text>
+        <view class='userPass_lineStyle'></view>
+        <text class='password_forgetStyle' bindtap='passwordForget'>忘记密码？</text>
+      </view>
+    </view>
+    <!-- 自定义弹窗 -->
+  <view class="showModule" wx:if="{{isShow}}">
+    <!-- 这部分内容可以灵活修改，例如改成一个模态框 -->
+    <view class="text ">{{text}}</view>
+  </view>
+</view>

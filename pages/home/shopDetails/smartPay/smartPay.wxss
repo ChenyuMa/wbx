@@ -1,0 +1,250 @@
+/* pages/home/shopDetails/smartPay/smartPay.wxss */
+/*智能付款页面  */
+.smartPay-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+/*  */
+.smartPay-title{
+  width: 100%;
+  height: 70rpx;
+  background: wheat;
+  text-align: center;
+}
+.smartPay-title text{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+  color: brown;
+}
+/*金额  */
+.money{
+  width: 90%;
+  height: 100rpx;
+  border: 1rpx solid gray;  
+  margin: 50rpx auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: white;
+}
+.money text{
+  width: 20%;
+  line-height: 100rpx;
+  font-size: 25rpx;
+  margin-left: 30rpx;
+}
+.money input{
+  width: 80%;
+  font-size: 30rpx;
+}
+/*支付方式  */
+.smartPay-type{
+  width: 100%;
+  height: 300rpx;
+  background: white;
+}
+/*  */
+.type-title{
+  text-align: center;
+  height: 60rpx;
+  width: 100%;
+  background: white;
+}
+.type-title text{
+  font-size: 30rpx;
+}
+/*  */
+.type-balance{
+  width: 100%;
+  height: 100rpx;
+  background: white;
+  margin-top: 1rpx;
+}
+/*  */
+/*支付方式  */
+
+.orderPay {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 30%;
+  background: whitesmoke;
+}
+
+.orderPayTop {
+  width: 100%;
+  height: 20%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orderPayTop text {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+/*余额付款  */
+
+.balance {
+  width: 100%;
+  height: 35%;
+  background: white;
+  margin-top: 8rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.balanceImg {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balanceImg image {
+  width: 65%;
+  height: 60%;
+}
+
+.balanceInfo {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  justify-content: center;
+}
+
+.balanceInfo text:nth-child(1) {
+}
+
+.balanceInfo text:nth-child(2) {
+  font-size: 28rpx;
+  color: gray;
+}
+
+.balanceSlect {
+  display: flex;
+  align-items: center;
+}
+
+/*微信付款  */
+
+.weChat {
+  width: 100%;
+  height: 35%;
+  background: white;
+  margin-top: 8rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.toPay {
+  width: 100%;
+  height: 25%;
+  background: white;
+  margin-top: 8rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+/*确认结算  */
+
+.orderClearing {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+
+.clearingRight {
+  width: 90%;
+  height: 100%;
+  background: #09c1ae;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clearingRight text {
+  color: white;
+  font-size: 30rpx;
+}
+
+/*备注留言弹窗  */
+
+.remarkToast {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toastInfo {
+  width: 80%;
+  height: 30%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10rpx;
+  margin-top: -300rpx;
+}
+
+.toastTitle {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  background: white;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #09c1ae;
+}
+
+.toastInput {
+  width: 80%;
+  height: 80rpx;
+  border: 1rpx solid gainsboro;
+  margin-top: 30rpx;
+}
+
+.toastInput input {
+  font-size: 30rpx;
+  line-height: 80rpx;
+  width: 100%;
+  height: 100%;
+}
+
+.toastBtn {
+  width: 100%;
+  height: 80rpx;
+  border-top: 1rpx solid gainsboro;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 30rpx;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.toastBtn text {
+  width: 45.5%;
+  text-align: center;
+}
+
+.listLine {
+  height: 50rpx;
+  border-left: solid 1rpx gray;
+}
+
+.toastBtn text:last-child {
+  color: #09c1ae;
+}

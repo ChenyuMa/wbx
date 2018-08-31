@@ -1,0 +1,67 @@
+<!--pages/home/shopDetails/sweepPages/sweepPages.wxml-->
+<view class='sweepPages' style='height:{{windowHeight}}px;'>
+  <!-- 头部 -->
+  <view class='sweepOrderTop'>
+    <!--桌号菜数  -->
+    <view class='seatFood'>
+      <!--桌号  -->
+      <view class='seat'>
+        <text>桌号:</text>
+        <text>{{seat}}</text>
+      </view>
+      <!--菜数  -->
+      <view class='foodNum'>
+        <text>{{shopCart.length}}个菜</text>
+      </view>
+    </view>
+
+    <!--用餐人数  -->
+    <view class='mealsNum'>
+      <text>用餐人数：</text>
+      <text>{{selectNum}}</text>
+      <text>人</text>
+    </view>
+
+    <!--备注  -->
+    <view class='noto'>
+      <textarea placeholder='备注' disabled='{{isEditor}}' value='' bindinput='inputTextarea'></textarea>
+      <text bindtap='clickEditor'>{{isEditor?'编辑':'完成'}}</text>
+    </view>
+  </view>
+  <!--菜单  -->
+  <view class='menu'>
+    <scroll-view scroll-y='true' style='height:100%;'>
+      <view class='dishes' wx:for='{{shopCart}}' wx:key='index'>
+        <!--图片  -->
+        <view class='dishesPhoto'>
+          <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+        <!--名称  -->
+        <view class='dishesName'>
+          <view class='nameTop'>
+            <text>{{item.title}}</text>
+          </view>
+          <view class='nameDown'>
+            <text>￥</text>
+            <text>{{item.price/100.00}}</text>
+            <text>/份</text>
+          </view>
+        </view>
+        <!--数量  -->
+        <view class='dishesNum'>
+          <text class='fa fa-minus-circle' bindtap='subtract' data-id='{{item}}'></text>
+          <text>{{item.buy_num}}</text>
+          <text class='fa fa-plus-circle' bindtap='add' data-id='{{item}}'></text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--加菜下单  -->
+  <view class='addFootOrder' wx:if='{{scanOrdertype == 1}}'>
+    <text class='addFoot' bindtap='clickAddFood'>加菜</text>
+    <text class='order' bindtap='clickOrder'>下单</text>
+  </view>
+  <view class='addFootOrder' wx:else>
+    <text class='order' bindtap='clickPay'>付款</text>
+  </view>
+</view>

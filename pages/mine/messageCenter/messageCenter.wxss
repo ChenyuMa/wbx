@@ -1,0 +1,206 @@
+/* pages/mine/messageCenter/messageCenter.wxss */
+.messagePage{
+  width: 100%;
+  background-color: whitesmoke;
+}
+/*******************消息内容  */
+.content{
+  width: 100%;
+  height: 90%;
+}
+.message{
+  width: 100%;
+  height: 100%;
+}
+.messageContent{
+  width: 100%;
+  height: 150rpx;
+  background-color: white;
+  border-bottom: 1rpx #D9D9D9 solid;
+  display: flex;
+  flex-direction: row;
+}
+.icon{
+  width: 20%;
+  height: 100%;
+  /* background: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon image{
+  width: 95rpx;
+  height: 95rpx;
+  background: cadetblue; 
+  border-radius: 5rpx;
+}
+.info{
+  width: 65%;
+  height: 100%;
+  /* background: cadetblue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.info text:first-child{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.info text:last-child{
+  font-size: 25rpx;
+  color: gray;
+}
+.time{
+  width: 15%;
+  height: 100%;
+  /* background: crimson; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time text{
+  font-size: 30rpx;
+  color: gray;
+}
+
+/******************通知  */
+.noticeContents{
+  width: 100%;
+  height: 350rpx;
+  display: flex;
+  flex-direction: column;
+  /* background: white; */
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.noticeView{
+  width: 90%;
+  height: 90%;
+  /* border-top: 1rpx solid #D9D9D9;
+  border-bottom: 1rpx solid #D9D9D9; */
+  background: white;
+  border-radius: 10rpx;
+}
+.noticeInfo{
+  width: 100%;
+  height: 75%; 
+  display: flex;
+  align-items: center;
+}
+.noticeInfo image{
+  width: 120rpx;
+  height: 120rpx;
+  background: #06C1AE;
+  margin:0 20rpx;
+}
+.infos{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/*******************底部Tab  */
+.downTab{
+  width: 100%;
+  height: 10%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+}
+.tab{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tab image{
+  width: 45rpx;
+  height: 45rpx;
+}
+.tab text{
+  font-size: 25rpx;
+  color: gray;
+}
+
+/*************微信登录  */
+.wx-longin{
+  width: 100%;
+  height: 100%;
+  position: absolute; 
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-content{
+  width: 600rpx;
+  height: 500rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+}
+.longin-title{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4rpx solid #F4F4F5;
+  color: #464646;
+}
+.longin-icon{
+  width: 100%;
+  height: 59.5%;
+  border-bottom: 4rpx solid #F4F4F5;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+}
+.longin-icon image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 30rpx;
+}
+.title1{
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+.line{
+  width: 80%;
+  margin-top: 20rpx;
+  border-bottom: 6rpx solid #F4F4F5;
+}
+.titel2{
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  color: gray;
+}
+.btn{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 18%;
+}
+.btn1{
+  width: 50%;
+  border-right: 1rpx solid #F4F4F5;
+}
+.btn2{
+  width: 50%;
+  border-left: 1rpx solid #F4F4F5;
+  color: #0BB20C;
+}
+.btn button{
+  background: white;
+}
+button::after {
+  border: none;
+}

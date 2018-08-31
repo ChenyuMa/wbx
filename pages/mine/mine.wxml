@@ -1,0 +1,188 @@
+<!--pages/mine/mine.wxml-->
+<view class='minePage' style='height:{{windowHeight}}px;'>
+  <!--头部  -->
+  <view class='mine-top' style='background-image: url({{imgUrls}}{{top_backgroundImg}}{{"?imageView2/1/w/100/h/100"}})'>
+    <!--用户信息  -->
+    <view class='top-user flex-row'>
+      <!--用户头像  -->
+      <image src='{{imgUrls}}{{kingImg}}' class='king'></image>
+      <view class='user-icon' bindtap='camera'>
+        <image src='{{user_list.face}}{{"?imageView2/1/w/100/h/100"}}'></image>
+      </view>
+      <!--用户名称  -->
+      <view class='user-info flex-column'>
+        <text>{{user_list.nickname}}</text>
+        <text>普通会员</text>
+      </view>
+
+    </view>
+    <!--签到  -->
+    <view class='signIn' bindtap='mine_integral'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/signIn@2x.png?imageView2/1/w/100/h/100'></image>
+    </view>
+  </view>
+
+  <!--用户微米  -->
+  <view class='user-wm flex-row'>
+    <!--微米  -->
+    <view class='wm flex-column' bindtap='mine_micron'>
+      <text wx:if='{{isLogin}}'>{{user_list.money/100.00}}</text>
+      <text wx:else>0</text>
+      <text>我的微米</text>
+    </view>
+
+    <!--积分  -->
+    <view class='jf flex-column' bindtap='mine_integral'>
+      <text wx:if='{{isLogin}}'>{{user_list.integral}}</text>
+      <text wx:else>0</text>
+      <text>我的积分</text>
+    </view>
+
+    <!--抵用卷  -->
+    <view class='dyj flex-column' bindtap='click_subsidy'>
+      <text wx:if='{{isLogin}}'>{{user_list.subsidy_money/100.00}}</text>
+      <text wx:else>0</text>
+      <text>我的红包</text>
+    </view>
+  </view>
+
+  <!--待付款  -->
+  <view class='mine-order'>
+    <view class='order flex-row'>
+      <!--待付款  -->
+      <view class='dfk flex-column' bindtap='waitPayDind'>
+        <image src='{{imgUrls}}{{dfkImg}}'></image>
+        <text>待付款</text>
+        <text class='order-num text-ellipsis' wx:if='{{user_list.dfk_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dfk_count}}</text>
+      </view>
+      <!--待发货  -->
+      <view class='dfh flex-column' bindtap='waitShippingDind'>
+        <image src='{{imgUrls}}{{dfhImg}}'></image>
+        <text>待发货</text>
+        <text class='order-num text-ellipsis' wx:if='{{user_list.dfh_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dfh_count}}</text>
+      </view>
+      <!--待收货  -->
+      <view class='dsh flex-column' bindtap='waitGoodsDind'>
+        <image src='{{imgUrls}}{{dshImg}}'></image>
+        <text>待收货</text>
+        <text class='order-num text-ellipsis' wx:if='{{user_list.dsh_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dsh_count}}</text>
+      </view>
+      <!--待退款  -->
+      <view class='dtk flex-column' bindtap='waitRefundsDind'>
+        <image src='{{imgUrls}}{{dtkImg}}'></image>
+        <text>待退款</text>
+        <text class='order-num text-ellipsis' wx:if='{{user_list.dtk_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dtk_count}}</text>
+      </view>
+      <!--我的订单  -->
+      <view class='my-order flex-column' bindtap='completedDind'>
+        <image src='{{imgUrls}}{{my_orderImg}}'></image>
+        <text>已完成</text>
+        <text class='order-num text-ellipsis' wx:if='{{user_list.ywc_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.ywc_count}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!--我的收藏  -->
+  <view class='mine-collection'>
+    <view class='order flex-row'>
+      <block wx:for='{{collection_list}}' wx:key='index'>
+        <view class='collection flex-column' bindtap='mine_collection' data-index='{{index}}'>
+          <image src='{{imgUrls}}{{item.img}}'></image>
+          <text>{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!--我的预定  -->
+  <view class='mine-reservation'>
+    <view class='order flex-row'>
+      <block wx:for='{{reservation_list}}' wx:key='index'>
+        <view class='collection flex-column' bindtap='mine_reservation' data-index='{{index}}'>
+          <image src='{{imgUrls}}{{item.img}}'></image>
+          <text>{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class='mine-reservation'>
+    <view class='order flex-row'>
+      <block wx:for='{{reservation_lists}}' wx:key='index'>
+        <view class='collection flex-column' bindtap='mine_reservations' data-index='{{index}}'>
+          <image src='{{imgUrls}}{{item.img}}' style='{{index==2?"width:65rpx;height:50rpx;":""}}'></image>
+          <text >{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!--退出  -->
+  <view class='mine-exit'>
+    <!--退出按钮  -->
+    <view class='exit'>
+      <text wx:if='{{isLogin}}' bindtap='exit'>退出登录</text>
+      <text wx:else bindtap='login'>登录</text>
+    </view>
+  </view>
+
+  <!-- <view class='isInfo' wx:if='{{userLogin}}'>
+    <view class='isInfo-toast'>
+      <view class='toast-title'>
+        <text>用户授权</text>
+      </view>
+      <view>
+        <text>点击确定登录</text>
+      </view>
+      <view>
+        <button bindtap='cancel'>取消</button>
+        <button open-type='getUserInfo' bindtap='confirm'>确定</button>
+      </view>
+    </view>
+  </view> -->
+
+</view>
+<!--授权登录  -->
+<view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 绑定手机 -->
+<view class='bindPhone' wx:if='{{isBindPhone}}'>
+  <view class='bind'>
+    <text class='bind-title'>完善账户信息</text>
+    <view class='phone'>
+      <image src='{{imgUrls}}shouji@2x.png'></image>
+      <input type='number' value='{{phoneTxt}}' bindinput='phone_change' placeholder='请输入手机' style='font-size:30rpx;'></input>
+      <text catchtap='getCode' style='{{is_show?"":"background:gray"}}'>获取验证码</text>
+    </view>
+    <view class='code'>
+      <image src='{{imgUrls}}yanzhengma@2x.png'></image>
+      <input type='number' value='{{verificationTxt}}' bindinput='verification_change' placeholder='请输入验证码' style='font-size:30rpx;'></input>
+      <text>|</text>
+      <text style='color: #06C1AE;'>{{last_time}}</text>
+      <text >s</text>
+    </view>
+    <view class='btns'>
+      <text catchtap='closeBindPhone'>下次完善</text>
+      <text catchtap='bind_phone'>确认</text>
+    </view>
+  </view>
+</view>

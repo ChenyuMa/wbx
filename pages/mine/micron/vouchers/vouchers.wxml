@@ -1,0 +1,16 @@
+<!--pages/mine/micron/vouchers/vouchers.wxml-->
+<view class='vouchers-pages' style='height:{{windowHeight}}px;'>
+  <!--  -->
+  <view class='vouchers-content'>
+    <!--  -->
+    <view class='content-title'><text>充值卡密</text></view>
+    <!--  -->
+    <view class='content-camilo'>
+      <input type='number' bindinput='inputCamilo' value='{{camiloTxt}}'></input>
+    </view>
+    <!--  -->
+    <view class='content-balance'><text>可用余额{{micron}}元</text></view>
+  </view>
+  <!--  -->
+  <view class='content-confirm' bindtap='requestVouchers'>确认充值</view>
+</view>

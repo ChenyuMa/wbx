@@ -1,0 +1,128 @@
+/* pages/mine/shopOrder/appraise/appraise.wxss */
+
+/* 弹性行 */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+/* 弹性列 */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+/*文本超出省略号  */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/***********************************************评价页面  */
+.appraise-pages{
+  width: 100%;
+  background: whitesmoke;
+}
+
+/***********************************************头部评分  */
+.score{
+  width: 100%;
+  height: 10%;
+  background: white;
+  align-items: center;
+  margin-bottom: 1rpx;
+}
+.score text{
+  margin-left: 30rpx;
+}
+/************************************************评分星星  */
+.appraise-star text{
+  font-size: 45rpx;
+  color: gold;
+}
+/*选中评分  */
+.star-selected{
+
+}
+/************************************************评价内容  */
+.appraise-content{
+  width: 100%;
+  height: 50%;
+  background: white;
+  align-items: center;
+}
+.appraise-Txt{
+  width: 90%;
+  height: 55%;
+  border: 1rpx solid whitesmoke;
+  margin-top: 30rpx;
+}
+/*  */
+.appraise-Txt textarea{
+  width: 100%;
+  height: 100%;
+  font-size: 30rpx;
+}
+/***********************************************上传照片  */
+.appraise-photo{
+  width: 90%;
+  height: 45%;
+}
+/*上传照片标题  */
+.photo-title{
+  margin-top: 10rpx;
+}
+.photo-title text:first-child{
+  font-size: 35rpx;
+}
+.photo-title text:last-child{
+  color: gray;
+  font-size: 30rpx;
+}
+/*照片  */
+.photo{
+  width: 100%;
+  height: 160rpx;
+  margin-top: 20rpx;
+}
+/*  */
+.photo-icon{
+  width: 110rpx;
+  height: 120rpx;
+  border: 1rpx gray dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*  */
+.photo-icon text{
+  font-size: 60rpx;
+  color: gray;
+}
+/*展示图片  */
+.icon{
+  width: 110rpx;
+  height: 120rpx;
+  border: 1rpx solid gray;
+  margin-left: 10rpx;
+}
+.icon image{
+  width: 100%;
+  height: 100%;
+}
+/*****************************提交点评  */
+.review{
+  width: 100%;
+  height: 100rpx;
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}
+.review text{
+  width: 600rpx;
+  height: 80rpx;
+  background: #09C1AE;
+  line-height: 80rpx;
+  text-align: center;
+  color: white;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+}

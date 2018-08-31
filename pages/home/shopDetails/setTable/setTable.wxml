@@ -1,0 +1,106 @@
+<!--pages/home/shopDetails/setTable/setTable.wxml-->
+<view class='setTable-pages' style='height:{{windowHeight}}px;'>
+  <!--  -->
+  <view class='setTable-top'></view>
+  <!-- 预定 -->
+  <view class='setTable-content'>
+    <!-- 预定头部 -->
+    <view class='content-top'>
+      <text>预定时间</text>
+      <text>订金：{{subscribe/100.00}}</text>
+    </view>
+
+    <!--选择日期  -->
+    <view class='selectDate'>
+      <image src='{{imgUrls}}store_reserve_date@2x.png'></image>
+      <view class='data'>
+        <picker mode="date" value="{{date}}" start="{{startData}}" end="{{endData}}" bindchange="inputData">
+          <view class="picker">
+            {{dataValue}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!--时间  -->
+    <view class='content-time'>
+      <image src='{{imgUrls}}store_reserve_time@2x.png'></image>
+      <view class='data'>
+        <picker mode="time" value="{{date}}" start="09:01" end="21:01" bindchange="inputTime">
+          <view class="picker">
+            {{timeValue}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!--联系方式  -->
+    <view class='contact-title'>
+      <text>联系方式</text>
+    </view>
+
+    <!--姓名  -->
+    <view class='content-name'>
+      <image src='{{imgUrls}}store_reserve_contact@2x.png'></image>
+      <input placeholder='请输入联系人姓名' type='text' bindinput='inputName' value='{{nameValue}}'></input>
+    </view>
+
+    <!--电话  -->
+    <view class='content-phone'>
+      <image src='{{imgUrls}}store_reserve_phone@2x.png'></image>
+      <input placeholder='请输入11位联系电话' type='number' bindinput='inputPhone' value='{{phoneValue}}'></input>
+    </view>
+
+    <!--人数  -->
+    <view class='number-title'>
+      <text>用餐人数</text>
+    </view>
+
+    <input class='content-number' bindinput='inputNumber' value='{{numberValue}}' placeholder='用餐人数' type='number'></input>
+
+    <!--留言备注  -->
+    <view class='content-note'>
+      <text>留言备注</text>
+      <textarea bindinput='inputArea' value='{{areaValue}}' placeholder='请留言'></textarea>
+    </view>
+
+    <!--确定  -->
+    <view class='confirmOrder' bindtap='confirmOrder'>
+      <text>确认订单</text>
+    </view>
+  </view>
+
+  <!--选菜方式  -->
+  <view class='selectType' wx:if='{{is_selectType}}'>
+    <view class='typeTop' bindtap='clickTop'></view>
+    <view class='typeBottom'>
+      <image src='{{imgUrls}}store_reserve_picker@2x.png'></image>
+      <view class='bottomSelect'>
+        <text bindtap='clickType' data-id='2'>立即点菜</text>
+        <text bindtap='clickType' data-id='1'>到店点菜</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!--授权登录  -->
+<!-- <view class='wx-longin' wx:if='{{userLogin}}'>
+  <view class='login-content'>
+    <view class='longin-title'>
+      <text>微信授权</text>
+    </view>
+    <view class='longin-icon'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/login_logo@2x.png'></image>
+      <text class='title1'>微百姓申请获取以下权限</text>
+      <view class='line'></view>
+      <text class='titel2'>●同意此应用获取您的个人信息</text>
+    </view>
+    <view class='btn'>
+      <view class='btn1'>
+        <button bindtap='clickCancel'>取消</button>
+      </view>
+      <view class='btn2'>
+        <button style='color:#0BB20C;' bindgetuserinfo='clickAllow' lang="zh_CN" open-type='getUserInfo'>允许</button>
+      </view>
+    </view>
+  </view>
+</view> -->
