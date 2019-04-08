@@ -1,316 +1,306 @@
 /* pages/home/shopDetails/confirmOrder/confirmClearing/confirmClearing.wxss */
 
-.flex {
-  display: flex;
-  justify-content: space-between;
+.of {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.clearing {
-  width: 100%;
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.fa-angle-right {
+  color: #999;
+}
+
+page {
   background: whitesmoke;
+}
+
+.confirmClearing-pages {
   position: relative;
 }
 
-/*支付信息  */
-
-.clearingInfo {
+.background-color {
+  background-color: #1ab5a4;
   width: 100%;
-  height: 90%;
+  height: 150rpx;
 }
 
-/*用户地址  */
+/*订单地址支付方式 */
 
-.userAddress {
-  margin-top: 20rpx;
-  width: 100%;
-  height: 13%;
-  background: white;
-  display: flex;
-  flex-direction: row;
-}
-
-/*地址左边  */
-
-.addressLeft {
+.order-addr-pay {
   width: 90%;
-  height: 100%;
+  padding: 20rpx 0;
+  /* height: 250rpx; */
+  background-color: white;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  border-radius: 10rpx;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; */
 }
 
-/*地址上  */
-
-.addressLeft_top {
-  width: 100%;
-  height: 50%;
+.order-addr {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 120rpx;
+  padding-bottom: 10rpx;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #f5f4f4;
+  margin: 0 auto;
+}
+
+.order-addr .name {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.addr {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.addressLeft_top text {
+.order-pay {
+  width: 90%;
+  height: 80rpx;
+  margin: 0 auto;
+  line-height: 80rpx;
   font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/*名字  */
-
-.addressLeft_top text:nth-child(1) {
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap; 
-  flex-basis: auto;
-  margin-left: 50rpx;
-  text-align: center;
-  font-weight: bold;
+.pay {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-/*电话  */
-
-.addressLeft_top text:nth-child(2) {
-  margin-left: 30rpx;
-  font-weight: bold;
+.pay text:first-child {
+  margin-right: 30rpx;
 }
 
-/*默认  */
+/* 订单详情 */
 
-.addressLeft_top text:nth-child(3) {
-  color: #09c1ae;
-  font-size: 25rpx;
-  padding: 0 10rpx;
+.order-details {
+  width: 100%;
   background: white;
-  border: 1rpx solid #09c1ae;
+  /* position: absolute; *//* left: 5%; *//* top: 270rpx; */
+  border-radius: 10rpx;
+}
+
+.shop-name {
+  display: flex;
+  width: 94%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 3%;
+  font-size: 30rpx;
+  border-bottom: 1px solid #f5f4f4;
+}
+
+.details {
+  width: 94%;
+  height: 80rpx;
+  margin-top: 20rpx;
+  margin-left: 3%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 25rpx;
+}
+
+.details image {
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 5rpx;
-  margin-left: 30rpx;
   flex-shrink: 0;
 }
 
-/*地址下  */
-
-.addressLeft_bottom {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.addressLeft_bottom image {
-  margin-left: 50rpx;
-  width: 30rpx;
-  height: 35rpx;
-}
-
-.addressLeft_bottom text {
-  margin-left: 10rpx;
-  /* height: 100%; */
-  /* line-height: 100rpx;  */
-  font-size: 30rpx;
+.details .txt {
+  margin: 0 20rpx;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.details .txt view{
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-/*地址右边  */
+.details .txt view .col{
+  color: #999;
+  font-size: 20rpx;
+}
+.details .money {
+  min-width: 15%;
+  flex-shrink: 0;
+  text-align: right;
+}
 
-.addressRigth {
-  width: 10%;
-  height: 100%;
+/* 其他信息 */
+
+.other-details {
+  width: 94%;
+  margin-left: 3%;
+  margin-top: 20rpx;
+}
+
+.other {
+  width: 100%;
+  height: 60rpx;
+  font-size: 30rpx;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.addressRigth image {
-  width: 30rpx;
-  height: 50rpx;
+.needPay {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  justify-content: flex-end;
 }
 
-/*商品  */
+/* 订单备注 */
 
-.orderPhoto {
-  margin-top: 20rpx;
+.order-note {
   width: 100%;
-  height: 17%;
-  background: white;
+  height: 100rpx;
   display: flex;
   flex-direction: row;
-  align-items: center;
-}
-
-.orderPhotoLeft {
-  width: 86%;
-  height: 60%;
-  margin-left: 30rpx;
-}
-
-.scroll {
-  height: 100%;
-  display: flex;
-  white-space: nowrap;
-}
-
-.photo {
-  width: 120rpx;
-  height: 100%;
-  background: cadetblue;
-  display: inline-block;
-  margin-right: 30rpx;
-}
-
-.photo image {
-  width: 100%;
-  height: 100%;
-}
-
-/*商品右边  */
-
-.orderPhotoRigth {
-  width: 10%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.orderPhotoRigth image {
-  width: 30rpx;
-  height: 50rpx;
-}
-
-/*商品价格  */
-
-.orderPrice {
-  margin-top: 20rpx;
-  width: 100%;
-  /* height: 15%;  */
-  background: white;
-}
-
-.orderPriceTop {
-  width: 100%;
-  height: 50%;
-  display: flex;
+  font-size: 30rpx;
   align-items: center;
   justify-content: space-between;
 }
 
-.orderPriceTop text {
-  margin: 0 30rpx;
-  font-size: 30rpx;
-}
-
-.orderPriceTop text:nth-child(2) {
-  color: red;
-}
-
-.orderPriceBottom {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.orderPriceBottom text {
-  margin: 0 30rpx;
-  font-size: 30rpx;
-}
-
-.orderPriceBottom text:nth-child(2) {
-  color: red;
-}
-
-/*优惠卷  */
-
-.orderCoupon {
-  margin-top: 3rpx;
-  width: 100%;
-  height: 7%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.orderCoupon text {
-  margin-right: 30rpx;
-  font-size: 30rpx;
-  color: gray;
-}
-
-/*满减  */
-
-.orderSubtraction {
-  margin-top: 3rpx;
-  width: 100%;
-  height: 7%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.orderSubtraction text {
-  margin-right: 30rpx;
-  font-size: 30rpx;
-  color: gray;
-}
-
-/*留言备注  */
-
-.orderRemark {
-  margin-top: 20rpx;
-  width: 100%;
-  height: 10%;
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.orderRemark view {
+.note {
   width: 90%;
-  height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* 立即付款 */
+
+.nowPay {
+  width: 90%;
+  height: 110rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left: 5%;
+  border-radius: 100rpx;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-}
-
-.orderRemark text {
-  margin-left: 30rpx;
   font-size: 30rpx;
-  width: 30%;
+  justify-content: space-between;
+  background-color: #808080;
 }
 
-.orderRemark text:last-child {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.need {
   width: 70%;
-}
-
-.orderRemark image {
-  width: 30rpx;
-  height: 50rpx;
-  margin-right: 30rpx;
-}
-
-/*支付方式  */
-
-.orderPay {
-  margin-top: 20rpx;
-  width: 100%;
-  height: 30%;
-  background: ghostwhite;
-}
-
-.orderPayTop {
-  width: 100%;
-  height: 20%;
-  background: white;
+  height: 110rpx;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
 }
 
-.orderPayTop text {
+.img {
+  width: 110rpx;
+  height: 110rpx;
+  background: rebeccapurple;
+  border-radius: 60rpx;
+}
+
+.img image {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.payPrice {
+  display: flex;
+  flex-direction: column;
+  margin-left: 40rpx;
+  color: white;
+}
+
+.pays {
+  width: 30%;
+  height: 110rpx;
+  background-color: #35b5a7;
+  border-top-right-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 选择支付方式 */
+
+.select-pay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
   font-size: 30rpx;
+}
+
+.select-type {
+  width: 100%;
+  height: 600rpx;
+  background: white;
+  align-self: flex-end;
+}
+
+.type-title {
+  position: relative;
+  margin: 30rpx 0;
+  line-height: 60rpx;
+  color: #333;
   font-weight: bold;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.type-title .trac-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20rpx;
+  top: 0;
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.type-title .trac-close image {
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 /*余额付款  */
@@ -333,8 +323,8 @@
 }
 
 .balanceImg image {
-  width: 65%;
-  height: 60%;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .balanceInfo {
@@ -344,9 +334,6 @@
   font-size: 30rpx;
   justify-content: center;
 }
-/* 
-.balanceInfo text:nth-child(1) {
-} */
 
 .balanceInfo text:nth-child(2) {
   font-size: 28rpx;
@@ -355,78 +342,6 @@
 
 .balanceSlect {
   display: flex;
-  align-items: center;
-}
-
-/*微信付款  */
-
-.weChat {
-  width: 100%;
-  height: 35%;
-  background: white;
-  margin-top: 8rpx;
-  display: flex;
-  flex-direction: row;
-}
-
-.toPay {
-  width: 100%;
-  height: 25%;
-  background: white;
-  margin-top: 8rpx;
-  display: flex;
-  flex-direction: row;
-}
-
-/*确认结算  */
-
-.orderClearing {
-  width: 100%;
-  height: 10%;
-  background: white;
-  display: flex;
-  flex-direction: row;
-}
-
-.clearingLeft {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.clearingLeft text {
-  margin-right: 20rpx;
-  font-size: 30rpx;
-  color: red;
-}
-
-.clearingRight {
-  width: 30%;
-  height: 100%;
-  background: #09c1ae;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.clearingRight text {
-  color: white;
-}
-
-/*备注留言弹窗  */
-
-.remarkToast {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -442,17 +357,6 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.toastInfo {
-  width: 90%;
-  height: 40%;
-  background: white;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  border-radius: 10rpx;
-  /* margin-top: 200rpx; */
-}
-
 .toastInfos {
   width: 90%;
   height: 25%;
@@ -463,18 +367,7 @@
   align-items: center;
 }
 
-.toastTitle {
-  margin-top: 10rpx;
-  width: 100%;
-  height: 70rpx;
-  text-align: center;
-  background: white;
-  line-height: 70rpx;
-  font-size: 30rpx;
-  color: #09c1ae;
-}
-
-.toastTitles{
+.toastTitles {
   margin-top: 10rpx;
   width: 100%;
   height: 70rpx;
@@ -484,25 +377,13 @@
   color: #09c1ae;
 }
 
-.toastInput {
+.toastInputs {
   width: 80%;
-  height: 200rpx;
-  border: 1rpx solid gainsboro;
-  margin-top: 20rpx;
-}
-.toastInputs{
-  width: 80%;
-   height: 80rpx; 
+  height: 80rpx;
   border: 1rpx solid gainsboro;
   margin-top: 20rpx;
 }
 
-.toastInput input {
-  font-size: 30rpx;
-  line-height: 80rpx;
-  width: 100%;
-  height: 100%;
-}
 .toastInputs input {
   font-size: 30rpx;
   line-height: 80rpx;
@@ -510,41 +391,13 @@
   height: 100%;
 }
 
-.toastBtn {
+.toastBtns {
   width: 100%;
   height: 90rpx;
-  /* border-top: 1rpx solid gainsboro;  */
-  margin-top: 20rpx;
   display: flex;
   flex-direction: row;
-  font-size: 30rpx;
   justify-content: space-around;
   align-items: center;
-  background: red;
-}
-.toastBtns{
-  width: 100%;
-  height: 90rpx;
-   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.toastBtn text {
-  width: 80%;
-  height: 60rpx;
-  text-align: center;
-  /* background: red; */
-  line-height: 60rpx;
-}
-
-.toastBtns text {
-  width: 80%;
-  height: 60rpx;
-  text-align: center;
-  /* background: red; */
-  line-height: 60rpx;
 }
 
 .listLine {
@@ -552,108 +405,78 @@
   border-left: solid 1rpx gray;
 }
 
-.toastBtn text:last-child {
-  color: white;
-  background: #09c1ae;
-}
+/*微信付款  */
 
-.toastBtns text:last-child {
-  color: #09c1ae;
-}
-
-.toastDown {
+.weChat {
   width: 100%;
-  height: 50%;
-}
-
-/*支付密码  */
-
-.payCode {
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  position: absolute;
-  top: 0;
-}
-
-/*********************************************************支付红包  */
-
-.redPacket {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
-  top: 0;
-}
-
-.redPacket-img {
-  width: 650rpx;
-  height: 500rpx;
-  /* background: cadetblue; */
-  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/scratch_card@2x.png?imageView2/1/w/100/h/100');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  position: relative;
-  margin-top: 200rpx;
-  margin-left: 30rpx;
-}
-
-.redPacket-imgBox {
-  width: 500rpx;
-  height: 100rpx;
-  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/box@2x.png?imageView2/1/w/100/h/100');
-  position: absolute;
-  bottom: 50rpx;
-  left: 100rpx;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  height: 35%;
+  background: white;
+  margin-top: 20rpx;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
 }
 
-.redPacket-imgBox text {
-  font-size: 30rpx;
-  color: red;
+.toPay {
+  width: 100%;
+  height: 25%;
+  background: white;
+  margin-top: 8rpx;
+  display: flex;
+  flex-direction: row;
 }
 
-.redPacket-imgBox-shadow {
-  width: 480rpx;
-  height: 80rpx;
-  z-index: 10;
-  position: absolute;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/gua@2x.png?imageView2/1/w/100/h/100');
-}
+/* 留言弹窗 */
 
-/*留言  */
-.Leave{
+.Leave {
   width: 100%;
   height: 100%;
-  z-index: 100;
-  background: rgba(0, 0, 0, 0.3);
-  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
   top: 0;
   left: 0;
 }
-.none{
+
+.none {
   display: none;
 }
-.top{
+
+.top {
   width: 100%;
-  height:60%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
   /* flex-direction: column; */
 }
-.info{
+
+.top-content {
+  width: 90%;
+  height: 80%;
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+  border-radius: 10rpx;
+}
+
+.content-titel {
+  height: 10%;
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #09c1ae;
+}
+
+.info {
   width: 90%;
   height: 60%;
   border: 1rpx solid gray;
 }
-.btn1{
+
+.btn1 {
   width: 90%;
   height: 13%;
   text-align: center;
@@ -664,28 +487,52 @@
   align-items: center;
 }
 
-.top-content{
-  width: 90%;
-  height:80%;
-   align-self: flex-end; 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  background: white;
-  border-radius: 10rpx;
-}
-.content-titel{
-  height: 10%;
-  width: 100%;
-  font-size: 30rpx;
-  line-height: 70rpx;
-  text-align: center;
-  color: #09c1ae;
-}
-
-.down{
+.down {
   width: 100%;
   height: 40%;
 }
 
+
+.redPacket{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+}
+.redPacket-img{
+  width: 650rpx;
+  height: 500rpx; 
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/scratch_card@2x.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-top: 200rpx;
+  margin-left: 30rpx;
+}
+.redPacket-imgBox{
+  width: 500rpx;
+  height: 100rpx;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/box@2x.png');
+  position: absolute;
+  bottom: 50rpx;
+  left: 100rpx;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redPacket-imgBox text{
+  font-size: 30rpx;
+  color: red;
+} 
+.redPacket-imgBox-shadow{
+  width: 480rpx;
+  height: 80rpx;
+  z-index: 10;
+  position: absolute;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url('http://www.wbx365.com/static/default/wap/image/xiaochengxu/gua@2x.png');
+}

@@ -1,16 +1,26 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.0",
+	"libVersion": "2.6.1",
 	"appid": "wxd0b5b89d4ceeea7d",
-	"projectname": "wbx2.2",
+	"projectname": "%E5%95%86%E9%93%BA",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -25,334 +35,18 @@
 			"list": []
 		},
 		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "实体店(大海捞真)",
+					"name": "订单详情",
 					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1442&gradeid=19"
-				},
-				{
-					"id": -1,
-					"name": "菜市场(果然鲜果园)",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1443&gradeid=15"
-				},
-				{
-					"id": -1,
-					"name": "实体店（鸡公煲）",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1395&gradeid=20"
-				},
-				{
-					"id": -1,
-					"name": "积分商城",
-					"pathName": "pages/mine/exchange/exchange",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "菜市场 老猪高（秒杀商品限购）",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=586&gradeid=15"
-				},
-				{
-					"id": -1,
-					"name": "优惠券使用（小熊水果）",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1371&gradeid=15"
-				},
-				{
-					"id": -1,
-					"name": "发现（商家发布）",
-					"pathName": "pages/found/found",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "见福中学",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=724&gradeid=19"
-				},
-				{
-					"id": -1,
-					"name": "鑫芳岭超市",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1530&gradeid=19"
-				},
-				{
-					"id": 9,
-					"name": "商店主页",
-					"pathName": "pages/home/store/store",
-					"query": ""
-				},
-				{
-					"id": 10,
-					"name": "扫码点餐",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1395&gradeid=20&seat=测试2&selectNum=1&selectRepast=0&sweepOrder=true"
-				},
-				{
-					"id": -1,
-					"name": "添加地址",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmClearing/address/addressAdd/addressAdd",
-					"query": ""
-				},
-				{
-					"id": 12,
-					"name": "地址管理",
-					"pathName": "pages/mine/address/address",
-					"query": ""
-				},
-				{
-					"id": 13,
-					"name": "确认订单",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmClearing/confirmClearing",
-					"query": "orderID=4648&gradeid=15&shopCart=[{\"buy_num\":1,\"product_id\":30638,\"photo\":\"http://imgs.wbx365.com/13395051232busine15197951540\",\"price\":6000,\"product_name\":\"智利车厘子\",\"is_attr\":0}]&addrID=686&orderList={\"full_money_reduce\":{},\"address\":{\"id\":686,\"default\":1,\"xm\":\"1\",\"tel\":\"11111111111\",\"area_str\":\"北京市东城区东华门街道\",\"info\":\"1\"},\"coupon\":{},\"order\":{\"num\":1,\"total_price\":6000,\"need_pay\":6000,\"logistics\":0,\"status\":0,\"user_id\":5049,\"shop_id\":1443,\"full_reduction_is_seckill\":0,\"full_reduction_is_sales\":1,\"coupon_is_seckill\":1,\"coupon_is_sales\":1,\"coupon_money\":0,\"full_money_reduce\":0,\"user_subsidy_money\":0,\"full_money_reduce_id\":0,\"red_packet_money\":0},\"order_goods\":[{\"photo\":\"http://imgs.wbx365.com/13395051232busine15197951540\"}],\"payment\":[{\"payment_id\":4,\"name\":\"余额支付\",\"logo\":\"money.png\",\"code\":\"money\",\"mobile_logo\":\"money_mobile.png\",\"contents\":\"余额支付是最方便快捷的\"},{\"payment_id\":9,\"name\":\"微信APP支付\",\"logo\":\"weixin.png\",\"code\":\"weixinapp\",\"mobile_logo\":\"weixin_mobile.png\",\"contents\":\"微信官方支付，安全、方便、快捷！\"},{\"payment_id\":10,\"name\":\"支付宝APP\",\"logo\":\"alipay.png\",\"code\":\"alipayapp\",\"mobile_logo\":\"alipay_mobile.png\",\"contents\":\"支付宝官方支付，安全、方便、快捷！\"}]}&logistics=0"
-				},
-				{
-					"id": -1,
-					"name": "消息中心",
-					"pathName": "pages/mine/messageCenter/messageCenter",
-					"query": ""
-				},
-				{
-					"id": 15,
-					"name": "确认订单用户首次红包奖励",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmClearing/confirmClearing",
-					"query": "orderID=4654&gradeid=15&shopCart=[{\"buy_num\":1,\"product_id\":30638,\"photo\":\"http://imgs.wbx365.com/13395051232busine15197951540\",\"price\":6000,\"product_name\":\"智利车厘子\",\"is_attr\":0}]&addrID=688&orderList={\"full_money_reduce\":{},\"address\":{\"id\":688,\"default\":1,\"xm\":\"12\",\"tel\":\"11111111111\",\"area_str\":\"北京市东城区东华门街道\",\"info\":\"111111\"},\"coupon\":{},\"order\":{\"num\":1,\"total_price\":6000,\"need_pay\":6000,\"logistics\":0,\"status\":0,\"user_id\":5049,\"shop_id\":1443,\"full_reduction_is_seckill\":0,\"full_reduction_is_sales\":1,\"coupon_is_seckill\":1,\"coupon_is_sales\":1,\"coupon_money\":0,\"full_money_reduce\":0,\"user_subsidy_money\":0,\"full_money_reduce_id\":0,\"red_packet_money\":0},\"order_goods\":[{\"photo\":\"http://imgs.wbx365.com/13395051232busine15197951540\"}],\"payment\":[{\"payment_id\":4,\"name\":\"余额支付\",\"logo\":\"money.png\",\"code\":\"money\",\"mobile_logo\":\"money_mobile.png\",\"contents\":\"余额支付是最方便快捷的\"},{\"payment_id\":9,\"name\":\"微信APP支付\",\"logo\":\"weixin.png\",\"code\":\"weixinapp\",\"mobile_logo\":\"weixin_mobile.png\",\"contents\":\"微信官方支付，安全、方便、快捷！\"},{\"payment_id\":10,\"name\":\"支付宝APP\",\"logo\":\"alipay.png\",\"code\":\"alipayapp\",\"mobile_logo\":\"alipay_mobile.png\",\"contents\":\"支付宝官方支付，安全、方便、快捷！\"}]}&logistics=0"
-				},
-				{
-					"id": -1,
-					"name": "天天乐",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=724&gradeid=19"
-				},
-				{
-					"id": -1,
-					"name": "超市便利",
-					"pathName": "pages/near/near",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "附近买菜",
-					"pathName": "pages/shop/shop",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "美食街",
-					"pathName": "pages/food/food",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "账户中心",
-					"pathName": "pages/mine/account/account",
-					"query": "user_list=[]"
-				},
-				{
-					"id": -1,
-					"name": "修改昵称",
-					"pathName": "pages/mine/account/account",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "微米明细",
-					"pathName": "pages/mine/micronDetail/micronDetail",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "我的预订订单详情",
-					"pathName": "pages/mine/reserve/detailsOrder/detailsOrder",
-					"query": "List={\"reserve_table_id\":165,\"name\":\"晶\",\"mobile\":\"15855556666\",\"number\":5,\"subscribe_money\":1,\"note\":\"\",\"type\":1,\"shop_id\":1395,\"user_id\":5049,\"order_id\":0,\"create_time\":1514272095,\"reserve_time\":\"2017-12-26 15:10:0\",\"status\":0,\"table_id\":0,\"closed\":0,\"table_number\":\"\",\"shop_name\":\"阿火重庆鸡公煲\",\"tel\":\"18050030492\",\"photo\":\"http://imgs.wbx365.com/FufNcAHWnymNkJolXFRNmOWkPNqM\"}"
-				},
-				{
-					"id": -1,
-					"name": "尚尚",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1423&gradeid=20"
-				},
-				{
-					"id": -1,
-					"name": "尚尚扫码点餐下单加菜",
-					"pathName": "pages/home/shopDetails/sweepPages/sweepPages",
-					"query": "shopCart=[{\"buy_num\":2,\"goods_id\":60766,\"attr_id\":2948,\"photo\":\"http://vrzff.com/attachs/2017/10/19/thumb_59e80c88b7fa0.jpg\",\"title\":\"苹果(小)\",\"price\":3000,\"is_attr\":1,\"casing_price\":200},{\"buy_num\":2,\"goods_id\":60766,\"attr_id\":2949,\"photo\":\"http://vrzff.com/attachs/2017/10/19/thumb_59e80c88b7fa0.jpg\",\"title\":\"苹果(中)\",\"price\":4000,\"is_attr\":1,\"casing_price\":400}]&shopID=1423&seat=测试2&selectNum=1&selectRepast=0"
-				},
-				{
-					"id": -1,
-					"name": "鸡公煲扫码买单",
-					"pathName": "pages/home/shopDetails/sweepPages/confirmClearing/confirmClearing",
-					"query": "out_trade_no=201807152045065049749666"
-				},
-				{
-					"id": -1,
-					"name": "巧婆婆",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=721&gradeid=20"
-				},
-				{
-					"id": -1,
-					"name": "见福无花果限购提交订单页面",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmOrder",
-					"query": "shopID=724&shopName=见福便利店（中学）&gradeid=19&shopCart=[{\"buy_num\":1,\"goods_id\":55647,\"photo\":\"http://imgs.wbx365.com/Fgw5V65uqpk_wmuRq5XOxc1eFn2x\",\"price\":300,\"title\":\"无花果\",\"is_attr\":0,\"casing_price\":0}]&sinceMoney=0&shopCartNum=1&shopCartPrice=300&logistics=0&casing_price=0&reserve_table_id="
-				},
-				{
-					"id": -1,
-					"name": "商城订单详情",
-					"pathName": "pages/mine/shopOrder/orderDetails/orderDetails",
-					"query": "orderID=2846&selected=2"
-				},
-				{
-					"id": -1,
-					"name": "市场订单详情",
-					"pathName": "pages/mine/shopOrder/orderDetails/orderDetails",
-					"query": "orderID=4051&selected=1"
-				},
-				{
-					"id": -1,
-					"name": "绑定手机",
-					"pathName": "pages/bindPhone/bindPhone",
-					"query": ""
-				},
-				{
-					"id": 32,
-					"name": "下单新增地址",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmClearing/address/address",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "确认订单",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmClearing/confirmClearing",
-					"query": "orderID=4681&gradeid=15&shopCart=[{\"buy_num\":1,\"product_id\":30638,\"photo\":\"http://imgs.wbx365.com/13395051232busine15197951540\",\"price\":6000,\"product_name\":\"智利车厘子\",\"is_attr\":0,\"is_seckill\":0,\"limitations_num\":0,\"seckill_num\":0}]&addrID=691&orderList={\"full_money_reduce\":{},\"address\":{\"id\":691,\"default\":1,\"xm\":\"123\",\"tel\":\"11111111111\",\"area_str\":\"北京市东城区东华门街道\",\"info\":\"11111\"},\"coupon\":{},\"order\":{\"num\":1,\"total_price\":6000,\"need_pay\":6000,\"logistics\":0,\"status\":0,\"user_id\":5049,\"shop_id\":1443,\"full_reduction_is_seckill\":0,\"full_reduction_is_sales\":1,\"coupon_is_seckill\":1,\"coupon_is_sales\":1,\"coupon_money\":0,\"full_money_reduce\":0,\"user_subsidy_money\":0,\"full_money_reduce_id\":0,\"red_packet_money\":0},\"order_goods\":[{\"photo\":\"http://imgs.wbx365.com/13395051232busine15197951540\"}],\"payment\":[{\"payment_id\":4,\"name\":\"余额支付\",\"logo\":\"money.png\",\"code\":\"money\",\"mobile_logo\":\"money_mobile.png\",\"contents\":\"余额支付是最方便快捷的\"},{\"payment_id\":9,\"name\":\"微信APP支付\",\"logo\":\"weixin.png\",\"code\":\"weixinapp\",\"mobile_logo\":\"weixin_mobile.png\",\"contents\":\"微信官方支付，安全、方便、快捷！\"},{\"payment_id\":10,\"name\":\"支付宝APP\",\"logo\":\"alipay.png\",\"code\":\"alipayapp\",\"mobile_logo\":\"alipay_mobile.png\",\"contents\":\"支付宝官方支付，安全、方便、快捷！\"}]}&logistics=0"
-				},
-				{
-					"id": -1,
-					"name": "超市便利",
-					"pathName": "pages/near/near",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "买菜",
-					"pathName": "pages/shop/shop",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "美食街",
-					"pathName": "pages/food/food",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "积分兑换",
-					"pathName": "pages/mine/exchange/exchange",
-					"query": ""
-				},
-				{
-					"id": 38,
-					"name": "兑换商品",
-					"pathName": "pages/mine/exchange/exchangeNow/exchangeNow",
-					"query": "num=1&goods_id=31&goodsList=[{\"goods_id\":31,\"title\":\"炖锅\",\"face_pic\":\"http://www.wbx365.com/attachs/2018/06/29/thumb_5b35f714e6862.jpg\",\"integral\":9800}]&allIntegral=9800"
-				},
-				{
-					"id": -1,
-					"name": "绑定手机",
-					"pathName": "pages/bindPhone/bindPhone",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "手机号码登录",
-					"pathName": "pages/login/login",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "新用户注册",
-					"pathName": "pages/login/newUser/newUser",
-					"query": ""
-				},
-				{
-					"id": 42,
-					"name": "搜索商品",
-					"pathName": "pages/home/search/search",
-					"query": "cityName=厦门"
-				},
-				{
-					"id": -1,
-					"name": "推荐开店展示",
-					"pathName": "pages/mine/invitation/invitation",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "聊天界面",
-					"pathName": "pages/home/shopDetails/message/message",
-					"query": "username={\"myName\":\"wbx12255\",\"your\":\"\"}"
-				},
-				{
-					"id": -1,
-					"name": "预定",
-					"pathName": "pages/home/shopDetails/setTable/setTable",
-					"query": "subscribe=250&shopID=1395"
-				},
-				{
-					"id": -1,
-					"name": "添加地址",
-					"pathName": "pages/mine/address/addressAdd/addressAdd",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "菜市场下单",
-					"pathName": "pages/home/shopDetails/confirmOrder/confirmOrder",
-					"query": "shopID=586&shopName=老猪高黑土猪肉专卖店&gradeid=15&shopCart=[{\"buy_num\":1,\"product_id\":28834,\"photo\":\"http://imgs.wbx365.com/FrBAY-Pmuly29tCf9VT9DjrMn0np\",\"price\":2580,\"product_name\":\"黑土猪肉香肠\",\"is_attr\":0,\"is_seckill\":0,\"limitations_num\":0,\"seckill_num\":0},{\"buy_num\":1,\"product_id\":30456,\"photo\":\"http://imgs.wbx365.com/FlQx2WmYySoAb4xcNKaeebF-G9u3\",\"price\":3080,\"product_name\":\"黑土猪-同安香肠\",\"is_attr\":0,\"is_seckill\":0,\"limitations_num\":0,\"seckill_num\":0}]&sinceMoney=0&shopCartNum=2&shopCartPrice=5660&logistics=0"
-				},
-				{
-					"id": -1,
-					"name": "多规格超出",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1634&gradeid=19"
-				},
-				{
-					"id": -1,
-					"name": "鑫芳邻",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1530&gradeid=19"
-				},
-				{
-					"id": 50,
-					"name": "小花小甲花甲粉",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1628&gradeid=20"
-				},
-				{
-					"id": -1,
-					"name": "地址添加新",
-					"pathName": "pages/mine/address/addressAdd/addressAdd",
-					"query": ""
-				},
-				{
-					"id": 52,
-					"name": "聚福小站",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1738&gradeid=20"
-				},
-				{
-					"id": -1,
-					"name": "尚尚",
-					"pathName": "pages/home/shopDetails/shopDetails",
-					"query": "shopID=1423&gradeid=20"
+					"query": "shopID=1423&gradeid=20",
+					"scene": null
 				}
 			]
 		}

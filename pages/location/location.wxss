@@ -174,8 +174,9 @@
 }
 .near-address-list view text{
   line-height: 80rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
   margin-left: 30rpx;
+  color: #333;
 }
 /********************************收搜收货地址  */
 .search-address{

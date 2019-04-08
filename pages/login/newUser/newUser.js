@@ -223,8 +223,12 @@ Page({
       that.showToast('密码不一致');
       return false;
     }
+    console.log("mobile:"+that.data.phoneTxt);
+    console.log("code"+that.data.codeTxt);
+    console.log("password:"+md5.hexMD5(that.data.pass1Txt));
     wx.request({
       url: getApp().globalData.url + that.data.userRegistrationAPI,
+      
       data: {
         mobile: that.data.phoneTxt,
         code: that.data.codeTxt,

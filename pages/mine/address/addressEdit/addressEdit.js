@@ -259,10 +259,18 @@ Page({
               //   wx.showToast({
               //     title: res.data.msg,
               //   })
-              wx.showModal({
-                title: '提示',
-                content: res.data.msg,
-              })
+              if(res.data.msg="修改失败"){
+                wx.showModal({
+                  title: '提示',
+                  content: '暂无修改',
+                })
+              }else{
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.msg,
+                })
+              }
+              
             } else {
               wx.navigateBack({
                 delta: 1,

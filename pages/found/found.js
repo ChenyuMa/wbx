@@ -33,22 +33,24 @@ function getDistance(lat1, lng1, lat2, lng2) {
 
 // 发布
 var merchants_request = function(API, that) {
+  var foundShopID =getApp().globalData.foundShopID;
   wx.request({
     url: getApp().globalData.url + API,
     data: {
       login_token:wx.getStorageSync('loginToken'),
       city_name: wx.getStorageSync('cityName'),
       lat: wx.getStorageSync('latitude'),
-      lng: wx.getStorageSync('longitude')
+      lng: wx.getStorageSync('longitude'),
+      shop_id: getApp().globalData.foundShopID
     },
     header: {
-      'content-type': 'application/json'
+      'content-type': 'application/x-www-form-urlencoded'
     },
     method: 'POST',
     dataType: 'json',
     responseType: 'text',
     success: function(res) {
-      console.log('发布:',res);
+      console.log('发现:',res);
       if(res.data.state == 0){
         wx.showToast({
           title: res.data.msg,
@@ -57,7 +59,10 @@ var merchants_request = function(API, that) {
         wx.showToast({
           title: '商家未发布',
         });
-        that.setData({ merchants_list:[]});
+        that.setData({
+           merchants_list:[],
+        });
+        getApp().globalData.foundShopID = null
       }else{
         var list = res.data.data;
         for (var i = 0; i < list.length; i++) {
@@ -71,7 +76,7 @@ var merchants_request = function(API, that) {
     },
     fail: function(res) {},
     complete: function(res) {
-      
+      getApp().globalData.foundShopID = null
     },
   })
 }
@@ -82,7 +87,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    windowHeight: '',
+    x: 0,
+    y: 0,
+    windowWidth: 0,
+    windowHeight: 0,
     imgUrls: getApp().globalData.imgUrls,
     // 头部背景图片
     background_img: 'gg@2x.png',
@@ -113,7 +121,9 @@ Page({
     // 发布
     merchants_list: [],
     merchantsAPI: '/api/discovery/list_discover',
-    userLogin:false
+    userLogin:false,
+    lazy_load:true,//image标签设置图片懒加载
+    imgUrl: getApp().globalData.imgUrls
   },
 
   click_content: function(e) {
@@ -121,20 +131,46 @@ Page({
       url: '../home/shopDetails/shopDetails?shopID=' + e.currentTarget.id + "&gradeid=" + e.currentTarget.dataset.gradeid,
     })
   },
-
+  // 发现首页跳转
+  home() {
+    wx.reLaunch({
+      url: '../home/home',
+    })
+  },
+  // 跳转订单页面
+  shopOrder() {
+    wx.reLaunch({
+      url: '../mine/shopOrder/shopOrder',
+    })
+  },
+  // 跳转我的页面
+  mine() {
+    wx.reLaunch({
+      url: '../mine/mine',
+    })
+  },
+  //点击购物车
+  clickCar: function () {
+    wx.navigateTo({
+      url: '../shopCart/shopCart',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var that = this;
-    // 获取屏幕高度
+    //获取屏幕高度
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
-          windowHeight: res.windowHeight,
+          windowHeight: res.windowHeight - 10,
+          windowWidth: res.windowWidth - 5,
+          x: res.windowWidth - 5,
+          y: res.windowHeight - 100
         });
       },
-    })
+    });
   },
 
   /**
@@ -208,7 +244,7 @@ Page({
         login_token:wx.getStorageSync('loginToken'),
         shop_id: e.currentTarget.dataset.item.shop_id
       },
-      header: { 'content-type': 'application/json'},
+      header: { 'content-type': 'application/x-www-form-urlencoded'},
       method: 'POST',
       dataType: 'json',
       responseType: 'text',
@@ -219,6 +255,9 @@ Page({
         //   })
         // } else 
         if (res.data.msg == "请先登陆"){
+          wx.navigateTo({
+            url: '../login/login',
+          })
           that.setData({
             userLogin:true
           });

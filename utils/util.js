@@ -1,3 +1,4 @@
+const URL_API = "https://app.vrzff.com"
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -29,11 +30,33 @@ let getQueryString = function (url, name) {
   }
   return null;
 }
-
+function dataRequst(url, cb, data, error) {
+  wx.request({
+    url: URL_API + url,
+    data: data,
+    method: "POST",
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    success: function (res) {
+      console.log("数据请求成功！");
+      return typeof cb == "function" && cb(res.data);
+    },
+    fail: function (res) {
+      console.log("数据请求失败！");
+      console.log(res);
+      return typeof error == "function" && error(res.data);
+    },
+    complete: function () {
+      console.log("请求完成！");
+    }
+  });
+}
 module.exports = {
   getQueryString: getQueryString,
   formatTime: formatTime,
-  dueTime: dueTime
+  dueTime: dueTime,
+  dataRequst: dataRequst
 }
 
 

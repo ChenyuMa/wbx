@@ -1,5 +1,9 @@
 /* pages/home/shopDetails/confirmOrder/confirmOrder.wxss */
-
+.of {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .confirmOrder {
   width: 100%;
   background: whitesmoke;
@@ -76,7 +80,7 @@
 /* 商品名称数量 */
 
 .contentDetails {
-  width: 55%;
+  width: 67%;
   height: 70%;
   display: flex;
   justify-content: space-between;
@@ -85,6 +89,11 @@
 
 .contentDetails text {
   font-size: 30rpx;
+}
+
+.contentDetails .col{
+  font-size: 24rpx;
+  color: #999;
 }
 
 .orderNum {

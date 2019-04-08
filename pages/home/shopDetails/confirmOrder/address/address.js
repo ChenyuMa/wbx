@@ -141,7 +141,6 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        console.log(res);
         if(res.data.state == 0){
           // wx.showToast({
           //   title: res.data.msg,

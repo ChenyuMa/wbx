@@ -43,6 +43,9 @@ Page({
     var that = this
     console.log(options)
     var myName = wx.getStorageSync('myUsername');
+    wx.setNavigationBarTitle({
+      title: options.shopName,
+    })
     console.log(myName)
     var options = JSON.parse(options.username);
     var num = wx.getStorageSync(options.your + myName).length - 1;
@@ -60,9 +63,10 @@ Page({
       chatMsg: wx.getStorageSync(options.your + myName) || []
     })
     console.log(that.data.chatMsg)
-    wx.setNavigationBarTitle({
-      title: that.data.yourname
-    })
+  },
+  onReady: function () {
+    var that = this;
+
   },
   onShow: function () {
     var that = this
@@ -210,7 +214,7 @@ Page({
       },
       complete: function complete() {
       }
-    })
+    }) 
   },
   uploadRecord: function (tempFilePath) {
     var str = WebIM.config.appkey.split('#')
@@ -302,6 +306,7 @@ Page({
       success: function (id, serverMsgId) {
         console.log('send text message success')
       }
+      
     });
     console.log("Sending textmessage")
     msg.body.chatType = 'singleChat';

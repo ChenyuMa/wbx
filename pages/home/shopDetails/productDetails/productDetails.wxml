@@ -1,0 +1,156 @@
+<!--pages/home/shopDetails/productDetails/productDetails.wxml-->
+<view class='shopDetails'>
+
+  <view class='shopDetails-top' >
+    <view class='img'>
+      <!--  -->
+      <swiper wx:if='{{list.goods_photo!=""}}' >
+        <block wx:for="{{list.goods_photo}}" wx:key=''>
+          <swiper-item>
+            <image src="{{item}}" lazy-load='{{lazy_load}}' mode='aspectFit'/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <image wx:else lazy-load='{{lazy_load}}' src='{{list.photo}}' mode='aspectFill'></image>
+    </view>
+    <view class='message'>
+      <view class='title'>{{list.title}}</view>
+      <view class='price'>￥{{list.is_shop_member==1?list.shop_member_price/100.00:list.is_seckill==1?list.seckill_price/100.00:list.sales_promotion_is==1?list.sales_promotion_price/100.00:list.mall_price/100.00}}
+        <image lazy-load='{{lazy_load}}' wx:if="{{list.is_shop_member==1}}" src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/membe_price@2x1.png'></image>
+      </view>
+      <view class='count'>
+        <view class='first' wx:if="{{list.is_shop_member==1}}">商城价￥{{list.mall_price/100.00}}</view>
+        <view>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"shopDetails_cont_wjx.png"}}'></image>收藏{{list.favorites}}人</view>
+        <view wx:if='{{isSalesman!=0}}'>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"shopDetails_cont_hot.png"}}'></image>
+          <!-- 月销售{{list.sold_num}}笔 -->
+          </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='shopDetails-buy' wx:if='{{false}}'>
+    <view>购买数量：</view>
+    <view class='shopNum'>
+      <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_reduce@2x.png"}}' catchtap='subtractionGoods' data-id='{{list}}'></image>
+      <text>{{list.buy_num}}</text>
+      <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_add@2x.png"}}' catchtap='addGoods' data-id='{{list}}'></image>
+    </view>
+  </view>
+
+  <view class='shopDetails-share' style='border-top:none'>
+    <view class='title'>分享好友</view>
+    <view class='share'>
+      <!-- <view class='share-item'>
+        <image src='{{imgUrls+"share_pyq.png"}}'></image>
+        <text>朋友圈</text>
+      </view> -->
+      <view class='share-item' bindtap='shareWeChat'>
+        
+        <button class='tuijians textcenter' hover-class="none" open-type="share" bindtap='clickRecommend'></button>
+        <text>微信好友</text>
+      </view>
+      <!-- <view class='share-item'>
+        <image src='{{imgUrls+"share_sc.png"}}'></image>
+        <text>微信收藏</text>
+      </view> -->
+    </view>
+  </view>
+
+  <view class='shopDetails-info' wx:if='{{myrich}}'>
+    <view class='title'>商品介绍</view>
+    <view class='info'>
+      <rich-text nodes="{{myrich}}"></rich-text>
+    </view>
+  </view>
+</view>
+
+<!-- 底部悬浮购物 -->
+<view class='shopDetailsCart'>
+  <view class='item'>
+    <image lazy-load='{{lazy_load}}' catchtap='onCollect' data-on='{{collected}}' wx:if="{{collected}}" src='{{imgUrls+"shopDetailsCart_sc_on.png"}}' mode="scaleToFill"></image>
+    <image lazy-load='{{lazy_load}}' catchtap='onCollect' data-on='{{collected}}' wx:else src='{{imgUrls+"shopDetailsCart_sc.png"}}' mode="scaleToFill"></image>
+    <text>收藏</text>
+  </view>
+  <view class='item'  bindtap='returnShop' data-id="{{list}}">
+    <image lazy-load='{{lazy_load}}' src='{{imgUrls+"shopDetailsCart_owner.png"}}' mode="scaleToFill"></image>
+    <text>店铺</text>
+  </view>
+  <view class='btn btn-cart' catchtap='addShoppingCart' data-id='{{list}}' >加入购物车</view>
+  <!-- <view class='btn btn-buy'  bindtap='subconfirmOrder' data-id="{{list}}">立即购买</view> -->
+</view>
+
+<!--商品多规格  -->
+<view class='goods-attr' wx:if='{{is_attr}}' >
+  <view class='attr'>
+    <!--头部  -->
+    <view class='attr-top flex-row'>
+      <text>{{list.title}}</text>
+      <text class='fa fa-times-circle-o' catchtap='close_attr'></text>
+    </view>
+    <!--规格  -->
+    <view class='attr-select flex-cloumn'>
+      <!-- <text>规格</text>
+      <view class='attr-select-details'>
+        <block wx:for='{{list.goods_attr}}' wx:key='index'>
+          <text catchtap='select_goods_attr' class='{{is_select_attr == index?"select_goods_attr":""}}' data-index='{{index}}' data-item='{{item}}'>{{item.attr_name}}</text>
+        </block>
+      </view> -->
+
+      <scroll-view class='attrs-select' scroll-y>
+        <!--规格  -->
+        <view class='select-title'>规格</view>
+        <view class='select-content'>
+          <block wx:for='{{arrList.goods_attr}}' wx:key='index'>
+            <view catchtap='select_goods_attrs' data-click='former' data-shop_box_num='{{shop_box_num}}' data-item='{{item.attr_name}}' data-index='{{index}}' class='item {{is_select_attr == index?"on":""}}'>{{item.is_seckill==1?'( 秒 ) ':''}}{{item.attr_name}}</view>
+          </block>
+        </view>
+
+        <block wx:for='{{arrList.nature}}' wx:key='{{item_id}}' wx:for-item='items' wx:for-index="id">
+          <view class='select-title'>{{items.item_name}}</view>
+          <view class='select-content'>
+            <block wx:for='{{items.nature_arr}}' wx:key='{{item.nature_id}}' wx:for-item="item">
+              <view class='item {{item.is_select_attr?"on":""}}' data-click='new' bindtap='select_goods_attrs' data-shop_box_num='{{shop_box_num}}' data-content='{{arrList.nature}}' data-itemsIndex='{{id}}' data-itemIndex='{{index}}'>{{item.nature_name}}</view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+      
+    </view>
+    <!--价格  -->
+    <view class='attr-price flex-row' wx:if='{{false}}'>
+      <!--价格  -->
+      <text class='attr-price-select'>￥{{goods_attr_select.price/100.00}}</text>
+      <text class='attr-price-member' wx:if='{{goods_attr_select.is_shop_member==1}}'>会员价￥{{goods_attr_select.shop_member_price/100.00}}</text>
+      <!--商品增加  -->
+      <view class='goods-attr-add flex-row'>
+        <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_reduce@2x.png"}}' catchtap='subtractionGoods_attr' data-attr_select='{{goods_attr_select}}'></image>
+        <text>{{goods_attr_select.attr_buy_num}} </text>
+        <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_add@2x.png"}}' catchtap='addGoods_attrs' data-attr_select='{{goods_attr_select}}'></image>
+      </view>
+    </view>
+
+    <view class='attrs-bottom'>
+      <view class='attrs-price'>
+        <text class='car_money'>￥{{goods_attr_price/100}}</text>
+        <view class='ellipsis shop_car'>
+          <block wx:if='{{shop_box.length > 0}}'>
+            (
+            <block wx:for='{{shop_box}}' wx:key=''>
+              <text>+{{item}}</text>
+            </block>
+            )
+          </block>
+        </view>
+      </view>
+      <view class='attrs-shopNum flex-row'>
+        <image src='{{imgUrls+"store_reduce@2x.png"}}' bindtap='subtractionGoods_attr' data-car_state='0' data-attr_select='{{goods_attr_select}}'></image>
+        <text>{{goods_attr_select.attr_buy_num}}</text>
+        <image src='{{imgUrls+"store_add@2x.png"}}' bindtap='addGoods_attr' data-attr_select='{{goods_attr_select}}'></image>
+      </view>
+    </view>
+
+  </view>
+</view>
+

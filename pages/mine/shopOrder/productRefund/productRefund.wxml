@@ -1,0 +1,84 @@
+<view class='product-refund'>
+
+  <!-- 退款状态 -->
+  <view class='status'>
+    <view class='status-top'>
+      <text class='txt'>{{refundDetail.status_message}}</text>
+      <view class='time'>{{refundDetail.status_time}}</view>
+    </view>
+    <view class='status-bottom'>
+      <view class='item'>
+        <text class='txt'>退款金额</text>
+        <text class='number'>{{refundDetail.need_pay/100}}元</text>
+      </view>
+      <view class='item'>
+        <text class='txt'>退款账户</text>
+        <text class='txt'>{{refundDetail.pay_type}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退款流程 -->
+  <view class='process'>
+    <view class='title'>退款流程</view>
+    <view class='process-content'>
+      <view class='left-border'></view>
+      <block wx:for='{{refundDetail.order_track}}' wx:key='index'>
+        <view class='item {{index-1? "on" : ""}}'>
+          <view class='item-time'>
+            <view class='icon'>
+              <view></view>
+            </view>
+            <text>{{item.create_time}}</text>
+          </view>
+          <view class='item-txt'>
+            <text>{{item.status_message}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 申请信息   -->
+  <view class='application'>
+    <view class='title'>申请信息</view>
+    <view class='application-content'>
+      <view class='product-box'>
+        <block wx:for='{{refundDetail.goods}}' wx:key='index'>
+          <view class='list'>
+            <view class='list-img'>
+              <image src='{{item.photo}}?imageView2/1/w/100/h/100' mode='aspectFill'></image>
+            </view>
+            <view class='list-txt'>
+              <text class='desc'>{{item.title}}</text>
+              <view class='money'>￥{{item.total_price/100/item.num}}
+                <text>x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+      </view>
+      <view class='information-box'>
+        <view class='point'>
+          <view class='name'>申请数量：</view>
+          <view class='txt of'>{{refundDetail.num}}</view>
+        </view>
+        <view class='point'>
+          <view class='name'>申请金额：</view>
+          <view class='txt of'>￥{{refundDetail.need_pay/100}}</view>
+        </view>
+        <view class='point'>
+          <view class='name'>申请时间：</view>
+          <view class='txt of'>{{refundDetail.apply_time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商家电话 -->
+  <view class='btn-phone' bindtap='callPhone'>
+    <text>商家电话</text>
+  </view>
+
+</view>

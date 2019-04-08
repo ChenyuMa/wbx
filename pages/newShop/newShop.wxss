@@ -1,0 +1,210 @@
+/* pages/newShop/newShop.wxss */
+
+/* 头部 */
+
+.header {
+  height: 316rpx;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  padding: 66rpx 20rpx 0 20rpx;
+}
+
+.backImg {
+  width: 20rpx;
+  height: 30rpx;
+  border: 1px solid black;
+  float: left;
+  margin-top: 6rpx;
+  margin-left: 26rpx;
+}
+
+.zjxx {
+  color: #fff;
+  font-size: 22rpx;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50px;
+  width: 380rpx;
+  margin-left: 128rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+}
+
+.zjImg {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  background: red;
+  margin-left:10rpx;
+  margin-top:-6rpx;
+}
+.store{
+  /* border: 1px solid red; */
+  width: 100%;
+  margin-top: 20rpx;
+  height: 172rpx;
+}
+.store_tx{
+  width: 172rpx;
+  height: 192rpx;
+  background: red;
+  float: left;
+}
+.store_detail{
+  float: left;
+  margin-left: 20rpx;
+  /* border: 1px solid black; */
+  height: 172rpx;
+  width: 448rpx;
+}
+.store_dm{
+  color: #fff;
+  font-size: 50rpx;
+}
+.store_xx{
+  vertical-align: middle;
+  background: red;
+  width: 200rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+}
+.store_num{
+  font-size: 20rpx;
+  color: #fff;
+  margin-left: 20rpx;
+}
+.store_gg{
+  font-size: 20rpx;
+  color: #fff;
+  margin-top: 12rpx;
+}
+.store_dd{
+  background: red;
+  float: right;
+  width: 100rpx;
+  height: 100rpx;
+  margin: -52rpx 26rpx 0 0;
+  border-radius: 50%;
+}
+.main{
+  /* border: 1px solid black; */
+  margin-top: 30rpx;
+  padding: 0 20rpx;
+}
+.main_yh{
+  width: 120rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  border: 1px solid red;
+  float: left;
+  font-size: 22rpx;
+  color: red;
+  margin-right: 10rpx;
+}
+.main_yh text{
+  font-weight: bold;
+}
+.main_yhhui{
+  width: 120rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 36rpx;
+  border: 1px solid gray;
+  float: left;
+  font-size: 22rpx;
+  color: gray;
+  margin-right: 10rpx;
+}
+.main_yhhui text{
+  font-weight: bold;
+}
+.main_mj{
+  width: 100%;
+  margin-top:56rpx;
+}
+.main_mjTitle{
+  float: left;
+  border: 1px solid rgb(248, 225, 222);
+  border-radius: 5px;
+  color: rgb(212,140,136);
+  font-size: 20rpx;
+  background: rgb(255,244,242);
+  width: 54rpx;
+  text-align: center;
+}
+.main_mj text{
+  font-size:20rpx;
+  float:left;
+  margin-left:10rpx;
+  color: rgb(119,119,119);
+}
+.yh_num{
+  float: right;
+  font-size: 18rpx;
+  color: rgb(118,118,118);
+}
+.yh_num image{
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: sub;
+  background: rgb(118,118,118);
+  margin-left: 6rpx;
+}
+
+
+/* tab开始 */
+page{
+  background: #eeeeee;
+}
+.tab-h {
+  height: 92rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 92rpx;
+  background: #ffffff;
+  font-size: 16px;
+  white-space: nowrap;
+  /* position: fixed;
+  top: 486rpx;
+  left: 0; */
+  z-index: 99;
+  margin-top: 52rpx;
+  border-bottom: 2px solid rgb(244,244,244);
+}
+
+.tab-item {
+  /* margin: 0 36rpx; */
+  display: inline-block;
+  font-size: 28rpx;
+  color: #101010;
+  text-align: center;
+  width: 64rpx;
+  margin-left: 100rpx;
+  height: 82rpx;
+}
+
+.tab-item.active {
+  color: #000;
+  font-weight: bold;
+  border-bottom: 2px solid #24AEA0;
+  position: relative;
+  z-index: 99;
+}
+
+
+
+.tab-content {
+  margin-top: 94rpx;
+  height: clac(100vh - 94rpx) !important;
+  background:#ffffff;
+  /* border: 1px solid red */
+}
+
+.scoll-h {
+  height: 100%;
+}
+
+/* tab结束 */

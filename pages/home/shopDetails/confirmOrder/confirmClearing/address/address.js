@@ -11,7 +11,7 @@ Page({
     addressDeleting: '/api/user/delete_address',
     addressList: [],
     windowHeight: '',
-    id:0
+    id:''
   },
   //新增地址
   addressAdd: function () {
@@ -84,44 +84,54 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        wx.request({
-          url: getApp().globalData.url + that.data.addressAPI,
-          data: {
-            login_token: wx.getStorageSync('loginToken')
-          },
-          header: { 'content-type': 'application/json' },
-          method: 'POST',
-          dataType: 'json',
-          success: function (res) {
-            that.setData({
-              addressList: res.data.data
-            });
-            for (var i = 0; i < that.data.addressList.length; i++) {
-              if (that.data.addressList[i].default == 1) {
-                var pages = getCurrentPages();
-                var currPage = pages[pages.length - 2];
-                currPage.setData({
-                  name: that.data.addressList[i].xm,
-                  tel: that.data.addressList[i].tel,
-                  info: that.data.addressList[i].area_str + that.data.addressList[i].info
+        console.log('默认地址:',res);
+        if(res.data.state==0){
+
+        }else{
+          wx.request({
+            url: getApp().globalData.url + that.data.addressAPI,
+            data: {
+              login_token: wx.getStorageSync('loginToken')
+            },
+            header: { 'content-type': 'application/json' },
+            method: 'POST',
+            dataType: 'json',
+            success: function (res) {
+              console.log('更换默认地址:', res);
+              if(res.data.state==0){
+                wx.showToast({
+                  title: res.data.msg,
+                })
+              }else{
+                that.setData({
+                  addressList: res.data.data
                 });
-              };
-            };
-          },
-          fail: function (res) { },
-          complete: function (res) {
-            wx.navigateBack({
-              delta: 1,
-            })
-          },
-        })
+                for (var i = 0; i < that.data.addressList.length; i++) {
+                  if (that.data.addressList[i].default == 1) {
+                    var pages = getCurrentPages();
+                    var currPage = pages[pages.length - 2];
+                    // var orderList = currPage.data.orderList;
+                    // orderList.address = that.data.addressList[i];
+                    currPage.setData({
+                      addrID: that.data.addressList[i].id,
+                      isSetAddr: true
+                    });
+                  };
+                };
+              }
+            },
+            fail: function (res) { },
+            complete: function (res) {
+              wx.navigateBack({
+                delta: 1,
+              })
+            },
+          })
+        }
       },
       fail: function (res) { },
       complete: function (res) { },
     })
-
-    
-
   },
 
   /**
@@ -170,9 +180,9 @@ Page({
    */
   onUnload: function () {
     var that = this;
-    var pages = getCurrentPages();
-    var currPage = pages[pages.length - 2];
-    currPage.getPayInfo();
+    // var pages = getCurrentPages();
+    // var currPage = pages[pages.length - 2];
+    // currPage.getPayInfo();
   },
 
   /**
@@ -210,6 +220,7 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
+        console.log('请求地址:',res);
         for(var i=0;i<res.data.data.length;i++){
           if (res.data.data[i].default == 1){
             that.setData({

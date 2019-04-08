@@ -42,7 +42,7 @@ page {
                  'Droid Sans Fallback',
                  'Microsoft Yahei',
                  sans-serif;
-  height: 100%;
+  height: 100vh;
   background: #fff;
   overflow: hidden;
 }

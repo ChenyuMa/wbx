@@ -7,7 +7,7 @@
   <!--  -->
   <view class='money'>
     <text>付款金额：</text>
-    <input placeholder='请询问商家后输入' value='{{money}}' bindinput='inputMoney' type='digit'></input>
+    <input placeholder='请询问商家后输入' value='{{money}}' bindinput='inputMoney' type='digit'  focus='ture' ></input>
   </view>
   <!--支付方式  -->
   <view class='orderPay'>

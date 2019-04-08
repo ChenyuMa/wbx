@@ -14,7 +14,7 @@ Page({
   data: {
     windowHeight: '',
     imgUrls: getApp().globalData.imgUrls,
-    dataValue: '请选择最进七天日期',
+    dataValue: '请选择最近七天日期',
     startData: getDate(0),
     endData: getDate(7),
     timeValue: '请选择时间',
@@ -189,6 +189,7 @@ Page({
     } else if (!that.data.data) {
       console.log('选择了时间', that.data.data);
       wx.showToast({
+        icon:'none',
         title: '请选择时间',
       })
       return false;
@@ -223,10 +224,12 @@ Page({
               })
             } else {
               wx.showToast({
+                icon:'none',
                 title: res.data.msg,
               })
             }
           } else {
+
             var reserve_table_id = res.data.data.reserve_table_id;
             var pages = getCurrentPages();
             var prevPage = pages[pages.length - 2];
@@ -244,6 +247,7 @@ Page({
                 dataType: 'json',
                 responseType: 'text',
                 success: function(res) {
+                  console.log("res",res)
                   if (res.data.state == 0) {
                     wx.showToast({
                       title: res.data.msg,
@@ -279,7 +283,9 @@ Page({
               //   },
               // })
               wx.showToast({
-                title: '预定完成',
+                icon:'none',
+                title: '预定完成!返回店铺下单',
+                duration:3000
               })
               setTimeout(function() {
                 if (prevPage.route == "pages/home/store/store") {

@@ -1,0 +1,26 @@
+<!--pages/home/shopDetails/confirmOrder/confirmClearing/userRedPacket/userRedPacket.wxml-->
+<block wx:for="{{redPacketList}}" wx:key="unique">
+  <view class='conpons' bindtap='selectRedPacket' data-red_packet_id='{{item.user_red_packet_id}}' data-money='{{item.money/100}}'>
+    <image src='{{imgURL}}conpons.png' class='bg'></image>
+    <image src='{{imgURL}}select.png' class="{{item.user_red_packet_id==red_packet_id?'select':'un'}}"></image>
+    <view class='upper_part'>
+      <view class='shop_msg'>
+        <image src='{{item.logo}}'></image>
+        <view class='msg'> 
+          <text class='shopName'>{{item.shop_name}}</text>
+          <text class='indate'>店铺红包</text>
+        </view>
+      </view>
+      <view class='discounts'>
+        <view class='price'>
+          <text style='color:red;font-size:28rpx'>¥</text>
+          <text style='color:red;font-size:44rpx'>{{item.money/100}}</text>
+        </view>
+        <!-- <text style='font-size:24rpx;color:#434343;margin-top:15rpx'>满{{item.condition_money/100}}可用</text> -->
+      </view>
+    </view>
+    <text class='intr'>限本店使用</text>
+  </view>
+</block>
+
+<view class='unUserCoupon' catchtap='unSelectRedPacket'>不使用红包</view>

@@ -1,5 +1,5 @@
 <!--pages/shop/shopSearch/shopSearch.wxml-->
-<view class='shopSearch-page' style='height:{{windowHeight}}px;'>
+<view class='shopSearch-page html'>
 
   <!--头部  -->
   <view class='topView'>
@@ -58,7 +58,7 @@
             </view>
             <view class='shop-send'>
               <text>起送：￥{{item.since_money/100.00}}</text>
-              <text>月销量：{{item.sold_num}}</text>
+              <!-- <text>月销量：{{item.sold_num}}</text> -->
             </view>
             <view class='shop-address'>
               <text>地址：{{item.addr}}</text>

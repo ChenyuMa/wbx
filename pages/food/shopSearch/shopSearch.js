@@ -105,14 +105,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    // 获取屏幕高度
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          windowHeight: res.windowHeight
-        });
-      },
-    })
+    
   },
 
   /**

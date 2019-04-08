@@ -1,12 +1,16 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/home/shopDetails/confirmOrder/confirmClearing/address/address",
+    "pages/home/shopDetails/confirmOrder/address/address",
     "pages/mine/address/addressAdd/addressAdd",
     "pages/mine/address/addressEdit/addressEdit",
     "pages/home/shopDetails/confirmOrder/address/addressEdit/addressEdit",
     "pages/home/shopDetails/confirmOrder/address/addressAdd/addressAdd",
     "pages/home/shopDetails/confirmOrder/confirmClearing/address/addressAdd/addressAdd",
     "pages/home/shopDetails/confirmOrder/confirmClearing/address/addressEdit/addressEdit",
+    "pages/home/shopDetails/confirmOrder/confirmClearing/userCoupons/userCoupons",
+    "pages/home/shopDetails/confirmOrder/confirmClearing/userRedPacket/userRedPacket",
     "pages/mine/mine",
     "pages/home/shopDetails/shopDetails",
     "pages/found/found",
@@ -37,10 +41,8 @@
     "pages/food/shopSearch/shopSearch",
     "pages/location/location",
     "pages/mine/micron/recharge/recharge",
-    "pages/home/shopDetails/confirmOrder/confirmClearing/address/address",
     "pages/location/region/region",
     "pages/mine/shopOrder/appraise/appraise",
-    "pages/home/shopDetails/confirmOrder/address/address",
     "pages/mine/subsidy/subsidy",
     "pages/bindPhone/bindPhone",
     "pages/mine/integral/integral",
@@ -72,42 +74,22 @@
     "pages/mine/messageCenter/messageCenter",
     "pages/mine/invitation/invitation",
     "pages/login/userTCP/userTCP",
-    "pages/mine/invitation/openShop/openShop"
+    "pages/mine/invitation/openShop/openShop",
+    "pages/home/shopDetails/productDetails/productDetails",
+    "pages/mine/shopOrder/productRefund/productRefund",
+    "pages/newShop/newShop"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "微百姓",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "white"
   },
-  "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#09C1AE",
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "./images/hone-unselected.png",
-        "selectedIconPath": "./images/home-selected.png"
-      },
-      {
-        "pagePath": "pages/found/found",
-        "text": "发现",
-        "iconPath": "./images/discovery-unselected.png",
-        "selectedIconPath": "./images/discovery-selected.png"
-      },
-      {
-        "pagePath": "pages/shopCart/shopCart",
-        "text": "购物车",
-        "iconPath": "./images/cart-unselected.png",
-        "selectedIconPath": "./images/cart-selected.png"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "./images/my-unselected.png",
-        "selectedIconPath": "./images/my-selected.png"
-      }
-    ]
-  }
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序选择地址"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+ 
 }

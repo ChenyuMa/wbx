@@ -44,9 +44,10 @@
 
 .userName {
   width: 100%;
-  height: 55%;
-  display: flex;
-  align-items: flex-end;
+  height: 80rpx;
+  /* display: flex;
+  display: -webkit-flex;
+  align-items: flex-end; */
   color: #06c1ae;
 }
 
@@ -55,40 +56,55 @@
    white-space:nowrap; 
   overflow:hidden;
   text-overflow:ellipsis;
-   flex-basis: auto;
-
+  height: 100%;
+  float: left;
+  display: block;
+  line-height: 80rpx;
 }
 
 .userName text:last-child {
   margin:0  20rpx 0 40rpx;
   width: 240rpx;
-  flex-shrink: 0;
+  height: 100%;
+  float: left;
+  display: block;
+  line-height: 80rpx
 }
 
 .userAddress {
   width: 100%;
-  height: 45%;
+  height: 35rpx;
   font-size: 25rpx;
-  display: flex;
-  align-items: center;
 }
 .userAddress .often{
-    flex-shrink: 0;
+    height: 100%;
+    float: left;
     margin-left:40rpx; 
-    padding: 2rpx 20rpx;
+    padding: 0rpx 20rpx;
     background: #06c1ae;
     border-radius: 5rpx;
     color: #fff;
+    line-height: 35rpx;
+    display: block
 }
 
 
-.userAddress text {
+.adr {
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap; 
-  flex-basis: auto;
   margin: 0 20rpx 0 40rpx;
-  
+  height: 100%;
+  display: block;
+  float: left;
+  line-height: 35rpx;
+  width: 70%
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
 
 /*线  */

@@ -95,6 +95,7 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
+        console.log("请求商品收藏数据",res)
         if(res.data.state == 0){
           wx.showToast({
             title: res.data.msg,

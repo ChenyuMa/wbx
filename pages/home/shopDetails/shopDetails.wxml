@@ -1,24 +1,24 @@
 <!--pages/home/shopDetails/shopDetails.wxml-->
-<view class='shopDetails' style='height:{{windowHeight}}px;'>
+<view class='shopDetails html'>
   <movable-area style='width:100%;height:100%;'>
     <!--商家信息  -->
-    <view class='storeInfo' wx:if='{{!isRightScroll}}' >
-      <image src='{{gradeid==15?goodsList.shop_detail.photo:goodsList.detail.photo}}{{"?imageView2/1/w/100/h/100"}}' class='backgroundImg'></image>
+    <view class='storeInfo' wx:if='{{!isRightScroll}}'>
+      <image src='{{goodsList.detail.photo}}{{"?imageView2/1/w/100/h/100"}}' class='backgroundImg'></image>
       <view class='storeInfo-left'>
-        <image src='{{gradeid==15?goodsList.shop_detail.photo:goodsList.detail.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        <image src='{{goodsList.detail.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
       </view>
       <view class='storeInfo-right'>
         <view class='storeInfo-right-content'>
           <text wx:for='{{5}}' wx:key='index' class='fa fa-star' style='color:gold;font-size:30rpx;'></text>
-          <text style='font-size:30rpx;margin-left:20rpx;color:white;'>销售：{{gradeid==15?goodsList.shop_detail.sold_num:goodsList.detail.sold_num}}</text>
+          <text wx:if='{{isSalesman!=0}}' style='font-size:30rpx;margin-left:20rpx;color:white;'>销售：{{goodsList.detail.sold_num}}</text>
         </view>
         <view class='storeInfo-right-content' style='overflow: hidden;'>
-          <text style='font-size:25rpx;color:white;'>公告：{{gradeid==15?goodsList.shop_detail.notice==''?'店铺暂无公告':goodsList.detail.notice:goodsList.detail.notice==''?'店铺暂无公告':goodsList.detail.notice}}</text>
+          <text class='text-ellipsis' style='font-size:25rpx;color:white;'>公告：{{(goodsList.detail.notice==null || goodsList.detail.notice=='')?'暂无公告':goodsList.detail.notice}}</text>
         </view>
-        <view class='storeInfo-right-content' wx:if='{{gradeid==15?goodsList.shop_detail.consumption_money/100.00:goodsList.detail.consumption_money/100.00 !=""}}' style='overflow: hidden;'>
+        <view class='storeInfo-right-content' wx:if='{{goodsList.detail.consumption_money/100.00 !=""}}' style='overflow: hidden;'>
           <view class='vip-rules'>
             <text>会员公告:</text>
-            <text>满{{gradeid==15?goodsList.shop_detail.consumption_money/100.00:goodsList.detail.consumption_money/100.00}}元</text>
+            <text>满{{goodsList.detail.consumption_money/100.00}}元</text>
             <text>立即成为本店VIP</text>
           </view>
         </view>
@@ -30,16 +30,28 @@
       </view>
     </view>
     <!--优惠券  -->
+
     <view class='coupons'>
-      <view class='messaes' bindtap='clickMessage' wx:if='{{!sweepOrder}}'>
-        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/message1@2x.png'></image>
-      </view>
       <scroll-view style='width:86%;height:80%;' scroll-x='true'>
         <view wx:for='{{goodsList.coupon.list}}' wx:key='index' bindtap='coupon' class='{{item.is_receive==0?"coupons-content":"coupons-contents"}}'>
-          <!-- <text style='font-size:25rpx;color:#FD9F99;'>领取￥{{item.money/100.00}}</text> -->
           领取￥{{item.money/100.00}}
         </view>
       </scroll-view>
+    </view>
+    <view class='coupons-products' style='position: relative;'>
+      <view style='position:absolute;z-index:999;'>
+        <image class='coupons-products-title' src='../../../images/ziying@2x.png'></image>
+      </view>
+      <image class='coupons-products-image' src='../../../images/newbig@3x.png'></image>
+      <view class='coupons-products-content'>
+        <scroll-view  scroll-x='true' style='height: 300rpx;' >
+          <view wx:for='{{goodsList.goods}}' wx:key='index' bindtap='' class='coupon-goods-view'>
+            <image class='coupons-goods-image' src='{{item.photo}}'></image>
+            <view class='coupons-goods-name'> {{item.title}} </view>
+            <view class='coupons-goods-price'>￥{{item.price}} </view>
+          </view>
+        </scroll-view>
+      </view>
     </view>
     <!-- 头部导航 -->
     <view class='shopNav'>
@@ -72,104 +84,49 @@
     </view>
     <!--商品展示区  -->
     <view class='displayGoods' style='{{isRightScroll?"height:82%;":""}}' wx:if='{{isOrdering}}'>
-      <!--商品显示左边  -->
-      <view class='displayGoodsLeft'>
-        <scroll-view scroll-y='true' style='height:100%'>
-          <view class="{{curIndex === 0 ? 'on' : ''}} text-ellipsis" bindtap='onClick' data-index='{{0}}' id='{{0}}' data-title='商品'>全部商品</view>
-          <view class="{{curIndex === 1 ? 'on' : ''}} text-ellipsis promotion" bindtap='onClick' data-index='{{1}}' id='{{1}}' data-title='促销'>
-            <image src='{{imgUrls+"hot@2x.png"}}'></image>促销</view>
-          <view class="{{curIndex === 2 ? 'on' : ''}} text-ellipsis seckill" bindtap='onClick' data-index='{{2}}' id='{{2}}' data-title='秒杀'>
-            <image src='{{imgUrls+"lightning@2x.png"}}'></image>秒杀</view>
-          <view class="{{curIndex === index+3 ? 'on' : ''}} text-ellipsis type" wx:for='{{goodsList.cate?goodsList.cate:goodsList.menu}}' wx:key='index' bindtap='onClick' data-index='{{index+3}}' id='{{item.cate_id}}' data-title='{{item.cate_name}}'>
-            <text>{{item.cate_name}}</text>
-            <text wx:if='{{item.num != 0}}' class='type-num'>{{item.num}}</text>
+      <view class='shopContent'>
+        <view class='shopImg'>
+          <image></image>
+        </view>
+        <view class='shopDetail'>
+          <view class='shopTitle'>黑人双重薄荷牙膏</view>
+          <view class='shop_detail'>防蛀 口气清新</view>
+          <view class=''>
+            <text class='fa fa-camera'></text>
+            <!-- <image src='../../images/faces/ee_1.png'></image> -->
           </view>
-          <view style='width:100%;height:150rpx;'></view>
-        </scroll-view>
+          <view class='shop_price'>￥139.00
+            <image></image>
+          </view>
+          <view class='shop_priceGreen'>
+            ￥439.9
+            <text>￥73</text>
+            <image></image>
+          </view>
+        </view>
+        <view style='clear:both'></view>
+        <view>
+          <view class='shopTime'>
+            距结束 0 天 0 时 0 分 0 秒
+          </view>
+          <view class='successNum'>已售445盒</view>
+        </view>
       </view>
-      <!--商品显示右边  -->
-      <view class='displayGoodsRight'>
-        <scroll-view scroll-y='true' style='height:100%' scroll-into-view="{{toView}}" bindscrolltolower='rightTolower'>
-          <!--优惠卷  -->
-          <!-- <view class="coupon" wx:if='{{goodsList.coupon.num > 0 && curIndex == 0}}' bindtap='coupon' style='{{!sweepOrder?"height:30%;":"height:20%;"}}'>
-            <text class='couponsTitle'>优惠卷</text>
-            <image src='{{imgUrls+"shop_coupon@2x.png"}}'></image>
-            <view class='couponNum'>
-              <text>{{goodsList.coupon.money/100.00}}元</text>
-              <text>{{goodsList.coupon.num}}张优惠卷</text>
-            </view>
-          </view> -->
-          <!--商品样式  -->
-          <view class='title text-ellipsis'>{{titleName}}</view>
-          <block wx:for='{{goodsAllList}}' wx:key='index'>
-            <view class='goodsStyle'>
-              <view class='leftIcon' bindtap='goodsDetails' id='{{item.goods_id}}' data-item='{{item}}'>
-                <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}' class='icon' lazy-load='true'></image>
-                <view class='promotionIcon'>
-                  <image class='isPromotion' src='{{imgUrls+"store_sale@2x.png"}}' wx:if='{{item.sales_promotion_is == 1}}'></image>
-                  <image class='isPromotion' src='{{imgUrls+"store_mark_seckill@2x.png"}}' wx:if='{{item.is_seckill == 1}}'></image>
-                  <image class='isPromotion' src='{{imgUrls+"specification@2x.png"}}' wx:if='{{item.is_attr == 1}}'></image>
-                </view>
-              </view>
-              <view class='rightDetails'>
-                <view class='goodsName'>{{gradeid==15?item.product_name:item.title}}</view>
-                <view class='goodsSell'>销量：{{item.sold_num}}</view>
-                <view class='vip' wx:if='{{item.is_shop_member}}'>
-                  <text wx:if='{{item.shop_member_price>0}}' wx:if='{{item.is_attr!=1}}'>￥{{item.shop_member_price/100}}</text>
-                  <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/membe_price@2x1.png'></image>
-                </view>
-                <view class='goodsNum'>
-                  <text style='{{item.is_shop_member?"text-decoration:line-through":""}}'>￥{{item.mall_price?item.mall_price/100.00:item.price/100.00}}</text>
-                  <view class='shopNum'>
-                    <image src='{{imgUrls+"store_reduce@2x.png"}}' data-id='{{item}}' catchtap='subtractionGoods'></image>
-                    <text>{{item.buy_num}}</text>
-                    <image src='{{imgUrls+"store_add@2x.png"}}' catchtap='addGoods' data-id='{{item}}'></image>
-                  </view>
-                </view>
-              </view>
-            </view>
-            <!--扫码点餐  -->
-            <!-- <view class='goodsStyles' wx:else>
-            <view class='goodsTitle'>
-              <text>{{item.title}}</text>
-            </view>
-            <view class='goodsPhoto'>
-              <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}' style='width: 100%;height: 100%;'></image>
-              <view class='promotionIcons'>
-                <image class='isPromotions' src='{{imgUrls+"store_sale@2x.png"}}' wx:if='{{item.sales_promotion_is == 1}}'></image>
-                <image class='isPromotions' src='{{imgUrls+"store_mark_seckill@2x.png"}}' wx:if='{{item.is_seckill == 1}}'></image>
-                <image class='isPromotions' src='{{imgUrls+"specification@2x.png"}}' wx:if='{{item.is_attr == 1}}'></image>
-              </view>
-            </view>
-            <view class='vips' wx:if='{{item.is_shop_member}}'>
-              <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/membe_price@2x1.png'></image>
-              <text wx:if='{{item.shop_member_price>0}}'>￥{{item.shop_member_price/100}}</text>
-            </view>
-            <view class='goodsPriceNum'>
-              <text class='goodsPrice'>￥{{item.price/100.00}}</text>
-              <view class='goodsNums'>
-                <text class='fa fa-minus-circle' data-id='{{item}}' catchtap='subtractionGoods'></text>
-                <text>{{item.buy_num}}</text>
-                <text class='fa fa-plus-circle' catchtap='addGoods' data-id='{{item}}'></text>
-              </view>
-            </view>
-          </view> -->
-          </block>
-          <view style='width:100%;height:150rpx;'></view>
-        </scroll-view>
-      </view>
+      <!--商品显示左边  -->
+
+
     </view>
     <!--底部区域  -->
     <view wx:if='{{isOrdering}}'>
       <view class='confirmOrder' wx:if='{{shopCartNum == 0}}'>
         <view class='shoppingDetails'>
           <view class='shopCart'>
-            <image src='{{imgUrls+"store_cart_nor@2x1.png"}}' class='shopCartLogo'></image>
+            <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_cart_nor@2x1.png"}}' class='shopCartLogo'></image>
           </view>
           <view class='price'>
             <!-- <text>￥0</text>
         <text>({{goodsList.detail.since_money/100.00}}元起送,配送费{{goodsList.detail.logistics/100.00}}元)</text> -->
-            <text>购物车是空的（{{gradeid==15?goodsList.shop_detail.since_money/100.00:goodsList.detail.since_money/100.00}}元起送）</text>
+            <text>购物车是空的（{{goodsList.detail.since_money/100.00}}元起送）</text>
           </view>
         </view>
         <view class='noPlaceOrder'>选好了</view>
@@ -177,12 +134,12 @@
       <view class='confirmOrder' wx:else>
         <view class='shoppingDetails'>
           <view class='shopCart'>
-            <image src='{{imgUrls+"store_cart_nor@2x1.png"}}' class='shopCartLogo' bindtap='shopCart'></image>
+            <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_cart_nor@2x1.png"}}' class='shopCartLogo' bindtap='shopCart'></image>
             <view class='shopCartNum' wx:if='{{shopCartNum}}'>{{shopCartNum}}</view>
           </view>
           <view class='prices'>
             <text>￥{{shopCartPrice/100.00}}</text>
-            <text>({{gradeid==15?goodsList.shop_detail.since_money/100.00:goodsList.detail.since_money/100.00}}元起送,配送费{{gradeid==15?goodsList.shop_detail.logistics/100.00:goodsList.detail.logistics/100.00}}元)</text>
+            <text>({{goodsList.detail.since_money/100.00}}元起送,3公里内配送费{{goodsList.detail.logistics/100.00}}元)</text>
           </view>
         </view>
         <view class='placeOrder' bindtap='confirmOrder'>选好了</view>
@@ -190,52 +147,31 @@
     </view>
     <!-- //优惠卷弹窗 -->
     <view class='couponShow' wx:if='{{isCouponShow}}' bindtap='closeCoupon'>
-      <!-- <view class='couponShows'>
-        <view class='couponShows-content'>
-          <scroll-view scroll-y='true' style='height:100% '>
-            <view class='couponStyle' wx:for='{{goodsList.coupon.list}}' wx:key='index'>
-              <image src='{{imgUrls+"couponsCellBGM@2x.png"}}' class='couponIcon'></image>
-              <view class='couponPrice'>￥{{item.money/100.00}}</view>
-              <view class='couponTitle'>
-                <text>满{{item.condition_money/100.00}}元可用</text>
-                <text>开始时间：{{item.start_time}}-结束时间{{item.end_time}}</text>
-              </view>
-              <view class='pickUp'>
-                <button disabled='{{item.is_receive == 0?false:true}}' bindtap='pickUp' data-id='{{item.coupon_id}}'>领取</button>
-              </view>
-            </view>
-
-          </scroll-view>
-        </view>
-      </view>
-      <view class='couponShowImg'>
-        <image src='{{imgUrls+"updata_close@2x.png"}}' class='closeCoupon' bindtap='closeCoupon'></image>
-      </view> -->
       <view class='downCoupons'>
-          <view class='downCoupons-titel'>
-            <text>店铺优惠券</text>
-            <text class='fa fa-close couponsClose' catchtap='closeCoupon'></text>
-          </view>
-          <view class='downCoupons-titels'>
-            <text style='font-size:25rpx;margin:20rpx;'>可领优惠卷</text>
-          </view>
-          <scroll-view style='height:80%;' scroll-y='{{true}}'>
-            <view class='coupons-img' wx:for='{{goodsList.coupon.list}}' wx:key='index'>
-              <view class='img-price'>
-                <text>￥</text>
-                <text>{{item.money/100.00}}</text>
-              </view>
-              <view class='img-fullCoupons'>
-                <text>满￥{{item.condition_money/100.00}}使用</text>
-                <text>限本店使用,{{item.end_time}}到期</text>
-              </view>
-              <view class='img-to'>
-                <text class='to' wx:if='{{item.is_receive == 0}}' catchtap='clickReceive' data-coupon_id='{{item.coupon_id}}'>领取</text>
-                <text class='to tos' wx:else>已领取</text>
-              </view>
-            </view>
-          </scroll-view>
+        <view class='downCoupons-titel'>
+          <text>店铺优惠券</text>
+          <text class='fa fa-close couponsClose' catchtap='closeCoupon'></text>
         </view>
+        <view class='downCoupons-titels'>
+          <text style='font-size:25rpx;margin:20rpx;'>可领优惠卷</text>
+        </view>
+        <scroll-view style='height:80%;' scroll-y='{{true}}'>
+          <view class='coupons-img' wx:for='{{goodsList.coupon.list}}' wx:key='index'>
+            <view class='img-price'>
+              <text>￥</text>
+              <text>{{item.money/100.00}}</text>
+            </view>
+            <view class='img-fullCoupons'>
+              <text>满￥{{item.condition_money/100.00}}使用</text>
+              <text>限本店使用,{{item.end_time}}到期</text>
+            </view>
+            <view class='img-to'>
+              <text class='to' wx:if='{{item.is_receive == 0}}' catchtap='clickReceive' data-coupon_id='{{item.coupon_id}}'>领取</text>
+              <text class='to tos' wx:else>已领取</text>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
     </view>
     <!--购物车弹窗  -->
     <view class='shopCartShow' wx:if='{{isShopCart}}' bindtap='isShopCart'>
@@ -244,55 +180,76 @@
         <view class='topTitel'>
           <text class='topLeft'>已选商品</text>
           <view class='topRight' catchtap='clearCart'>
-            <image src='{{imgUrls+"delete@2x.png"}}' class='titleclearImg'></image>
+            <image lazy-load='{{lazy_load}}' src='{{imgUrls+"delete@2x.png"}}' class='titleclearImg'></image>
             <text class='titleClear'>清空</text>
           </view>
         </view>
         <!-- <view style='width:100%;'> -->
         <scroll-view scroll-y='{{scrollY}}' style='height:380rpx;'>
           <view class='cartList' wx:for='{{shopCart}}' wx:key='index'>
-            <view class='listIcon'>
-              <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
-            </view>
+            <!-- <view class='listIcon'>
+              <image lazy-load='{{lazy_load}}' src='{{item.value.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            </view> -->
             <view class='listDetails'>
-              <text class='detailsTop'>{{gradeid==15?item.product_name:item.title}}</text>
+              <view class='detailsLeft'>
+                <text class='detailsTop maxRow'> {{item.value.title}}</text>
+                <!-- <text class='text-ellipsis'>{{item.value.goods_attr_title}}</text> -->
+              </view>
+
               <view class='detailsBottom'>
-                <view class='detailsBottom_left'>
-                  <image src='{{imgUrls+"store_reduce@2x.png"}}' class='shopCartSubtraction' data-id='{{item}}' catchtap='shopCartSubtraction' data-is_attr='{{item.is_attr}}'></image>
-                  <text class='detailsBottom_num'>{{item.buy_num}}</text>
-                  <image class='shopCartAdd' src='{{imgUrls+"store_add@2x.png"}}' catchtap='shopCartAdd' data-id='{{item}}' data-is_attr='{{item.is_attr}}'></image>
+                <view class='detailsBottom_price'>单价:
+                  <text>￥{{item.value.price/100.00}}</text>
                 </view>
-                <text class='detailsBottom_price'>单价:￥{{item.price/100.00}}</text>
+                <view class='detailsBottom_left'>
+                  <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_reduce@2x.png"}}' class='shopCartSubtraction' data-id='{{item.value}}' data-carClick='carClick' catchtap='shopCartSubtraction' data-is_attr='{{item.value.is_attr}}' data-car_state='1'></image>
+                  <text class='detailsBottom_num'>{{item.value.buy_num}}</text>
+                  <image lazy-load='{{lazy_load}}' class='shopCartAdd' src='{{imgUrls+"store_add@2x.png"}}' catchtap='shopCartAdd' data-carClick='carClick' data-id='{{item.value}}' data-is_attr='{{item.value.is_attr}}'></image>
+                </view>
               </view>
             </view>
-            <view class='detailsBottom_deleting'>
-              <image src='{{imgUrls+"delete@2x.png"}}' catchtap='deletingCurrent' data-id='{{item}}' data-is_attr='{{item.is_attr}}'></image>
-            </view>
+
           </view>
         </scroll-view>
         <!-- </view> -->
       </view>
     </view>
     <!--商品详情弹窗  -->
-    <view class='goodsDetails' wx:if='{{isGoodsDetails}}' bindtap='goodsDetailsClose'>
-      <view class='detailsView'>
-        <view class='detailsIcon'>
-          <image src='{{goodsDetailsList.photo}}{{"?imageView2/1/w/400/h/400"}}'></image>
+    <view class='goodsDetails-box' wx:if='{{isGoodsDetails}}'>
+      <view class='box-top'>
+        <swiper class='swiper'>
+          <block wx:for='{{goodsDetailsList.goods_photo}}' wx:key='index'>
+            <swiper-item class='swiper-item'>
+              <image lazy-load='{{lazy_load}}' src="{{item}}" class="slide-image" lazy-load='{{lazy_load}}' mode="widthFix" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class='swiper-bg' wx:if="{{goodsDetailsList.goods_photo==''|| !goodsDetailsList.goods_photo }}">
+          <image src='{{goodsDetailsList.photo}}{{"?imageView2/1/w/300/h/300"}}' lazy-load='{{lazy_load}}' />
         </view>
-        <view class='detailsName'>
-          <text>{{gradeid==15?goodsDetailsList.product_name:goodsDetailsList.title}}</text>
-        </view>
-        <text class='detailsPrice'>￥{{goodsDetailsList.price/100.00}}</text>
-        <view class='line'></view>
-        <view class='detailsInfor'>
-          <text>商品信息</text>
-          <text class='goodsInfoTxt'>{{goodsDetailsList.intro}}</text>
-        </view>
+        <text class='txt text-ellipsis'>{{goodsDetailsList.desc}}</text>
       </view>
-      <image src='{{imgUrls+"updata_close@2x.png"}}' class='goodsDetailsClose' bindtap='goodsDetailsClose'></image>
+      <view class='box-bottom'>
+        <view class='title'>{{goodsDetailsList.title}}</view>
+        <view class='sales' wx:if='{{isSalesman!=0}}'>月售{{goodsDetailsList.month_num}}</view>
+        <view class='member' wx:if="{{goodsDetailsList.shop_member_price!=0}}">
+          <text>￥{{goodsDetailsList.shop_member_price/100.00}}</text>
+          <image lazy-load='{{lazy_load}}' src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/membe_price@2x1.png' mode='aspectFit'></image>
+        </view>
+        <view class='ordinary'>￥{{goodsDetailsList.price/100.00}}</view>
+
+        <view class='box-shopNum' wx:if="{{!goodsDetailsList.goods_attr}}">
+          <image class='on' lazy-load='{{lazy_load}}' src='{{imgUrls+"store_reduce@2x.png"}}' data-id='{{goodsDetailsList}}' catchtap='subtractionGoods'></image>
+          <text class='on'>{{shopCartNumBox}}</text>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"store_add@2x.png"}}' data-id='{{goodsDetailsList}}' catchtap='addGoods'></image>
+        </view>
+
+      </view>
     </view>
+
+    <view class='mask-bg' wx:if="{{isGoodsDetails}}" bindtap='goodsDetailsClose'></view>
+
     <!--商品多规格  -->
-    <view class='goods-attr' wx:if='{{is_attr}}' catchtap='close_attr'>
+    <view class='goods-attr' wx:if='{{is_attr}}'>
       <view class='attr'>
         <!--头部  -->
         <view class='attr-top flex-row'>
@@ -316,12 +273,66 @@
           <!--商品增加  -->
           <view class='goods-attr-add flex-row'>
             <image src='{{imgUrls+"store_reduce@2x.png"}}' catchtap='subtractionGoods_attr' data-attr_select='{{goods_attr_select}}'></image>
-            <text>{{goods_attr_select.attr_buy_num}}</text>
+            <text>{{goods_attr_select.attr_buy_num?goods_attr_select.attr_buy_num:0}}</text>
             <image src='{{imgUrls+"store_add@2x.png"}}' catchtap='addGoods_attr' data-attr_select='{{goods_attr_select}}'></image>
           </view>
         </view>
       </view>
     </view>
+    <view class='mask-bg' wx:if='{{is_attr}}' bindtap='close_attr'></view>
+
+
+    <!-- 买家多规格(新) -->
+    <view class='goods-attrs' wx:if="{{is_attrs}}">
+      <view class='fa fa-times-circle-o' catchtap='close_attr'></view>
+      <view class='attrs-top '>
+        <text class='text-ellipsis '>{{attr_title}}</text>
+      </view>
+
+      <scroll-view class='attrs-select' scroll-y>
+        <!--规格  -->
+        <view wx:if='{{attr_max == 1}}'>
+          <view class='select-title'>规格</view>
+          <view class='select-content'>
+            <block wx:for='{{goods_attr}}' wx:key='index'>
+              <view catchtap='select_goods_attrs' data-click='former' data-shop_box_num='{{shop_box_num}}' data-item='{{item.attr_name}}' data-index='{{index}}' class='item {{is_select_attr == index?"on":""}}'>{{item.is_seckill==1?'( 秒 ) ':''}}{{item.attr_name}}</view>
+            </block>
+          </view>
+        </view>
+        <block wx:for='{{nature}}' wx:key='{{item_id}}' wx:for-item='items' wx:for-index="id">
+          <view class='select-title'>{{items.item_name}}</view>
+          <view class='select-content'>
+            <block wx:for='{{items.nature_arr}}' wx:key='{{item.nature_id}}' wx:for-item="item">
+              <view class='item {{item.is_select_attr?"on":""}}' data-click='new' bindtap='select_goods_attrs' data-shop_box_num='{{shop_box_num}}' data-content='{{nature}}' data-itemsIndex='{{id}}' data-itemIndex='{{index}}'>{{item.nature_name}}</view>
+            </block>
+          </view>
+        </block>
+      </scroll-view>
+
+      <view class='attrs-bottom'>
+        <view class='attrs-price'>
+          <text class='car_money'>￥{{goods_attr_price/100}}</text>
+          <view class='ellipsis shop_car'>
+            <block wx:if='{{shop_box.length > 0}}'>
+              (
+              <block wx:for='{{shop_box}}' wx:key=''>
+                <text>+{{item}}</text>
+              </block>
+              )
+            </block>
+          </view>
+        </view>
+        <view class='attrs-shopNum flex-row'>
+          <image src='{{imgUrls+"store_reduce@2x.png"}}' bindtap='subtractionGoods_attr' data-car_state='0' data-attr_select='{{goods_attr_select}}'></image>
+          <text>{{goods_attr_select.attr_buy_num}}</text>
+
+          <image src='{{imgUrls+"store_add@2x.png"}}' bindtap='addGoods_attr' data-attr_select='{{goods_attr_select}}'></image>
+        </view>
+      </view>
+    </view>
+    <view class='mask-bg' wx:if='{{is_attrs}}' bindtap='close_attr'></view>
+
+
     <!-- 店铺评论 -->
     <view class='shop-discuss' wx:if='{{isDiscuss}}'>
       <scroll-view style='height:100%;' scroll-y='true'>
@@ -352,40 +363,25 @@
           <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/closeFavourable.png' catchtap='closeFavourable'></image>
         </view>
         <view class='content-info'>
-          <view style='width: 15%;'><text class='info-left'>满减</text></view>
+          <view style='width: 15%;'>
+            <text class='info-left'>满减</text>
+          </view>
           <view style='width:85%;'>
             <block wx:for='{{goodsList.full_money_reduce}}' wx:key='index'>
-            <text style='padding:0 10rpx;'>满{{item.full_money/100.00}}减{{item.reduce_money/100.00}}</text>
-          </block>
+              <text style='padding:0 10rpx;'>满{{item.full_money/100.00}}减{{item.reduce_money/100.00}}</text>
+            </block>
           </view>
         </view>
       </view>
     </view>
-    <!--店铺资质查看  -->
-    <!-- <view class='shop-aptitude-show' wx:if='{{is_shop_aptitude}}' catchtap='close_shop_aptitude'>
-    <image src='{{goodsList.detail.hygiene_photo}}' wx:if='{{goodsList.detail.hygiene_photo}}'></image>
-    <text wx:else>商家未上传资质</text>
-    <image src='{{}}'></image>
-    <text class='fa fa-times-circle-o'></text>
-  </view> -->
-    <!--店铺显示二维码  -->
-    <!-- <view class='shop-qrcode-show flex-column' wx:if='{{is_shop_qrcode}}' catchtap='close_shop_qrcode'>
-    <image src='{{goodsList.detail.small_routine_photo}}' bindlongpress='long_press'></image>
-    <text class='save-picture'>保存二维码</text>
-  </view> -->
-    <!--定桌  -->
-    <movable-view class='setTable' bindtap='clickTable' wx:if='{{goodsList.detail.is_subscribe==1 && gradeid == 20}}' x="{{x+30}}" y="{{y+30}}" direction="all">
-      <image src='{{imgUrls}}setTable@2x.png' wx:if='{{!sweepOrder}}'></image>
-    </movable-view>
-    <!--智能付款  -->
-    <movable-view class='smartPay' bindtap='clickSmartPay' x="{{x+40}}" y="{{y}}" direction="all" wx:if='{{!sweepOrder}}'>
+    <movable-view class='smartPay' bindtap='clickSmartPay' x="{{x-10}}" y="{{y}}" direction="all" wx:if='{{!sweepOrder}}'>
       <image src='{{imgUrls}}payment@2x.png'></image>
     </movable-view>
   </movable-area>
 </view>
 
 <!--授权登录  -->
-<view class='wx-longin' wx:if='{{userLogin}}'>
+<!-- <view class='wx-longin' wx:if='{{userLogin}}'>
   <view class='login-content'>
     <view class='longin-title'>
       <text>微信授权</text>
@@ -405,4 +401,4 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->

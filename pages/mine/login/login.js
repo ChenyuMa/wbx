@@ -152,6 +152,7 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function(res) {
+        console.log("res",res)
         if (res.data.state == 1) {
           //缓存token
           wx.setStorage({
@@ -165,6 +166,7 @@ Page({
           })
           //缓存用户id
           wx.setStorageSync('userID', that.data.inputUserTxt);
+          // wx.setStorageSync('is_salesman', res.data.data.);
           wx.switchTab({
             url: '../../home/home',
           })

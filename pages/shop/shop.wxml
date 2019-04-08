@@ -29,7 +29,7 @@
           <view class='content' style='display:{{flOpen?"block":"none"}};'>
             <block wx:for='{{flList}}' wx:key='index'>
               <view class='type' bindtap='flClick' data-id='{{index}}' data-txt='{{item.txt}}'>
-                <image src='{{imgUrls}}{{item.imgUrl}}'></image>
+                <image lazy-load='{{lazy_load}}' src='{{imgUrls}}{{item.imgUrl}}'></image>
                 <text>{{item.txt}}</text>
               </view>
             </block>
@@ -66,7 +66,7 @@
     <!--头部搜索  -->
     <view class='top-search' bindtap='topSearch'>
       <view class='search-view'>
-        <image src='{{imgUrls+"b_search@2x.png"}}'></image>
+        <image lazy-load='{{lazy_load}}' src='{{imgUrls+"b_search@2x.png"}}'></image>
         <text>请输入店铺名称</text>
       </view>
     </view>
@@ -76,35 +76,35 @@
       <!--类型选择  -->
       <view class='ele-classify'>
         <view class='ele-block' data-id='1' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_veg@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_veg@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>蔬菜</text>
         </view>
         <view class='ele-block' data-id='2' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_meat@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_meat@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>肉类</text>
         </view>
         <view class='ele-block' data-id='3' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_seafood@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_seafood@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>海鲜</text>
         </view>
         <view class='ele-block' data-id='4' bindtap='typeSelect'>
-          <image src='{{imgUrls+"s_eggs@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"s_eggs@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>蛋类</text>
         </view>
         <view class='ele-block' data-id='5' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_dry@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_dry@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>干货</text>
         </view>
         <view class='ele-block' data-id='6' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_fruit@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_fruit@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>水果</text>
         </view>
         <view class='ele-block' data-id='7' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_dishes@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_dishes@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>配菜</text>
         </view>
         <view class='ele-block' data-id='8' bindtap='typeSelect'>
-          <image src='{{imgUrls+"vegetables_other@2x.png"}}' class='img-bg'></image>
+          <image lazy-load='{{lazy_load}}' src='{{imgUrls+"vegetables_other@2x.png"}}' class='img-bg'></image>
           <text class='classify-name'>其他</text>
         </view>
       </view>
@@ -135,7 +135,7 @@
       <view class='ele-content'>
         <view class='ele-list' wx:for='{{shopList}}' wx:key='index' data-id='{{item.shop_id}}' bindtap='shopOnClick'>
           <view class='item-img'>
-            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            <image lazy-load='{{lazy_load}}' src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
           </view>
           <view class='item-content'>
             <text class='shop-name'>{{item.shop_name}}</text>
@@ -154,8 +154,8 @@
               </view>
             </view>
             <view class='shop-send'>
-              <text>起送：￥{{item.ele_since_money/100.00}}</text>
-              <text>月销量：{{item.sold_num}}</text>
+              <text style='border-right:none'>起送：￥{{item.ele_since_money/100.00}}</text>
+              <!-- <text>月销量：{{item.sold_num}}</text> -->
               <!--店铺状态  -->
               <view class='shopType'>
                 <text class='new-shop' wx:if='{{item.shop_status == 3}}'>新店开业</text>

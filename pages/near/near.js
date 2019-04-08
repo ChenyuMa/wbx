@@ -159,7 +159,8 @@ Page({
     sqShow: false,
     dqID: '',
     dqIndex: '',
-    pxList: ['智能排序', '起送最低', '送货最快', '距离最近']
+    pxList: ['智能排序', '起送最低', '送货最快', '距离最近'],
+    lazy_load:true
   },
   // 头部搜索
   topSearch: function () {
@@ -193,6 +194,7 @@ Page({
           flOpen: true,
           dqOpen: false,
           pxOpen: false,
+          isScroll:false
         });
         break;
       case 2:
@@ -201,6 +203,7 @@ Page({
           flOpen: false,
           dqOpen: true,
           pxOpen: false,
+          isScroll: false
         });
         var cityID = wx.getStorageSync("cityID")
         requestDqType(that, cityID);
@@ -211,6 +214,7 @@ Page({
           flOpen: false,
           dqOpen: false,
           pxOpen: true,
+          isScroll: false
         });
       default:
     }
@@ -219,6 +223,7 @@ Page({
   hiddenSelect: function () {
     this.setData({
       isSelect: false,
+      isScroll: true
     });
   },
   // 分类点击

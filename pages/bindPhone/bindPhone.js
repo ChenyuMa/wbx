@@ -152,21 +152,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     // 获取屏幕高度
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          windowHeight: res.windowHeight,
-          openID: wx.getStorageSync('openID'),
-          unionID: wx.getStorageSync('unionID'),
-          nickName: wx.getStorageSync('nickName'),
-          face: wx.getStorageSync('face')
-        });
-      },
-    })
-    // console.log('openID:',wx.getStorageSync('openID'));
-    // console.log('unionID:',wx.getStorageSync('unionID'));
-    // console.log('nickName:',wx.getStorageSync('nickName'));
-    // console.log('face:',wx.getStorageSync('face'));
+    that.setData({
+      openID: wx.getStorageSync('openID'),
+      unionID: wx.getStorageSync('unionID'),
+      nickName: wx.getStorageSync('nickName'),
+      face: wx.getStorageSync('face')
+    });
   },
 
   /**

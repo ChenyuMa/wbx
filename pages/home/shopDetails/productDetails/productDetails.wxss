@@ -1,0 +1,444 @@
+/* pages/home/shopDetails/productDetails/productDetails.wxss */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* 弹性列 */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.shopDetails {
+  overflow: hidden;
+  padding-bottom:100rpx; 
+  background: #f5f5f5;
+}
+
+.shopDetails-top {
+}
+
+.shopDetails-top .img {
+  overflow: hidden;
+  width: 100%;
+  height: 480rpx;
+}
+
+.shopDetails-top .img image {
+  width: 100%;
+}
+
+.message {
+  padding: 20rpx;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.message .title {
+  line-height: 50rpx;
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.message .price {
+  color: #02c3ad;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+.message .price image{
+  width: 70rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+
+.message .count {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 28rpx;
+}
+
+.message .count>view {
+  display: flex;
+  align-items: center;
+  height: 40rpx;
+  margin-left: 40rpx;
+}
+.message .count .first{
+  position: absolute;
+  left: 0;
+  margin-left:0;
+  color: #999;
+}
+.message .count>view image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+
+.shopDetails-buy {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  margin: 20rpx 0;
+  font-size: 32rpx;
+  background: #fff;
+  border-top:1px solid #e5e5e5;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.shopNum {
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 35rpx;
+}
+
+.shopNum image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.shopDetails-share{
+  padding: 0 20rpx;
+  margin-bottom: 20rpx;
+  border-top:1px solid #e5e5e5;
+  border-bottom:1px solid #e5e5e5;
+  background: #fff;
+}
+.shopDetails-share .title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #000;
+  line-height: 80rpx;
+  border-bottom:1px solid #e5e5e5;
+}
+.shopDetails-share .share {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
+  padding: 30rpx 0;
+}
+.shopDetails-share .share .share-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200rpx;
+}
+.shopDetails-share .share .share-item button{
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom:10rpx; 
+  background-image:url("http://www.wbx365.com/static/default/wap/image/xiaochengxu/share_wx.png");
+  background-size:100% 100%;  
+  border: none;
+  outline: none;
+}
+button::after {
+  border: none;
+}
+
+.shopDetails-share .share .share-item text{
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.shopDetails-info{
+  padding: 0 20rpx 20rpx;
+  border-top:1px solid #e5e5e5;
+  background: #fff;
+}
+.shopDetails-info .title{
+  text-align: center;
+  font-size: 32rpx;
+  color: #000;
+  line-height: 80rpx;
+  border-bottom:1px solid #e5e5e5;
+}
+.shopDetails-info .info{
+  padding: 30rpx 0; 
+  font-size: 0;
+}
+
+.shopDetails-info .info rich-text{
+  overflow: hidden;
+  line-height: 48rpx;
+  font-size: 28rpx;
+}
+
+.shopDetails-info .info image{
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.shopDetailsCart{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  display: flex;
+  background: #fff;
+ 
+}
+.shopDetailsCart .item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  padding: 10rpx 0;
+  border-left: 1px solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
+}
+.shopDetailsCart .item:first-child{
+  border-left: none;
+}
+.shopDetailsCart .item image{
+    width: 40rpx;
+    height: 40rpx;
+    flex-shrink: 0;
+}
+.shopDetailsCart .item text{ 
+  font-size: 28rpx;
+  color: #999;
+}
+
+.shopDetailsCart .btn{
+  width: 70%;
+  height: 100%;
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff
+}
+.shopDetailsCart .btn.btn-cart{
+  background: #fcbe35;
+}
+.shopDetailsCart .btn.btn-buy{
+  background: #0ac1af;
+}
+
+
+.goods-attr {
+  z-index: 100;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.attr {
+  overflow: hidden;
+  width: 80%;
+  height: 50%;
+  background: #fff;
+  /* margin-left: 7.5%; */
+  /* margin-top: 35%; */
+  border-radius: 10rpx;
+}
+
+/*头部  */
+
+.attr-top {
+  width: 100%;
+  height: 15%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.attr-top text:first-child {
+  /* font-size: 30rpx; */
+}
+
+.attr-top text:last-child {
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+  font-size: 40rpx;
+  color: #10bfaf;
+}
+
+/*规格  */
+
+.attr-select {
+  width: 100%;
+  height: 69%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.attr-select text {
+  font-size: 30rpx;
+  margin-left: 20rpx;
+}
+
+.attr-select-details {
+  /* display: flex;
+  width: 100%;
+  flex-direction: column;
+  background: rebeccapurple; */
+  margin-top: 10rpx;
+}
+
+.select_goods_attrs {
+  border: gray solid 1rpx;
+  padding: 3rpx 10rpx;
+  border-radius: 30rpx;
+  /* margin-top: 20rpx; */
+  /* width: 50%; */
+  text-align: center;
+}
+
+.select_goods_attr {
+  /* margin-top: 20rpx; */
+  background: #10bfaf;
+  border-radius: 20rpx;
+  padding: 3rpx 10rpx;
+  color: white;
+  border: solid #10bfaf 1rpx;
+  text-align: center;
+}
+
+.select_attr_seckill {
+  color: red;
+}
+/*多规格价格  */
+
+.attr-price {
+  width: 100%;
+  height: 15%;
+  background: whitesmoke;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attr-price-select {
+  color: gray;
+  margin-left: 20rpx;
+}
+.attr-price-member{
+  color: red;
+}
+
+/*商品添加  */
+
+.goods-attr-add {
+  width: 30%;
+  height: 100%;
+  align-items: center;
+  margin-right: 20rpx;
+  justify-content: space-between;
+}
+
+.goods-attr-add image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.shopDetails-top .img swiper {
+  width: 100%;
+  height: 100%;
+}
+.attrs-select {
+  width: auto;
+  min-height: 200rpx;
+  max-height: 400rpx;
+}
+
+.attrs-select .select-title {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.attrs-select .select-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.attrs-select .select-content .item {
+  overflow: hidden;
+  padding: 8rpx 16rpx;
+  margin: 20rpx 20rpx 0 0;
+  font-size: 24rpx;
+  color: #999;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+}
+
+.attrs-select .select-content .item:last-child {
+  margin-right: 0;
+}
+
+.attrs-select .select-content .item.on {
+  color: #03bfac;
+  border: 1rpx solid #03bfac;
+  background: #e1fefb;
+}
+
+.attrs-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 20rpx;
+  background: #f5f5f5;
+}
+
+.attrs-price {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.car_money {
+  font-size: 32rpx;
+  color: #f00;
+}
+
+.attrs-shopNum {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.attrs-shopNum image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.attrs-shopNum text {
+  margin: 0 20rpx;
+}
+
+.shop_car{
+  max-width: 300rpx;
+}

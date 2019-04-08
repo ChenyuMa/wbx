@@ -27,7 +27,6 @@ Page({
     isElect: 0,
     addAddressAPI: '/api/user/add_address',
 
-
     // 地图拖拽
     province_name: '',
     city_name: '',
@@ -192,7 +191,6 @@ Page({
   },
   // 设置为常用地址
   clickOften: function (e) {
-      console.log("eeeee",e);
       this.setData({
           tag: e.currentTarget.dataset.item
       });

@@ -1,19 +1,26 @@
 // pages/home/home.js
 // 引入城市定位
 var amapFile = require('../../libs/amap-wx.js');
+var util = require("../../utils/util.js")
 var myAmapFun = new amapFile.AMapWX({
   key: '9484593ebb010c0179c49ac2ade339ce'
 });
+let pages = 1
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    is_bottom_No:false,
+    // 红包弹框
+    redPacket:false,
+    x:0,
+    y:0,
+    windowWidth:0,
+    windowHeight:0,
     load: false,
     animationData: '',
-    // 屏幕高度
-    windowHeight: '',
     pages: 1,
     num: 10,
     // 图标地址
@@ -43,15 +50,19 @@ Page({
       },
       {
         'icon': 'store1@2x.png',
-        'txt': '附近买菜'
+        'txt': '水果生鲜'
       },
       {
         'icon': 'food1@2x.png',
-        'txt': '美食街'
+        'txt': '餐饮美食'
       },
       {
         'icon': 'tenants1@2x.png',
-        'txt': '积分兑换'
+        'txt': '特产零食'
+      },
+      {
+        'icon': 'tenants1@2x.png',
+        'txt': '果汁饮品'
       }
     ],
     // 质量保证
@@ -101,9 +112,40 @@ Page({
     // pages: 1,
     isFootprint: false,
     footprintList: [],
-    clearFootprint: false
+    clearFootprint: false,
+    lazy_load:true,
+    isSalesman: '',
+    
+    sellImg:[
+      { "img": getApp().globalData.imgUrls + 'sell_new_shop.png'},
+      { "img": getApp().globalData.imgUrls + 'sell_heat_shop.png'},
+      { "img": getApp().globalData.imgUrls + 'sell_star_shop.png'},
+      { "img": getApp().globalData.imgUrls + 'sell_hot_shop.png'},
+    ],
+    dataArr:[],
+    dataRedArr:[],
+    dataObjs:{},
+    isExist:0,
+    content:'',
   },
-
+  // 发现页面跳转
+  found(){
+    wx.reLaunch({
+      url: '../found/found',
+    })
+  },
+  // 跳转订单页面
+  shopOrder(){
+    wx.reLaunch({
+      url: '../mine/shopOrder/shopOrder',
+    })
+  },
+  // 跳转我的页面
+  mine(){
+    wx.reLaunch({
+      url: '../mine/mine',
+    })
+  },
   // 位置定位跳转
   location: function() {
     var that = this;
@@ -221,44 +263,144 @@ Page({
   //   });
   //   this.getLocation()
   // },
-
+  // 跳转新店铺
+  newShop(){
+    wx.navigateTo({
+      url: '../newShop/newShop',
+    })
+  },
   // 店铺跳转
   shopsJump: function(e) {
     wx.navigateTo({
-      url: './shopDetails/shopDetails?shopID=' + e.currentTarget.id + "&gradeid=" + e.currentTarget.dataset.grade_id,
+      // url: "./shopDetails/shopDetails?shopID='" + e.currentTarget.id + "'&gradeid='" + e.currentTarget.dataset.grade_id+"'"
+      url: './shopDetails/shopDetails?shopID=' + e.currentTarget.dataset.id + "&gradeid=" + e.currentTarget.dataset.grade_id,
     })
   },
 
+  //点击购物车
+  clickCar:function(){
+    wx.navigateTo({
+      url: '../shopCart/shopCart',
+    })
+  },
+  // 关闭红包弹框
+  redPacketClose(){
+    this.setData({
+      redPacket:false,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var that = this;
+    that.loadFun(pages)
+    that.loadRedFun()
+    that.loadLxzFun()
+    // wx.navigateTo({
+    //   url: '../newShop/newShop',
+    // })
     this.getLocation();
     this.animation();
-    // 获取屏幕高度
-    wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          windowHeight: res.windowHeight
-        });
-      },
-    })
     // 显示图标
     setTimeout(function() {
       that.setData({
-        isFirstShow: false
+        isFirstShow: false,
       });
     }, 3000);
+    that.setData({
+      redPacket: true,
+      targetTime2: new Date().getTime() + 1000 * 60
+    })
+    that.setData({
+      isSalesman: wx.getStorageSync('is_salesman')
+    })
 
+// 轮循获取首页数据
+    let dataObj = {
+      city_id: wx.getStorageSync('city_id'),
+    }
+
+    util.dataRequst("/api/index/index_count_data", function (res) {
+      console.log("轮循获取首页数据");
+      console.log(res)
+      that.setData({
+        content: res.data
+      })
+    }, dataObj)
+
+   
+
+    //获取屏幕高度
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          windowHeight: res.windowHeight-10,
+          windowWidth: res.windowWidth-5,
+          x: res.windowWidth-5,
+          y: res.windowHeight-100
+        });
+      },
+    });
+  },  
+//  附近好店列表
+  loadFun(pagess){
+    let that = this;
+    let dataObj = {
+      city_name: wx.getStorageSync('cityName'),
+      lat: wx.getStorageSync('latitude'),
+      lng: wx.getStorageSync('longitude'),
+      page: pagess,
+      num: that.data.num                             
+    }
+    util.dataRequst("/api/index/list_shop_v2",function(res){
+      console.log("附近的自营店的请求数据");
+      console.log(res)
+      that.setData({
+        dataArr:res.data
+      })
+    }, dataObj)
   },
+  // 通知
+  loadLxzFun(){
+    let that = this;
+    let dataObj = {
+      city_name: wx.getStorageSync('cityName'),
+      lat: wx.getStorageSync('latitude'),
+      lng: wx.getStorageSync('longitude'),
+    }
+    util.dataRequst("/api/index/index_count_data", function (res) {
+      console.log(res)
+      that.setData({
+        dataObjs: res.data
+      })
+    }, dataObj)
+  },
+  // 红包数据
+  loadRedFun(){
+    let that = this;
+    let dataObj = {
+      city_name: wx.getStorageSync('cityName'),
+      // city_name:"厦门",
+      lat: wx.getStorageSync('latitude'),
+      lng: wx.getStorageSync('longitude'),
+    }
 
+    console.log(dataObj);
+
+    util.dataRequst("/api/index/list_index_coupon", function (res) {
+      console.log("开始请求红包");
+      console.log(res)
+      that.setData({
+        dataRedArr: res.data
+      })
+    }, dataObj)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
     var that = this;
-
   },
 
   /**
@@ -299,9 +441,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    this.setData({
+      clearTimer: true
+    });
   },
-
+  myLinsterner(e) {
+    this.setData({
+      isExist: -1
+    });
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -317,15 +465,58 @@ Page({
     this.getFootprint();
   },
 
+  //滚动触底事件
+  bindscrollbottom:function(){
+    var that = this;
+    // pages = pages + 1
+    // that.loadFun(pages)
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
     var that = this;
-    this.setData({
-      is_bottom: true,
-    });
-    this.home_shop_list(this.data.home_shop_API, that.data.cityName, that.data.latitude, that.data.longitude, that.data.pages, that.data.num);
+    that.setData({
+      is_bottom:true
+    })
+    pages = pages + 1
+    let dataObj = {
+      city_name: wx.getStorageSync('cityName'),
+      lat: wx.getStorageSync('latitude'),
+      lng: wx.getStorageSync('longitude'),
+      page: pages,
+      num: that.data.num
+    }
+    util.dataRequst("/api/index/list_shop_v2", function (res) {
+      console.log(res)
+      that.setData({
+        is_bottom: false
+      })
+      if (res.msg == "暂无数据"){
+          that.setData({
+            is_bottom_No:true
+          })
+          setTimeout(function(){
+            that.setData({
+              is_bottom_No: false
+            })
+          },1000)
+      }else{
+        
+        for(let i = 0;i<res.data.length;i++){
+          that.data.dataArr.push(res.data[i])
+        }
+        that.setData({
+          dataArr: that.data.dataArr,
+          is_bottom_over: true
+        })
+        setTimeout(function () {
+          that.setData({
+            is_bottom_over: false
+          })
+        }, 1000)
+      }
+    }, dataObj)
   },
 
   /**
@@ -383,9 +574,12 @@ Page({
               // that.animation();
             }
             // 缓存经纬度和城市名到本地
-            wx.setStorageSync('latitude', data[0].latitude);
-            wx.setStorageSync('longitude', data[0].longitude);
-            wx.setStorageSync('cityName', data[0].regeocodeData.addressComponent.city.split('市')[0]);
+            // wx.setStorageSync('latitude', data[0].latitude);
+            // wx.setStorageSync('longitude', data[0].longitude);
+            // wx.setStorageSync('cityName', data[0].regeocodeData.addressComponent.city.split('市')[0]);
+            wx.setStorageSync('latitude', "24.4766813095");
+            wx.setStorageSync('longitude',"118.0944442749");
+              wx.setStorageSync('cityName',"厦门");
           },
           fail: function(info) {},
           complete: function(res) {
@@ -464,15 +658,15 @@ Page({
       },
       fail: function(res) {},
       complete: function(res) {
-        if (that.data.beyond_list.length == 0 && that.data.home_shop_list.length == 0) {
-          wx.showToast({
-            title: '城市暂未开通',
-          })
-          that.setData({
-            pages: 1
-          });
-          that.home_shop_list(that.data.home_shop_API, '厦门', 24.479664, 118.089204, 1, 10);
-        }
+        // if (that.data.beyond_list.length == 0 && that.data.home_shop_list.length == 0) {
+        //   wx.showToast({
+        //     title: '城市暂未开通',
+        //   })
+        //   that.setData({
+        //     pages: 1
+        //   });
+        //   that.home_shop_list(that.data.home_shop_API, '厦门', 24.479664, 118.089204, 1, 10);
+        // }
         // 数据成功后，停止下拉刷新
         wx.stopPullDownRefresh();
       },
@@ -519,7 +713,7 @@ Page({
     wx.request({
       url: getApp().globalData.url + API,
       data: {
-        login_token: wx.getStorageSync('longinToken')
+        login_token: wx.getStorageSync('loginToken')
       },
       header: {
         'content-type': 'application/json'

@@ -1,7 +1,7 @@
 <!--pages/mine/address/address.wxml-->
 <view class='address' style='height:{{windowHeight}}px'>
   <view class='addressAdd' bindtap='addressAdd'>
-    <text>+添加收货地址</text>
+    <text>添加收货地址</text>
   </view>
   <scroll-view style='heigth:92%' scroll-y='true'>
     <view class='addressStyle' wx:for='{{addressList}}' wx:key='index' bindchange='addressDefault'>
@@ -14,7 +14,7 @@
         </view>
         <!--用户地址  -->
         <view class='userAddress'>
-          <view class='often'>{{item.tag}}</view><text>{{item.area_str}}{{item.info}}</text>
+          <text class='often'>{{item.tag}}</text><text class='adr'>{{item.area_str}}{{item.info}}</text>
         </view>
       </view>
       <view class='line'></view>

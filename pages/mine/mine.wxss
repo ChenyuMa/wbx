@@ -531,3 +531,64 @@ button::after {
   color: white;
   border: 1rpx solid #06C1AE;
 }
+
+.moveShopCar {
+  position: absolute;
+  width: 90rpx;
+  height: 90rpx;
+  right: 0;
+  bottom: 35%;
+}
+
+.moveShopCar image {
+  width: 100%;
+  height: 100%;
+}
+/* 自定义底部tab */
+.footerTab{
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  /* border: 1px solid red; */
+  width: 100%;
+  background: rgb(247,247,250);
+  z-index: 20;
+}
+.tabContent{
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+  width: 25%;
+  float: left;
+  text-align: center;
+  height: 100%;
+  position: relative;
+}
+.tab_img{
+  width: 55rpx;
+  height: 55rpx;
+  margin-top: 10rpx;
+}
+.tab_search{
+  position: absolute;
+  border: 1px solid red;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  top:-54rpx;
+  left:18rpx;
+
+}
+.tab_title{
+  font-size: 22rpx;
+  margin-top: -12rpx;
+  color: #565864;
+}
+.tab_titles{
+  font-size: 24rpx;
+  margin-top: -12rpx;
+  color: #565864;
+  margin-top: 64rpx;
+}
+.tab_active{
+  color: #24AEA0;
+}

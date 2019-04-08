@@ -190,13 +190,12 @@ Page({
           //缓存用户id
           wx.setStorageSync('userID', that.data.inputUserTxt);
           getApp().globalData.userLogin = true;
-          getApp().hxloign(res.data.data.hx_username, res.data.data.hx_password);
           wx.setStorageSync('hx_username', res.data.data.hx_username);
           wx.setStorageSync('hx_password', res.data.data.hx_password);
           //缓存用户id
           wx.setStorageSync('userID', that.data.inputUserTxt);
-          wx.reLaunch({
-            url: '../home/home',
+          wx.navigateBack({
+            delta: 1
           })
         }else{
           wx.showToast({
@@ -326,11 +325,13 @@ Page({
   // 点击微信登录
   clickWxLogin:function(e){
     var that = this;
-    var nickName = e.detail.userInfo.nickName;
-    var face = e.detail.userInfo.avatarUrl;
-    var encryptedData = e.detail.encryptedData;
-    var iv = e.detail.iv;
-    that.wxLogin(nickName, face);
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      var nickName = e.detail.userInfo.nickName;
+      var face = e.detail.userInfo.avatarUrl;
+      var encryptedData = e.detail.encryptedData;
+      var iv = e.detail.iv;
+      that.wxLogin(nickName, face);
+    }
   },
 
   // 获取code
@@ -405,11 +406,10 @@ Page({
           //缓存用户id
           wx.setStorageSync('userID', that.data.inputUserTxt);
           getApp().globalData.userLogin = true;
-          getApp().hxloign(res.data.data.hx_username, res.data.data.hx_password);
           wx.setStorageSync('hx_username', res.data.data.hx_username);
           wx.setStorageSync('hx_password', res.data.data.hx_password);
-          wx.reLaunch({
-            url: '../home/home',
+          wx.navigateBack({
+            delta: 1
           })
         }
       },

@@ -1,0 +1,58 @@
+<view class="header">
+  <image class='backImg'></image>
+  <view class='zjxx'><image class='zjImg'></image>萌萌哒刚刚购买了华为手机一部</view>
+  <view class='store'>
+    <image class='store_tx'></image>
+    <view class='store_detail'>
+      <view class='store_dm'>微百姓快乐番薯</view>
+      <view>
+        <image class='store_xx'></image>
+        <text class='store_num'>月销 669</text>
+        <text class='store_num'>人气 5669</text>
+      </view>
+      <view class='store_gg'>
+        公告：欢迎光临旗舰店，优惠多多
+      </view>
+    </view>
+    <image class='store_dd'></image>
+  </view>
+</view>
+
+<view class='main'>
+  <view class='main_yh'>
+    领取￥<text>5</text>
+  </view>
+  <view class='main_yhhui'>
+    已领￥<text>5</text>
+  </view>
+  <view class='main_mj'>
+    <view class='main_mjTitle'>满减</view>
+    <text>满20减10，满60减25，满80减35</text>
+    <view class='yh_num'>4个优惠<image></image></view>
+  </view>
+</view>
+
+<view style='height:100%'>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+        <view class="tab-item {{currentTab==0?'active':''}}"  data-current="0" bindtap="swichNav">热卖</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">产品</view>
+        <view class="tab-item {{currentTab==2?'active':''}}"  data-current="2" bindtap="swichNav">评论</view>
+        <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">商家</view>
+    </scroll-view>
+    <view style='margin-top:-94rpx;'>
+    <swiper class="tab-content" current="{{currentTab}}" style='height:93vh' duration="300" bindchange="switchTab">
+        <swiper-item>
+            aa
+        </swiper-item>
+        <swiper-item>
+            bb
+        </swiper-item>
+        <swiper-item>
+            cc
+        </swiper-item>
+        <swiper-item>
+            dd
+        </swiper-item>
+    </swiper>
+    </view>
+</view>

@@ -20,7 +20,8 @@
             <!-- 商品名称 -->
             <view class='goods-name'>
               <text>{{item.title}}</text>
-              <text>{{item.price}}</text>
+              <text>{{item.mall_price/100.00}}</text>
+              <text>{{item.price/100.00}}</text>
             </view>
             <!--删除收藏  -->
             <view class='delete-collection'>

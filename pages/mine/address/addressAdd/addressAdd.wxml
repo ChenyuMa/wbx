@@ -9,7 +9,7 @@
         <text>收货人：</text>
       </view>
       <view>
-        <input type='text' placeholder='请输入姓名' value='{{nameValue}}' bindblur='nameBlur'></input>
+        <input type='text' placeholder='请输入姓名' value='{{nameValue}}' bindinput='nameBlur'></input>
       </view>
     </view>
     <!--用户电话  -->
@@ -38,7 +38,7 @@
         <text>详细地址：</text>
       </view>
       <view>
-        <input type='text' placeholder='输入详细地址' bindblur='detailBlur' value='{{detailValue}}'></input>
+        <input type='text' placeholder='输入详细地址' bindtap='detailBlur' value='{{detailValue}}'></input>
       </view>
     </view>
     <!--默认地址  -->

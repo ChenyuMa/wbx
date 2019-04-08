@@ -1,99 +1,14 @@
 /* pages/mine/shopOrder/shopOrder.wxss */
 
 /* 弹性行 */
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-/* 弹性列 */
-.flex-column {
-  display: flex;
-  flex-direction: column;
-}
-/*文本超出省略号  */
-.text-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-/*买菜订单  */
-.shopOrderStyle {
-  width: 100%;
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }
 
-.order-select{
-  width: 100%;
-  height: 7%;
-  background: white;
-  font-size: 30rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.select{
-  width: 40%;
-  height: 50%;
-  justify-content: space-around;
-  border-radius: 20rpx;
-  border: 1rpx solid gainsboro;
-}
-.select view:first-child{
-  width: 50%;
-  height: 100%;
-  text-align: center;
-  border-radius: 20rpx;
-}
-.select view:last-child{
-  width: 50%;
-  height: 100%;
-  text-align: center;
-  border-radius: 20rpx;
-}
-.selected{
-  background: #06c1ae;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.selecteds{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/*头部栏样式  */
-
-.swiper-tab {
-  height: 7%;
-  display: flex;
-  background-color: white;
-  flex-direction: row;
-  line-height: 150%;
-}
-
-.tab-item {
-  width: 33.3%;
-  text-align: center;
-  font-size: 28rpx;
-  color: gray;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper {
-  height: 93%;
-  background: ghostwhite;
-}
-
-.on {
-  color: #06c1ae;
-  border-bottom: 5rpx solid #06c1ae;
-}
-
-/*待付款  */
+/*无数据*/
 
 .noOrder {
   width: 100%;
@@ -115,218 +30,263 @@
   color: gray;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
 
-/*订单样式  */
 
-.orderStyle {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 20rpx;
-}
-
-/*订单头部  */
-
-.orderHead {
-  width: 100%;
-  height: 60rpx;
-  display: flex;
-  background-color: white;
-  flex-direction: row;
-}
-
-.orderIcon {
-  width: 10%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.orderIcon image {
-  width: 40%;
-  height: 60%;
-}
-
-.orderID {
-  width: 90%;
-  display: flex;
-  font-size: 25rpx;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.orderID text:first-child {
-  padding-left: 20rpx;
-}
-
-.orderID text:last-child {
-  padding-right: 40rpx;
-  color: #0ad2be;
-}
-.orderID image{
-  width: 100rpx;
-  height: 35rpx;
-  margin-left: 250rpx;
-}
-
-/*订单内容  */
-
-.orderContent {
-  width: 100%;
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-}
-
-.contentStyle {
-  width: 100%;
-  height: 200rpx;
+.flex-row {
   display: flex;
   flex-direction: row;
 }
 
-.contentIcon {
-  width: 30%;
-  height: 100%;
+/* 弹性列 */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/*文本超出省略号  */
+
+.of {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*买菜订单  */
+
+.shopOrderStyle {
+  width: 100%;
+}
+
+.order-select {
+  width: 100%;
+  height: 7%;
+  background: white;
+  font-size: 30rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.contentIcon image {
-  width: 70%;
-  height: 70%;
-}
-
-.contentDetails {
-  width: 70%;
-  height: 100%;
-  display: flex;
+.select {
+  width: 40%;
+  height: 50%;
   justify-content: space-around;
-  flex-direction: column;
+  border-radius: 20rpx;
+  border: 1rpx solid gainsboro;
 }
 
-.setailsStore {
-  width: 100%;
-  font-size: 30rpx;
+.select view:first-child {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  border-radius: 20rpx;
 }
 
-.setailsPrice {
-  font-size: 26rpx;
-  width: 100%;
+.select view:last-child {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  border-radius: 20rpx;
+}
+
+.selected {
+  background: #06c1ae;
+  color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
-.setailsPrice text:last-child {
+.selecteds {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*头部栏样式  */
+
+.swiper-tab {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #eee;
+}
+
+.tab-item {
+  position: relative;
+  width: 33.3%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.tab-item.on {
+  color: #06c1ae;
+}
+
+.tab-item.on>view {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-left: -20rpx;
+  width: 40rpx;
+  height: 2rpx;
+  background: #06c1ae;
+}
+
+.tab-content {
+  width: calc(99.8%-100rpx);
+  height: -webkit-calc(99.8% - 100rpx);
+  width: -moz-calc(99.8% - 100rpx);
+}
+
+.order-wrapper {
+  background: #f4f4f4;
+}
+
+/* 单个订单详情 */
+
+.order-item {
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  padding-top: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+  background: #fff;
+}
+
+.item-title {
+  display: flex;
+  align-items: center;
+}
+
+.item-title image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+  flex-shrink: 0;
+}
+
+.item-title .txt {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   margin-right: 40rpx;
 }
 
-/*订单尾部  */
-
-.orderFoot {
-  width: 100%;
-  height: 150rpx;
-  background-color: white;
-}
-
-.needPay {
-  width: 100%;
-  height: 40%;
+.item-title .txt .name {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  overflow: hidden;
 }
 
-.needPay text {
+.item-title .txt .name text {
+  margin-right: 20rpx;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.item-title .txt .time {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.item-title .bar {
+  flex-shrink: 0;
+  margin-left: auto;
+  color: #07cbbd;
+  font-size: 30rpx;
+}
+
+.item-list {
+  padding: 40rpx 0 20rpx;
+  margin-left: 100rpx;
+  border-bottom: 1rpx solid #dbdbdb;
+}
+
+.item-list .product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  line-height: 40rpx;
+}
+
+.item-list .product:first-child {
+  margin-top: 0;
+}
+
+.item-list .product .desc {
+  width: 50%;
+  color: #999;
   font-size: 28rpx;
 }
 
-.needPay text:nth-child(2) {
-  font-size: 34rpx;
-  color: #0ad2be;
+.item-list .product .nub {
+  color: #999;
+  font-size: 28rpx;
+}
+
+.item-list .product .money {
+  width: 30%;
+  text-align: right;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.statistical {
+  margin-top: 20rpx;
+  line-height: 40rpx;
+  text-align: right;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.statistical .overstep {
+  float: left;
+  line-height: 40rpx;
+}
+
+.item-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-top: 20rpx;
   margin-left: 20rpx;
 }
 
-.needPay text:last-child {
-  padding-right: 20rpx;
+.statistical text {
+  margin: 0 4rpx;
+  color: #e73a18;
 }
 
-.payBtn {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.payBtn button {
-  padding: 0;
-  font-size: 25rpx;
-  height: 60rpx;
-  width: 20%;
-  margin: 0 20rpx;
+.item-btn .btn {
+  width: 31%;
+  height: 70rpx;
+  margin-right: 3.5%;
+  line-height: 70rpx;
   text-align: center;
-  line-height: 60rpx;
+  color: #333;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  border: 1rpx solid #dbdbdb;
 }
 
-.payBtn button:first-child {
-  border: 2rpx solid #0ad2be;
-  background-color: white;
-  color: #0ad2be;
+.item-btn .btn:first-child {
+  margin-right: 0;
 }
 
-.payBtn button:last-child {
-  background-color: #0ad2be;
-  color: white;
+.item-btn .btn.on {
+  color: #fff;
+  border: 1rpx solid #44d8c9;
+  background-image: linear-gradient(to right, #01cabc, #44d8c9);
 }
 
-/*已完成按钮  */
 
-.completedBtn {
-  width: 100%;
-  height: 60%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.completedBtn button {
-  padding: 0;
-  font-size: 25rpx;
-  height: 60rpx;
-  width: 18%;
-  margin: 0 10rpx;
-  text-align: center;
-  line-height: 60rpx;
-}
-
-.completedBtn button:nth-child(2) {
-  border: 2rpx solid #0ad2be;
-  background-color: white;
-  color: #0ad2be;
-}
-
-.completedBtn button:nth-child(4) {
-  background-color: #0ad2be;
-  color: white;
-}
-
-/*是否到底  */
-
-.loading {
-  text-align: center;
-  color: #06c1ae;
-}
-/************************************申请售后  */
 .afterSale{
   width: 100%;
   height: 100%;
@@ -370,4 +330,64 @@
 }
 .select-afterSale-content view{
   line-height: 40rpx;
+}
+.moveShopCar {
+  position: absolute;
+  width: 90rpx;
+  height: 90rpx;
+  right: 0;
+  bottom: 35%;
+}
+
+.moveShopCar image {
+  width: 100%;
+  height: 100%;
+}
+/* 自定义底部tab */
+.footerTab{
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  /* border: 1px solid red; */
+  width: 100%;
+  background: rgb(247,247,250);
+  z-index: 20;
+}
+.tabContent{
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+  width: 20%;
+  float: left;
+  text-align: center;
+  height: 100%;
+  position: relative;
+}
+.tab_img{
+  width: 55rpx;
+  height: 55rpx;
+  margin-top: 10rpx;
+}
+.tab_search{
+  position: absolute;
+  border: 1px solid red;
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+  top:-54rpx;
+  left:18rpx;
+
+}
+.tab_title{
+  font-size: 22rpx;
+  margin-top: -12rpx;
+  color: #565864;
+}
+.tab_titles{
+  font-size: 24rpx;
+  margin-top: -12rpx;
+  color: #565864;
+  margin-top: 64rpx;
+}
+.tab_active{
+  color: #24AEA0;
 }

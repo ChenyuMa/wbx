@@ -109,27 +109,26 @@ Page({
       },
     })
 
-    wx.request({
-      url: getApp().globalData.url + that.data.addressAPI,
-      data: {
-        login_token: wx.getStorageSync('loginToken')
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      method: 'POST',
-      dataType: 'json',
-      success: function(res) {
-        console.log('获取地址列表：',res);
-        that.setData({
-          addressList: res.data.data
-        });
+    // wx.request({
+    //   url: getApp().globalData.url + that.data.addressAPI,
+    //   data: {
+    //     login_token: wx.getStorageSync('loginToken')
+    //   },
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   method: 'POST',
+    //   dataType: 'json',
+    //   success: function(res) {
+    //     console.log('获取地址列表：',res);
+    //     that.setData({
+    //       addressList: res.data.data
+    //     });
 
-      },
-      fail: function(res) {},
-      complete: function(res) {},
-    })
-
+    //   },
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
 
   },
 
@@ -159,10 +158,17 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function(res) {
-        //console.log(res.data.data)
-        that.setData({
-          addressList: res.data.data
-        });
+        console.log(res.data.data);
+        if(res.data.state == 0){
+          wx.showToast({
+            title: res.data.msg,
+            // icon: 'none',
+          })
+        }else{
+          that.setData({
+            addressList: res.data.data
+          });
+        }
       },
       fail: function(res) {},
       complete: function(res) {},

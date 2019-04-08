@@ -109,6 +109,9 @@ Page({
               url: '../../bindPhone/bindPhone',
             })
           }else if(res.data.msg == '请先登陆'){
+            wx.navigateTo({
+              url: '../login/login',
+            })
             that.setData({ userLogin:true});
           } else {
             wx.showToast({
@@ -116,14 +119,16 @@ Page({
             })
           };
         }else{
-          var list = res.data.data;
-          for(var i=0;i<list.length;i++){
-            var dayData = timestampToTime(list[i][0].create_time);
-            list[i][0].create_time = dayData;
+          if (res.data.msg == '成功'){
+            var list = res.data.data;
+            for (var i = 0; i < list.length; i++) {
+              var dayData = timestampToTime(list[i][0].create_time);
+              list[i][0].create_time = dayData;
+            }
+            that.setData({
+              systemList: res.data.data
+            });
           }
-          that.setData({
-            systemList:res.data.data
-          });
         }
       },
       fail: function(res) {},

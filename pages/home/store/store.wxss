@@ -14,7 +14,7 @@
   justify-content: center;
 }
 .footprint-hint image{
-  width: 100rpx;
+  width: 200rpx;
   height: 50rpx;
 }
 .header-pic {

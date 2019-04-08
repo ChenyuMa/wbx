@@ -86,8 +86,9 @@ Page({
   // 点击人工客服
   clickArtificial:function(){
     var that = this;
-    wx.showToast({
-      title: '敬请期待',
+    wx.showModal({
+      title: '提示',
+      content: '敬请期待',
     })
     // wx.navigateTo({
     //   url: './artificial/artificial?serviceUrl=' + that.data.serviceUrl,
@@ -146,11 +147,6 @@ Page({
     wx.showModal({
       title: '提示',
       content: '敬请期待',
-      showCancel: true,
-      cancelText: '取消',
-      cancelColor: '',
-      confirmText: '确定',
-      confirmColor: '',
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

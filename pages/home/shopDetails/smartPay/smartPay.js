@@ -13,7 +13,7 @@ Page({
     isWeChat: false,
     inputCode: '',
     isPayCode: false,
-    payCode: ''
+    payCode: 'weixinapp',
   },
 
   /**
@@ -34,7 +34,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      isWeChat: true,     
+    })
+    
   },
 
   /**
@@ -98,6 +101,7 @@ Page({
 
   // 微信支付
   radioWeChat: function (e) {
+    console.log("e",e)
     this.setData({
       isBalance: false,
       isWeChat: true,

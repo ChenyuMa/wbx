@@ -1,0 +1,256 @@
+/* pages/mine/shopOrder/productRefund/productRefund.wxss */
+.of {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-refund {
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.status {
+  margin-bottom: 20rpx;
+  background: #fff;
+}
+
+.status-top {
+  padding: 50rpx;
+  background: #01cabc;
+  color: #fff;
+}
+
+.status-top .txt {
+  line-height: 70rpx;
+  font-size: 40rpx;
+}
+
+.status-top .time {
+  font-size: 24rpx;
+}
+
+.status-bottom {
+  padding: 0 20rpx;
+}
+
+.status-bottom .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.status-bottom .item:first-child {
+  border-top: 1rpx solid #fff;
+}
+
+.status-bottom .item .number {
+  color: #fb453b;
+}
+
+/* 退款流程 */
+
+.process {
+  padding: 20rpx;
+  background: #fff;
+  border-bottom: 1px solid #eee
+}
+
+.process .title {
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.process-content {
+  position: relative;
+}
+
+.process-content .left-border {
+  position: absolute;
+  left: 15rpx;
+  top: 10rpx;
+  bottom: 20rpx;
+  width: 2rpx;
+  background: #eee;
+}
+
+/* 流程 */
+
+.item {
+  overflow: hidden;
+}
+
+.item .item-time {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.item .item-time .icon {
+  z-index: 1;
+  position: relative;
+  width: 30rpx;
+  height: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing:border-box;
+}
+
+.item .item-time .icon>view {
+  width: 60%;
+  height: 60%;
+  background: #ddd;
+  border-radius: 50%;
+}
+
+.item .item-time text {
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  color: #9e9e9e;
+}
+
+.item .item-txt {
+  margin: 0 0 20rpx 60rpx;
+  padding: 30rpx;
+  line-height: 40rpx;
+  background: #f7f7f7;
+  font-size: 26rpx;
+  color: #9e9e9e;
+}
+
+.item.on {
+  overflow: hidden;
+}
+
+.item.on .item-time {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+
+.item.on .item-time .icon>view {
+  background: #07cbbd;
+  border: 2px solid #63d8d0;
+}
+
+.item.on .item-time text {
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  color: #01cabc;
+}
+
+.item.on .item-txt {
+  margin: 0 0 20rpx 60rpx;
+  padding: 30rpx;
+  line-height: 40rpx;
+  background: #f7f7f7;
+  font-size: 26rpx;
+  color: #01cabc;
+}
+
+.application{
+  background: #fff;
+  border-bottom: 1px solid #eee
+}
+
+.application .title {
+  padding: 0 20rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+
+.application-content{
+}
+
+.product-box{
+  padding: 20rpx;
+  background: #f8f8f8;
+}
+
+.list{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.list:first-child{
+  margin-top: 0;
+}
+
+.list .list-img{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  border: 1px solid #eee;
+  background: #fff;
+  flex-shrink: 0;
+}
+.list .list-img image{
+  width: 100%;
+  height: 100%;
+}
+
+.list .list-txt{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.list .list-txt .desc{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 56rpx;
+}
+
+.list .list-txt .money{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.list .list-txt .money text{
+  margin-left: 10rpx;
+  color:#9e9e9e;
+  font-size: 26rpx;
+}
+
+.information-box{
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+}
+.point{
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.point .name{
+  flex-shrink: 0;
+  margin-right: 20rpx;
+  color: #9e9e9e;
+  font-size: 28rpx;
+}
+
+.point .txt{
+  color: #333;
+  font-size: 28rpx;
+}
+
+.btn-phone{
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+  background: #fff;
+}
+

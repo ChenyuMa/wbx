@@ -1,7 +1,7 @@
 <!--pages/Store/Store.wxml-->
 <view class='footprint' wx:if='{{isFootprint}}'>
-  <scroll-view style='height:100%;width:100%;white-space:nowrap;' scroll-x='true' >
-    <view class='footprint-content' wx:for='{{footprintList}}' wx:key='index' >
+  <scroll-view style='height:100%;width:100%;white-space:nowrap;' scroll-x='true'>
+    <view class='footprint-content' wx:for='{{footprintList}}' wx:key='index'>
       <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}' bindtouchstart='touchStart' bindtouchend='touchEnd' catchtap='longTap' data-item='{{item}}'></image>
       <text style=' width: 80rpx;font-size: 20rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;'>{{item.shop_name}}</text>
       <text class='fa fa-close' style='position:absolute;right:-10rpx;top:-10rpx;font-size:40rpx;color:gray;' wx:if='{{clearFootprint}}' catchtap='clearFootprint' data-shopid='{{item.shop_id}}'></text>
@@ -19,6 +19,7 @@
     <view class="header-pic">
       <image class="touxiang" src="{{gradeid == 15?shopDetailList.shop_detail.photo:shopDetailList.detail.photo}}{{'?imageView2/1/w/100/h/100'}}"></image>
       <view class='collect' bindtap='clickFocus'>
+      <button wx:if="{{userLogin}}" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" plain='true' style='position:absolute;width:100%;height:100%;top:0;left:0;border:none'></button>
         <image class="shoucang" src="{{imgUrls}}/collect.png" wx:if='{{isFocuss}}'></image>
         <image class="shoucang" src="{{imgUrls}}/noncollect.png" wx:else></image>
         <view class='focus'>
@@ -33,29 +34,37 @@
         <view class='shopInfo-star'>
           <text wx:for='{{5}}' wx:key='index' class='fa fa-star'></text>
         </view>
-        <view class='monthslales'>销量</view>
-        <view class='monthslales'>{{gradeid == 15?shopDetailList.shop_detail.sold_num:shopDetailList.detail.sold_num}}</view>
+        <!-- <view class='monthslales' wx:if='{{isSalesman!=0}}'>销量</view>
+        <view class='monthslales' wx:if='{{isSalesman!=0}}'>{{gradeid == 15?shopDetailList.shop_detail.sold_num:shopDetailList.detail.sold_num}}</view> -->
       </view>
-      <view class='business-time textcenter'>营业时间：{{gradeid == 15?shopDetailList.shop_detail.business_time:shopDetailList.detail.business_time}}</view>
+      <view class='business-time textcenter' hidden='{{isTimes}}'>营业时间：{{gradeid == 15?shopDetailList.shop_detail.business_time:shopDetailList.detail.business_time}}</view>
     </view>
 
-    <view class="into-shop textcenter" bindtap='clickIntoShop'>进店逛逛</view>
-    <view class="announcement textcenter">公告：{{gradeid == 15?shopDetailList.shop_detail.notice:shopDetailList.detail.notice}}</view>
+    <view style='position:relative'>
+      <view class="into-shop textcenter" bindtap='clickIntoShop'>进店逛逛</view>
+      <button wx:if="{{userLogin}}" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" plain='true' style='position:absolute;width:100%;height:100%;top:0;left:0;border:none'></button>
+    </view>
+    <view class="announcement textcenter" hidden='{{isNotice}}'>公告：{{gradeid == 15?shopDetailList.shop_detail.notice:shopDetailList.detail.notice}}</view>
     <view class="dian"></view>
 
-    <view id='box' class="food-order" wx:if='{{gradeid == 20}}'>
-      <view class='soli textcenter' bindtap='clickOnline'>
+    <view id='box' class="food-order" wx:if='{{ gradeid == 20}}'  >
+      <view class='soli textcenter' bindtap='clickOnline' wx:if='{{is_take_number==""}}'>
         <image class="tuijian juzhong" src="{{imgUrls}}/order.png"></image>
         <view class='food-model'>在线点餐</view>
       </view>
 
       <view class='soli textcenter' bindtap='clickOrdering' wx:if='{{gradeid == 20}}'>
-        <image class="tuijian" src="{{imgUrls}}/reach.png"></image>
-        <view class='food-model'>到店点餐</view>
+        <view wx:if='{{is_take_number==""}}'>
+          <image class="tuijian" src="{{imgUrls}}/reach.png"></image>
+          <view class='food-model'>到店点餐</view>
+        </view>
+        
       </view>
       <view class='soli textcenter' bindtap='clickBooking' wx:if='{{gradeid == 20}}'>
-        <image class="tuijian" src="{{imgUrls}}/reserve1.png"></image>
-        <view class='food-model'>远程预定</view>
+        <view wx:if='{{is_take_number==""}}'>
+          <image class="tuijian" src="{{imgUrls}}/reserve1.png"></image>
+          <view class='food-model'>远程预定</view>
+        </view>
       </view>
     </view>
 
@@ -65,9 +74,10 @@
         <view class='food-model'>推荐好友</view>
       </view>
 
-      <view class='soli textcenter' bindtap='clickCoupons'>
+      <view class='soli textcenter' bindtap='clickCoupons' style='position:relative'>
         <image class="tuijian" src="{{imgUrls}}/coupon.png"></image>
         <view class='food-model'>领优惠券</view>
+        <button wx:if="{{userLogin}}" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" plain='true' style='position:absolute;width:100%;height:100%;top:0;left:0;border:none'></button>
       </view>
 
       <!--弹窗优惠券  -->
@@ -100,9 +110,10 @@
         </view>
       </view>
 
-      <view class='soli textcenter' bindtap='clickPersonal'>
+      <view class='soli textcenter' bindtap='clickPersonal' style='position:relative'>
         <image class="tuijian" src="{{imgUrls}}/grem.png"></image>
         <view class='food-model'>个人中心</view>
+        <button wx:if="{{userLogin}}" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" plain='true' style='position:absolute;width:100%;height:100%;top:0;left:0;border:none'></button>
       </view>
     </view>
     <view class="dian"></view>
@@ -173,7 +184,7 @@
           </view>
           <view class='floatright' style='font-size:28rpx;'>{{item.create_time}}</view>
         </view>
-      </view>
+      </view> 
 
       <view class='See-all-comments' bindtap='clickComments'>查看用户的全部评论></view>
 
@@ -217,7 +228,9 @@
       </view>
     </view>
 
-    <view class='See-all-comments' bindtap='clickShopFound'>查看全部店铺发现></view>
+    <view class='See-all-comments' bindtap='clickShopFound' >
+      <text catchtap='clickShopFoundTxt'>查看全部店铺发现></text>
+    </view>
 
 
   </view>
@@ -232,6 +245,7 @@
       </view>
       <view class='envelope-btn' bindtap='clickEnvelope' style='position:absolute;bottom:12%;left:23%;'>
         <text>关注店铺抢红包</text>
+        <button  open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" plain='true' style='position:absolute;width:100%;height:100%;top:0;left:0;border:none'></button>
       </view>
     </view>
     <view class='envelope-close'>
@@ -240,7 +254,7 @@
   </view>
 </view>
 <!--授权登录  -->
-<view class='wx-longin' wx:if='{{userLogin}}'>
+<!-- <view class='wx-longin' wx:if='{{userLogin}}'>
   <view class='login-content'>
     <view class='longin-title'>
       <text>微信授权</text>
@@ -260,4 +274,4 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->

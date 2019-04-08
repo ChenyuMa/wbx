@@ -32,7 +32,13 @@ Page({
       this.getSweepOrder();
     }
   },
-
+ 
+  //点击购物车
+  clickCar: function () {
+    wx.navigateTo({
+      url: '../shopCart/shopCart',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -215,7 +221,7 @@ Page({
     var that = this;
     if (this.data.isTakeNumber==1){
       wx.navigateTo({
-        url: '../shopOrder/orderDetails/orderDetails?orderID=' + e.currentTarget.dataset.orderid + '&selected=2',
+        url: '../shopOrder/orderDetails/orderDetails?orderID=' + e.currentTarget.dataset.orderid + '&selected=2' + '&orderType=2',
       })
     }
   }

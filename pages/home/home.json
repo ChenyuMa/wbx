@@ -1,5 +1,8 @@
 {
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
-  "onReachBottomDistance": 50
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "i-count-down": "../../dist/count-down/index"
+  }
 }

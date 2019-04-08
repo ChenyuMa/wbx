@@ -1,160 +1,251 @@
 <!--pages/home/shopDetails/confirmOrder/confirmClearing/confirmClearing.wxml-->
-<view class='clearing' style='height:{{windowHeight}}px;'>
-  <!--支付信息  -->
-  <view class='clearingInfo'>
-    <scroll-view style='height:100%;' scroll-y='{{true}}'>
-      <!--用户地址  -->
-      <view class='userAddress' bindtap='address_select' wx:if='{{isTakeNumber!=1}}'>
-        <view class='addressLeft'>
-          <view class='addressLeft_top'>
-            <text>{{orderList.address.xm}}</text>
-            <text>{{orderList.address.tel}}</text>
-            <text>默认</text>
-          </view>
-          <view class='addressLeft_bottom'>
-            <view>
-              <image src='{{imgUrls+"order_address@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
-            </view>
-            <text>{{orderList.address.area_str}}{{orderList.address.info}}</text>
-          </view>
-        </view>
-        <view class='addressRigth'>
-          <image src='{{imgUrls+"more@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
-        </view>
-      </view>
-      <!--商品  -->
-      <view class='orderPhoto'>
-        <view class='orderPhotoLeft'>
-          <scroll-view scroll-x='true' class='scroll'>
-            <view class='photo' wx:for='{{orderList.order_goods}}' wx:key='index'>
-              <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
-            </view>
-          </scroll-view>
-        </view>
-        <view class='orderPhotoRigth'>
-        </view>
-      </view>
-      <!--商品价格  -->
-      <view class='orderPrice'>
-        <view class='orderPriceTop'>
-          <text>商品总额：</text>
-          <text>￥{{orderList.order.total_price/100.00}}</text>
-        </view>
-        <view class='orderPriceBottom'>
-          <text>运费：</text>
-          <text wx:if='{{gradeid != 15}}'>￥{{orderList.order.express_price/100.00}}</text>
-          <text wx:else>￥{{orderList.order.logistics/100.00}}</text>
-        </view>
-        <view class='orderPriceBottom' wx:if='{{gradeid == 20}}'>
-          <text>包装费：</text>
-          <text wx:if='{{gradeid != 15}}'>￥{{orderList.order.casing_price/100.00}}</text>
-          <text wx:else>￥0</text>
-        </view>
-      </view>
-      <!--优惠卷  -->
-      <view class='orderCoupon' wx:if='{{orderList.order.coupon_money != 0}}'>
-        <text>已使用:{{orderList.order.coupon_money?orderList.order.coupon_money/100.00:0}}</text>
-      </view>
-      <!--满减  -->
-      <view class='orderSubtraction' wx:if='{{orderList.order.full_money_reduce != 0}}'>
-        <text>满减:{{orderList.order.full_money_reduce/100.00}}</text>
-        <!-- <text wx:else>满0.00减0.00</text> -->
-      </view>
-      <view class='orderCoupon' wx:if='{{orderList.order.user_subsidy_money != 0}}'>
-        <text>奖励金:{{orderList.order.user_subsidy_money/100.00}}</text>
-      </view>
-      <view class='orderCoupon' style='display: flex; justify-content: space-between;'>
-        <text style='margin-left:30rpx;color:black;'>红包:</text>
-        <text style='margin-right:30rpx; color:red;'>￥{{orderList.order.red_packet_money?orderList.order.red_packet_money/100.00:0}}</text>
-      </view>
-      <!--备注  -->
-      <view class='orderRemark' bindtap='temarkToast'>
-        <view>
-          <text>留言/备注:</text>
-          <text>{{inputTxt}}</text>
-        </view>
-        <image src='{{imgUrls+"more@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
-      </view>
-      <!--支付方式  -->
-      <view class='orderPay'>
-        <view class='orderPayTop'>
-          <text>选择支付方式</text>
-        </view>
-        <view class='balance' bindtap="radioBalance" data-value='money'>
-          <view class='balanceImg'>
-            <image src='{{imgUrls+"order_pay@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
-          </view>
-          <view class='balanceInfo'>
-            <text>余额支付</text>
-            <text>余额支付是最方便快捷的</text>
-          </view>
-          <view class='balanceSlect'>
-            <radio-group>
-              <radio checked='{{isBalance}}'></radio>
-            </radio-group>
-          </view>
-        </view>
-        <view class='weChat' bindtap="radioWeChat" data-value='weixinapp'>
-          <view class='balanceImg'>
-            <image src='{{imgUrls+"order_wechat@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
-          </view>
-          <view class='balanceInfo'>
-            <text>微信APP支付</text>
-            <text>微信官方支付,安全,方便,快捷!</text>
-          </view>
-          <view class='balanceSlect'>
-            <radio-group>
-              <radio checked='{{isWeChat}}'></radio>
-            </radio-group>
-          </view>
-        </view>
+<view class='confirmClearing-pages'>
+  <!-- 背景颜色 -->
+  <view class='background-color'></view>
 
+    <!-- 预定订单信息 -->
+  <view class='order-addr-pay' wx:if='{{isTableId}}' >
+    <!-- 地址 -->
+    <view class='order-addr'>
+      <view class='addr'>
+        <text class='txt of'>预定人数：{{reserveTable.number}}</text>
       </view>
-    </scroll-view>
-  </view>
-  <!--确认结算  -->
-  <view class='orderClearing'>
-    <view class='clearingLeft'>
-      <text>订单总费用：￥{{orderList.order.need_pay/100.00}}</text>
+      <text class='name'>{{reserveTable.name}} {{reserveTable.mobile}}</text>
     </view>
-    <view class='clearingRight' bindtap='confirmPay'>
-      <text>确认结算</text>
-    </view>
-  </view>
-  <!--支付密码  -->
-  <view class='remarkToasts' wx:if='{{isPayCode}}'>
-    <view class='toastInfos'>
-      <view class='toastTitles'>支付密码</view>
-      <view class='toastInputs'>
-        <input placeholder='请输入支付密码' value='{{inputCode}}' bindinput='inputCodeBlur' password='true' type='number'></input>
-      </view>
-      <view class='toastBtns'>
-        <text bindtap='cancelPay'>取消</text>
-        <view class='listLine'></view>
-        <text bindtap='determinePay' data-code='{{inputCode}}'>确定</text>
+    <!-- 支付方式 -->
+    <view class='order-pay'>
+      <text>支付方式</text>
+      <view class='pay' catchtap='selectPayType'>
+        <text style='color:#1AB5A4'>{{payType}}</text>
+        <text class='fa fa-angle-right'></text>
       </view>
     </view>
   </view>
-  <!--支付红包  -->
-  <view class='redPacket' wx:if='{{is_redPacket}}' catchtap='click_redPacket'>
-    <view class='redPacket-img'>
-      <view class='redPacket-imgBox' catchtap='click_shadow'>
-        <text>恭喜获得红包：￥{{redPacket_money/100.00}}</text>
+
+  <!-- 订单地址支付方式 -->
+  <view class='order-addr-pay' wx:else>
+    <!-- 地址 -->
+    <view class='order-addr' wx:if='{{orderList.address}}' catchtap='address_select'>
+      <view class='addr'>
+        <text class='txt of'>{{orderList.address.area_str}}{{orderList.address.info}}</text>
+        <text class='fa fa-angle-right'></text>
+      </view>
+      <text class='name'>{{orderList.address.xm}} {{orderList.address.tel}}</text>
+    </view>
+    <!-- 地址为空 -->
+    <view class='order-addr' wx:else catchtap='address_select'>
+      <text style='width:80%;height:60rpx;line-height: 60rpx;text-align: center; border-radius: 40rpx; border: 1rpx solid #1AB5A4;color:#1AB5A4;'>选择收获地址</text>
+    </view>
+    <!-- 支付方式 -->
+    <view class='order-pay'>
+      <text>支付方式</text>
+      <view class='pay' catchtap='selectPayType'>
+        <text style='color:#1AB5A4'>{{payType}}</text>
+        <text class='fa fa-angle-right'></text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 订单详情 -->
+  <view style='background:whitesmoke;position: absolute;left: 5%;top: 270rpx;width: 90%;margin-bottom:200rpx;'>
+    <view class='order-details'>
+      <!-- 店铺名称 -->
+      <view class='shop-name of' catchtap='shopsJump'  data-shopID='{{orderList.order.shop_id}}' data-orderType='{{orderList.order.order_type}}' data-gradeId='{{gradeid}}'>
+        <text>{{orderList.order.shop_name}}</text>
+        <text class='fa fa-angle-right' style='margin-left: 20rpx;'></text>
+      </view>
+      <!-- 商品名称 -->
+      <view class='details' wx:for='{{orderList.order_goods}}' wx:key='index'>
+        <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        <view class='txt'>
+          <view>
+            <text class='of'>{{item.title}}</text>
+            <text class='of col'>{{item.attr_name==null? "" :item.attr_name}} {{item.nature_name}}</text>
+          </view>
+          <text style='margin-left:20rpx;color:gray;'>x{{item.num}}</text>
+        </view>
+        <text class='money'>¥ {{item.total_price/100.00}}</text>
+      </view>
+      <!-- 其他信息 -->
+      <view class='other-details'>
+        <!-- 配送费 -->
+        <view class='distribution other'>
+          <text>配送费：</text>
+          <text wx:if='{{orderList.order.logistics>0 ||orderList.order.express_price>0}}'>¥ {{orderList.order.logistics?orderList.order.logistics/100.00:orderList.order.express_price/100.00}}</text>
+          <text wx:else>¥ 0</text>
+        </view>
+        <!-- 包装费 -->
+        <view class='packaging other' wx:if='{{orderList.order.casing_price}}'>
+          <text>包装费：</text>
+          <text>¥ {{orderList.order.casing_price/100.00}}</text>
+        </view>
+        <!-- 优惠券 -->
+        <!-- <view class='coupons other' wx:if='{{orderList.order.coupon_money}}' bindtap='bindCoupons'> -->
+        <view class='coupons other' wx:if='true' bindtap='bindCoupons'>
+          <text>优惠券：</text>
+          <!-- <text style='color:red;'>-¥ {{orderList.order.coupon_money/100.00}}</text> -->
+          <view>
+            <text style='color:red;margin-right:10rpx;' wx:if="{{couponType==0 && couponNum>0}}">{{couponNum}}张可用</text>
+            <text style='color:#888888;margin-right:10rpx;' wx:elif="{{couponType==0 && couponNum==0}}">无优惠券可用</text>
+            <text style='color:red;margin-right:10rpx;' wx:elif="{{couponType==1}}">不使用优惠券</text>
+            <text style='color:red;margin-right:10rpx;' wx:elif="{{couponType==2}}">-¥ {{showCouponMsg}}</text>
+            <text class='fa fa-angle-right'></text>
+          </view>
+        </view>
+        <!-- 奖励金 -->
+        <view class='reward other' wx:if='{{orderList.order.user_subsidy_money}}'>
+          <text>奖励金：</text>
+          <text style='color:red;'>-¥ {{orderList.order.user_subsidy_money/100.00}}</text>
+        </view>
+        <!-- 满减 -->
+        <view class='fullSubtraction other' wx:if='{{orderList.order.full_money_reduce}}'>
+          <text>满减：</text>
+          <text style='color:red;'>-¥ {{orderList.order.full_money_reduce/100.00}}</text>
+        </view>
+        <!-- 红包 -->
+        <!-- <view class='envelope other' wx:if='{{orderList.order.red_packet_money}}'> -->
+        <view class='envelope other' wx:if='true' bindtap='bindRedPacket'>
+          <text>红包：</text>
+          <view>
+            <!-- <text style='color:red;'>-¥ {{orderList.order.red_packet_money/100.00}}</text> -->
+            <text style='color:red;margin-right:10rpx;' wx:if="{{redPacketType==0 && redPacketNum>0}}">{{redPacketNum}}张可用</text>
+            <text style='color:#888888;margin-right:10rpx;' wx:elif="{{redPacketType==0 && redPacketNum==0}}">无红包可用</text>
+            <text style='color:red;margin-right:10rpx;' wx:elif="{{redPacketType==1}}">不使用红包</text>
+            <text style='color:red;margin-right:10rpx;' wx:elif="{{redPacketType==2}}">-¥ {{showRedPacket}}</text>
+            <text class='fa fa-angle-right'></text>
+          </view>
+        </view>
+        <!-- 需要付款金额 -->
+        <view class='needPay'>
+          <view style='margin-right:20rpx;' wx:if='{{orderList.order.discounts_all_money}}'>
+            <text>已优惠: </text>
+            <text style='color:red;'> - ¥{{(orderList.order.discounts_all_money + showCouponMsg*100 + showRedPacket*100)/100}}</text>
+          </view>
+          <text>实付: ¥{{(orderList.order.need_pay - showCouponMsg*100 - showRedPacket*100)/100}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 订单备注 -->
+    <view style='margin-top: 20rpx;border-radius: 10rpx;width: 100%;background: white;'>
+      <view class='order-note' bindtap='temarkToast'>
+        <text style='margin-left:20rpx;'>订单备注</text>
+        <view style='margin-right:20rpx;color:gray;'>
+          <text style='margin-right:20rpx;color:gray;'>{{inputTxt}}</text>
+          <text class='fa fa-angle-right'></text>
+        </view>
+      </view>
+      <!-- 餐具数量 -->
+      <!-- <view class='order-note'>
+        <text style='margin-left:20rpx;'>餐具数量</text>
+        <view style='margin-right:20rpx;color:gray;'>
+          <text style='margin-right:20rpx;color:gray;'>未选择</text>
+          <text class='fa fa-angle-right'></text>
+        </view>
+      </view> -->
+      <!-- 如遇缺货 -->
+      <!-- <view class='order-note'>
+        <text style='margin-left:20rpx;'>如遇缺货</text>
+        <view style='margin-right:20rpx;color:gray;'>
+          <text style='margin-right:20rpx;color:gray;'>缺货时电话与我沟通</text>
+          <text class='fa fa-angle-right'></text>
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <!-- 立即付款 -->
+  <view class='nowPay'> 
+    <view class='need'>
+      <view class='img'>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/store_cart_nor@2x1.png'></image>
+      </view>
+      <view class='payPrice'>
+        <text>共 ¥ {{(orderList.order.need_pay - showCouponMsg*100 - showRedPacket*100)/100}}</text>
+        <text style='font-size:25rpx;color:#CCCCCC;'>已优惠{{(orderList.order.discounts_all_money +showCouponMsg*100 + showRedPacket*100)/100}}元</text>
+      </view>
+    </view>
+
+    <view class='pays' bindtap='confirmPay'>
+      <text style='color:white;'>立即付款</text>
+    </view>
+  </view>
+</view>
+<!-- 支付方式 -->
+<view class='select-pay' wx:if='{{selectPay}}' catchtap='selectPayType'>
+  <!--  -->
+  <view class='select-type'>
+    <view class='type-title'>
+      选择支付方式
+      <view class='trac-close' catchtap='selectPayType'>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/closeFavourable.png' ></image>
+      </view>
+      
+    </view>
+    <view class='type'>
+      <view class='balance' catchtap="radioBalance" data-value='money'>
+        <view class='balanceImg'>
+          <image src='{{imgUrls+"order_pay@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+        <view class='balanceInfo'>
+          <text>余额支付</text>
+          <text>余额支付是最方便快捷的</text>
+        </view>
+        <view class='balanceSlect'>
+          <radio-group>
+            <radio checked='{{isBalance}}'></radio>
+          </radio-group>
+        </view>
+      </view>
+      <view class='weChat' catchtap="radioWeChat" data-value='weixinapp'>
+        <view class='balanceImg'>
+          <image src='{{imgUrls+"order_wechat@2x.png"}}{{"?imageView2/1/w/100/h/100"}}'></image>
+        </view>
+        <view class='balanceInfo'>
+          <text>微信APP支付</text>
+          <text>微信官方支付,安全,方便,快捷!</text>
+        </view>
+        <view class='balanceSlect'>
+          <radio-group>
+            <radio checked='{{isWeChat}}'></radio>
+          </radio-group>
+        </view>
       </view>
     </view>
   </view>
 </view>
-
+<!--支付密码  -->
+<view class='remarkToasts' wx:if='{{isPayCode}}'>
+  <view class='toastInfos'>
+    <view class='toastTitles'>支付密码</view>
+    <view class='toastInputs'>
+      <input placeholder='请输入支付密码' value='{{inputCode}}' bindinput='inputCodeBlur' password='true' type='number'></input>
+    </view>
+    <view class='toastBtns'>
+      <text bindtap='cancelPay' style='width:49%;height: 90rpx;text-align: center;line-height: 90rpx;'>取消</text>
+      <view class='listLine'></view>
+      <text bindtap='determinePay' data-code='{{inputCode}}' style='width:49%;height: 90rpx;text-align: center;line-height: 90rpx;'>确定</text>
+    </view>
+  </view>
+</view>
 <!--留言弹窗  -->
 <view class='{{isToast?"Leave":"none"}}'>
   <view class='top'>
     <view class='top-content'>
       <view class='content-titel'>给商家留言</view>
       <view class='info'>
-        <textarea style='width:100%;height:100%;' bindinput='inputBlur'></textarea>
+        <textarea style='width:100%; height:100%;z-index:11; ' bindinput='inputBlur'></textarea>
       </view>
       <view class='btn1' bindtap='determine'>确认</view>
     </view>
   </view>
   <view class='down' bindtap='cancel'></view>
 </view>
+
+  <!--支付红包  -->
+  <!-- <view class='redPacket' wx:if='{{is_redPacket}}' catchtap='click_redPacket'>
+    <view class='redPacket-img'>
+      <view class='redPacket-imgBox' catchtap='click_shadow'>
+        <text>恭喜获得红包：￥{{redPacket_money/100.00}}</text>
+        <view class='redPacket-imgBox-shadow' wx:if='{{is_shadow}}'></view>
+      </view>
+    </view>
+  </view> -->

@@ -15,7 +15,7 @@
         <view class='time'>
           <text></text>
         </view>
-      </view> -->
+      </view> --> 
     </view>
 
     <!--通知  -->
@@ -54,7 +54,7 @@
 </view>
 
 <!--授权登录  -->
-<view class='wx-longin' wx:if='{{userLogin}}'>
+<!-- <view class='wx-longin' wx:if='{{userLogin}}'>
   <view class='login-content'>
     <view class='longin-title'>
       <text>微信授权</text>
@@ -74,4 +74,4 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->

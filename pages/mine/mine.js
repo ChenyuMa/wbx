@@ -13,20 +13,21 @@ var mine_request = function (API, that) {
     dataType: 'json',
     responseType: 'text',
     success: function (res) {
-      console.log('用户数据:',res);
       if (res.data.state == 0) {
         if (res.data.msg == "请先登陆") {
-          // wx.navigateTo({
-          //   url: '../login/login',
-          // })
+          wx.showToast({
+            title: '请先登录!',
+            icon:'none'
+          })
           that.setData({ userLogin: true });
-        } 
+        }
         // else if (res.data.msg == "请先绑定手机") {
         //   wx.navigateTo({
         //     url: '../bindPhone/bindPhone',
-        //   })
+        //   }) 
         // }
       } else {
+      wx.setStorageSync('is_salesman', res.data.data.is_salesman);
         that.setData({
           user_list: res.data.data,
           isLogin: true
@@ -35,8 +36,17 @@ var mine_request = function (API, that) {
     },
     fail: function (res) { },
     complete: function (res) {
-      if (res.data.data.mobile == ''){
-        that.setData({ isBindPhone:true});
+      if (res.data.state == 0) {
+        if (res.data.msg == "请先登陆") {
+          wx.showToast({
+            title: '请登录',
+            icon: 'none'
+          })
+        }
+      }else{
+        if (res.data.data.mobile == '') {
+          that.setData({ isBindPhone: true });
+        }
       }
     },
   })
@@ -68,6 +78,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    x: 0,
+    y: 0,
+    windowWidth: 0,
+    windowHeights: 0,
     // 屏幕高度
     windowHeight: '',
     imgUrls: getApp().globalData.imgUrls,
@@ -76,7 +90,12 @@ Page({
     kingImg: 'king.png',
     // 我的页面数据
     userAPI: '/api/user/get_user_info',
-    user_list: [],
+    user_list: [{
+      dfh_count: 0,
+      dfk_count: 0,
+      dsh_count: 0,
+      dtk_count: 0
+    }],
     // 待付款图标
     dfkImg: 'person_payment@2x.png',
     dfhImg: 'person_receiving@2x.png',
@@ -105,13 +124,14 @@ Page({
     isLogin: false,
     userLogin: false,
     // 是否绑定手机
-    isBindPhone:false,
-    mobile:'',
-    is_show:true,
-    last_time:60,
+    isBindPhone: false,
+    mobile: '',
+    is_show: true,
+    last_time: 60,
     codeAPI: '/api/user/sendsms',
-    verificationTxt:'',
-    imageURL:''
+    verificationTxt: '',
+    imageURL: '',
+    faceURL:''
   },
 
   // 我的微米
@@ -128,9 +148,27 @@ Page({
       })
     }
   },
-
+  // 发现首页跳转
+  home() {
+    wx.reLaunch({
+      url: '../home/home',
+    })
+  },
+  // 跳转订单页面
+  shopOrder() {
+    wx.reLaunch({
+      url: './shopOrder/shopOrder',
+    })
+  },
+  // 跳转我的页面
+  mine() {
+    wx.reLaunch({
+      url: './mine/mine',
+    })
+  },
   // 我的积分
   mine_integral: function () {
+    var that = this;
     if (wx.getStorageSync('loginToken') == '') {
       // wx.navigateTo({
       //   url: '../login/login',
@@ -143,23 +181,9 @@ Page({
     }
   },
 
-  // 我的红包
-  click_subsidy: function () {
-    if (wx.getStorageSync('loginToken') == '') {
-      // wx.navigateTo({
-      //   url: '../login/login',
-      // })
-      that.setData({ userLogin: true });
-    } else {
-      wx.navigateTo({
-        url: './subsidy/subsidy',
-      })
-    }
-
-  },
-
   // 买菜订单跳转
   waitPayDind: function () {
+    var that = this;
     if (wx.getStorageSync('loginToken') == '') {
       // wx.navigateTo({
       //   url: '../login/login',
@@ -167,69 +191,10 @@ Page({
       that.setData({ userLogin: true });
     } else {
       wx.navigateTo({
-        url: './shopOrder/shopOrder?current=0',
+        url: './shopOrder/shopOrder',
       })
     }
 
-  },
-
-  // 待发货
-  waitShippingDind: function () {
-    if (wx.getStorageSync('loginToken') == '') {
-      // wx.navigateTo({
-      //   url: '../login/login',
-      // })
-      that.setData({ userLogin: true });
-    } else {
-      wx.navigateTo({
-        url: './shopOrder/shopOrder?current=1',
-      })
-    }
-
-  },
-
-  // 待收货
-  waitGoodsDind: function () {
-    if (wx.getStorageSync('loginToken') == '') {
-      // wx.navigateTo({
-      //   url: '../login/login',
-      // })
-      that.setData({ userLogin: true });
-    } else {
-      wx.navigateTo({
-        url: './shopOrder/shopOrder?current=2',
-      })
-    }
-
-  },
-
-  // 待退款
-  waitRefundsDind: function () {
-    if (wx.getStorageSync('loginToken') == '') {
-      // wx.navigateTo({
-      //   url: '../login/login',
-      // })
-      that.setData({ userLogin: true });
-    } else {
-      wx.navigateTo({
-        url: './shopOrder/shopOrder?current=3',
-      })
-    }
-
-  },
-
-  //已完成
-  completedDind: function () {
-    if (wx.getStorageSync('loginToken') == '') {
-      // wx.navigateTo({
-      //   url: '../login/login',
-      // })
-      that.setData({ userLogin: true });
-    } else {
-      wx.navigateTo({
-        url: './shopOrder/shopOrder?current=4',
-      })
-    }
   },
 
   // 我的收藏
@@ -367,6 +332,14 @@ Page({
     getApp().globalData.userLogin = false;
   },
 
+  //点击购物车
+  clickCar: function () {
+    wx.navigateTo({
+      url: '../shopCart/shopCart',
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -375,9 +348,12 @@ Page({
     // 获取屏幕高度
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res);
         that.setData({
-          windowHeight: res.windowHeight
+          windowHeight: res.windowHeight,
+          windowHeights: res.windowHeight - 10,
+          windowWidth: res.windowWidth - 5,
+          x: res.windowWidth - 5,
+          y: res.windowHeight - 100
         });
       },
     })
@@ -396,7 +372,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
@@ -407,7 +383,7 @@ Page({
     // 用户数据
     // if (wx.getStorageSync('loginToken') == ''){
     // }else{
-      mine_request(this.data.userAPI, that);
+    mine_request(this.data.userAPI, that);
     // }
   },
 
@@ -415,12 +391,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    var that = this;
-    this.setData({
-      user_list: []
-    });
-    // 用户数据
-    // mine_request(this.data.userAPI, that);
+    
   },
 
   /**
@@ -528,7 +499,6 @@ Page({
               complete: function (res) { },
             })
           }, (error) => {
-            // console.log('error: ' + error);
           }, {
               region: 'ECN',
               domain: 'bzkdlkaf.bkt.clouddn.com',
@@ -608,7 +578,6 @@ Page({
               complete: function (res) { },
             })
           }, (error) => {
-            // console.log('error: ' + error);
           }, {
               region: 'ECN',
               domain: 'bzkdlkaf.bkt.clouddn.com',
@@ -660,23 +629,39 @@ Page({
   // 允许获取权限
   clickAllow: function (e) {
     var that = this;
-    var nickName = e.detail.userInfo.nickName;
-    var face = e.detail.userInfo.avatarUrl;
-    var encryptedData = e.detail.encryptedData;
-    var iv = e.detail.iv;
-    wx.login({
-      success: function (res) {
-        var code = res.code;
-        getApp().globalData.code = res.code;
-        if (code) {
-          that.getOpenID(code, nickName, face, encryptedData, iv);
-        }
-      },
-      fail: function (res) { },
-      complete: function (res) { },
-    });
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      var nickName = e.detail.userInfo.nickName;
+      var face = e.detail.userInfo.avatarUrl;
+      var encryptedData = e.detail.encryptedData;
+      var iv = e.detail.iv;
+      that.setData({
+        faceURL:face
+      })
+      wx.login({
+        success: function (res) {
+          var code = res.code;
+          getApp().globalData.code = res.code;
+          if (code) {
+            that.getOpenID(code, nickName, face, encryptedData, iv);
+            mine_request(that.data.userAPI, that);
+          }
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      });
+
+    }
     // getApp().wxGetSetting();
-    
+
+    if (wx.getStorageSync('loginToken') == '') {
+      // wx.navigateTo({
+      //   url: '../login/login',
+      // })
+      that.setData({ userLogin: true });
+    } else {
+      mine_request(this.data.userAPI, that);
+    }
+
   },
 
   // 获取openID
@@ -692,7 +677,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log('获取openID', res);
         var sessionKey = res.data.data.session_key;
         if (sessionKey) {
           that.getUnionid(nickName, face, sessionKey, encryptedData, iv)
@@ -727,7 +711,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log('获取getUnionid', res);
         var openID = res.data.openId;
         var unionID = res.data.unionId;
         that.userLogin(openID, unionID, nickName, face)
@@ -747,10 +730,10 @@ Page({
     var that = this;
     var model, system, version;
     wx.getSystemInfo({
-      success: function(res) {
-        model=res.model;
-        system=res.system;
-        version=res.version;
+      success: function (res) {
+        model = res.model;
+        system = res.system;
+        version = res.version;
       },
     })
     wx.request({
@@ -772,8 +755,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log('userLogin:', res);
-        // console.log('unionID', unionID);
         if (res.data.state == 0) {
           // wx.navigateTo({
           //   url: '../bindPhone/bindPhone?openID=' + openID + "&unionID=" + unionID + "&nickName=" + nickName + "&face=" + face,
@@ -786,9 +767,8 @@ Page({
         } else {
           wx.setStorageSync('loginToken', res.data.data.login_token);
           getApp().globalData.userLogin = true;
-          getApp().hxloign(res.data.data.hx_username, res.data.data.hx_password);
           wx.setStorageSync('hx_username', res.data.data.hx_username);
-          wx.setStorageSync('hx_password', res.data.data.hx_username);
+          wx.setStorageSync('hx_password', res.data.data.hx_password);
         }
       },
       fail: function (res) { },
@@ -798,7 +778,7 @@ Page({
         });
         getApp().globalData.userLogin = true;
         // setTimeout(function () {
-          mine_request(that.data.userAPI, that);
+        mine_request(that.data.userAPI, that);
         // }, 1500);
       },
     })
@@ -874,7 +854,6 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log('绑定手机',res);
         if (res.data.state == 0) {
           wx.showModal({
             title: '提示',
@@ -888,7 +867,7 @@ Page({
           wx.showToast({
             title: res.data.msg,
           })
-          that.setData({ isBindPhone:false});
+          that.setData({ isBindPhone: false });
           // wx.navigateBack({
           //   delta: 1
           // });
@@ -905,8 +884,8 @@ Page({
   },
 
   // 下次完善
-  closeBindPhone:function(){
+  closeBindPhone: function () {
     var that = this;
-    this.setData({ isBindPhone:false});
+    this.setData({ isBindPhone: false });
   },
 })

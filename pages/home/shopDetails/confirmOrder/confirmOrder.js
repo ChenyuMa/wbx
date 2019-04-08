@@ -1,5 +1,4 @@
 // pages/home/shopDetails/confirmOrder/confirmOrder.js
-
 Page({
   /**
    * 页面的初始数据
@@ -25,7 +24,8 @@ Page({
     shopPayAPI: '/api/buygreens/get_pay_info',
     mallPayAPI: '/api/mall/get_pay_info',
     isGetAddr: '',
-    isConfirmClearing: false
+    isConfirmClearing: false,
+    reserve_table_id:'',
   },
   //减少商品
   subtractionGoods: function (e) {
@@ -68,7 +68,6 @@ Page({
           if (shopCart[i].buy_num == 0) {
             shopCart.splice(i, 1);
           }
-          console.log(shopCart);
           this.setData({
             shopCart: shopCart,
             shopCartNum: shopCartNum,
@@ -167,7 +166,6 @@ Page({
             return false;
           } else {
             shopCart[i].buy_num += 1;
-            console.log(shopCart[i]);
             shopCartNum += 1;
             shopCartPrice += shopCart[i].price;
             // casing_price = parseInt(casing_price) + shopCart[i].casing_price;
@@ -213,11 +211,8 @@ Page({
             return false;
           } else {
             shopCart[i].buy_num += 1;
-            console.log(shopCart[i]);
             shopCartNum += 1;
             shopCartPrice += shopCart[i].price;
-            console.log('casing_price:', casing_price);
-            console.log('shopCart[i].casing_price:', shopCart[i].casing_price);
             casing_price += shopCart[i].casing_price;
             this.setData({
               shopCart: shopCart,
@@ -270,6 +265,7 @@ Page({
   },
   //获取支付信息
   payInfo: function (orderID) {
+
     var that = this;
     if (this.data.gradeid == 15) {
       wx.request({
@@ -338,6 +334,7 @@ Page({
       })
     }
   },
+  
   // 获取收货地址
   getAddr: function () {
     var that = this;
@@ -352,7 +349,6 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        console.log('地址：', res);
         if (res.data.msg == "暂无数据") {
           if (that.data.isTakeNumber != 1) {
             that.setData({
@@ -383,7 +379,7 @@ Page({
     })
   },
   // 确认结算
-  confirmClearing: function () {
+  confirmClearing: function (e) {
     var that = this;
     // if (!that.data.isGetAddr) {
     //   wx.navigateTo({
@@ -398,7 +394,8 @@ Page({
             goods.push({
               "product_id": shopCart[i].product_id ? shopCart[i].product_id : shopCart[i].goods_id,
               "num": shopCart[i].buy_num,
-              "attr_id": shopCart[i].attr_id
+              "attr_id": shopCart[i].attr_id,
+              "nature_name": shopCart[i].nature_name
             });
           }
         } else {
@@ -406,7 +403,8 @@ Page({
             goods.push({
               "product_id": shopCart[i].goods_id,
               "num": shopCart[i].num,
-              "attr_id": shopCart[i].attr_id
+              "attr_id": shopCart[i].attr_id,
+              "nature_name": shopCart[i].nature_name
             });
           }
         }
@@ -427,7 +425,6 @@ Page({
             method: 'POST',
             dataType: 'json',
             success: function (res) {
-              console.log('确认结算',res);
               that.setData({
                 isConfirmClearing: true
               });
@@ -450,7 +447,7 @@ Page({
                 //获取订单信息
                 // that.payInfo(res.data.data.order_id);
                 wx.navigateTo({
-                  url: './confirmClearing/confirmClearing?orderID=' + res.data.data.order_id + "&gradeid=" + that.data.gradeid + "&addrID=" + that.data.addrID + "&addrID=" + that.data.addrID + "&logistics=" + that.data.logistics
+                  url: './confirmClearing/confirmClearing?orderID=' + res.data.data.order_id + "&gradeid=" + that.data.gradeid + "&addrID=" + that.data.addrID + "&addrID=" + that.data.addrID + "&logistics=" + that.data.logistics + "&isshoporder=" + e.currentTarget.dataset.isshoporder + "&isTableId=" + that.data.reserve_table_id
                 })
               }
             },
@@ -464,13 +461,14 @@ Page({
         }
       } else {
         var goods = [];
-        var shopCart = this.data.shopCart;
+        var shopCart = this.data.shopCart;    
         if (shopCart[0].buy_num) {
           for (var i = 0; i < shopCart.length; i++) {
             goods.push({
               "goods_id": shopCart[i].goods_id,
               "num": shopCart[i].buy_num,
               "attr_id": shopCart[i].attr_id,
+              "nature": shopCart[i].shop_box_num==undefined ? shopCart[i].shop_box_num:JSON.parse(shopCart[i].shop_box_num)
               // "is_take_number": that.data.isTakeNumber
             });
           }
@@ -480,6 +478,7 @@ Page({
               "goods_id": shopCart[i].goods_id,
               "num": shopCart[i].num,
               "attr_id": shopCart[i].attr_id,
+              "nature": shopCart[i].shop_box_num == undefined ? shopCart[i].shop_box_num : JSON.parse(shopCart[i].shop_box_num)
               // "is_take_number": that.data.isTakeNumber
             });
           }
@@ -494,7 +493,8 @@ Page({
               login_token: wx.getStorageSync('loginToken'),
               cart_goods: JSON.stringify(goodsList),
               reserve_table_id: that.data.reserve_table_id,
-              is_take_number: that.data.isTakeNumber
+              is_take_number: that.data.isTakeNumber,
+
             },
             header: {
               'content-type': 'application/json'
@@ -502,7 +502,6 @@ Page({
             method: 'POST',
             dataType: 'json',
             success: function (res) {
-              console.log('确认结算', res);
               that.setData({
                 isConfirmClearing: true
               });
@@ -525,7 +524,7 @@ Page({
                 //获取订单信息
                 // that.payInfo(res.data.data.order_id);
                 wx.navigateTo({
-                  url: './confirmClearing/confirmClearing?orderID=' + res.data.data.order_id + "&gradeid=" + that.data.gradeid + "&addrID=" + that.data.addrID + "&addrID=" + that.data.addrID + "&logistics=" + that.data.logistics + '&isTakeNumber=' + that.data.isTakeNumber
+                  url: './confirmClearing/confirmClearing?orderID=' + res.data.data.order_id + "&gradeid=" + that.data.gradeid + "&addrID=" + that.data.addrID + "&addrID=" + that.data.addrID + "&logistics=" + that.data.logistics + '&isTakeNumber=' + that.data.isTakeNumber + "&isshoporder=" + e.currentTarget.dataset.isshoporder + "&isTableId=" + that.data.reserve_table_id + "&shopCart=" + JSON.stringify(that.data.shopCart)          
                 })
               }
             },
@@ -581,6 +580,7 @@ Page({
     this.setData({
       shopCart: shopCart
     });
+    
   },
 
   /**

@@ -1,187 +1,352 @@
-<!--pages/mine/shopOrder/orderDetails/orderDetails.wxml-->
-<view class='orderDetails'>
-  <view wx:if='{{detailsList.data.data.is_take_number!=1}}'>
-    <text class='detailsState' wx:if='{{detailsList.data.data.status == 0}}'>待付款</text>
-    <text class='detailsState' wx:if='{{detailsList.data.data.status == 1}}'>待发货</text>
-    <text class='detailsState' wx:if='{{detailsList.data.data.status == 2}}'>待收货</text>
-    <text class='detailsState' wx:if='{{detailsList.data.data.status == 3}}'>待退款</text>
-    <text class='detailsState' wx:if='{{detailsList.data.data.status == 8}}'>已完成</text>
-  </view>
-  <!--头部  -->
-  <view class='detailsHead' wx:if='{{detailsList.data.data.is_take_number!=1}}'>
-    <!--头部背景图标  -->
-    <view class='headTop'>
-      <image src='{{imgUrls+"management_ba@2x.png"}}'></image>
+<view class='order-detail'>
+  <!-- 蜂鸟配送、商家配送 -->
+  <view class='order'>
+    <!-- 判断进来是否已付款 -->
+    <view class="map" wx:if='{{is_hummingbird}}'>
+      <map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}"></map>
     </view>
-    <!--头部用户内容  -->
-    <view class='headTxt'>
-      <view class='headUser'>
-        <text>{{detailsList.data.data.address.xm}}</text>
-        <text>{{detailsList.data.data.address.tel}}</text>
-        <text wx:if='{{detailsList.data.data.address.default == 1}}'>默认</text>
-        <text bindtap='clickTracking' wx:if='{{detailsList.data.data.fengniao}}'>订单跟踪</text>
+
+    <view class="map" wx:if='{{is_dada}}'>
+      <map id="myMap" style="width: 100%; height: 300px;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}"></map>
+    </view>
+
+    <view class="bg-img" wx:if='{{is_merchant}}'>
+      <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/order_detail_banner@2.png' mode='widthFix'></image>
+    </view>
+
+    <!-- 蜂鸟配送 -->
+    <view class='hummingbird' wx:if='{{is_hummingbird}}'>
+      <view class='title' catchtap='orderTrac' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>
+        预计
+        <text wx:if='orderDetails.status==0'>{{orderDetails.expected_delivery_time}}</text>送达
+        <view class='fa fa-angle-right'></view>
       </view>
-      <view class='headAddress'>
-        <image src='{{imgUrls+"order_address@2x.png"}}'></image>
-        <text>{{detailsList.data.data.address.area_str}}{{detailsList.data.data.address.info}}</text>
+      <view class='describe' wx:if='{{orderDetails.is_fengniao==1}}'>由蜂鸟快递配送</view>
+      <view class='btn'>
+        <view class='btn-item' wx:if='{{orderDetails.status==0}}' catchtap='cancelOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>取消订单</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==0}}' catchtap='orderPay' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}' data-shopCart='{{orderDetails.goods}}' data-isshoporder="{{3}}">立即支付</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==1}}' catchtap='refundOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>申请退款</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==1}}' catchtap='callPhone' data-phone='{{orderDetails.tel}}'>致电商家</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==2 && orderDetails.is_fengniao==1}}' catchtap='refundOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>申请退款</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==2 && orderDetails.is_fengniao==1}}' catchtap='confirmOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>确认收货</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==2 && orderDetails.is_fengniao==1}}' catchtap='callPhone' data-phone='{{orderDetails.carrier_driver_phone}}'>联系骑手</view>
       </view>
     </view>
-  </view>
-  <!-- 取餐号码 -->
-  <view class='takeNumber' wx:if='{{detailsList.data.data.is_take_number==1}}'>
-    <text>取餐码：</text>
-    <text>{{detailsList.data.data.order_take_number}}</text>
+
+    <!-- 商家配送 -->
+    <view class='merchant' wx:if='{{is_merchant}}'>
+      <view class='title' catchtap='orderTrac' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>
+        {{merchant_title}}
+        <view class='fa fa-angle-right'></view>
+      </view>
+      <view class='describe' wx:if='{{merchant_desc}}'>
+        {{merchant_desc}}
+      </view>
+      <view class='describe' wx:else>
+        预计
+        <text>{{orderDetails.expected_delivery_time}}</text> 完成配送
+      </view>
+      <view class='btn'>
+        <view class='btn-item' wx:if='{{orderDetails.status==2 && orderDetails.is_fengniao==0}}' catchtap='refundOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>申请退款</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==2 && orderDetails.is_fengniao==0}}' catchtap='callPhone' data-phone='{{orderDetails.tel}}'>致电商家</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==2 && orderDetails.is_fengniao==0}}' catchtap='confirmOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>确认收货</view>
+
+        <view class='btn-item' wx:if='{{orderDetails.status==4 && orderDetails.order_type==2}}' catchtap="orderRefund" data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>取消退款</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==4 && orderDetails.order_type==2}}' catchtap='refundTrack' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>退款详情</view>
+
+        <view class='btn-item' wx:if='{{orderDetails.status==3 && orderDetails.order_type==1}}' catchtap="orderRefund" data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>取消退款</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==3 && orderDetails.order_type==1}}' catchtap='refundTrack' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>退款详情</view>
+
+        <view class='btn-item cur' wx:if='{{orderDetails.status==4 && orderDetails.order_type==1}}' catchtap='refundTrack' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>退款详情</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==5 && orderDetails.order_type==2}}' catchtap='refundTrack' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>退款详情</view>
+
+        <view class='btn-item ' wx:if='{{orderDetails.status==8}}' catchtap='afterSale' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}' data-message='{{orderDetails.message}}'>申请售后</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==8}}' catchtap='appraise' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}' data-appraise='{{1}}' >评价</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==8}}' catchtap='deleteOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>删除订单</view>
+
+      </view>
+    </view>
+
+    <!-- 达达配送 -->
+    <view class='hummingbird' wx:if='{{is_dada}}'>
+      <view class='title' catchtap='orderTrac' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>
+        预计
+        <text wx:if='orderDetails.status==0'>{{orderDetails.expected_delivery_time}}</text>送达
+        <view class='fa fa-angle-right'></view>
+      </view>
+      <view class='describe' wx:if='{{orderDetails.is_dada==1}}'>由达达快递配送</view>
+      <view class='btn'>
+        <view class='btn-item' wx:if='{{orderDetails.status==0}}' catchtap='cancelOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>取消订单</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==0}}' catchtap='orderPay' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}' data-shopCart='{{orderDetails.goods}}' data-isshoporder="{{3}}">立即支付</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==1}}' catchtap='refundOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>申请退款</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==1}}' catchtap='callPhone' data-phone='{{orderDetails.tel}}'>致电商家</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==2 && orderDetails.is_dada==1}}' catchtap='refundOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>申请退款</view>
+        <view class='btn-item cur' wx:if='{{orderDetails.status==2 && orderDetails.is_dada==1}}' catchtap='confirmOrder' data-orderID='{{orderDetails.order_id}}' data-orderType='{{orderDetails.order_type}}'>确认收货</view>
+        <view class='btn-item' wx:if='{{orderDetails.status==2 && orderDetails.is_dada==1}}' catchtap='callPhone' data-phone='{{orderDetails.dm_mobile}}'>联系骑手</view>
+      </view>
+    </view>
+
   </view>
 
-  <!--订单蜂鸟  -->
-  <view class='detailsDird' wx:if='{{detailsList.data.data.fengniao}}'>
-    <map class='mapStyle' markers='{{markers}}' latitude='{{latitude}}' longitude='{{longitude}}'></map>
-  </view>
+  <!-- 商家订单详情 -->
+  <view class='detail-content'>
+    <!-- 订单店铺名字 -->
+    <view class='title'>
+      <view class='fl' catchtap='shopsJump' data-shopID='{{orderDetails.shop_id}}' data-orderType='{{orderDetails.order_type}}'>
+        <text class='of'>{{orderDetails.shop_name}}</text>
+        <view class='fa fa-angle-right'></view>
+      </view>
+      <view class='fr'>
+        <image src='{{imgUrls+"order_detail_commenting_phone@2x.png"}}' catchtap='callPhone' data-phone='{{orderDetails.tel}}'></image>
+      </view>
+    </view>
 
-  <!--内容  -->
-  <view class='detailsContent'>
-    <view class='orderContent' wx:for='{{detailsList.data.data.goods}}' wx:key='index'>
-      <view class='contentStyle'>
-        <view class='contentIcon'>
-          <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
-        </view>
-        <view class='contentDetails'>
-          <view class='setailsStore'>
-            <text>【{{item.shop_name?item.shop_name:item.product_name}}】</text>
-            <text>{{item.title}}</text>
+    <!-- 订单详细列表 -->
+    <view class='menu'>
+      <!-- 订单列表单项 -->
+      <block wx:for="{{orderDetails.goods}}" wx:key='index' wx:if='{{min_index}}'>
+        <view class='menu-item' wx:if='{{index<=2}}'>
+          <view class='item-img'>
+            <image src='{{item.photo}}{{"?imageView2/1/w/100/h/100"}}'></image>
+            <view class='item-img-txt'>
+              <text class='of'>{{item.title}}</text>
+              <text class='of'>{{item.attr_name}}{{item.nature_name}}</text>
+            </view>
           </view>
-          <view class='setailsPrice'>
-            <text>￥{{item.price/100.00}}</text>
+          <view class='item-num'>
             <text>x{{item.num}}</text>
+            <text>￥{{item.total_price/100}}</text>
           </view>
         </view>
+      </block>
+
+      <block wx:for="{{orderDetails.goods}}" wx:key='index' wx:if='{{max_index}}'>
+        <view class='menu-item'>
+          <view class='item-img'>
+            <image src='{{item.photo}}'></image>
+            <view class='item-img-txt'>
+              <text class='of'>{{item.title}}</text>
+              <text class='of'>{{item.attr_name}}{{item.nature_name}}</text>
+            </view>
+          </view>
+          <view class='item-num'>
+            <text>x{{item.num}}</text>
+            <text>￥{{item.total_price/100}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 查看更多 -->
+    <view class='more' wx:if='{{more_index}}'>
+      <text bindtap='moreIndex' data-index='{{orderDetails.goods.length}}'>查看更多</text>
+      <view class='fa fa-angle-down'></view>
+    </view>
+
+    <!-- 商品总计 -->
+    <view class='goods-total'>
+      <view class='total-item' wx:if='{{orderDetails.express_price!=0}}'>
+        <text>配送费</text>
+        <text>￥{{orderDetails.express_price/100}}</text>
+      </view>
+
+      <view wx:if='{{orderDetails.order_type!=1}}'>
+        <view class='total-item' wx:if='{{orderDetails.casing_price!=0}}'>
+          <text>包装费</text>
+          <text>￥{{orderDetails.casing_price/100}}</text>
+        </view>
+      </view>
+
+      <view class='total-item coupon' wx:if='{{orderDetails.coupon_money!=0}}'>
+        <text>优惠劵</text>
+        <text>￥{{orderDetails.coupon_money/100}}</text>
+      </view>
+      <view class='total-item coupon' wx:if='{{orderDetails.user_subsidy_money!=0}}'>
+        <text>奖励金</text>
+        <text>￥{{orderDetails.user_subsidy_money/100}}</text>
+      </view>
+      <view class='total-item coupon' wx:if='{{orderDetails.full_money_reduce!=0}}'>
+        <text>满减</text>
+        <text>￥{{orderDetails.full_money_reduce/100}}</text>
+      </view>
+      <view class='total-item coupon' wx:if='{{orderDetails.red_packet_money!=0}}'>
+        <text>店铺红包</text>
+        <text>￥{{orderDetails.red_packet_money/100}}</text>
+      </view>
+    </view>
+    <view class='goods-pay'>
+      <view class='offer'>
+        <text>已优惠</text>
+        <text>￥{{orderDetails.discounts_all_money/100}}</text>
+      </view>
+      <view class='pay'>
+        <text>实付 ￥</text>
+        <text>{{orderDetails.need_pay/100}}</text>
       </view>
     </view>
   </view>
 
-  <!--商品总额  -->
-  <view class='goodsTotal'>
-    <view>
-      <text>商品总额：</text>
-      <text wx:if='{{selected == 1}}'>￥{{detailsList.data.data.need_pay/100.00}}</text>
-      <text wx:else>￥{{detailsList.data.data.total_price/100.00}}</text>
+<view wx:if='{{orderDetails.is_take_number==0}}'>
+  <!-- 商家配送信息 -->
+  <view class='goods-shipping' wx:if='{{orderDetails.is_fengniao==0 && orderDetails.is_dada==0}}'>
+    <view class='title'>
+      <text class='msg'>配送信息</text>
     </view>
-    <view>
-      <text>运费：</text>
-      <text wx:if='{{selected == 1}}'>+￥{{detailsList.data.data.logistics/100.00}}</text>
-      <text wx:else>+￥{{detailsList.data.data.express_price/100.00}}</text>
-    </view>
-    <view>
-      <text>优惠卷：</text>
-      <text>-￥{{detailsList.data.data.coupon_money/100.00}}</text>
-    </view>
-    <view>
-      <text>满减：</text>
-      <text>-￥{{detailsList.data.data.full_money_reduce/100.00}}</text>
-    </view>
-    <view>
-      <text>包装费：</text>
-      <text>-￥{{detailsList.data.data.casing_price == null?0:detailsList.data.data.casing_price/100.00}}</text>
-    </view>
-    <view>
-      <text>奖励金：</text>
-      <text>-￥{{detailsList.data.data.user_subsidy_money == null?0:detailsList.data.data.user_subsidy_money/100.00}}</text>
-    </view>
-    <view>
-      <text>红包：</text>
-      <text>-￥{{detailsList.data.data.red_packet_money == null?0:detailsList.data.data.red_packet_money/100.00}}</text>
-    </view>
-  </view>
-
-  <!--留言  -->
-  <view class='remark'>
-    <view>
-      <text>留言/备注：</text>
-    </view>
-    <view>
-      <text>{{detailsList.data.data.message}}</text>
-    </view>
-    <view>
-      <view wx:if='{{detailsList.data.data.is_fengniao == 1}}'>
-        <text>配送方式：蜂鸟配送 </text>
-        <text class='fa fa-phone'> 骑手：{{detailsList.data.data.fengniao[0].carrier_driver_name}} 电话：{{detailsList.data.data.fengniao[0].carrier_driver_phone}}</text>
+    <view class='shipping-item'>
+      <text class='name'>配送服务：</text>
+      <view class='txt'>
+        <text class='of'>商家自配</text>
       </view>
-      <view wx:else>
-        <text>配送方式：商家配送 </text>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>配送时间：</text>
+      <view class='txt'>
+        <text class='of'>立即配送</text>
+      </view>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>配送地址：</text>
+      <view class='txt'>
+        <text class='of'>{{orderDetails.address.xm}} {{orderDetails.address.tel}}</text>
+        <text class='of'>{{orderDetails.address.info}}</text>
       </view>
     </view>
   </view>
 
-  <!--订单编号  -->
-  <view class='orderNum'>
-    <text>订单编号：{{detailsList.data.data.order_id}}</text>
-    <text>下单时间：{{createTime}}</text>
-  </view>
-
-  <!--商家电话  -->
-  <view class='businessPhone' wx:if='{{detailsList.data.data.status != 0}}'>
-    <view>
-      <text>商家电话：{{detailsList.data.data.tel}}</text>
-      <text>如对此订单有疑问请联系商家！</text>
-    </view>
-    <view bindtap='callPhone'>
-      <image src='{{imgUrls+"home_busine_phone@2x.png"}}'></image>
-    </view>
-  </view>
-
-  <!--尾部  -->
-  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 0}}'>
-    <button bindtap='cancelOrder' wx:if='{{detailsList.data.data.is_take_number!=1}}'>取消订单</button>
-    <button wx:if='{{detailsList.data.data.is_take_number!=1}}'>去付款</button>
-  </view>
-  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 1}}'>
-    <button bindtap='refunds' wx:if='{{detailsList.data.data.is_take_number!=1}}'>申请退款</button>
-  </view>
-  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 2}}'>
-    <button bindtap='confirmGoods' id='{{detailsList.data.data.order_id}}' wx:if='{{detailsList.data.data.is_take_number!=1}}'>确定收货</button>
-  </view>
-  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 3}}'>
-    <button bindtap='cancelRefunds' wx:if='{{detailsList.data.data.is_take_number!=1}}'>取消退款</button>
-  </view>
-  <view class='detailsFoot' wx:if='{{detailsList.data.data.status == 4}}'>
-    <button bindtap='afterSale' wx:if='{{detailsList.data.data.is_take_number!=1}}'>申请售后</button>
-    <button bindtap='deletingOrder' wx:if='{{detailsList.data.data.is_take_number!=1}}'>删除订单</button>
-    <button bindtap='appraise' wx:if='{{detailsList.data.data.is_take_number!=1}}'>去评价</button>
-  </view>
-
-  <!--订单跟踪  -->
-  <view class='orderTracking' wx:if='{{is_orderTracking}}'>
-    <view class='tracking-top' bindtap='closeTracking'></view>
-    <view class='tracking'>
-      <view class='tracking-title'>
-        <text>订单跟踪</text>
+  <!-- 蜂鸟.达达配送信息 -->
+  <view class='goods-shipping' wx:else>
+    <view class='title'>
+      <text class='msg'>配送信息</text>
+      <view class='shipping-name'>
+        <text wx:if='{{is_fengniao}}'>配送骑手：</text>
+        <text wx:if='{{orderDetails.is_dada && orderDetails.dm_name?true:false}}'>配送骑手：</text>
+        <text wx:if='{{is_fengniao}}'>{{orderDetails.carrier_driver_name}}</text>
+        <text  wx:if='{{orderDetails.is_dada}}'>{{orderDetails.dm_name}}</text>
+        <image src='{{imgUrls+"order_detail_commenting_phone@2x.png"}}' wx:if='{{is_fengniao}}' catchtap='callPhone' data-phone='{{orderDetails.carrier_driver_phone}}'></image>
+        <image src='{{imgUrls+"order_detail_commenting_phone@2x.png"}}' wx:if='{{orderDetails.dm_mobile}}' catchtap='callPhone' data-phone='{{orderDetails.dm_mobile}}'></image>
       </view>
-      <view class='tracking-progress'>
-        <view class='progress-content'>
-          <text>|</text>
-          <text class='fa fa-check-circle-o' style='color:{{detailsList.data.data.fengniao[0].fengniao_status == 1?"#06c1ae":""}}'> 系统已接单</text>
-        </view>
-        <view class='progress-content'>
-          <text>|</text>
-          <text class='fa fa-check-circle-o' style='color:{{detailsList.data.data.fengniao[0].fengniao_status == 20?"#06c1ae":""}}'> 已分配骑手</text>
-        </view>
-        <view class='progress-content'>
-          <text>|</text>
-          <text class='fa fa-check-circle-o' style='color:{{detailsList.data.data.fengniao[0].fengniao_status == 80?"#06c1ae":""}}'> 骑手已到店</text>
-        </view>
-        <view class='progress-content'>
-          <text>|</text>
-          <text class='fa fa-check-circle-o' style='color:{{detailsList.data.data.fengniao[0].fengniao_status == 2?"#06c1ae":""}}'> 配送中</text>
-        </view>
-        <view class='progress-content'>
-          <text>|</text>
-          <text class='fa fa-check-circle-o' style='color:{{detailsList.data.data.fengniao[0].fengniao_status == 3?"#06c1ae":""}}'> 已送达</text>
-        </view>
-        <view class='progress-content'>
-          <text>|</text>
-          <text class='fa fa-check-circle-o' style='color:{{detailsList.data.data.fengniao[0].fengniao_status == 5?"#06c1ae":""}}'> 系统拒单/配送异常</text>
-        </view>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>配送服务：</text>
+      <view class='txt'>
+        <text class='of' wx:if='{{is_fengniao}}'>蜂鸟快送</text>
+        <text class='of' wx:if='{{orderDetails.is_dada}}'>达达快送</text>
+      </view>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>配送地址：</text>
+      <view class='txt'>
+        <text class='of'>{{orderDetails.address.xm}} {{orderDetails.address.tel}}</text>
+        <text class='of'>{{orderDetails.address.info}}</text>
       </view>
     </view>
   </view>
 </view>
+
+
+
+
+  <!-- 订单信息 -->
+  <view class='goods-shipping'>
+    <view class='title'>
+      <text class='msg'>订单信息</text>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>订单号码：</text>
+      <view class='txt'>
+        <text class='of'>{{orderDetails.order_id}}</text>
+      </view>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>订单时间：</text>
+      <view class='txt'>
+        <text class='of'>{{orderCreateTime}}</text>
+      </view>
+    </view>
+    <view class='shipping-item'>
+      <text class='name'>支付方式：</text>
+      <view class='txt'>
+        <text class='of'>{{orderDetails.pay_type}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<!--申请售后  -->
+<view class='afterSale' wx:if='{{is_afterSale}}'>
+  <!--申请售后头部  -->
+  <view class='top-afterSale' catchtap='cancel_afterSale'></view>
+  <!--申请售后内容  -->
+  <view class='afterSale-content'>
+    <!--申请售后内容头部  -->
+    <view class='afterSale-content-top'>
+      <text catchtap='cancel_afterSale'>取消</text>
+      <text catchtap='confirm_afterSale'>确定</text>
+    </view>
+    <!-- 选择售后内容 -->
+    <view class='select-afterSale-content'>
+      <picker-view style="width: 100%; height: 100%;" indicator-style="height: 40px;" value="{{value}}" bindchange="afterSale_change">
+        <picker-view-column>
+          <view wx:for='{{afterSale_list}}' wx:key='index' style="line-height: 40px">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>
+
+<!-- 订单轨迹 -->
+<!-- <view class='trac' wx:if='{{trac_show}}'>
+  <view class='trac-box'>
+    <view class='title'>
+      订单跟踪
+      <view class='trac-close'>
+        <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/closeFavourable.png' catchtap='closeHide'></image>
+      </view>
+    </view>
+    <scroll-view class='trac-hight' scroll-y style="height: 300px;">
+      <view class='trac-content'>
+        <view class='border'></view>
+        <block wx:for='{{orderTrack}}' wx:key='index'>
+          <view class='trac-list'>
+            <view class='icon fa fa-circle'></view>
+            <view class='txt' wx:if='{{item.is_fengniao==0}}'>{{item.status_message}}</view>
+            <view class='txt' wx:else>{{item.fengniao_message}}</view>
+            <view class='msg'></view>
+            <view class='time'>{{item.create_time}}</view>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view> -->
+
+<cover-view class='trac' wx:if='{{trac_show}}'>
+  <cover-view class='trac-box'>
+    <cover-view class='title'>
+      订单跟踪
+      <cover-view class='trac-close'>
+        <cover-image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/closeFavourable.png' catchtap='closeHide'></cover-image>
+      </cover-view>
+    </cover-view>
+
+    <cover-view class='trac-hight' scroll-y style="height: 300px;">
+      <cover-view class='trac-content'>
+        <cover-view class='border'></cover-view>
+        <block wx:for='{{orderTrack}}' wx:key='index'>
+          <cover-view class='trac-list'>
+            <cover-view class='icon'>
+              <cover-view class='icon-bg'></cover-view>
+            </cover-view>
+            <cover-view class='txt' wx:if='{{item.status_message}}'>{{item.status_message}}</cover-view>
+            <cover-view class='txt' wx:if='{{item.is_fengniao==1}}'>蜂鸟</cover-view>
+            <cover-view class='txt' wx:if='{{item.is_dada==1}}'>达达</cover-view>
+            <cover-view class='msg of'>{{item.fengniao_message || item.dada_message}}</cover-view>
+            <cover-view class='time'>{{item.create_time}}</cover-view>
+          </cover-view>
+        </block>
+      </cover-view>
+    </cover-view>
+
+  </cover-view>
+</cover-view>

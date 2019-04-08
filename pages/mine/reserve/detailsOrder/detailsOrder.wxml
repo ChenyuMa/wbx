@@ -60,7 +60,7 @@
             <view class='dishes-content'>
               <!--名称/价格  -->
               <view class='dishes-name'>
-                <text>{{item.intro}} ({{item.attr_name?item.attr_name:item.title}})</text>
+                <text>{{item.title?item.title:item.intro}} ({{item.attr_name}}{{item.nature_name}})</text>
                 <text>￥{{item.price/100.00}}</text>
               </view>
               <text>*{{item.num}}</text>
@@ -71,16 +71,16 @@
       <!--满减/优惠  -->
       <view class='content-activity'>
         <!--满减  -->
-        <view class='info-name'>
+        <view class='info-name' wx:if='{{detailsList.full_money_reduce}}'>
           <text>满减：</text>
           <text wx:if='{{detailsList.full_money_reduce}}'>-¥ {{detailsList.full_money_reduce/100.00}}</text>
-          <text>-¥ 0</text>
+          <!-- <text wx:else>-¥ 0</text> -->
         </view>
         <!--优惠卷  -->
-        <view class='info-name'>
+        <view class='info-name' wx:if='{{detailsList.coupon_money}}'>
           <text>优惠卷：</text>
           <text wx:if='{{detailsList.coupon_money}}'>-¥ {{detailsList.coupon_money/100.00}}</text>
-          <text>-¥ 0</text>
+          <!-- <text wx:else>-¥ 0</text> -->
         </view>
         <!--联系商家  -->
         <view class='info-total'>

@@ -1,5 +1,10 @@
 /**app.wxss**/
 
+.html {
+  width: 100vw;
+  height: 100vh;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -2777,4 +2782,15 @@
   margin: 0;
   overflow: visible;
   clip: auto;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.D_space{
+  display: flex;
+  justify-content: space-between;
 }

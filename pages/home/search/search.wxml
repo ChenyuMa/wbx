@@ -50,6 +50,7 @@
                 <!--实体或菜市场  -->
                 <view class='eachRight_distanceTypeStyle'>
                   <text wx:if='{{item.grade_id == 15}}'>菜市场</text>
+                  <text wx:elif='{{item.grade_id == 20}}'>美食街</text>
                   <text wx:else>实体店</text>
                 </view>
               </view>

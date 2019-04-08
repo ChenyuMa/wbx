@@ -103,6 +103,11 @@
 .dishes-name{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.dishes-name text:last-child{
+  margin-left: 20rpx;
 }
 /*活动  */
 .content-activity{

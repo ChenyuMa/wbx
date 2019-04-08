@@ -16,19 +16,21 @@ Page({
     type: '',
     imgUrls: [],
     imageURL: [],
-    uptoken: ''
+    uptoken: '',
+    is_oreder_detial_appraise:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("opt",options)
     var that = this;
     // 获取屏幕高度
     this.setData({
       windowHeight: wx.getSystemInfoSync().windowHeight
     });
-    this.setData({ order_id: options.order_id, type: options.type });
+    this.setData({ order_id: options.order_id, type: options.type, is_oreder_detial_appraise: options.appraise });
   },
 
   // 点击星星评价
@@ -114,24 +116,64 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
+        console.log("评价",res)
         if (res.data.state == 0) {
           wx.showToast({
             title: res.data.msg,
           })
+
+          console.log("is_oreder_detial_appraise", that.data.is_oreder_detial_appraise)
+
+          if (that.data.is_oreder_detial_appraise==1){
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+              var pages = getCurrentPages();
+              var prePage = pages[pages.length - 3];
+              prePage.refresh();
+            }, 3000);
+          }else{
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+              var pages = getCurrentPages();
+              var prePage = pages[pages.length - 2];
+              prePage.refresh();
+            }, 3000);
+          }
+
+          
+
         } else {
           wx.showToast({
             title: res.data.msg,
           })
-          setTimeout(function () {
-            wx.navigateBack({
-              delta: 1
-            })
-          }, 3000);
-
+          if (that.data.is_oreder_detial_appraise == 1) {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+              var pages = getCurrentPages();
+              var prePage = pages[pages.length - 3];
+              prePage.refresh();
+            }, 3000);
+          } else {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1
+              })
+              var pages = getCurrentPages();
+              var prePage = pages[pages.length - 2];
+              prePage.refresh();
+            }, 3000);
+          }
         }
       },
       fail: function (res) { },
-      complete: function (res) { },
+      complete: function (res) {
+      },
     })
 
   },

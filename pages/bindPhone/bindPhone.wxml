@@ -1,5 +1,5 @@
 <!--pages/bindPhone/bindPhone.wxml-->
-<view class='bindPhone-pages' style='height:{{windowHeight}}px;'>
+<view class='bindPhone-pages html'>
   <view class='top-img'>
     <image src='http://www.wbx365.com/static/default/wap/image/xiaochengxu/bindPhoneIcon@2x.png'></image>
   </view>

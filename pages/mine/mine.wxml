@@ -1,5 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <view class='minePage' style='height:{{windowHeight}}px;'>
+  <movable-area style='width:100%;height:100%;'>
   <!--头部  -->
   <view class='mine-top' style='background-image: url({{imgUrls}}{{top_backgroundImg}}{{"?imageView2/1/w/100/h/100"}})'>
     <!--用户信息  -->
@@ -44,43 +45,7 @@
       <text wx:else>0</text>
       <text>我的红包</text>
     </view>
-  </view>
-
-  <!--待付款  -->
-  <view class='mine-order'>
-    <view class='order flex-row'>
-      <!--待付款  -->
-      <view class='dfk flex-column' bindtap='waitPayDind'>
-        <image src='{{imgUrls}}{{dfkImg}}'></image>
-        <text>待付款</text>
-        <text class='order-num text-ellipsis' wx:if='{{user_list.dfk_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dfk_count}}</text>
-      </view>
-      <!--待发货  -->
-      <view class='dfh flex-column' bindtap='waitShippingDind'>
-        <image src='{{imgUrls}}{{dfhImg}}'></image>
-        <text>待发货</text>
-        <text class='order-num text-ellipsis' wx:if='{{user_list.dfh_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dfh_count}}</text>
-      </view>
-      <!--待收货  -->
-      <view class='dsh flex-column' bindtap='waitGoodsDind'>
-        <image src='{{imgUrls}}{{dshImg}}'></image>
-        <text>待收货</text>
-        <text class='order-num text-ellipsis' wx:if='{{user_list.dsh_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dsh_count}}</text>
-      </view>
-      <!--待退款  -->
-      <view class='dtk flex-column' bindtap='waitRefundsDind'>
-        <image src='{{imgUrls}}{{dtkImg}}'></image>
-        <text>待退款</text>
-        <text class='order-num text-ellipsis' wx:if='{{user_list.dtk_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.dtk_count}}</text>
-      </view>
-      <!--我的订单  -->
-      <view class='my-order flex-column' bindtap='completedDind'>
-        <image src='{{imgUrls}}{{my_orderImg}}'></image>
-        <text>已完成</text>
-        <text class='order-num text-ellipsis' wx:if='{{user_list.ywc_count!=0}}' style='background:{{isLogin?"":"white"}}'>{{user_list.ywc_count}}</text>
-      </view>
-    </view>
-  </view>
+  </view> 
 
   <!--我的收藏  -->
   <view class='mine-collection'>
@@ -122,7 +87,8 @@
     <!--退出按钮  -->
     <view class='exit'>
       <text wx:if='{{isLogin}}' bindtap='exit'>退出登录</text>
-      <text wx:else bindtap='login'>登录</text>
+      <button wx:else bindgetuserinfo='clickAllow' lang="zh_CN" plain="true" open-type='getUserInfo' style='border:none;color:#ffffff;font-size:30rpx;width:100%;'>登录</button>
+      <!-- <text wx:else bindtap='login'>登录</text> -->
     </view>
   </view>
 
@@ -141,9 +107,13 @@
     </view>
   </view> -->
 
+    <movable-view class='moveShopCar' direction="all" x="{{x}}" y="{{y}}" damping="200" out-of-bounds="true" catchtap='clickCar'>
+      <image src='{{imgUrls}}car1.png'></image>
+    </movable-view>
+  </movable-area>
 </view>
 <!--授权登录  -->
-<view class='wx-longin' wx:if='{{userLogin}}'>
+<!-- <view class='wx-longin' wx:if='{{userLogin}}'>
   <view class='login-content'>
     <view class='longin-title'>
       <text>微信授权</text>
@@ -163,7 +133,7 @@
       </view>
     </view>
   </view>
-</view>
+</view> -->
 <!-- 绑定手机 -->
 <view class='bindPhone' wx:if='{{isBindPhone}}'>
   <view class='bind'>
@@ -184,5 +154,30 @@
       <text catchtap='closeBindPhone'>下次完善</text>
       <text catchtap='bind_phone'>确认</text>
     </view>
+  </view>
+  
+</view>
+<!-- 自定义底部导航 -->
+<view style='height:150rpx;background:#f4f4f4'></view>
+<view class='footerTab'>
+  <view class='tabContent' bindtap='home'>
+    <image class='tab_img' src='../../images/hone-unselected.png'></image>
+    <view class='tab_title'>首页</view>
+  </view>
+  <view class='tabContent' bindtap='found'>
+    <image class='tab_img' src='../../images/discovery-unselected.png'></image>
+    <view class='tab_title'>发现</view>
+  </view>
+  <!-- <view class='tabContent'>
+    <image class='tab_search' src=''></image>
+    <view class='tab_titles'>语音搜索</view>
+  </view> -->
+  <view class='tabContent' bindtap='shopOrder'>
+    <image class='tab_img' src='../../images/order-unselected.png'></image>
+    <view class='tab_title'>订单</view>
+  </view>
+  <view class='tabContent'>
+    <image class='tab_img' src='../../images/my-selected.png'></image>
+    <view class='tab_title tab_active'>我的</view>
   </view>
 </view>
